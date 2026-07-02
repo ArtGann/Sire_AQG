@@ -1,0 +1,3329 @@
+{
+  "source": "https://apgutterguards.com/areas-we-serve",
+  "importedAt": "2026-06-30",
+  "hubs": [
+    {
+      "name": "Allentown",
+      "state": "PA",
+      "slug": "allentown-pa",
+      "nearby": [
+        {
+          "name": "Alburtis",
+          "state": "PA",
+          "slug": "alburtis-pa"
+        },
+        {
+          "name": "Ancient Oaks",
+          "state": "PA",
+          "slug": "ancient-oaks-pa"
+        },
+        {
+          "name": "Breinigsville",
+          "state": "PA",
+          "slug": "breinigsville-pa"
+        },
+        {
+          "name": "Dorneyville",
+          "state": "PA",
+          "slug": "dorneyville-pa"
+        },
+        {
+          "name": "East Texas",
+          "state": "PA",
+          "slug": "east-texas-pa"
+        },
+        {
+          "name": "Egypt",
+          "state": "PA",
+          "slug": "egypt-pa"
+        },
+        {
+          "name": "Emmaus",
+          "state": "PA",
+          "slug": "emmaus-pa"
+        },
+        {
+          "name": "Fogelsville",
+          "state": "PA",
+          "slug": "fogelsville-pa"
+        },
+        {
+          "name": "Laurys Station",
+          "state": "PA",
+          "slug": "laurys-station-pa"
+        },
+        {
+          "name": "Lehigh County",
+          "state": "PA",
+          "slug": "lehigh-county-pa"
+        },
+        {
+          "name": "Macungie",
+          "state": "PA",
+          "slug": "macungie-pa"
+        },
+        {
+          "name": "Maxatawny",
+          "state": "PA",
+          "slug": "maxatawny-pa"
+        },
+        {
+          "name": "Mertztown",
+          "state": "PA",
+          "slug": "mertztown-pa"
+        },
+        {
+          "name": "New Tripoli",
+          "state": "PA",
+          "slug": "new-tripoli-pa"
+        },
+        {
+          "name": "Schnecksville",
+          "state": "PA",
+          "slug": "schnecksville-pa"
+        },
+        {
+          "name": "Shimerville",
+          "state": "PA",
+          "slug": "shimerville-pa"
+        },
+        {
+          "name": "Trexlertown",
+          "state": "PA",
+          "slug": "trexlertown-pa"
+        },
+        {
+          "name": "Wescosville",
+          "state": "PA",
+          "slug": "wescosville-pa"
+        },
+        {
+          "name": "Zionsville",
+          "state": "PA",
+          "slug": "zionsville-pa"
+        }
+      ]
+    },
+    {
+      "name": "Annapolis",
+      "state": "MD",
+      "slug": "annapolis-maryland",
+      "nearby": [
+        {
+          "name": "Admiral Heights",
+          "state": "MD",
+          "slug": "admiral-heights-md"
+        },
+        {
+          "name": "Annapolis Overlook",
+          "state": "MD",
+          "slug": "annapolis-overlook-md"
+        },
+        {
+          "name": "Arden On The Severn",
+          "state": "MD",
+          "slug": "arden-on-the-severn-md"
+        },
+        {
+          "name": "Arnold",
+          "state": "MD",
+          "slug": "arnold-md"
+        },
+        {
+          "name": "Arundel On The Bay",
+          "state": "MD",
+          "slug": "arundel-on-the-bay-md"
+        },
+        {
+          "name": "Cape St Claire",
+          "state": "MD",
+          "slug": "cape-st-claire-md"
+        },
+        {
+          "name": "Crofton",
+          "state": "MD",
+          "slug": "crofton-md"
+        },
+        {
+          "name": "Crownsville",
+          "state": "MD",
+          "slug": "crownsville-md"
+        },
+        {
+          "name": "Eastport",
+          "state": "MD",
+          "slug": "eastport-md"
+        },
+        {
+          "name": "Edgewater",
+          "state": "MD",
+          "slug": "edgewater-md"
+        },
+        {
+          "name": "Herald Harbor",
+          "state": "MD",
+          "slug": "herald-harbor-md"
+        },
+        {
+          "name": "Highland Beach",
+          "state": "MD",
+          "slug": "highland-beach-md"
+        },
+        {
+          "name": "Londontowne",
+          "state": "MD",
+          "slug": "londontowne-md"
+        },
+        {
+          "name": "Parole",
+          "state": "MD",
+          "slug": "parole-md"
+        },
+        {
+          "name": "Riva",
+          "state": "MD",
+          "slug": "riva-md"
+        },
+        {
+          "name": "Rolling Hills",
+          "state": "MD",
+          "slug": "rolling-hills-md"
+        },
+        {
+          "name": "Sherwood Forest",
+          "state": "MD",
+          "slug": "sherwood-forest-md"
+        },
+        {
+          "name": "Timber Creek",
+          "state": "MD",
+          "slug": "timber-creek-md"
+        },
+        {
+          "name": "Winchester On The Severn",
+          "state": "MD",
+          "slug": "winchester-on-the-severn-md"
+        }
+      ]
+    },
+    {
+      "name": "Barnegat",
+      "state": "NJ",
+      "slug": "barnegat-nj",
+      "nearby": [
+        {
+          "name": "Beach Haven",
+          "state": "NJ",
+          "slug": "beach-haven-nj"
+        },
+        {
+          "name": "Cedar Run",
+          "state": "NJ",
+          "slug": "cedar-run-nj"
+        },
+        {
+          "name": "Forked River",
+          "state": "NJ",
+          "slug": "forked-river-nj"
+        },
+        {
+          "name": "Lacey Township",
+          "state": "NJ",
+          "slug": "lacey-township-nj"
+        },
+        {
+          "name": "Little Egg Harbor",
+          "state": "NJ",
+          "slug": "little-egg-harbor-nj"
+        },
+        {
+          "name": "Manahawkin",
+          "state": "NJ",
+          "slug": "manahawkin-nj"
+        },
+        {
+          "name": "Mayetta",
+          "state": "NJ",
+          "slug": "mayetta-nj"
+        },
+        {
+          "name": "Parkertown",
+          "state": "NJ",
+          "slug": "parkertown-nj"
+        },
+        {
+          "name": "Ship Bottom",
+          "state": "NJ",
+          "slug": "ship-bottom-nj"
+        },
+        {
+          "name": "Stafford Township",
+          "state": "NJ",
+          "slug": "stafford-township-nj"
+        },
+        {
+          "name": "Surf City",
+          "state": "NJ",
+          "slug": "surf-city-nj"
+        },
+        {
+          "name": "Tuckerton",
+          "state": "NJ",
+          "slug": "tuckerton-nj"
+        },
+        {
+          "name": "Waretown",
+          "state": "NJ",
+          "slug": "waretown-nj"
+        },
+        {
+          "name": "West Creek",
+          "state": "NJ",
+          "slug": "west-creek-nj"
+        }
+      ]
+    },
+    {
+      "name": "Belcamp",
+      "state": "MD",
+      "slug": "belcamp-md",
+      "nearby": [
+        {
+          "name": "Aberdeen",
+          "state": "MD",
+          "slug": "aberdeen-md"
+        },
+        {
+          "name": "Abingdon",
+          "state": "MD",
+          "slug": "abingdon-md"
+        },
+        {
+          "name": "Bel Air",
+          "state": "MD",
+          "slug": "bel-air-md"
+        },
+        {
+          "name": "Churchville",
+          "state": "MD",
+          "slug": "churchville-harford-md"
+        },
+        {
+          "name": "Darlington",
+          "state": "MD",
+          "slug": "darlington-md"
+        },
+        {
+          "name": "Edgewood",
+          "state": "MD",
+          "slug": "edgewood-md"
+        },
+        {
+          "name": "Emmorton",
+          "state": "MD",
+          "slug": "emmorton-md"
+        },
+        {
+          "name": "Fallston",
+          "state": "MD",
+          "slug": "fallston-md"
+        },
+        {
+          "name": "Forest Hill",
+          "state": "MD",
+          "slug": "forest-hill-md"
+        },
+        {
+          "name": "Havre de Grace",
+          "state": "MD",
+          "slug": "havre-de-grace-md"
+        },
+        {
+          "name": "Jarrettsville",
+          "state": "MD",
+          "slug": "jarrettsville-md"
+        },
+        {
+          "name": "Joppatowne",
+          "state": "MD",
+          "slug": "joppatowne-md"
+        },
+        {
+          "name": "Perryman",
+          "state": "MD",
+          "slug": "perryman-md"
+        },
+        {
+          "name": "Riverside",
+          "state": "MD",
+          "slug": "riverside-md"
+        }
+      ]
+    },
+    {
+      "name": "Bowie",
+      "state": "MD",
+      "slug": "bowie-md",
+      "nearby": [
+        {
+          "name": "Beltsville",
+          "state": "MD",
+          "slug": "beltsville-md"
+        },
+        {
+          "name": "College Park",
+          "state": "MD",
+          "slug": "college-park-md"
+        },
+        {
+          "name": "Glenn Dale",
+          "state": "MD",
+          "slug": "glenn-dale-md"
+        },
+        {
+          "name": "Greenbelt",
+          "state": "MD",
+          "slug": "greenbelt-md"
+        },
+        {
+          "name": "Hyattsville",
+          "state": "MD",
+          "slug": "hyattsville-md"
+        },
+        {
+          "name": "Lanham",
+          "state": "MD",
+          "slug": "lanham-md"
+        },
+        {
+          "name": "Laurel",
+          "state": "MD",
+          "slug": "laurel-md"
+        },
+        {
+          "name": "Mitchellville",
+          "state": "MD",
+          "slug": "mitchellville-md"
+        },
+        {
+          "name": "New Carrollton",
+          "state": "MD",
+          "slug": "new-carrollton-md"
+        },
+        {
+          "name": "Odenton",
+          "state": "MD",
+          "slug": "odenton-md"
+        },
+        {
+          "name": "Riverdale Park",
+          "state": "MD",
+          "slug": "riverdale-park-md"
+        },
+        {
+          "name": "Severn",
+          "state": "MD",
+          "slug": "severn-md"
+        },
+        {
+          "name": "Upper Marlboro",
+          "state": "MD",
+          "slug": "upper-marlboro-md"
+        }
+      ]
+    },
+    {
+      "name": "Cape May",
+      "state": "NJ",
+      "slug": "cape-may-new-jersey",
+      "nearby": [
+        {
+          "name": "Adamston",
+          "state": "NJ",
+          "slug": "adamston-nj"
+        },
+        {
+          "name": "Bayville",
+          "state": "NJ",
+          "slug": "bayville-nj"
+        },
+        {
+          "name": "Beachwood",
+          "state": "NJ",
+          "slug": "beachwood-nj"
+        },
+        {
+          "name": "Cedar Glen West",
+          "state": "NJ",
+          "slug": "cedar-glen-west-nj"
+        },
+        {
+          "name": "Holiday City Berkeley",
+          "state": "NJ",
+          "slug": "holiday-city-berkeley-nj"
+        },
+        {
+          "name": "Holiday City South",
+          "state": "NJ",
+          "slug": "holiday-city-south-nj"
+        },
+        {
+          "name": "Island Heights",
+          "state": "NJ",
+          "slug": "island-heights-nj"
+        },
+        {
+          "name": "Lakehurst",
+          "state": "NJ",
+          "slug": "lakehurst-nj"
+        },
+        {
+          "name": "Lavallette",
+          "state": "NJ",
+          "slug": "lavallette-nj"
+        },
+        {
+          "name": "Leisure Knoll",
+          "state": "NJ",
+          "slug": "leisure-knoll-nj"
+        },
+        {
+          "name": "Leisure Village East",
+          "state": "NJ",
+          "slug": "leisure-village-east-nj"
+        },
+        {
+          "name": "Leisure Village",
+          "state": "NJ",
+          "slug": "leisure-village-nj"
+        },
+        {
+          "name": "Ocean Gate",
+          "state": "NJ",
+          "slug": "ocean-gate-nj"
+        },
+        {
+          "name": "Pine Beach",
+          "state": "NJ",
+          "slug": "pine-beach-nj"
+        },
+        {
+          "name": "Pine Lake Park",
+          "state": "NJ",
+          "slug": "pine-lake-park-nj"
+        },
+        {
+          "name": "Seaside Heights",
+          "state": "NJ",
+          "slug": "seaside-heights-nj"
+        },
+        {
+          "name": "Silver Ridge",
+          "state": "NJ",
+          "slug": "silver-ridge-nj"
+        },
+        {
+          "name": "West Osbornsville",
+          "state": "NJ",
+          "slug": "west-osbornsville-nj"
+        },
+        {
+          "name": "Whitesville",
+          "state": "NJ",
+          "slug": "whitesville-nj"
+        }
+      ]
+    },
+    {
+      "name": "Carlisle",
+      "state": "PA",
+      "slug": "carlisle-pa-gutter-services",
+      "nearby": [
+        {
+          "name": "Bloserville",
+          "state": "PA",
+          "slug": "bloserville-pa"
+        },
+        {
+          "name": "Boiling Springs",
+          "state": "PA",
+          "slug": "boiling-springs-pa"
+        },
+        {
+          "name": "Camp Hill",
+          "state": "PA",
+          "slug": "camp-hill-pa"
+        },
+        {
+          "name": "Cumberland County",
+          "state": "PA",
+          "slug": "cumberland-county-pa"
+        },
+        {
+          "name": "Dillsburg",
+          "state": "PA",
+          "slug": "dillsburg-pa"
+        },
+        {
+          "name": "Enola",
+          "state": "PA",
+          "slug": "enola-pa"
+        },
+        {
+          "name": "Gardners",
+          "state": "PA",
+          "slug": "gardners-pa"
+        },
+        {
+          "name": "Grantham",
+          "state": "PA",
+          "slug": "grantham-pa"
+        },
+        {
+          "name": "Mechanicsburg",
+          "state": "PA",
+          "slug": "mechanicsburg-pa"
+        },
+        {
+          "name": "Mount Holly Springs",
+          "state": "PA",
+          "slug": "mount-holly-springs-pa"
+        },
+        {
+          "name": "New Kingstown",
+          "state": "PA",
+          "slug": "new-kingstown-pa"
+        },
+        {
+          "name": "Newville",
+          "state": "PA",
+          "slug": "newville-pa"
+        },
+        {
+          "name": "Peach Glen",
+          "state": "PA",
+          "slug": "peach-glen-pa"
+        },
+        {
+          "name": "Plainfield",
+          "state": "PA",
+          "slug": "plainfield-pa"
+        },
+        {
+          "name": "Schlusser",
+          "state": "PA",
+          "slug": "schlusser-pa"
+        },
+        {
+          "name": "Shippensburg",
+          "state": "PA",
+          "slug": "shippensburg-pa"
+        },
+        {
+          "name": "Summerdale",
+          "state": "PA",
+          "slug": "summerdale-pa"
+        },
+        {
+          "name": "Walnut Bottom",
+          "state": "PA",
+          "slug": "walnut-bottom-pa"
+        },
+        {
+          "name": "Wertzville",
+          "state": "PA",
+          "slug": "wertzville-pa"
+        }
+      ]
+    },
+    {
+      "name": "Charlottesville",
+      "state": "VA",
+      "slug": "charlottesville-va",
+      "nearby": [
+        {
+          "name": "Barboursville",
+          "state": "VA",
+          "slug": "barboursville-va"
+        },
+        {
+          "name": "Crozet",
+          "state": "VA",
+          "slug": "crozet-va"
+        },
+        {
+          "name": "Earlysville",
+          "state": "VA",
+          "slug": "earlysville-va"
+        },
+        {
+          "name": "Free Union",
+          "state": "VA",
+          "slug": "free-union-va"
+        },
+        {
+          "name": "Gordonsville",
+          "state": "VA",
+          "slug": "gordonsville-va"
+        },
+        {
+          "name": "Ivy",
+          "state": "VA",
+          "slug": "ivy-va"
+        },
+        {
+          "name": "Keswick",
+          "state": "VA",
+          "slug": "keswick-va"
+        },
+        {
+          "name": "North Garden",
+          "state": "VA",
+          "slug": "north-garden-va"
+        },
+        {
+          "name": "Palmyra",
+          "state": "VA",
+          "slug": "palmyra-va"
+        },
+        {
+          "name": "Ruckersville",
+          "state": "VA",
+          "slug": "ruckersville-va"
+        },
+        {
+          "name": "Scottsville",
+          "state": "VA",
+          "slug": "scottsville-va"
+        },
+        {
+          "name": "Stanardsville",
+          "state": "VA",
+          "slug": "stanardsville-va"
+        },
+        {
+          "name": "Troy",
+          "state": "VA",
+          "slug": "troy-va"
+        },
+        {
+          "name": "Zion Crossroads",
+          "state": "VA",
+          "slug": "zion-crossroads-va"
+        }
+      ]
+    },
+    {
+      "name": "Cumberland",
+      "state": "MD",
+      "slug": "cumberland-md",
+      "nearby": [
+        {
+          "name": "Barton",
+          "state": "MD",
+          "slug": "barton-md"
+        },
+        {
+          "name": "Corriganville",
+          "state": "MD",
+          "slug": "corriganville-md"
+        },
+        {
+          "name": "Cresaptown",
+          "state": "MD",
+          "slug": "cresaptown-md"
+        },
+        {
+          "name": "Ellerslie",
+          "state": "MD",
+          "slug": "ellerslie-md"
+        },
+        {
+          "name": "Frostburg",
+          "state": "MD",
+          "slug": "frostburg-md"
+        },
+        {
+          "name": "LaVale",
+          "state": "MD",
+          "slug": "lavale-md"
+        },
+        {
+          "name": "Lonaconing",
+          "state": "MD",
+          "slug": "lonaconing-md"
+        },
+        {
+          "name": "Midland",
+          "state": "MD",
+          "slug": "midland-md"
+        },
+        {
+          "name": "Mount Savage",
+          "state": "MD",
+          "slug": "mount-savage-md"
+        },
+        {
+          "name": "Rawlings",
+          "state": "MD",
+          "slug": "rawlings-md"
+        },
+        {
+          "name": "Westernport",
+          "state": "MD",
+          "slug": "westernport-md"
+        }
+      ]
+    },
+    {
+      "name": "Eatontown",
+      "state": "NJ",
+      "slug": "eatontown-nj",
+      "nearby": [
+        {
+          "name": "Asbury Park",
+          "state": "NJ",
+          "slug": "asbury-park-nj"
+        },
+        {
+          "name": "Colts Neck",
+          "state": "NJ",
+          "slug": "colts-neck-nj"
+        },
+        {
+          "name": "Fair Haven",
+          "state": "NJ",
+          "slug": "fair-haven-nj"
+        },
+        {
+          "name": "Little Silver",
+          "state": "NJ",
+          "slug": "little-silver-nj"
+        },
+        {
+          "name": "Long Branch",
+          "state": "NJ",
+          "slug": "long-branch-nj"
+        },
+        {
+          "name": "Monmouth Beach",
+          "state": "NJ",
+          "slug": "monmouth-beach-nj"
+        },
+        {
+          "name": "Neptune",
+          "state": "NJ",
+          "slug": "neptune-nj"
+        },
+        {
+          "name": "Ocean Township",
+          "state": "NJ",
+          "slug": "ocean-township-nj"
+        },
+        {
+          "name": "Oceanport",
+          "state": "NJ",
+          "slug": "oceanport-nj"
+        },
+        {
+          "name": "Red Bank",
+          "state": "NJ",
+          "slug": "red-bank-nj"
+        },
+        {
+          "name": "Rumson",
+          "state": "NJ",
+          "slug": "rumson-nj"
+        },
+        {
+          "name": "Shrewsbury",
+          "state": "NJ",
+          "slug": "shrewsbury-nj"
+        },
+        {
+          "name": "Tinton Falls",
+          "state": "NJ",
+          "slug": "tinton-falls-nj"
+        },
+        {
+          "name": "Wall Township",
+          "state": "NJ",
+          "slug": "wall-township-nj"
+        },
+        {
+          "name": "West Long Branch",
+          "state": "NJ",
+          "slug": "west-long-branch-nj"
+        }
+      ]
+    },
+    {
+      "name": "Exton",
+      "state": "PA",
+      "slug": "exton-pa",
+      "nearby": [
+        {
+          "name": "Caln",
+          "state": "PA",
+          "slug": "caln-pa"
+        },
+        {
+          "name": "Chester County",
+          "state": "PA",
+          "slug": "chester-county-pa"
+        },
+        {
+          "name": "Chester Springs",
+          "state": "PA",
+          "slug": "chester-springs-pa"
+        },
+        {
+          "name": "Coatesville",
+          "state": "PA",
+          "slug": "coatesville-pa"
+        },
+        {
+          "name": "Downingtown",
+          "state": "PA",
+          "slug": "downingtown-pa"
+        },
+        {
+          "name": "Eagle",
+          "state": "PA",
+          "slug": "eagle-pa"
+        },
+        {
+          "name": "Eagleview",
+          "state": "PA",
+          "slug": "eagleview-pa"
+        },
+        {
+          "name": "Frazer",
+          "state": "PA",
+          "slug": "frazer-pa"
+        },
+        {
+          "name": "Glenmoore",
+          "state": "PA",
+          "slug": "glenmoore-pa"
+        },
+        {
+          "name": "Lionville",
+          "state": "PA",
+          "slug": "lionville-pa"
+        },
+        {
+          "name": "Ludwigs Corner",
+          "state": "PA",
+          "slug": "ludwigs-corner-pa"
+        },
+        {
+          "name": "Lyndell",
+          "state": "PA",
+          "slug": "lyndell-pa"
+        },
+        {
+          "name": "Malvern Hunt",
+          "state": "PA",
+          "slug": "malvern-hunt-pa"
+        },
+        {
+          "name": "Marshallton",
+          "state": "PA",
+          "slug": "marshallton-pa"
+        },
+        {
+          "name": "Modena",
+          "state": "PA",
+          "slug": "modena-pa"
+        },
+        {
+          "name": "Thorndale",
+          "state": "PA",
+          "slug": "thorndale-pa"
+        },
+        {
+          "name": "West Goshen",
+          "state": "PA",
+          "slug": "west-goshen-pa"
+        }
+      ]
+    },
+    {
+      "name": "Fairfax",
+      "state": "VA",
+      "slug": "fairfax-va",
+      "nearby": [
+        {
+          "name": "Annandale",
+          "state": "VA",
+          "slug": "annandale-va"
+        },
+        {
+          "name": "Burke",
+          "state": "VA",
+          "slug": "burke-va"
+        },
+        {
+          "name": "Centreville",
+          "state": "VA",
+          "slug": "centreville-va"
+        },
+        {
+          "name": "Chantilly",
+          "state": "VA",
+          "slug": "chantilly-va"
+        },
+        {
+          "name": "Clifton",
+          "state": "VA",
+          "slug": "clifton-va"
+        },
+        {
+          "name": "Fairfax Station",
+          "state": "VA",
+          "slug": "fairfax-station-va"
+        },
+        {
+          "name": "Falls Church",
+          "state": "VA",
+          "slug": "falls-church-va"
+        },
+        {
+          "name": "Herndon",
+          "state": "VA",
+          "slug": "herndon-va"
+        },
+        {
+          "name": "McLean",
+          "state": "VA",
+          "slug": "mclean-va"
+        },
+        {
+          "name": "Merrifield",
+          "state": "VA",
+          "slug": "merrifield-va"
+        },
+        {
+          "name": "Oakton",
+          "state": "VA",
+          "slug": "oakton-va"
+        },
+        {
+          "name": "Reston",
+          "state": "VA",
+          "slug": "reston-va"
+        },
+        {
+          "name": "Springfield",
+          "state": "VA",
+          "slug": "springfield-va"
+        },
+        {
+          "name": "Vienna",
+          "state": "VA",
+          "slug": "vienna-va"
+        }
+      ]
+    },
+    {
+      "name": "Frederick",
+      "state": "MD",
+      "slug": "frederick-md",
+      "nearby": [
+        {
+          "name": "Ballenger Creek",
+          "state": "MD",
+          "slug": "ballenger-creek-md"
+        },
+        {
+          "name": "Brunswick",
+          "state": "MD",
+          "slug": "brunswick-md"
+        },
+        {
+          "name": "Emmitsburg",
+          "state": "MD",
+          "slug": "emmitsburg-md"
+        },
+        {
+          "name": "Ijamsville",
+          "state": "MD",
+          "slug": "ijamsville-md"
+        },
+        {
+          "name": "Jefferson",
+          "state": "MD",
+          "slug": "jefferson-md"
+        },
+        {
+          "name": "Libertytown",
+          "state": "MD",
+          "slug": "libertytown-md"
+        },
+        {
+          "name": "Middletown",
+          "state": "MD",
+          "slug": "middletown-frederick-md"
+        },
+        {
+          "name": "Myersville",
+          "state": "MD",
+          "slug": "myersville-md"
+        },
+        {
+          "name": "New Market",
+          "state": "MD",
+          "slug": "new-market-md"
+        },
+        {
+          "name": "Point of Rocks",
+          "state": "MD",
+          "slug": "point-of-rocks-md"
+        },
+        {
+          "name": "Thurmont",
+          "state": "MD",
+          "slug": "thurmont-md"
+        },
+        {
+          "name": "Urbana",
+          "state": "MD",
+          "slug": "urbana-md"
+        },
+        {
+          "name": "Walkersville",
+          "state": "MD",
+          "slug": "walkersville-md"
+        },
+        {
+          "name": "Woodsboro",
+          "state": "MD",
+          "slug": "woodsboro-md"
+        }
+      ]
+    },
+    {
+      "name": "Fredericksburg",
+      "state": "VA",
+      "slug": "fredericksburg-va",
+      "nearby": [
+        {
+          "name": "Aquia Harbour",
+          "state": "VA",
+          "slug": "aquia-harbour-va"
+        },
+        {
+          "name": "Chancellorsville",
+          "state": "VA",
+          "slug": "chancellorsville-va"
+        },
+        {
+          "name": "Falmouth",
+          "state": "VA",
+          "slug": "falmouth-va"
+        },
+        {
+          "name": "Ferry Farm",
+          "state": "VA",
+          "slug": "ferry-farm-va"
+        },
+        {
+          "name": "Garrisonville",
+          "state": "VA",
+          "slug": "garrisonville-va"
+        },
+        {
+          "name": "King George",
+          "state": "VA",
+          "slug": "king-george-va"
+        },
+        {
+          "name": "Ladysmith",
+          "state": "VA",
+          "slug": "ladysmith-va"
+        },
+        {
+          "name": "Massaponax",
+          "state": "VA",
+          "slug": "massaponax-va"
+        },
+        {
+          "name": "Partlow",
+          "state": "VA",
+          "slug": "partlow-va"
+        },
+        {
+          "name": "Ruther Glen",
+          "state": "VA",
+          "slug": "ruther-glen-va"
+        },
+        {
+          "name": "Spotsylvania",
+          "state": "VA",
+          "slug": "spotsylvania-va"
+        },
+        {
+          "name": "Stafford",
+          "state": "VA",
+          "slug": "stafford-va"
+        },
+        {
+          "name": "Thornburg",
+          "state": "VA",
+          "slug": "thornburg-va"
+        }
+      ]
+    },
+    {
+      "name": "Furlong",
+      "state": "PA",
+      "slug": "furlong-pa",
+      "nearby": [
+        {
+          "name": "Buckingham",
+          "state": "PA",
+          "slug": "buckingham-pa"
+        },
+        {
+          "name": "Chalfont",
+          "state": "PA",
+          "slug": "chalfont-pa"
+        },
+        {
+          "name": "Colmar",
+          "state": "PA",
+          "slug": "colmar-pa"
+        },
+        {
+          "name": "Doylestown",
+          "state": "PA",
+          "slug": "doylestown"
+        },
+        {
+          "name": "Dublin",
+          "state": "PA",
+          "slug": "dublin-pa"
+        },
+        {
+          "name": "Fountainville",
+          "state": "PA",
+          "slug": "fountainville-pa"
+        },
+        {
+          "name": "Gardenville",
+          "state": "PA",
+          "slug": "gardenville-pa"
+        },
+        {
+          "name": "Harleysville",
+          "state": "PA",
+          "slug": "harleysville-pa"
+        },
+        {
+          "name": "Hatfield",
+          "state": "PA",
+          "slug": "hatfield"
+        },
+        {
+          "name": "Mechanicsville",
+          "state": "PA",
+          "slug": "mechanicsville-pa"
+        },
+        {
+          "name": "New Britain",
+          "state": "PA",
+          "slug": "new-britain-pa"
+        },
+        {
+          "name": "New Hope",
+          "state": "PA",
+          "slug": "new-hope-pa"
+        },
+        {
+          "name": "Perkasie",
+          "state": "PA",
+          "slug": "perkasie-pa"
+        },
+        {
+          "name": "Plumsteadville",
+          "state": "PA",
+          "slug": "plumsteadville-pa"
+        },
+        {
+          "name": "Quakertown",
+          "state": "PA",
+          "slug": "quakertown-pa"
+        },
+        {
+          "name": "Sellersville",
+          "state": "PA",
+          "slug": "sellersville-pa"
+        },
+        {
+          "name": "Souderton",
+          "state": "PA",
+          "slug": "souderton-pa"
+        },
+        {
+          "name": "Telford",
+          "state": "PA",
+          "slug": "telford-pa"
+        }
+      ]
+    },
+    {
+      "name": "Germantown",
+      "state": "MD",
+      "slug": "germantown-maryland",
+      "nearby": [
+        {
+          "name": "Barnesville",
+          "state": "MD",
+          "slug": "barnesville-md"
+        },
+        {
+          "name": "Beallsville",
+          "state": "MD",
+          "slug": "beallsville-md"
+        },
+        {
+          "name": "Boyds",
+          "state": "MD",
+          "slug": "boyds-md"
+        },
+        {
+          "name": "Churchill Village South",
+          "state": "MD",
+          "slug": "churchill-village-south-md"
+        },
+        {
+          "name": "Clarksburg",
+          "state": "MD",
+          "slug": "clarksburg-md"
+        },
+        {
+          "name": "Dawsonville",
+          "state": "MD",
+          "slug": "dawsonville-md"
+        },
+        {
+          "name": "Flower Hill",
+          "state": "MD",
+          "slug": "flower-hill-md"
+        },
+        {
+          "name": "Gaithersburg",
+          "state": "MD",
+          "slug": "gaithersburg-md"
+        },
+        {
+          "name": "Hyattstown",
+          "state": "MD",
+          "slug": "hyattstown-md"
+        },
+        {
+          "name": "Kentlands",
+          "state": "MD",
+          "slug": "kentlands-md"
+        },
+        {
+          "name": "Lakelands",
+          "state": "MD",
+          "slug": "lakelands-md"
+        },
+        {
+          "name": "Milestone",
+          "state": "MD",
+          "slug": "milestone-md"
+        },
+        {
+          "name": "Montgomery Village",
+          "state": "MD",
+          "slug": "montgomery-village-md"
+        },
+        {
+          "name": "Stewart Town",
+          "state": "MD",
+          "slug": "stewart-town-md"
+        },
+        {
+          "name": "Ten Mile Creek",
+          "state": "MD",
+          "slug": "ten-mile-creek-md"
+        },
+        {
+          "name": "Wexford",
+          "state": "MD",
+          "slug": "wexford-md"
+        },
+        {
+          "name": "Williamsburg Square",
+          "state": "MD",
+          "slug": "williamsburg-square-md"
+        }
+      ]
+    },
+    {
+      "name": "Williamstown",
+      "state": "NJ",
+      "slug": "gloucester-county-nj",
+      "nearby": [
+        {
+          "name": "Berlin",
+          "state": "NJ",
+          "slug": "berlin-nj"
+        },
+        {
+          "name": "Berlin Township",
+          "state": "NJ",
+          "slug": "berlin-township-nj"
+        },
+        {
+          "name": "Clementon",
+          "state": "NJ",
+          "slug": "clementon-nj"
+        },
+        {
+          "name": "Deptford",
+          "state": "NJ",
+          "slug": "deptford-nj"
+        },
+        {
+          "name": "Folsom",
+          "state": "NJ",
+          "slug": "folsom-nj"
+        },
+        {
+          "name": "Gibbsboro",
+          "state": "NJ",
+          "slug": "gibbsboro-nj"
+        },
+        {
+          "name": "Glassboro",
+          "state": "NJ",
+          "slug": "glassboro-nj"
+        },
+        {
+          "name": "Gloucester Township",
+          "state": "NJ",
+          "slug": "gloucester-township-nj"
+        },
+        {
+          "name": "Mantua Township",
+          "state": "NJ",
+          "slug": "mantua-township-nj"
+        },
+        {
+          "name": "Monroe",
+          "state": "NJ",
+          "slug": "monroe-nj"
+        },
+        {
+          "name": "Mullica Hill",
+          "state": "NJ",
+          "slug": "mullica-hill-nj"
+        },
+        {
+          "name": "Mullica",
+          "state": "NJ",
+          "slug": "mullica-nj"
+        },
+        {
+          "name": "Pitman",
+          "state": "NJ",
+          "slug": "pitman-nj"
+        },
+        {
+          "name": "Sewell",
+          "state": "NJ",
+          "slug": "sewell-nj"
+        },
+        {
+          "name": "Sicklerville",
+          "state": "NJ",
+          "slug": "sicklerville-nj"
+        },
+        {
+          "name": "Washington Township",
+          "state": "NJ",
+          "slug": "washington-township-nj"
+        },
+        {
+          "name": "Waterford",
+          "state": "NJ",
+          "slug": "waterford-nj"
+        },
+        {
+          "name": "Clayton",
+          "state": "NJ",
+          "slug": "clayton-nj"
+        }
+      ]
+    },
+    {
+      "name": "Hagerstown",
+      "state": "MD",
+      "slug": "hagerstown-md",
+      "nearby": [
+        {
+          "name": "Boonsboro",
+          "state": "MD",
+          "slug": "boonsboro-md"
+        },
+        {
+          "name": "Cavetown",
+          "state": "MD",
+          "slug": "cavetown-md"
+        },
+        {
+          "name": "Clear Spring",
+          "state": "MD",
+          "slug": "clear-spring-md"
+        },
+        {
+          "name": "Funkstown",
+          "state": "MD",
+          "slug": "funkstown-md"
+        },
+        {
+          "name": "Halfway",
+          "state": "MD",
+          "slug": "halfway-md"
+        },
+        {
+          "name": "Hancock",
+          "state": "MD",
+          "slug": "hancock-md"
+        },
+        {
+          "name": "Keedysville",
+          "state": "MD",
+          "slug": "keedysville-md"
+        },
+        {
+          "name": "Leitersburg",
+          "state": "MD",
+          "slug": "leitersburg-md"
+        },
+        {
+          "name": "Maugansville",
+          "state": "MD",
+          "slug": "maugansville-md"
+        },
+        {
+          "name": "Sharpsburg",
+          "state": "MD",
+          "slug": "sharpsburg-md"
+        },
+        {
+          "name": "Smithsburg",
+          "state": "MD",
+          "slug": "smithsburg-md"
+        },
+        {
+          "name": "Williamsport",
+          "state": "MD",
+          "slug": "williamsport-md"
+        }
+      ]
+    },
+    {
+      "name": "Hampton",
+      "state": "NJ",
+      "slug": "hampton-nj",
+      "nearby": [
+        {
+          "name": "Alexandria",
+          "state": "NJ",
+          "slug": "alexandria-nj"
+        },
+        {
+          "name": "Bloomsbury",
+          "state": "NJ",
+          "slug": "bloomsbury-nj"
+        },
+        {
+          "name": "Califon",
+          "state": "NJ",
+          "slug": "califon-nj"
+        },
+        {
+          "name": "Clinton",
+          "state": "NJ",
+          "slug": "clinton-nj"
+        },
+        {
+          "name": "Clinton Township",
+          "state": "NJ",
+          "slug": "clinton-township-nj"
+        },
+        {
+          "name": "East Amwell Township",
+          "state": "NJ",
+          "slug": "east-amwell-township-nj"
+        },
+        {
+          "name": "Flemington",
+          "state": "NJ",
+          "slug": "flemington-nj"
+        },
+        {
+          "name": "Franklin Township",
+          "state": "NJ",
+          "slug": "franklin-township-nj"
+        },
+        {
+          "name": "Hunterdon County",
+          "state": "NJ",
+          "slug": "hunterdon-county-nj"
+        },
+        {
+          "name": "Lebanon Township",
+          "state": "NJ",
+          "slug": "lebanon-township-nj"
+        },
+        {
+          "name": "Mansfield Township",
+          "state": "NJ",
+          "slug": "mansfield-township-nj"
+        },
+        {
+          "name": "Oxford",
+          "state": "NJ",
+          "slug": "oxford-nj"
+        },
+        {
+          "name": "Readington Township",
+          "state": "NJ",
+          "slug": "readington-township-nj"
+        },
+        {
+          "name": "Roxbury Township",
+          "state": "NJ",
+          "slug": "roxbury-township-nj"
+        },
+        {
+          "name": "Stanhope",
+          "state": "NJ",
+          "slug": "stanhope-nj"
+        },
+        {
+          "name": "Union Township",
+          "state": "NJ",
+          "slug": "union-township-nj"
+        },
+        {
+          "name": "Warren County",
+          "state": "NJ",
+          "slug": "warren-county-nj"
+        },
+        {
+          "name": "Washington",
+          "state": "NJ",
+          "slug": "washington-nj"
+        }
+      ]
+    },
+    {
+      "name": "Harrisburg",
+      "state": "PA",
+      "slug": "harrisburg-pa",
+      "nearby": [
+        {
+          "name": "Berrysburg",
+          "state": "PA",
+          "slug": "berrysburg-pa"
+        },
+        {
+          "name": "Campbelltown",
+          "state": "PA",
+          "slug": "campbelltown-pa"
+        },
+        {
+          "name": "Dauphin County",
+          "state": "PA",
+          "slug": "dauphin-county-pa"
+        },
+        {
+          "name": "Dauphin",
+          "state": "PA",
+          "slug": "dauphin-pa"
+        },
+        {
+          "name": "Elizabethtown",
+          "state": "PA",
+          "slug": "elizabethtown-pa"
+        },
+        {
+          "name": "Elizabethville",
+          "state": "PA",
+          "slug": "elizabethville-pa"
+        },
+        {
+          "name": "Grantville",
+          "state": "PA",
+          "slug": "grantville-pa"
+        },
+        {
+          "name": "Gratz",
+          "state": "PA",
+          "slug": "gratz-pa"
+        },
+        {
+          "name": "Halifax",
+          "state": "PA",
+          "slug": "halifax-pa"
+        },
+        {
+          "name": "Hershey",
+          "state": "PA",
+          "slug": "hershey-pa"
+        },
+        {
+          "name": "Highspire",
+          "state": "PA",
+          "slug": "highspire-pa"
+        },
+        {
+          "name": "Hummelstown",
+          "state": "PA",
+          "slug": "hummelstown-pa"
+        },
+        {
+          "name": "Lawn",
+          "state": "PA",
+          "slug": "lawn-pa"
+        },
+        {
+          "name": "Lykens",
+          "state": "PA",
+          "slug": "lykens-pa"
+        },
+        {
+          "name": "Middletown",
+          "state": "PA",
+          "slug": "middletown-pa"
+        },
+        {
+          "name": "Millersburg",
+          "state": "PA",
+          "slug": "millersburg-pa"
+        },
+        {
+          "name": "Palmyra",
+          "state": "PA",
+          "slug": "palmyra-pa"
+        },
+        {
+          "name": "Pillow",
+          "state": "PA",
+          "slug": "pillow-pa"
+        },
+        {
+          "name": "Wiconisco",
+          "state": "PA",
+          "slug": "wiconisco-pa"
+        }
+      ]
+    },
+    {
+      "name": "Hunt Valley",
+      "state": "MD",
+      "slug": "hunt-valley-md",
+      "nearby": [
+        {
+          "name": "Glen Arm",
+          "state": "MD",
+          "slug": "glen-arm-md"
+        },
+        {
+          "name": "Lutherville",
+          "state": "MD",
+          "slug": "lutherville-md"
+        },
+        {
+          "name": "Monkton",
+          "state": "MD",
+          "slug": "monkton-md"
+        },
+        {
+          "name": "Owings Mills",
+          "state": "MD",
+          "slug": "owings-mills-md"
+        },
+        {
+          "name": "Parkton",
+          "state": "MD",
+          "slug": "parkton-md"
+        },
+        {
+          "name": "Parkville",
+          "state": "MD",
+          "slug": "parkville-md"
+        },
+        {
+          "name": "Perry Hall",
+          "state": "MD",
+          "slug": "perry-hall-md"
+        },
+        {
+          "name": "Phoenix",
+          "state": "MD",
+          "slug": "phoenix-md"
+        },
+        {
+          "name": "Pikesville",
+          "state": "MD",
+          "slug": "pikesville-md"
+        },
+        {
+          "name": "Reisterstown",
+          "state": "MD",
+          "slug": "reisterstown-md"
+        },
+        {
+          "name": "Sparks",
+          "state": "MD",
+          "slug": "sparks-md"
+        },
+        {
+          "name": "Timonium",
+          "state": "MD",
+          "slug": "timonium-md"
+        },
+        {
+          "name": "Towson",
+          "state": "MD",
+          "slug": "towson-md"
+        },
+        {
+          "name": "White Marsh",
+          "state": "MD",
+          "slug": "white-marsh-md"
+        }
+      ]
+    },
+    {
+      "name": "Jackson",
+      "state": "NJ",
+      "slug": "jackson-nj",
+      "nearby": [
+        {
+          "name": "Adelphia",
+          "state": "NJ",
+          "slug": "adelphia-nj"
+        },
+        {
+          "name": "Cassville",
+          "state": "NJ",
+          "slug": "cassville-nj"
+        },
+        {
+          "name": "Clarksburg",
+          "state": "NJ",
+          "slug": "clarksburg-nj"
+        },
+        {
+          "name": "Cream Ridge",
+          "state": "NJ",
+          "slug": "cream-ridge-nj"
+        },
+        {
+          "name": "Englishtown",
+          "state": "NJ",
+          "slug": "englishtown-nj"
+        },
+        {
+          "name": "Farmingdale",
+          "state": "NJ",
+          "slug": "farmingdale-nj"
+        },
+        {
+          "name": "Freehold",
+          "state": "NJ",
+          "slug": "freehold-nj"
+        },
+        {
+          "name": "Howell",
+          "state": "NJ",
+          "slug": "howell-nj"
+        },
+        {
+          "name": "Lakewood",
+          "state": "NJ",
+          "slug": "lakewood-nj"
+        },
+        {
+          "name": "Manalapan",
+          "state": "NJ",
+          "slug": "manalapan-nj"
+        },
+        {
+          "name": "Marlboro",
+          "state": "NJ",
+          "slug": "marlboro-nj"
+        },
+        {
+          "name": "Millstone Township",
+          "state": "NJ",
+          "slug": "millstone-township-nj"
+        },
+        {
+          "name": "New Egypt",
+          "state": "NJ",
+          "slug": "new-egypt-nj"
+        }
+      ]
+    },
+    {
+      "name": "Lancaster",
+      "state": "PA",
+      "slug": "lancaster-pa",
+      "nearby": [
+        {
+          "name": "Conestoga",
+          "state": "PA",
+          "slug": "conestoga-pa"
+        },
+        {
+          "name": "East Donegal Township",
+          "state": "PA",
+          "slug": "east-donegal-township-pa"
+        },
+        {
+          "name": "East Petersburg",
+          "state": "PA",
+          "slug": "east-petersburg-pa"
+        },
+        {
+          "name": "Elizabeth Township",
+          "state": "PA",
+          "slug": "elizabeth-township-pa"
+        },
+        {
+          "name": "Fertility",
+          "state": "PA",
+          "slug": "fertility-pa"
+        },
+        {
+          "name": "Lampeter",
+          "state": "PA",
+          "slug": "lampeter-pa"
+        },
+        {
+          "name": "Lancaster County",
+          "state": "PA",
+          "slug": "lancaster-county-pa"
+        },
+        {
+          "name": "Lyndon",
+          "state": "PA",
+          "slug": "lyndon-pa"
+        },
+        {
+          "name": "Manheim Township",
+          "state": "PA",
+          "slug": "manheim-township-pa"
+        },
+        {
+          "name": "Millersville",
+          "state": "PA",
+          "slug": "millersville-pa"
+        },
+        {
+          "name": "Neffsville",
+          "state": "PA",
+          "slug": "neffsville-pa"
+        },
+        {
+          "name": "Penn Township",
+          "state": "PA",
+          "slug": "penn-township-pa"
+        },
+        {
+          "name": "Penryn",
+          "state": "PA",
+          "slug": "penryn-pa"
+        },
+        {
+          "name": "Roseville",
+          "state": "PA",
+          "slug": "roseville-pa"
+        },
+        {
+          "name": "Slackwater",
+          "state": "PA",
+          "slug": "slackwater-pa"
+        },
+        {
+          "name": "Strasburg Township",
+          "state": "PA",
+          "slug": "strasburg-township-pa"
+        },
+        {
+          "name": "Warwick Township",
+          "state": "PA",
+          "slug": "warwick-township-pa"
+        },
+        {
+          "name": "West Cocalico Township",
+          "state": "PA",
+          "slug": "west-cocalico-township-pa"
+        },
+        {
+          "name": "Willow Street",
+          "state": "PA",
+          "slug": "willow-street-pa"
+        }
+      ]
+    },
+    {
+      "name": "Leesburg",
+      "state": "VA",
+      "slug": "leesburg-va",
+      "nearby": [
+        {
+          "name": "Aldie",
+          "state": "VA",
+          "slug": "aldie-va"
+        },
+        {
+          "name": "Ashburn",
+          "state": "VA",
+          "slug": "ashburn-va"
+        },
+        {
+          "name": "Brambleton",
+          "state": "VA",
+          "slug": "brambleton-va"
+        },
+        {
+          "name": "Dulles",
+          "state": "VA",
+          "slug": "dulles-va"
+        },
+        {
+          "name": "Hamilton",
+          "state": "VA",
+          "slug": "hamilton-va"
+        },
+        {
+          "name": "Hillsboro",
+          "state": "VA",
+          "slug": "hillsboro-va"
+        },
+        {
+          "name": "Lansdowne",
+          "state": "VA",
+          "slug": "lansdowne-va"
+        },
+        {
+          "name": "Lovettsville",
+          "state": "VA",
+          "slug": "lovettsville-va"
+        },
+        {
+          "name": "Middleburg",
+          "state": "VA",
+          "slug": "middleburg-va"
+        },
+        {
+          "name": "Purcellville",
+          "state": "VA",
+          "slug": "purcellville-va"
+        },
+        {
+          "name": "Round Hill",
+          "state": "VA",
+          "slug": "round-hill-va"
+        },
+        {
+          "name": "Sterling",
+          "state": "VA",
+          "slug": "sterling-va"
+        },
+        {
+          "name": "Stone Ridge",
+          "state": "VA",
+          "slug": "stone-ridge-va"
+        },
+        {
+          "name": "Waterford",
+          "state": "VA",
+          "slug": "waterford-va"
+        }
+      ]
+    },
+    {
+      "name": "Longport",
+      "state": "NJ",
+      "slug": "longport-new-jersey",
+      "nearby": [
+        {
+          "name": "Absecon",
+          "state": "NJ",
+          "slug": "absecon-nj"
+        },
+        {
+          "name": "Atlantic City",
+          "state": "NJ",
+          "slug": "atlantic-city-nj"
+        },
+        {
+          "name": "Avalon",
+          "state": "NJ",
+          "slug": "avalon-nj"
+        },
+        {
+          "name": "Beesleys Point",
+          "state": "NJ",
+          "slug": "beesleys-point-nj"
+        },
+        {
+          "name": "Brigantine",
+          "state": "NJ",
+          "slug": "brigantine-nj"
+        },
+        {
+          "name": "Cape May Courthouse",
+          "state": "NJ",
+          "slug": "cape-may-courthouse-nj"
+        },
+        {
+          "name": "Egg Harbor Township",
+          "state": "NJ",
+          "slug": "egg-harbor-township-nj"
+        },
+        {
+          "name": "Linwood",
+          "state": "NJ",
+          "slug": "linwood-nj"
+        },
+        {
+          "name": "Margate City",
+          "state": "NJ",
+          "slug": "margate-city-nj"
+        },
+        {
+          "name": "Marmora",
+          "state": "NJ",
+          "slug": "marmora-nj"
+        },
+        {
+          "name": "Northfield",
+          "state": "NJ",
+          "slug": "northfield-nj"
+        },
+        {
+          "name": "Ocean City",
+          "state": "NJ",
+          "slug": "ocean-city-nj"
+        },
+        {
+          "name": "Palermo",
+          "state": "NJ",
+          "slug": "palermo-nj"
+        },
+        {
+          "name": "Pleasantville",
+          "state": "NJ",
+          "slug": "pleasantville-nj"
+        },
+        {
+          "name": "Sea Isle City",
+          "state": "NJ",
+          "slug": "sea-isle-city-nj"
+        },
+        {
+          "name": "Somers Point",
+          "state": "NJ",
+          "slug": "somers-point-nj"
+        },
+        {
+          "name": "Stone Harbor",
+          "state": "NJ",
+          "slug": "stone-harbor-nj"
+        },
+        {
+          "name": "Ventnor City",
+          "state": "NJ",
+          "slug": "ventnor-city-nj"
+        },
+        {
+          "name": "Zion Park",
+          "state": "NJ",
+          "slug": "zion-park-nj"
+        }
+      ]
+    },
+    {
+      "name": "Manchester Township",
+      "state": "NJ",
+      "slug": "manchester-township-nj",
+      "nearby": [
+        {
+          "name": "Browns Mills",
+          "state": "NJ",
+          "slug": "browns-mills-nj"
+        },
+        {
+          "name": "Cookstown",
+          "state": "NJ",
+          "slug": "cookstown-nj"
+        },
+        {
+          "name": "Crestwood Village",
+          "state": "NJ",
+          "slug": "crestwood-village-nj"
+        },
+        {
+          "name": "Fort Dix",
+          "state": "NJ",
+          "slug": "fort-dix-nj"
+        },
+        {
+          "name": "Holiday City",
+          "state": "NJ",
+          "slug": "holiday-city-manchester-nj"
+        },
+        {
+          "name": "Juliustown",
+          "state": "NJ",
+          "slug": "juliustown-nj"
+        },
+        {
+          "name": "New Lisbon",
+          "state": "NJ",
+          "slug": "new-lisbon-nj"
+        },
+        {
+          "name": "Pemberton",
+          "state": "NJ",
+          "slug": "pemberton-nj"
+        },
+        {
+          "name": "Pointville",
+          "state": "NJ",
+          "slug": "pointville-nj"
+        },
+        {
+          "name": "Ridgeway",
+          "state": "NJ",
+          "slug": "ridgeway-nj"
+        },
+        {
+          "name": "Whiting",
+          "state": "NJ",
+          "slug": "whiting-nj"
+        },
+        {
+          "name": "Wrightstown",
+          "state": "NJ",
+          "slug": "wrightstown-nj"
+        }
+      ]
+    },
+    {
+      "name": "Media",
+      "state": "PA",
+      "slug": "media",
+      "nearby": [
+        {
+          "name": "Ardmore",
+          "state": "PA",
+          "slug": "ardmore-pa"
+        },
+        {
+          "name": "Broomall",
+          "state": "PA",
+          "slug": "broomall-pa"
+        },
+        {
+          "name": "Garnet Valley",
+          "state": "PA",
+          "slug": "garnet-valley-pa"
+        },
+        {
+          "name": "Glen Mills",
+          "state": "PA",
+          "slug": "glen-mills-pa"
+        },
+        {
+          "name": "Haverford",
+          "state": "PA",
+          "slug": "haverford-pa"
+        },
+        {
+          "name": "Havertown",
+          "state": "PA",
+          "slug": "havertown-pa"
+        },
+        {
+          "name": "Malvern",
+          "state": "PA",
+          "slug": "malvern-pa"
+        },
+        {
+          "name": "Morton",
+          "state": "PA",
+          "slug": "morton-pa"
+        },
+        {
+          "name": "Narberth",
+          "state": "PA",
+          "slug": "narberth-pa"
+        },
+        {
+          "name": "Nether Providence Township",
+          "state": "PA",
+          "slug": "nether-providence-township-pa"
+        },
+        {
+          "name": "Newtown Square",
+          "state": "PA",
+          "slug": "newtown-square-pa"
+        },
+        {
+          "name": "Paoli",
+          "state": "PA",
+          "slug": "paoli-pa"
+        },
+        {
+          "name": "Radnor",
+          "state": "PA",
+          "slug": "radnor-pa"
+        },
+        {
+          "name": "Springfield",
+          "state": "PA",
+          "slug": "springfield-pa"
+        },
+        {
+          "name": "Swarthmore",
+          "state": "PA",
+          "slug": "swarthmore-pa"
+        },
+        {
+          "name": "Villanova",
+          "state": "PA",
+          "slug": "villanova-pa"
+        },
+        {
+          "name": "Wayne",
+          "state": "PA",
+          "slug": "wayne-pa"
+        },
+        {
+          "name": "West Chester",
+          "state": "PA",
+          "slug": "west-chester-pa"
+        },
+        {
+          "name": "Wynnewood",
+          "state": "PA",
+          "slug": "wynnewood-pa"
+        }
+      ]
+    },
+    {
+      "name": "Mt Laurel",
+      "state": "NJ",
+      "slug": "moorestown-nj",
+      "nearby": [
+        {
+          "name": "Burlington County",
+          "state": "NJ",
+          "slug": "burlington-county-nj"
+        },
+        {
+          "name": "Burlington",
+          "state": "NJ",
+          "slug": "burlington-nj"
+        },
+        {
+          "name": "Burlington Township",
+          "state": "NJ",
+          "slug": "burlington-township-nj"
+        },
+        {
+          "name": "Cherry Hill",
+          "state": "NJ",
+          "slug": "cherry-hill-nj"
+        },
+        {
+          "name": "Cinnaminson",
+          "state": "NJ",
+          "slug": "cinnaminson-nj"
+        },
+        {
+          "name": "Collingswood",
+          "state": "NJ",
+          "slug": "collingswood-nj"
+        },
+        {
+          "name": "Delran",
+          "state": "NJ",
+          "slug": "delran-nj"
+        },
+        {
+          "name": "Evesham",
+          "state": "NJ",
+          "slug": "evesham-nj"
+        },
+        {
+          "name": "Haddonfield",
+          "state": "NJ",
+          "slug": "haddonfield-nj"
+        },
+        {
+          "name": "Lumberton",
+          "state": "NJ",
+          "slug": "lumberton-nj"
+        },
+        {
+          "name": "Medford",
+          "state": "NJ",
+          "slug": "medford-nj"
+        },
+        {
+          "name": "Mt Holly",
+          "state": "NJ",
+          "slug": "mt-holly-nj"
+        },
+        {
+          "name": "Mt Laurel Township",
+          "state": "NJ",
+          "slug": "mt-laurel-township-nj"
+        },
+        {
+          "name": "Pemberton Township",
+          "state": "NJ",
+          "slug": "pemberton-township-nj"
+        },
+        {
+          "name": "Pennsauken Township",
+          "state": "NJ",
+          "slug": "pennsauken-township-nj"
+        },
+        {
+          "name": "Southampton Township",
+          "state": "NJ",
+          "slug": "southampton-township-nj"
+        },
+        {
+          "name": "Voorhees Township",
+          "state": "NJ",
+          "slug": "voorhees-township-nj"
+        },
+        {
+          "name": "Woodbury",
+          "state": "NJ",
+          "slug": "woodbury-nj"
+        }
+      ]
+    },
+    {
+      "name": "Newark",
+      "state": "DE",
+      "slug": "newark-delaware",
+      "nearby": [
+        {
+          "name": "Bear",
+          "state": "DE",
+          "slug": "bear-de"
+        },
+        {
+          "name": "Brookside",
+          "state": "DE",
+          "slug": "brookside-de"
+        },
+        {
+          "name": "Christiana",
+          "state": "DE",
+          "slug": "christiana-de"
+        },
+        {
+          "name": "Glasgow",
+          "state": "DE",
+          "slug": "glasgow-de"
+        },
+        {
+          "name": "Heritage",
+          "state": "DE",
+          "slug": "heritage-de"
+        },
+        {
+          "name": "Kirkwood",
+          "state": "DE",
+          "slug": "kirkwood-de"
+        },
+        {
+          "name": "Marshallton",
+          "state": "DE",
+          "slug": "marshallton-de"
+        },
+        {
+          "name": "Ogletown",
+          "state": "DE",
+          "slug": "ogletown-de"
+        },
+        {
+          "name": "Pike Creek",
+          "state": "DE",
+          "slug": "pike-creek-de"
+        },
+        {
+          "name": "Red Lion",
+          "state": "DE",
+          "slug": "red-lion-de"
+        },
+        {
+          "name": "Stanton",
+          "state": "DE",
+          "slug": "stanton-de"
+        },
+        {
+          "name": "State Road",
+          "state": "DE",
+          "slug": "state-road-de"
+        },
+        {
+          "name": "Wrangle Hill",
+          "state": "DE",
+          "slug": "wrangle-hill-de"
+        },
+        {
+          "name": "Yorkshire Newark",
+          "state": "DE",
+          "slug": "yorkshire-newark-de"
+        }
+      ]
+    },
+    {
+      "name": "Albrightsville",
+      "state": "PA",
+      "slug": "poconos-pa",
+      "nearby": [
+        {
+          "name": "Blakeslee",
+          "state": "PA",
+          "slug": "blakeslee-pa"
+        },
+        {
+          "name": "Delaware Water Gap",
+          "state": "PA",
+          "slug": "delaware-water-gap-pa"
+        },
+        {
+          "name": "East Stroudsburg",
+          "state": "PA",
+          "slug": "east-stroudsburg-pa"
+        },
+        {
+          "name": "Hazleton",
+          "state": "PA",
+          "slug": "hazleton-pa"
+        },
+        {
+          "name": "Jim Thorpe",
+          "state": "PA",
+          "slug": "jim-thorpe-pa"
+        },
+        {
+          "name": "Jonas",
+          "state": "PA",
+          "slug": "jonas-pa"
+        },
+        {
+          "name": "Lake Harmony",
+          "state": "PA",
+          "slug": "lake-harmony-pa"
+        },
+        {
+          "name": "Long Pond",
+          "state": "PA",
+          "slug": "long-pond-pa"
+        },
+        {
+          "name": "Mt Pocono",
+          "state": "PA",
+          "slug": "mt-pocono-pa"
+        },
+        {
+          "name": "Pocono Pines",
+          "state": "PA",
+          "slug": "pocono-pines-pa"
+        },
+        {
+          "name": "Pottsville",
+          "state": "PA",
+          "slug": "pottsville-pa"
+        },
+        {
+          "name": "Scranton",
+          "state": "PA",
+          "slug": "scranton-pa"
+        },
+        {
+          "name": "Sierra View",
+          "state": "PA",
+          "slug": "sierra-view-pa"
+        },
+        {
+          "name": "Stroudsburg",
+          "state": "PA",
+          "slug": "stroudsburg-pa"
+        },
+        {
+          "name": "Swiftwater",
+          "state": "PA",
+          "slug": "swiftwater-pa"
+        },
+        {
+          "name": "Tannersville",
+          "state": "PA",
+          "slug": "tannersville-pa"
+        },
+        {
+          "name": "Weatherly",
+          "state": "PA",
+          "slug": "weatherly-pa"
+        },
+        {
+          "name": "White Haven",
+          "state": "PA",
+          "slug": "white-haven-pa"
+        },
+        {
+          "name": "Wilkes Barre",
+          "state": "PA",
+          "slug": "wilkes-barre-pa"
+        }
+      ]
+    },
+    {
+      "name": "Princeton",
+      "state": "NJ",
+      "slug": "princeton-nj",
+      "nearby": [
+        {
+          "name": "Cranbury",
+          "state": "NJ",
+          "slug": "cranbury-nj"
+        },
+        {
+          "name": "East Windsor",
+          "state": "NJ",
+          "slug": "east-windsor-nj"
+        },
+        {
+          "name": "Ewing",
+          "state": "NJ",
+          "slug": "ewing-nj"
+        },
+        {
+          "name": "Hamilton Township",
+          "state": "NJ",
+          "slug": "hamilton-township-nj"
+        },
+        {
+          "name": "Hightstown",
+          "state": "NJ",
+          "slug": "hightstown-nj"
+        },
+        {
+          "name": "Hopewell",
+          "state": "NJ",
+          "slug": "hopewell-nj"
+        },
+        {
+          "name": "Lawrence Township",
+          "state": "NJ",
+          "slug": "lawrence-township-nj"
+        },
+        {
+          "name": "Montgomery Township",
+          "state": "NJ",
+          "slug": "montgomery-township-nj"
+        },
+        {
+          "name": "Pennington",
+          "state": "NJ",
+          "slug": "pennington-nj"
+        },
+        {
+          "name": "Plainsboro",
+          "state": "NJ",
+          "slug": "plainsboro-nj"
+        },
+        {
+          "name": "Robbinsville",
+          "state": "NJ",
+          "slug": "robbinsville-nj"
+        },
+        {
+          "name": "Rocky Hill",
+          "state": "NJ",
+          "slug": "rocky-hill-nj"
+        },
+        {
+          "name": "Skillman",
+          "state": "NJ",
+          "slug": "skillman-nj"
+        },
+        {
+          "name": "West Windsor",
+          "state": "NJ",
+          "slug": "west-windsor-nj"
+        }
+      ]
+    },
+    {
+      "name": "Reading",
+      "state": "PA",
+      "slug": "reading-pa",
+      "nearby": [
+        {
+          "name": "Birdsboro",
+          "state": "PA",
+          "slug": "birdsboro-pa"
+        },
+        {
+          "name": "Fleetwood",
+          "state": "PA",
+          "slug": "fleetwood-pa"
+        },
+        {
+          "name": "Kenhorst",
+          "state": "PA",
+          "slug": "kenhorst-pa"
+        },
+        {
+          "name": "Laureldale",
+          "state": "PA",
+          "slug": "laureldale-pa"
+        },
+        {
+          "name": "Mohnton",
+          "state": "PA",
+          "slug": "mohnton-pa"
+        },
+        {
+          "name": "Mount Penn",
+          "state": "PA",
+          "slug": "mount-penn-pa"
+        },
+        {
+          "name": "Muhlenberg",
+          "state": "PA",
+          "slug": "muhlenberg-pa"
+        },
+        {
+          "name": "Shillington",
+          "state": "PA",
+          "slug": "shillington-pa"
+        },
+        {
+          "name": "Sinking Spring",
+          "state": "PA",
+          "slug": "sinking-spring-pa"
+        },
+        {
+          "name": "Temple",
+          "state": "PA",
+          "slug": "temple-pa"
+        },
+        {
+          "name": "Wernersville",
+          "state": "PA",
+          "slug": "wernersville-pa"
+        },
+        {
+          "name": "West Reading",
+          "state": "PA",
+          "slug": "west-reading-pa"
+        },
+        {
+          "name": "Wyomissing Hills",
+          "state": "PA",
+          "slug": "wyomissing-hills-pa"
+        },
+        {
+          "name": "Wyomissing",
+          "state": "PA",
+          "slug": "wyomissing-pa"
+        }
+      ]
+    },
+    {
+      "name": "Richmond",
+      "state": "VA",
+      "slug": "richmond-va",
+      "nearby": [
+        {
+          "name": "Ashland",
+          "state": "VA",
+          "slug": "ashland-va"
+        },
+        {
+          "name": "Bon Air",
+          "state": "VA",
+          "slug": "bon-air-va"
+        },
+        {
+          "name": "Chester",
+          "state": "VA",
+          "slug": "chester-va"
+        },
+        {
+          "name": "Chesterfield",
+          "state": "VA",
+          "slug": "chesterfield-va"
+        },
+        {
+          "name": "Colonial Heights",
+          "state": "VA",
+          "slug": "colonial-heights-va"
+        },
+        {
+          "name": "Glen Allen",
+          "state": "VA",
+          "slug": "glen-allen-va"
+        },
+        {
+          "name": "Henrico",
+          "state": "VA",
+          "slug": "henrico-va"
+        },
+        {
+          "name": "Highland Springs",
+          "state": "VA",
+          "slug": "highland-springs-va"
+        },
+        {
+          "name": "Lakeside",
+          "state": "VA",
+          "slug": "lakeside-va"
+        },
+        {
+          "name": "Mechanicsville",
+          "state": "VA",
+          "slug": "mechanicsville-va"
+        },
+        {
+          "name": "Midlothian",
+          "state": "VA",
+          "slug": "midlothian-va"
+        },
+        {
+          "name": "Sandston",
+          "state": "VA",
+          "slug": "sandston-va"
+        },
+        {
+          "name": "Short Pump",
+          "state": "VA",
+          "slug": "short-pump-va"
+        },
+        {
+          "name": "Tuckahoe",
+          "state": "VA",
+          "slug": "tuckahoe-va"
+        }
+      ]
+    },
+    {
+      "name": "Staunton",
+      "state": "VA",
+      "slug": "staunton-va",
+      "nearby": [
+        {
+          "name": "Churchville",
+          "state": "VA",
+          "slug": "churchville-va"
+        },
+        {
+          "name": "Craigsville",
+          "state": "VA",
+          "slug": "craigsville-va"
+        },
+        {
+          "name": "Crimora",
+          "state": "VA",
+          "slug": "crimora-va"
+        },
+        {
+          "name": "Fishersville",
+          "state": "VA",
+          "slug": "fishersville-va"
+        },
+        {
+          "name": "Greenville",
+          "state": "VA",
+          "slug": "greenville-va"
+        },
+        {
+          "name": "Grottoes",
+          "state": "VA",
+          "slug": "grottoes-va"
+        },
+        {
+          "name": "Lyndhurst",
+          "state": "VA",
+          "slug": "lyndhurst-va"
+        },
+        {
+          "name": "Middlebrook",
+          "state": "VA",
+          "slug": "middlebrook-va"
+        },
+        {
+          "name": "Mount Sidney",
+          "state": "VA",
+          "slug": "mount-sidney-va"
+        },
+        {
+          "name": "Stuarts Draft",
+          "state": "VA",
+          "slug": "stuarts-draft-va"
+        },
+        {
+          "name": "Swoope",
+          "state": "VA",
+          "slug": "swoope-va"
+        },
+        {
+          "name": "Verona",
+          "state": "VA",
+          "slug": "verona-va"
+        },
+        {
+          "name": "Waynesboro",
+          "state": "VA",
+          "slug": "waynesboro-va"
+        },
+        {
+          "name": "Weyers Cave",
+          "state": "VA",
+          "slug": "weyers-cave-va"
+        }
+      ]
+    },
+    {
+      "name": "Vineland",
+      "state": "NJ",
+      "slug": "vineland-new-jersey",
+      "nearby": [
+        {
+          "name": "Alliance",
+          "state": "NJ",
+          "slug": "alliance-nj"
+        },
+        {
+          "name": "Bridgeton",
+          "state": "NJ",
+          "slug": "bridgeton-nj"
+        },
+        {
+          "name": "Buena",
+          "state": "NJ",
+          "slug": "buena-nj"
+        },
+        {
+          "name": "Buena Vista Township",
+          "state": "NJ",
+          "slug": "buena-vista-township-nj"
+        },
+        {
+          "name": "Cumberland",
+          "state": "NJ",
+          "slug": "cumberland-nj"
+        },
+        {
+          "name": "Deerfield",
+          "state": "NJ",
+          "slug": "deerfield-nj"
+        },
+        {
+          "name": "East Vineland",
+          "state": "NJ",
+          "slug": "east-vineland-nj"
+        },
+        {
+          "name": "Hamilton",
+          "state": "NJ",
+          "slug": "hamilton-nj"
+        },
+        {
+          "name": "Hammonton",
+          "state": "NJ",
+          "slug": "hammonton-nj"
+        },
+        {
+          "name": "Landisville",
+          "state": "NJ",
+          "slug": "landisville-nj"
+        },
+        {
+          "name": "Malaga",
+          "state": "NJ",
+          "slug": "malaga-nj"
+        },
+        {
+          "name": "Millville",
+          "state": "NJ",
+          "slug": "millville-nj"
+        },
+        {
+          "name": "Minotola",
+          "state": "NJ",
+          "slug": "minotola-nj"
+        },
+        {
+          "name": "Newfield",
+          "state": "NJ",
+          "slug": "newfield-nj"
+        },
+        {
+          "name": "Olivet",
+          "state": "NJ",
+          "slug": "olivet-nj"
+        },
+        {
+          "name": "Pittsgrove",
+          "state": "NJ",
+          "slug": "pittsgrove-nj"
+        },
+        {
+          "name": "Rosenhayn",
+          "state": "NJ",
+          "slug": "rosenhayn-nj"
+        },
+        {
+          "name": "South Vineland",
+          "state": "NJ",
+          "slug": "south-vineland-nj"
+        }
+      ]
+    },
+    {
+      "name": "Westminster",
+      "state": "MD",
+      "slug": "westminster-md",
+      "nearby": [
+        {
+          "name": "Eldersburg",
+          "state": "MD",
+          "slug": "eldersburg-md"
+        },
+        {
+          "name": "Finksburg",
+          "state": "MD",
+          "slug": "finksburg-md"
+        },
+        {
+          "name": "Gamber",
+          "state": "MD",
+          "slug": "gamber-md"
+        },
+        {
+          "name": "Hampstead",
+          "state": "MD",
+          "slug": "hampstead-md"
+        },
+        {
+          "name": "Keymar",
+          "state": "MD",
+          "slug": "keymar-md"
+        },
+        {
+          "name": "Lineboro",
+          "state": "MD",
+          "slug": "lineboro-md"
+        },
+        {
+          "name": "Manchester",
+          "state": "MD",
+          "slug": "manchester-md"
+        },
+        {
+          "name": "Marriottsville",
+          "state": "MD",
+          "slug": "marriottsville-md"
+        },
+        {
+          "name": "Mount Airy",
+          "state": "MD",
+          "slug": "mount-airy-md"
+        },
+        {
+          "name": "New Windsor",
+          "state": "MD",
+          "slug": "new-windsor-md"
+        },
+        {
+          "name": "Sykesville",
+          "state": "MD",
+          "slug": "sykesville-md"
+        },
+        {
+          "name": "Taneytown",
+          "state": "MD",
+          "slug": "taneytown-md"
+        },
+        {
+          "name": "Union Bridge",
+          "state": "MD",
+          "slug": "union-bridge-md"
+        },
+        {
+          "name": "Woodbine",
+          "state": "MD",
+          "slug": "woodbine-md"
+        }
+      ]
+    },
+    {
+      "name": "Willow Grove",
+      "state": "PA",
+      "slug": "willow-grove",
+      "nearby": [
+        {
+          "name": "Ambler",
+          "state": "PA",
+          "slug": "ambler-pa"
+        },
+        {
+          "name": "Bensalem",
+          "state": "PA",
+          "slug": "bensalem-pa"
+        },
+        {
+          "name": "Blue Bell",
+          "state": "PA",
+          "slug": "blue-bell-pa"
+        },
+        {
+          "name": "Collegeville",
+          "state": "PA",
+          "slug": "collegeville-pa"
+        },
+        {
+          "name": "Eagleville",
+          "state": "PA",
+          "slug": "eagleville-pa"
+        },
+        {
+          "name": "Feasterville Trevose",
+          "state": "PA",
+          "slug": "feasterville-trevose-pa"
+        },
+        {
+          "name": "Holland",
+          "state": "PA",
+          "slug": "holland-pa"
+        },
+        {
+          "name": "Horsham",
+          "state": "PA",
+          "slug": "horsham-pa"
+        },
+        {
+          "name": "Jenkintown",
+          "state": "PA",
+          "slug": "jenkintown-pa"
+        },
+        {
+          "name": "Langhorne",
+          "state": "PA",
+          "slug": "langhorne-pa"
+        },
+        {
+          "name": "Lansdale",
+          "state": "PA",
+          "slug": "lansdale-pa"
+        },
+        {
+          "name": "Newtown",
+          "state": "PA",
+          "slug": "newtown-pa"
+        },
+        {
+          "name": "North Wales",
+          "state": "PA",
+          "slug": "north-wales-pa"
+        },
+        {
+          "name": "Plymouth Meeting",
+          "state": "PA",
+          "slug": "plymouth-meeting-pa"
+        },
+        {
+          "name": "Southampton",
+          "state": "PA",
+          "slug": "southampton-pa"
+        },
+        {
+          "name": "Warminster",
+          "state": "PA",
+          "slug": "warminster-pa"
+        },
+        {
+          "name": "Warrington",
+          "state": "PA",
+          "slug": "warrington-pa"
+        }
+      ]
+    },
+    {
+      "name": "Winchester",
+      "state": "VA",
+      "slug": "winchester-va",
+      "nearby": [
+        {
+          "name": "Berryville",
+          "state": "VA",
+          "slug": "berryville-va"
+        },
+        {
+          "name": "Boyce",
+          "state": "VA",
+          "slug": "boyce-va"
+        },
+        {
+          "name": "Clearbrook",
+          "state": "VA",
+          "slug": "clearbrook-va"
+        },
+        {
+          "name": "Cross Junction",
+          "state": "VA",
+          "slug": "cross-junction-va"
+        },
+        {
+          "name": "Front Royal",
+          "state": "VA",
+          "slug": "front-royal-va"
+        },
+        {
+          "name": "Gainesboro",
+          "state": "VA",
+          "slug": "gainesboro-va"
+        },
+        {
+          "name": "Gore",
+          "state": "VA",
+          "slug": "gore-va"
+        },
+        {
+          "name": "Kernstown",
+          "state": "VA",
+          "slug": "kernstown-va"
+        },
+        {
+          "name": "Middletown",
+          "state": "VA",
+          "slug": "middletown-va"
+        },
+        {
+          "name": "Star Tannery",
+          "state": "VA",
+          "slug": "star-tannery-va"
+        },
+        {
+          "name": "Stephens City",
+          "state": "VA",
+          "slug": "stephens-city-va"
+        },
+        {
+          "name": "Stephenson",
+          "state": "VA",
+          "slug": "stephenson-va"
+        },
+        {
+          "name": "Strasburg",
+          "state": "VA",
+          "slug": "strasburg-va"
+        },
+        {
+          "name": "White Post",
+          "state": "VA",
+          "slug": "white-post-va"
+        }
+      ]
+    },
+    {
+      "name": "Woodbridge",
+      "state": "VA",
+      "slug": "woodbridge-va",
+      "nearby": [
+        {
+          "name": "Bristow",
+          "state": "VA",
+          "slug": "bristow-va"
+        },
+        {
+          "name": "Dale City",
+          "state": "VA",
+          "slug": "dale-city-va"
+        },
+        {
+          "name": "Dumfries",
+          "state": "VA",
+          "slug": "dumfries-va"
+        },
+        {
+          "name": "Gainesville",
+          "state": "VA",
+          "slug": "gainesville-va"
+        },
+        {
+          "name": "Haymarket",
+          "state": "VA",
+          "slug": "haymarket-va"
+        },
+        {
+          "name": "Lake Ridge",
+          "state": "VA",
+          "slug": "lake-ridge-va"
+        },
+        {
+          "name": "Lorton",
+          "state": "VA",
+          "slug": "lorton-va"
+        },
+        {
+          "name": "Manassas Park",
+          "state": "VA",
+          "slug": "manassas-park-va"
+        },
+        {
+          "name": "Manassas",
+          "state": "VA",
+          "slug": "manassas-va"
+        },
+        {
+          "name": "Montclair",
+          "state": "VA",
+          "slug": "montclair-va"
+        },
+        {
+          "name": "Occoquan",
+          "state": "VA",
+          "slug": "occoquan-va"
+        },
+        {
+          "name": "Quantico",
+          "state": "VA",
+          "slug": "quantico-va"
+        },
+        {
+          "name": "Triangle",
+          "state": "VA",
+          "slug": "triangle-va"
+        }
+      ]
+    }
+  ]
+}

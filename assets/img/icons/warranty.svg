@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <path d="M32 7c6 5 12 7 22 8v14c0 13-9 24-22 29-13-5-22-16-22-29V15c10-1 16-3 22-8Z" stroke="#a57916" stroke-width="3.2"/>
+    <path d="M11 37h42l-4 7 4 7H11l4-7-4-7Z" stroke="#a57916" stroke-width="3"/>
+    <text x="32" y="31" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#2f6f24">50</text>
+    <text x="32" y="48" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#2f6f24">YEAR</text>
+  </g>
+</svg>

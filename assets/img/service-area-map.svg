@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 340" role="img" aria-label="Readable service area map for Philadelphia, Bensalem, Camden, Cherry Hill, Lawnside, and Trenton">
+  <defs>
+    <filter id="soft-shadow" x="-20%" y="-30%" width="140%" height="170%">
+      <feDropShadow dx="0" dy="5" stdDeviation="6" flood-color="#17221a" flood-opacity=".16"/>
+    </filter>
+    <linearGradient id="river-fill" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#cbe5ef"/>
+      <stop offset="1" stop-color="#8fb9c8"/>
+    </linearGradient>
+    <style>
+      .title{font-family:Arial,Helvetica,sans-serif;font-size:27px;font-weight:800;fill:#17221a}
+      .state{font-family:Arial,Helvetica,sans-serif;font-size:24px;font-weight:800;fill:#17221a}
+      .city{font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:800;fill:#17221a}
+      .note{font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:700;fill:#536057}
+      .river{font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:700;fill:#5d7f8b}
+    </style>
+  </defs>
+
+  <rect width="920" height="340" rx="18" fill="#f4f6f2"/>
+  <rect x="24" y="22" width="872" height="296" rx="18" fill="#fff" filter="url(#soft-shadow)"/>
+
+  <path d="M44 62h350v216H44Z" fill="#f4efe3"/>
+  <path d="M500 62h352v216H500Z" fill="#edf5ea"/>
+  <path d="M405 62c-42 48-40 84-4 121 39 40 35 77-8 114h115c29-42 25-82-12-121-34-36-34-68 7-114Z" fill="url(#river-fill)" opacity=".9"/>
+  <path d="M454 68c-30 42-29 72 3 104 38 38 39 80 0 120" fill="none" stroke="#5c9db4" stroke-width="5" stroke-linecap="round" opacity=".5"/>
+
+  <text class="title" x="460" y="45" text-anchor="middle">Service Coverage Area</text>
+  <text class="state" x="92" y="98">Pennsylvania</text>
+  <text class="state" x="570" y="98">New Jersey</text>
+  <text class="river" x="431" y="128" transform="rotate(66 431 128)">Delaware River</text>
+
+  <ellipse cx="459" cy="205" rx="285" ry="94" fill="#4d963c" opacity=".16"/>
+  <ellipse cx="459" cy="205" rx="210" ry="64" fill="#4d963c" opacity=".17"/>
+
+  <g opacity=".32" stroke="#cfd8ce" stroke-width="2" fill="none" stroke-linecap="round">
+    <path d="M96 178c92-36 184-31 276 13 95 46 206 34 333-35"/>
+    <path d="M108 244c82-45 173-54 273-27 107 29 230 22 368-22"/>
+    <path d="M568 118c70 42 150 43 240 4"/>
+  </g>
+
+  <g>
+    <rect x="70" y="112" width="152" height="70" rx="13" fill="#fff" stroke="#d8ded5"/>
+    <text class="note" x="92" y="137">PA locations</text>
+    <text class="title" x="92" y="170">2</text>
+    <text class="note" x="132" y="157">Philadelphia</text>
+    <text class="note" x="132" y="175">Bensalem</text>
+  </g>
+
+  <g>
+    <rect x="710" y="112" width="136" height="82" rx="13" fill="#fff" stroke="#d8ded5"/>
+    <text class="note" x="730" y="137">NJ locations</text>
+    <text class="title" x="730" y="174">4</text>
+    <circle cx="779" cy="162" r="5" fill="#3f8730"/>
+    <circle cx="802" cy="162" r="5" fill="#3f8730"/>
+    <circle cx="825" cy="162" r="5" fill="#3f8730"/>
+    <circle cx="848" cy="162" r="5" fill="#3f8730"/>
+  </g>
+
+  <g filter="url(#soft-shadow)">
+    <g transform="translate(251 236)">
+      <path d="M0-27c15 0 27 12 27 27 0 21-27 45-27 45S-27 21-27 0c0-15 12-27 27-27Z" fill="#3f8730"/>
+      <circle r="10" fill="#fff"/>
+      <circle r="5" fill="#3f8730"/>
+    </g>
+    <g transform="translate(355 132)">
+      <path d="M0-27c15 0 27 12 27 27 0 21-27 45-27 45S-27 21-27 0c0-15 12-27 27-27Z" fill="#3f8730"/>
+      <circle r="10" fill="#fff"/>
+      <circle r="5" fill="#3f8730"/>
+    </g>
+    <g transform="translate(526 235)">
+      <path d="M0-27c15 0 27 12 27 27 0 21-27 45-27 45S-27 21-27 0c0-15 12-27 27-27Z" fill="#3f8730"/>
+      <circle r="10" fill="#fff"/>
+      <circle r="5" fill="#3f8730"/>
+    </g>
+    <g transform="translate(623 211)">
+      <path d="M0-27c15 0 27 12 27 27 0 21-27 45-27 45S-27 21-27 0c0-15 12-27 27-27Z" fill="#3f8730"/>
+      <circle r="10" fill="#fff"/>
+      <circle r="5" fill="#3f8730"/>
+    </g>
+    <g transform="translate(693 260)">
+      <path d="M0-27c15 0 27 12 27 27 0 21-27 45-27 45S-27 21-27 0c0-15 12-27 27-27Z" fill="#3f8730"/>
+      <circle r="10" fill="#fff"/>
+      <circle r="5" fill="#3f8730"/>
+    </g>
+    <g transform="translate(798 79)">
+      <path d="M0-27c15 0 27 12 27 27 0 21-27 45-27 45S-27 21-27 0c0-15 12-27 27-27Z" fill="#3f8730"/>
+      <circle r="10" fill="#fff"/>
+      <circle r="5" fill="#3f8730"/>
+    </g>
+  </g>
+
+  <g>
+    <rect x="104" y="241" width="176" height="34" rx="17" fill="#fff" stroke="#d7e0d6"/>
+    <text class="city" x="122" y="265">Philadelphia, PA</text>
+    <rect x="250" y="94" width="150" height="34" rx="17" fill="#fff" stroke="#d7e0d6"/>
+    <text class="city" x="269" y="118">Bensalem, PA</text>
+
+    <rect x="453" y="259" width="126" height="34" rx="17" fill="#fff" stroke="#d7e0d6"/>
+    <text class="city" x="473" y="283">Camden, NJ</text>
+    <rect x="640" y="194" width="166" height="34" rx="17" fill="#fff" stroke="#d7e0d6"/>
+    <text class="city" x="658" y="218">Cherry Hill, NJ</text>
+    <rect x="710" y="262" width="140" height="34" rx="17" fill="#fff" stroke="#d7e0d6"/>
+    <text class="city" x="730" y="286">Lawnside, NJ</text>
+    <rect x="722" y="73" width="128" height="34" rx="17" fill="#fff" stroke="#d7e0d6"/>
+    <text class="city" x="742" y="97">Trenton, NJ</text>
+  </g>
+
+  <g transform="translate(323 292)">
+    <rect width="274" height="30" rx="15" fill="#f8fbf7" stroke="#cddacc"/>
+    <circle cx="22" cy="15" r="7" fill="#3f8730"/>
+    <text class="note" x="38" y="20">green area = primary coverage zone</text>
+  </g>
+</svg>
