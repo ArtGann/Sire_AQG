@@ -331,6 +331,17 @@ b {
   font-size: 17px;
 }
 
+.btn[disabled] {
+  opacity: 0.55;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.btn[disabled]:hover,
+.btn[disabled]:focus {
+  transform: none;
+}
+
 .hero {
   position: relative;
   min-height: 640px;
@@ -2209,6 +2220,19 @@ body.modal-open {
 .estimate-modal__actions .btn img {
   filter: brightness(0) invert(1);
   opacity: 0.92;
+}
+
+.estimate-modal__hint {
+  margin: 10px 0 0;
+  color: #6a706b;
+  font-size: 12px;
+  line-height: 1.45;
+  text-align: center;
+}
+
+.sms-consent .field-error {
+  grid-column: 1 / -1;
+  margin: 4px 0 0;
 }
 
 .estimate-modal__privacy {

@@ -480,7 +480,7 @@
             </div>
 
             <label class="sms-consent">
-              <input type="checkbox" name="sms_consent" value="true" />
+              <input type="checkbox" name="sms_consent" value="true" required />
               I agree to receive service-related texts from All Quality Gutters LLC about my estimate and appointment. Msg/data rates may apply. Reply STOP to opt out.
             </label>
             <p class="form-legal-note">
@@ -488,6 +488,7 @@
             </p>
             <div class="estimate-modal__actions">
               <button class="btn btn--primary btn--block" type="submit"><img src="/assets/img/icons/lock.svg" alt="" /> Request Free Estimate <span aria-hidden="true">&rarr;</span></button>
+              <p class="estimate-modal__hint">Please fill in your name, phone, email, service, property address and agree to receive texts to continue.</p>
             </div>
             <p class="estimate-modal__privacy">100% Privacy. No spam. Just honest service.</p>
           </form>
@@ -501,7 +502,7 @@
     </div>
 
     <script src="/assets/js/main.js?v=20260703-modal-base"></script>
-    <script src="/assets/js/estimate-modal.js?v=20260703-one-step"></script>
+    <script src="/assets/js/estimate-modal.js?v=20260704-required-gate"></script>
     <!-- /Shared estimate modal -->
   </body>
 </html>

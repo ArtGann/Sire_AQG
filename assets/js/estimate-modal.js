@@ -539,6 +539,41 @@
   initPhotoUpload();
   bindEstimateTriggers();
 
+  // The submit button stays disabled until every required field is filled and
+  // the SMS-consent checkbox is checked.
+  const submitButton = form.querySelector("button[type='submit']");
+  const requiredHint = form.querySelector(".estimate-modal__hint");
+
+  const isFormReady = () => {
+    // Read ValidityState directly: form.checkValidity() would dispatch
+    // "invalid" events, which main.js turns into visible field errors and a
+    // focus jump on every keystroke.
+    const controls = Array.from(form.querySelectorAll("input, select, textarea"));
+    const allValid = controls.every((control) => !control.willValidate || control.validity.valid);
+    const consent = form.elements.namedItem("sms_consent");
+    const consentGiven = !(consent instanceof HTMLInputElement) || consent.checked;
+    return allValid && consentGiven;
+  };
+
+  const updateSubmitState = () => {
+    if (!(submitButton instanceof HTMLButtonElement)) return;
+    if (submitButton.getAttribute("aria-busy") === "true") return;
+    const ready = isFormReady();
+    submitButton.disabled = !ready;
+    if (requiredHint) requiredHint.hidden = ready;
+  };
+
+  form.addEventListener("input", updateSubmitState);
+  form.addEventListener("change", updateSubmitState);
+  updateSubmitState();
+
+  // Links on the generated SEO pages point to /#estimate, so opening the
+  // homepage with that hash must open the estimate form.
+  if (window.location.hash === "#estimate") openModal(null);
+  window.addEventListener("hashchange", () => {
+    if (window.location.hash === "#estimate") openModal(null);
+  });
+
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
     clearStatus(form);
@@ -547,7 +582,6 @@
     const controls = Array.from(form.querySelectorAll("input, select, textarea"));
     if (!validateFormControls(controls)) return;
 
-    const submitButton = form.querySelector("button[type='submit']");
     const payload = buildPayload(form);
 
     try {
@@ -562,6 +596,7 @@
         "error"
       );
       setLoading(submitButton, false);
+      updateSubmitState();
     }
   });
 

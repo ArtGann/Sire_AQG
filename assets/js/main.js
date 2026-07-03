@@ -81,6 +81,7 @@ const getEnglishValidationMessage = (control) => {
 
   if (validity?.customError) return control.validationMessage || "Please check this field.";
   if (validity?.valueMissing) {
+    if (control.type === "checkbox") return "Please check this box to continue.";
     if (control.matches?.("select")) return "Please select at least one service.";
     return `Please enter ${label}.`;
   }

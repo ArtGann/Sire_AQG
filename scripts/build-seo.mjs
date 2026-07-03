@@ -635,7 +635,7 @@ function head({ title, description, canonical, schema }) {
     <meta name="theme-color" content="#07130d" />
     <link rel="icon" href="/favicon.png" sizes="32x32" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <link rel="stylesheet" href="/assets/css/styles.css?v=20260703-homepage-redesign" />
+    <link rel="stylesheet" href="/assets/css/styles.css?v=20260704-form-gate" />
     <link rel="stylesheet" href="/assets/css/seo-pages.css?v=20260703-homepage-redesign" />
     <script type="application/ld+json">${json(schema)}</script>`;
 }

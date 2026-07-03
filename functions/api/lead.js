@@ -4,7 +4,8 @@ const REQUIRED_FIELDS = [
   "email",
   "zip_code",
   "service_needed",
-  "property_address"
+  "property_address",
+  "sms_consent"
 ];
 
 const corsHeaders = {
