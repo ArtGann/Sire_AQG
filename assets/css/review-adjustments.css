@@ -352,33 +352,56 @@
 }
 
 .hero {
-  background: #fff;
+  background: #061113;
+  color: #fff;
 }
 
 .hero::before {
   content: none;
 }
 
+.hero::after {
+  background: linear-gradient(180deg, rgba(6, 17, 19, 0), rgba(6, 17, 19, 0.68));
+}
+
 .hero__photo {
-  inset: 0 -1px 0 35%;
+  inset: 0 -1px 0 0;
   background:
     linear-gradient(
       90deg,
-      #fff 0%,
-      rgba(255, 255, 255, 0.98) 12%,
-      rgba(255, 255, 255, 0.88) 25%,
-      rgba(255, 255, 255, 0.58) 42%,
-      rgba(255, 255, 255, 0.24) 58%,
-      rgba(255, 255, 255, 0) 72%
+      rgba(2, 10, 12, 0.96) 0%,
+      rgba(3, 12, 14, 0.93) 28%,
+      rgba(4, 14, 16, 0.76) 48%,
+      rgba(5, 16, 18, 0.36) 68%,
+      rgba(5, 16, 18, 0.08) 100%
     ),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.18)),
+    linear-gradient(180deg, rgba(2, 10, 12, 0.3), rgba(2, 10, 12, 0.42)),
     url("../img/hero-reference-photo.png") right center / cover no-repeat;
+}
+
+.hero h1 {
+  color: #fff;
+}
+
+.hero__copy > p,
+.hero-features > span {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.hero .hero-feature__label {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.hero__actions .btn--outline {
+  color: #fff;
+  background: rgba(6, 17, 19, 0.24);
+  border-color: rgba(255, 255, 255, 0.58);
 }
 
 @media (max-width: 860px) {
   .hero {
     background:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.82)),
+      linear-gradient(180deg, rgba(2, 10, 12, 0.82), rgba(2, 10, 12, 0.72)),
       url("../img/hero-reference-photo.png") center top / cover no-repeat;
   }
 }
@@ -468,9 +491,9 @@
 .site-header .logo__image--new {
   width: 100%;
   max-width: 221px;
-  height: 75px;
-  object-fit: cover;
-  object-position: 50% 48%;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
 }
 
 .header-brand {
@@ -1260,13 +1283,13 @@
 }
 
 .footer .logo__image--footer-new {
-  width: 221px;
-  height: 75px;
+  width: 220px;
+  height: auto;
   max-width: 100%;
   border-radius: 0;
   background: transparent;
-  object-fit: cover;
-  object-position: 50% 48%;
+  object-fit: contain;
+  object-position: center;
   filter: none;
   mix-blend-mode: normal;
   box-shadow: none;
@@ -1525,4 +1548,201 @@ body *,
 body *::before,
 body *::after {
   font-weight: 400 !important;
+}
+
+@media (max-width: 520px) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  .hero,
+  .hero .container,
+  .hero__inner,
+  .hero__copy {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .hero {
+    overflow: hidden;
+  }
+
+  .hero h1 {
+    max-width: 100%;
+    font-size: clamp(28px, 9vw, 32px);
+    line-height: 1.08;
+    overflow-wrap: anywhere;
+    text-wrap: auto;
+  }
+
+  .hero h1 span {
+    display: block;
+  }
+
+  .hero__copy > p {
+    max-width: 100%;
+    font-size: 16px;
+    line-height: 1.45;
+    overflow-wrap: break-word;
+  }
+
+  .hero__actions {
+    grid-template-columns: minmax(0, 1fr) !important;
+    width: 100%;
+    gap: 12px;
+  }
+
+  .hero__actions .btn,
+  .hero__actions .btn--primary,
+  .hero__actions .btn--outline {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    padding-right: 18px;
+    padding-left: 18px;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.18;
+    overflow-wrap: anywhere;
+  }
+
+  .hero-features {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    max-width: 100%;
+  }
+
+  .hero-features > span {
+    grid-template-columns: 34px minmax(0, 1fr);
+    min-width: 0;
+    min-height: 48px;
+  }
+
+  .hero-feature__label {
+    white-space: normal;
+  }
+
+  .home-faq__trust {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 12px;
+    width: 100%;
+    max-width: 100%;
+    margin-top: 24px;
+  }
+
+  .home-faq__trust > span {
+    display: grid;
+    grid-template-columns: 34px minmax(0, 1fr) !important;
+    justify-items: start;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+    padding: 0;
+    text-align: left;
+    border-right: 0;
+  }
+
+  .home-faq__trust img {
+    width: 34px;
+    height: 34px;
+  }
+
+  .home-faq__trust b {
+    min-width: 0;
+    font-size: 15px;
+    line-height: 1.22;
+  }
+
+  .home-faq .container,
+  .home-faq__layout {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .home-faq__intro,
+  .home-faq__contact,
+  .home-faq__contact span,
+  .home-faq .seo-faq__list,
+  .home-faq .seo-faq__list summary > span {
+    min-width: 0;
+  }
+
+  .home-faq h2 {
+    max-width: 100%;
+    font-size: clamp(34px, 11vw, 40px);
+    overflow-wrap: break-word;
+  }
+
+  .home-faq__intro > p:not(.home-faq__eyebrow),
+  .home-faq__contact strong {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (max-width: 360px) {
+  .trust-bar {
+    height: auto;
+    min-height: 0;
+    padding: 8px 0;
+  }
+
+  .trust-bar__inner {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 7px 10px;
+    white-space: normal;
+  }
+
+  .trust-bar__inner span {
+    display: inline-flex;
+    min-width: 0;
+    justify-content: center;
+    align-items: center;
+    font-size: 11px;
+    line-height: 1.15;
+    text-align: center;
+  }
+
+  .trust-bar img {
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+    flex: 0 0 15px;
+  }
+
+  .hero .container {
+    width: calc(100% - 32px) !important;
+  }
+
+  .hero__inner {
+    display: block;
+    padding-top: 34px;
+    padding-bottom: 34px;
+  }
+
+  .hero__copy {
+    width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .hero h1 {
+    font-size: clamp(26px, 8.6vw, 30px);
+  }
+
+  .hero__copy > p {
+    font-size: 15px;
+  }
+
+  .hero__actions .btn {
+    min-height: 58px;
+    padding-right: 14px;
+    padding-left: 14px;
+    font-size: 15px;
+  }
+
+  .hero__actions .btn--outline {
+    gap: 6px;
+    font-size: 14px;
+  }
 }
