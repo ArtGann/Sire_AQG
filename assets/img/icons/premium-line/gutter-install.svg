@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" fill="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="goldLine" x1="8" y1="8" x2="56" y2="56" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#8d5b02"/>
+      <stop offset="0.38" stop-color="#e7a724"/>
+      <stop offset="0.72" stop-color="#b77806"/>
+      <stop offset="1" stop-color="#f4cb6b"/>
+    </linearGradient>
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="1.2" stdDeviation="1.1" flood-color="#4b2b00" flood-opacity="0.28"/>
+    </filter>
+  </defs>
+  <g filter="url(#softShadow)" stroke="url(#goldLine)" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M10 22h44v10c0 9-7 16-16 16H20c-6 0-10-4-10-10V22z"/><path d="M10 22l8-8h36"/><path d="M20 32h34"/><path d="M24 43h12"/>
+  </g>
+</svg>

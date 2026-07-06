@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 220" role="img" aria-labelledby="title desc">
+  <title id="title">Copper round gutter illustration</title>
+  <desc id="desc">Copper half-round gutter profile illustration</desc>
+  <defs>
+    <linearGradient id="c" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f6b06b"/>
+      <stop offset="0.28" stop-color="#bd622e"/>
+      <stop offset="0.58" stop-color="#f0a05a"/>
+      <stop offset="1" stop-color="#6e321d"/>
+    </linearGradient>
+    <filter id="s" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="16" stdDeviation="12" flood-color="#5a2918" flood-opacity="0.28"/></filter>
+  </defs>
+  <rect width="520" height="220" rx="26" fill="#fff8f2"/>
+  <path filter="url(#s)" d="M60 84h400c-12 54-49 92-100 98H160c-50-6-87-44-100-98z" fill="url(#c)" stroke="#7c381e" stroke-width="4"/>
+  <path d="M87 96h346M124 156h272" stroke="#ffd2a8" stroke-opacity="0.58" stroke-width="6"/>
+  <path d="M114 84c14 44 48 70 91 74M406 84c-14 44-48 70-91 74" fill="none" stroke="#7c381e" stroke-width="4" opacity="0.45"/>
+</svg>

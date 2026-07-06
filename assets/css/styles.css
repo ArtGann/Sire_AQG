@@ -16,54 +16,6 @@
   --max: 1218px;
 }
 
-@font-face {
-  font-family: "Montserrat";
-  src: url("../fonts/montserrat-400.woff2") format("woff2"), url("../fonts/montserrat-400.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Montserrat";
-  src: url("../fonts/montserrat-500.woff2") format("woff2"), url("../fonts/montserrat-500.ttf") format("truetype");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Montserrat";
-  src: url("../fonts/montserrat-600.woff2") format("woff2"), url("../fonts/montserrat-600.ttf") format("truetype");
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Montserrat";
-  src: url("../fonts/montserrat-700.woff2") format("woff2"), url("../fonts/montserrat-700.ttf") format("truetype");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Montserrat";
-  src: url("../fonts/montserrat-800.woff2") format("woff2"), url("../fonts/montserrat-800.ttf") format("truetype");
-  font-weight: 800;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Montserrat";
-  src: url("../fonts/montserrat-900.woff2") format("woff2"), url("../fonts/montserrat-900.ttf") format("truetype");
-  font-weight: 900;
-  font-style: normal;
-  font-display: swap;
-}
-
 * {
   box-sizing: border-box;
 }
@@ -2199,6 +2151,53 @@ body.modal-open {
 
 .estimate-modal__field--wide {
   grid-column: 1 / -1;
+}
+
+
+
+.estimate-price-preview {
+  display: grid;
+  gap: 6px;
+  padding: 14px 15px;
+  border: 1px solid rgba(66, 144, 50, 0.22);
+  border-radius: 12px;
+  background: linear-gradient(135deg, #f5fbf2, #fffaf0);
+  color: #24312d;
+}
+
+.estimate-price-preview strong {
+  color: var(--accent-dark);
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.estimate-price-preview span,
+.estimate-price-preview p,
+.estimate-price-preview li {
+  color: #5b6561;
+  font-size: 12px;
+  line-height: 1.42;
+}
+
+.estimate-price-preview p {
+  margin: 0;
+}
+
+.estimate-price-preview ul {
+  display: grid;
+  gap: 3px;
+  margin: 2px 0 0;
+  padding-left: 18px;
+}
+
+.estimate-price-preview__total {
+  color: #17231f !important;
+  font-size: 15px !important;
+  font-weight: 900;
+}
+
+.estimate-price-preview__note {
+  color: #726b5d !important;
 }
 
 .estimate-modal__form .photo-upload {

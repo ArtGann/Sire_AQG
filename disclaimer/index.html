@@ -17,10 +17,10 @@
 
     <div class="trust-bar" aria-label="Company trust badges">
       <div class="container trust-bar__inner">
-        <span><img src="/assets/img/icons/license.svg" alt="" /> Licensed &amp; Insured</span>
-        <span><img src="/assets/img/icons/umbrella.svg" alt="" /> Fully Insured</span>
-        <span><img src="/assets/img/icons/warranty.svg" alt="" /> 5-Year Warranty</span>
-        <span><img src="/assets/img/icons/trophy.svg" alt="" /> 100% Projects Completed</span>
+        <span><img src="/assets/img/icons/provided-v2/07_licensed_in_pa_nj.png" alt="" /> Licensed &amp; Insured</span>
+        <span><img src="/assets/img/icons/provided-v2/08_fully_insured.png" alt="" /> Fully Insured</span>
+        <span><img src="/assets/img/icons/provided-v2/06_50_year_product_warranty.png" alt="" /> 5-Year Warranty</span>
+        <span><img src="/assets/img/icons/provided-v2/05_completed_projects.png" alt="" /> 100% Projects Completed</span>
       </div>
     </div>
 
@@ -36,10 +36,10 @@
         <nav class="header-nav" id="primary-navigation" aria-label="Primary navigation">
           <div class="header-nav__item header-nav__item--dropdown">
             <button class="header-nav__link header-nav__trigger" type="button" aria-expanded="false" aria-controls="services-navigation">
-              Services
+              Services &amp; Prices
               <img class="header-nav__chevron" src="/assets/img/icons/faq/chevron-down.svg" alt="" aria-hidden="true" />
             </button>
-            <div class="header-dropdown header-dropdown--services" id="services-navigation" aria-label="Services">
+            <div class="header-dropdown header-dropdown--services" id="services-navigation" aria-label="Services & Prices">
               <a href="/services/seamless-gutter-installation/">Seamless Gutter Installation</a>
               <a href="/services/gutter-guards/">Gutter Guards</a>
               <a href="/services/gutter-replacement/">Gutter Replacement</a>
@@ -94,12 +94,12 @@
           </div>
 
           <div class="header-nav__mobile-actions">
-            <a class="header-phone" href="tel:+18445880075"><img src="/assets/img/icons/phone-button.svg?v=20260625-green" alt="" /> +1 844 588 0075</a>
+            <a class="header-phone" href="tel:+18445880075"><img src="/assets/img/icons/phone-button.svg" alt="" /> +1 844 588 0075</a>
             <a class="btn btn--primary header-estimate" href="#estimate" data-open-estimate-modal>Get Free Estimate</a>
           </div>
         </nav>
         <div class="header-actions">
-          <a class="header-phone" href="tel:+18445880075"><img src="/assets/img/icons/phone-button.svg?v=20260625-green" alt="" /> +1 844 588 0075</a>
+          <a class="header-phone" href="tel:+18445880075"><img src="/assets/img/icons/phone-button.svg" alt="" /> +1 844 588 0075</a>
           <a class="btn btn--primary header-estimate" href="#estimate" data-open-estimate-modal>Get Free Estimate</a>
         </div>
       </div>
@@ -238,14 +238,14 @@
           <h3>Quick Links</h3>
           <a href="/">Home</a>
           <a href="/about/">About Us</a>
-          <a href="/#services">Services</a>
+          <a href="/#services">Services &amp; Prices</a>
           <a href="/#projects">Our Work</a>
           <a href="/areas-we-serve/">Service Areas</a>
           <a href="/#estimate" data-open-estimate-modal>Contact Us</a>
         </nav>
 
-        <nav class="footer-col" aria-label="Services">
-          <h3>Services</h3>
+        <nav class="footer-col" aria-label="Services & Prices">
+          <h3>Services &amp; Prices</h3>
           <a href="/services/seamless-gutter-installation/">Seamless Gutter Installation</a>
           <a href="/services/gutter-guards/">Gutter Guards</a>
           <a href="/services/gutter-replacement/">Gutter Replacement</a>
@@ -334,6 +334,49 @@
                 <label for="estimate-square-feet">Square Feet</label>
                 <input id="estimate-square-feet" name="square_feet" type="number" inputmode="numeric" min="200" max="20000" step="50" placeholder="Square Feet" />
               </div>
+              <div class="field" data-icon="service">
+                <label for="estimate-whole-house">Gutters Around Whole House?</label>
+                <select id="estimate-whole-house" name="whole_house_gutters" data-custom-select>
+                  <option value="">Gutters Around Whole House?</option>
+                  <option>Yes</option>
+                  <option>No</option>
+                  <option>Not sure</option>
+                </select>
+              </div>
+              <div class="field" data-icon="service">
+                <label for="estimate-gutter-type">Gutter Type</label>
+                <select id="estimate-gutter-type" name="gutter_type" data-custom-select>
+                  <option value="">Gutter Type</option>
+                  <option value="5&quot; Aluminum K-Style">5&quot; Aluminum K-Style — $15/LF</option>
+                  <option value="6&quot; Aluminum K-Style">6&quot; Aluminum K-Style — $18/LF</option>
+                </select>
+              </div>
+              <div class="field" data-icon="service">
+                <label for="estimate-gutter-guards">Gutter Guards</label>
+                <select id="estimate-gutter-guards" name="gutter_guards" data-custom-select>
+                  <option value="">Gutter Guards</option>
+                  <option value="None">No gutter guards</option>
+                  <option value="Standard Gutter Guards">Standard — $15/LF</option>
+                  <option value="Premium Gutter Guards">Premium — $20/LF</option>
+                </select>
+              </div>
+              <div class="field" data-icon="stories">
+                <label for="estimate-downspouts">Downspout Locations</label>
+                <input id="estimate-downspouts" name="downspout_count" type="number" inputmode="numeric" min="0" max="20" step="1" placeholder="Downspout Locations" />
+              </div>
+              <div class="field estimate-modal__field--wide" data-icon="service">
+                <label for="estimate-fascia-soffit">Fascia &amp; Soffit</label>
+                <select id="estimate-fascia-soffit" name="fascia_soffit" data-custom-select>
+                  <option value="">Fascia &amp; Soffit</option>
+                  <option value="No">No</option>
+                  <option value="Yes">Yes — estimate at $45/LF</option>
+                  <option value="Need inspection">Need inspection</option>
+                </select>
+              </div>
+              <div class="estimate-price-preview estimate-modal__field--wide" data-estimate-preview>
+                <strong>Preliminary estimate</strong>
+                <span>Add square footage, stories and project options to see a rough project range.</span>
+              </div>
               <div class="field estimate-modal__field--wide" data-icon="address">
                 <label for="estimate-address">Property Address</label>
                 <input id="estimate-address" name="address" type="text" placeholder="Property Address" autocomplete="street-address" required />
@@ -356,7 +399,7 @@
               </div>
               <label class="drop-zone" for="estimate-photos">
                 <input id="estimate-photos" name="photos" type="file" accept=".jpg,.jpeg,.png,.webp,.heic,image/jpeg,image/png,image/webp,image/heic" multiple />
-                <img src="/assets/img/icons/upload.svg" alt="" />
+                <img src="/assets/img/icons/provided-v2/15_request_free_estimate.png" alt="" />
                 <span><strong>Drag &amp; drop photos here</strong> or click to browse</span>
                 <small>JPG, PNG, WEBP or HEIC, up to 10MB each</small>
               </label>
@@ -372,7 +415,7 @@
               By submitting this form, you agree to our <a href="/privacy-policy/">Privacy Policy</a> and <a href="/terms-conditions/">Terms &amp; Conditions</a>.
             </p>
             <div class="estimate-modal__actions">
-              <button class="btn btn--primary btn--block" type="submit"><img src="/assets/img/icons/lock.svg" alt="" /> Request Free Estimate <span aria-hidden="true">&rarr;</span></button>
+              <button class="btn btn--primary btn--block" type="submit"><img src="/assets/img/icons/provided-v2/07_licensed_in_pa_nj.png" alt="" /> Request Free Estimate <span aria-hidden="true">&rarr;</span></button>
               <p class="estimate-modal__hint">Please fill in your name, phone, email, service, property address and agree to receive texts to continue.</p>
             </div>
             <p class="estimate-modal__privacy">100% Privacy. No spam. Just honest service.</p>

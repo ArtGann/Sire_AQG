@@ -6,6 +6,12 @@
       "runtimeExecutable": "python",
       "runtimeArgs": ["-m", "http.server", "8027", "--bind", "127.0.0.1"],
       "port": 8027
+    },
+    {
+      "name": "aqg-onedrive-site",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8047", "--bind", "127.0.0.1", "--directory", "C:\\Users\\sofiv\\OneDrive\\Рабочий стол\\all-quality-gutters-seamless-page-premium\\all-quality-gutters-services-prices"],
+      "port": 8047
     }
   ]
 }

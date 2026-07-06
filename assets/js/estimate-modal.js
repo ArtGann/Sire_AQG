@@ -67,6 +67,11 @@
 
   const fallbackBuildLeadPayload = (targetForm) => {
     const data = new FormData(targetForm);
+    const estimate = typeof getEstimateCalculation === "function" ? getEstimateCalculation(targetForm) : { summary: "", estimatedLinearFeet: "", estimatedPriceLow: "", estimatedPriceHigh: "", estimatedPriceRange: "" };
+    const userComments = String(data.get("message") || "").trim();
+    const estimateDetails = estimate.summary ? `Preliminary Website Estimate:
+${estimate.summary}` : "";
+
     return {
       full_name: String(data.get("name") || "").trim(),
       phone: String(data.get("phone") || "").trim(),
@@ -75,9 +80,19 @@
       service_needed: getServices(targetForm),
       home_stories: String(data.get("stories") || "").trim(),
       square_feet: String(data.get("square_feet") || "").trim(),
+      whole_house_gutters: String(data.get("whole_house_gutters") || "").trim(),
+      gutter_type: String(data.get("gutter_type") || "").trim(),
+      gutter_guards: String(data.get("gutter_guards") || "").trim(),
+      downspout_count: String(data.get("downspout_count") || "").trim(),
+      fascia_soffit: String(data.get("fascia_soffit") || "").trim(),
+      estimated_linear_feet: String(estimate.estimatedLinearFeet || ""),
+      estimated_price_low: String(estimate.estimatedPriceLow || ""),
+      estimated_price_high: String(estimate.estimatedPriceHigh || ""),
+      estimated_price_range: estimate.estimatedPriceRange || "",
+      estimate_details: estimateDetails,
       property_address: String(data.get("address") || "").trim(),
       preferred_date: String(data.get("preferred_date") || "").trim(),
-      comments: String(data.get("message") || "").trim(),
+      comments: [userComments, estimateDetails].filter(Boolean).join("\n\n"),
       uploaded_photos: "",
       sms_consent: data.get("sms_consent") === "true",
       landing_page_url: window.location.href,

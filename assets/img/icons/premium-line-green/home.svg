@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" fill="none" aria-hidden="true">
+  <g filter="url(#softShadow)" stroke="#69BE28" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M11 30 32 13l21 17"/><path d="M17 29v22h12V39h6v12h12V29"/><path d="M24 51h16"/>
+  </g>
+</svg>

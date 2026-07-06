@@ -1,0 +1,193 @@
+.ds-page .ds-hero .sf-hero__photo {
+  width: 67%;
+  object-position: 60% 48%;
+}
+
+.ds-page .ds-hero .sf-hero__copy {
+  width: min(620px, 55%);
+}
+
+.ds-page .ds-hero h1 {
+  max-width: 620px;
+}
+
+.ds-page .ds-hero__benefits {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.ds-page .sf-price-card:first-child .sf-price-card__photo {
+  object-position: 50% 82%;
+}
+
+.ds-page .sf-price-card:nth-child(2) .sf-price-card__photo {
+  object-position: 64% 28%;
+}
+
+.ds-page .sf-price-card:nth-child(3) .sf-price-card__photo {
+  object-position: 64% 55%;
+}
+
+.ds-page .ds-benefits .sf-photo-frame img {
+  object-position: 57% 64%;
+}
+
+.ds-page .ds-calc-row {
+  grid-template-columns: 0.9fr 0.7fr 1.2fr 1fr 1fr;
+}
+
+.ds-page .ds-calculator .sf-calculator__photo {
+  object-position: 52% 62%;
+}
+
+.ds-page .ds-included .sf-included__content {
+  grid-template-columns: 250px minmax(0, 1fr);
+}
+
+.ds-page .ds-included h2 {
+  font-size: 19px;
+}
+
+.ds-page .ds-factors .sf-factors__layout {
+  grid-template-columns: 230px minmax(0, 1fr);
+}
+
+.ds-page .ds-factors .sf-heading h2 {
+  font-size: 25px;
+}
+
+.ds-page .ds-factors .sf-factor-grid {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.ds-page .ds-factors .sf-factor-grid article {
+  grid-template-columns: 34px 1fr;
+  padding: 10px;
+}
+
+.ds-page .ds-factors .sf-factor-grid img {
+  width: 34px;
+  height: 34px;
+}
+
+.ds-page .ds-process .sf-process__inner {
+  grid-template-columns: 230px minmax(0, 1fr);
+}
+
+.ds-page .ds-process .sf-process__steps {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.ds-lower {
+  padding: 0 0 24px;
+}
+
+.ds-lower__grid {
+  display: grid;
+  grid-template-columns: 1fr 0.72fr 1.24fr;
+  gap: 22px;
+  align-items: start;
+}
+
+.ds-lower .sf-heading h2 {
+  font-size: 17px;
+}
+
+.ds-lower .sf-area-links {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.ds-lower .sf-map img {
+  height: 152px;
+}
+
+.ds-lower__faq {
+  padding: 0;
+}
+
+.ds-lower__faq .sf-faq__grid {
+  grid-template-columns: 1fr;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.ds-lower__faq summary {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  font-size: 8px;
+}
+
+.ds-page .ds-bottom-cta h2 {
+  font-size: 23px;
+}
+
+@media (max-width: 1080px) {
+  .ds-page .ds-factors .sf-factor-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .ds-page .ds-process .sf-process__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .ds-lower__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .ds-lower__faq {
+    grid-column: 1 / -1;
+  }
+
+  .ds-lower__faq .sf-faq__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 980px) {
+  .ds-page .ds-included .sf-included__content {
+    grid-template-columns: 1fr;
+  }
+
+  .ds-page .ds-factors .sf-factors__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .ds-page .ds-process .sf-process__steps {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 720px) {
+  .ds-page .ds-hero .sf-hero__photo,
+  .ds-page .ds-hero .sf-hero__copy {
+    width: 100%;
+  }
+
+  .ds-page .ds-hero__benefits {
+    grid-template-columns: 1fr;
+  }
+
+  .ds-page .ds-calc-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ds-page .ds-factors .sf-factor-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ds-page .ds-process .sf-process__steps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ds-lower__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ds-lower__faq {
+    grid-column: auto;
+  }
+
+  .ds-lower__faq .sf-faq__grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -222,8 +222,125 @@ const getSelectedServices = (form) => {
     .filter(Boolean);
 };
 
+
+const GUTTER_PRICE_PER_LF = {
+  '5" Aluminum K-Style': 15,
+  '6" Aluminum K-Style': 18
+};
+
+const GUARD_PRICE_PER_LF = {
+  "Standard Gutter Guards": 15,
+  "Premium Gutter Guards": 20
+};
+
+const formatEstimateMoney = (value) =>
+  `$${Math.max(0, Math.round(value)).toLocaleString("en-US")}`;
+
+const roundToNearestTen = (value) => Math.max(0, Math.round(value / 10) * 10);
+const roundToNearestHundred = (value) => Math.max(0, Math.round(value / 100) * 100);
+
+const getEstimateCalculation = (form) => {
+  const data = new FormData(form);
+  const squareFeet = Number(data.get("square_feet") || 0);
+  const stories = Math.max(1, Number(data.get("stories") || 1));
+  const gutterType = String(data.get("gutter_type") || "").trim();
+  const gutterGuards = String(data.get("gutter_guards") || "").trim();
+  const wholeHouse = String(data.get("whole_house_gutters") || "").trim();
+  const fasciaSoffit = String(data.get("fascia_soffit") || "").trim();
+  const downspoutCount = Math.max(0, Number(data.get("downspout_count") || 0));
+
+  const footprint = squareFeet > 0 ? squareFeet / stories : 0;
+  const estimatedLinearFeet = footprint > 0 ? roundToNearestTen(4 * Math.sqrt(footprint)) : 0;
+  const lineItems = [];
+  let total = 0;
+
+  const gutterRate = GUTTER_PRICE_PER_LF[gutterType] || 0;
+  if (estimatedLinearFeet && gutterRate) {
+    const amount = estimatedLinearFeet * gutterRate;
+    total += amount;
+    lineItems.push(`${gutterType}: ${estimatedLinearFeet} LF × $${gutterRate}/LF = ${formatEstimateMoney(amount)}`);
+  }
+
+  const guardRate = GUARD_PRICE_PER_LF[gutterGuards] || 0;
+  if (estimatedLinearFeet && guardRate) {
+    const amount = estimatedLinearFeet * guardRate;
+    total += amount;
+    lineItems.push(`${gutterGuards}: ${estimatedLinearFeet} LF × $${guardRate}/LF = ${formatEstimateMoney(amount)}`);
+  }
+
+  if (downspoutCount > 0) {
+    const downspoutAmount = downspoutCount * 10 * 15;
+    const elbowAmount = downspoutCount * 3 * 15;
+    total += downspoutAmount + elbowAmount;
+    lineItems.push(`Downspouts: ${downspoutCount} × 10 LF × $15/LF = ${formatEstimateMoney(downspoutAmount)}`);
+    lineItems.push(`Elbows: ${downspoutCount} × 3 × $15 = ${formatEstimateMoney(elbowAmount)}`);
+  }
+
+  if (estimatedLinearFeet && fasciaSoffit === "Yes") {
+    const amount = estimatedLinearFeet * 45;
+    total += amount;
+    lineItems.push(`Fascia & soffit: ${estimatedLinearFeet} LF × $45/LF = ${formatEstimateMoney(amount)}`);
+  }
+
+  const low = total ? roundToNearestHundred(total * 0.95) : 0;
+  const high = total ? roundToNearestHundred(total * 1.05) : 0;
+  const priceRange = total ? `${formatEstimateMoney(low)} – ${formatEstimateMoney(high)}` : "";
+
+  return {
+    squareFeet: squareFeet || "",
+    stories: stories || "",
+    wholeHouse,
+    gutterType,
+    gutterGuards,
+    downspoutCount: downspoutCount || "",
+    fasciaSoffit,
+    estimatedLinearFeet: estimatedLinearFeet || "",
+    estimatedPriceLow: low || "",
+    estimatedPriceHigh: high || "",
+    estimatedPriceRange: priceRange,
+    lineItems,
+    summary: [
+      estimatedLinearFeet ? `Estimated gutter length: ${estimatedLinearFeet} LF` : "",
+      priceRange ? `Estimated project range: ${priceRange}` : "",
+      wholeHouse ? `Whole-house gutters: ${wholeHouse}` : "",
+      ...lineItems
+    ].filter(Boolean).join("\n")
+  };
+};
+
+const initEstimatePricingPreview = (form) => {
+  const preview = form.querySelector("[data-estimate-preview]");
+  if (!preview) return;
+
+  const render = () => {
+    const estimate = getEstimateCalculation(form);
+    if (!estimate.estimatedLinearFeet) {
+      preview.innerHTML = `<strong>Preliminary estimate</strong><span>Add square footage, stories and project options to see a rough project range.</span>`;
+      return;
+    }
+
+    if (!estimate.estimatedPriceRange) {
+      preview.innerHTML = `<strong>Preliminary estimate</strong><p>Estimated gutter length: ${estimate.estimatedLinearFeet} LF.</p><span>Select gutter type, gutter guards, downspouts or fascia/soffit options to calculate a rough price range.</span>`;
+      return;
+    }
+
+    preview.innerHTML = `<strong>Preliminary estimate</strong><p class="estimate-price-preview__total">${estimate.estimatedPriceRange}</p><p>Estimated gutter length: ${estimate.estimatedLinearFeet} LF.</p><ul>${estimate.lineItems.map((item) => `<li>${item}</li>`).join("")}</ul><p class="estimate-price-preview__note">Final price may vary after on-site inspection.</p>`;
+  };
+
+  form.addEventListener("input", render);
+  form.addEventListener("change", render);
+  render();
+};
+
+document.querySelectorAll(".estimate-modal__form").forEach(initEstimatePricingPreview);
+
 const buildLeadPayload = (form) => {
   const data = new FormData(form);
+
+  const estimate = getEstimateCalculation(form);
+  const userComments = String(data.get("message") || "").trim();
+  const estimateDetails = estimate.summary ? `Preliminary Website Estimate:
+${estimate.summary}` : "";
 
   return {
     full_name: String(data.get("name") || "").trim(),
@@ -233,9 +350,19 @@ const buildLeadPayload = (form) => {
     service_needed: getSelectedServices(form),
     home_stories: String(data.get("stories") || "").trim(),
     square_feet: String(data.get("square_feet") || "").trim(),
+    whole_house_gutters: String(data.get("whole_house_gutters") || "").trim(),
+    gutter_type: String(data.get("gutter_type") || "").trim(),
+    gutter_guards: String(data.get("gutter_guards") || "").trim(),
+    downspout_count: String(data.get("downspout_count") || "").trim(),
+    fascia_soffit: String(data.get("fascia_soffit") || "").trim(),
+    estimated_linear_feet: String(estimate.estimatedLinearFeet || ""),
+    estimated_price_low: String(estimate.estimatedPriceLow || ""),
+    estimated_price_high: String(estimate.estimatedPriceHigh || ""),
+    estimated_price_range: estimate.estimatedPriceRange || "",
+    estimate_details: estimateDetails,
     property_address: String(data.get("address") || "").trim(),
     preferred_date: String(data.get("preferred_date") || "").trim(),
-    comments: String(data.get("message") || "").trim(),
+    comments: [userComments, estimateDetails].filter(Boolean).join("\n\n"),
     uploaded_photos: "",
     sms_consent: data.get("sms_consent") === "true",
     landing_page_url: window.location.href,

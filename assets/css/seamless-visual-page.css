@@ -1,0 +1,3565 @@
+/* Seamless Gutter Installation premium visual page */
+.seamless-page {
+  background: #f7faf6;
+  color: #0a171a;
+  overflow: hidden;
+}
+
+.seamless-page img[src*="/service-green/"],
+.seamless-page img[src*="/provided-v2-green/"] {
+  filter: none !important;
+}
+
+.seamless-page .container {
+  position: relative;
+}
+
+.seamless-hero {
+  position: relative;
+  isolation: isolate;
+  min-height: 720px;
+  padding: 104px 0 120px;
+  color: #fff;
+  background: #061116;
+}
+
+.seamless-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  background: url("/assets/img/cta-gutter-house-20260705.webp") right center / cover no-repeat;
+  transform: scale(1.02);
+}
+
+.seamless-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(92, 194, 52, 0.18), transparent 29%),
+    linear-gradient(90deg, rgba(4, 13, 16, 0.98) 0%, rgba(4, 13, 16, 0.9) 42%, rgba(4, 13, 16, 0.46) 72%, rgba(4, 13, 16, 0.42) 100%);
+}
+
+.seamless-hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.94fr) minmax(360px, 0.76fr);
+  gap: 54px;
+  align-items: center;
+}
+
+.seamless-hero__copy {
+  max-width: 760px;
+}
+
+.seamless-kicker,
+.seamless-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  margin: 0 0 20px;
+  color: #66c834;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.seamless-kicker::after,
+.seamless-eyebrow::after {
+  content: "";
+  display: block;
+  width: 58px;
+  height: 2px;
+  border-radius: 999px;
+  background: currentColor;
+}
+
+.seamless-hero h1 {
+  max-width: 740px;
+  margin: 0 0 22px;
+  color: #fff;
+  font-size: clamp(48px, 5.6vw, 84px);
+  line-height: 0.98;
+  font-weight: 950;
+  letter-spacing: -0.06em;
+}
+
+.seamless-hero h1 span,
+.seamless-page .text-green {
+  color: #66c834;
+}
+
+.seamless-hero__lead {
+  max-width: 640px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: clamp(19px, 1.65vw, 25px);
+  line-height: 1.55;
+  font-weight: 500;
+}
+
+.seamless-hero__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 28px 0 34px;
+}
+
+.seamless-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 40px;
+  padding: 9px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 14px;
+  font-weight: 700;
+  backdrop-filter: blur(10px);
+}
+
+.seamless-check-dot {
+  display: inline-grid;
+  width: 18px;
+  height: 18px;
+  place-items: center;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  border: 2px solid #66c834;
+  color: #66c834;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.seamless-hero__actions,
+.seamless-final-cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+}
+
+.seamless-hero__actions .btn,
+.seamless-final-cta__actions .btn,
+.seamless-inline-cta .btn {
+  min-height: 58px;
+  border-radius: 10px;
+  font-weight: 900;
+}
+
+.seamless-hero__actions .btn--outline,
+.seamless-final-cta__actions .btn--outline {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.48);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.seamless-hero-card {
+  justify-self: end;
+  width: min(100%, 462px);
+  padding: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 28px;
+  background: rgba(4, 15, 18, 0.72);
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.42);
+  backdrop-filter: blur(16px);
+}
+
+.seamless-hero-card__photo {
+  position: relative;
+  overflow: hidden;
+  min-height: 300px;
+  border-radius: 22px;
+  background: url("/assets/img/service-1-generated.webp") center / cover no-repeat;
+}
+
+.seamless-hero-card__photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 52%, rgba(4, 15, 18, 0.72) 100%);
+}
+
+.seamless-hero-card__price {
+  position: absolute;
+  left: 18px;
+  bottom: 18px;
+  z-index: 1;
+  padding: 14px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 16px;
+  background: rgba(4, 15, 18, 0.74);
+}
+
+.seamless-hero-card__price span {
+  display: block;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.seamless-hero-card__price strong {
+  display: block;
+  margin-top: 3px;
+  color: #fff;
+  font-size: 30px;
+  font-weight: 950;
+  letter-spacing: -0.05em;
+}
+
+.seamless-hero-card__list {
+  display: grid;
+  gap: 12px;
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.seamless-hero-card__list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.seamless-stats-wrap {
+  position: relative;
+  z-index: 2;
+  margin-top: -68px;
+}
+
+.seamless-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  max-width: 1110px;
+  margin: 0 auto;
+  padding: 22px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  background: linear-gradient(180deg, #172326 0%, #0a1518 100%);
+  box-shadow: 0 28px 70px rgba(7, 20, 23, 0.36);
+}
+
+.seamless-stat {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  padding: 12px 24px;
+  color: #fff;
+  border-right: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.seamless-stat:last-child {
+  border-right: 0;
+}
+
+.seamless-stat__icon,
+.seamless-feature__icon,
+.seamless-factor__icon,
+.seamless-process__num,
+.seamless-cta-icon {
+  display: inline-grid;
+  width: 54px;
+  height: 54px;
+  place-items: center;
+  flex: 0 0 auto;
+  border-radius: 18px;
+  background: rgba(102, 200, 52, 0.12);
+  border: 1px solid rgba(102, 200, 52, 0.34);
+  color: #66c834;
+}
+
+.seamless-stat__icon img,
+.seamless-feature__icon img,
+.seamless-factor__icon img,
+.seamless-cta-icon img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.seamless-stat strong {
+  display: block;
+  color: #fff;
+  font-size: 30px;
+  line-height: 1;
+  font-weight: 950;
+  letter-spacing: -0.045em;
+}
+
+.seamless-stat span:last-child,
+.seamless-stat b {
+  display: block;
+  margin-top: 6px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.seamless-section {
+  padding: 86px 0;
+}
+
+.seamless-section--tight {
+  padding-top: 66px;
+}
+
+.seamless-section-head {
+  max-width: 800px;
+  margin: 0 auto 36px;
+  text-align: center;
+}
+
+.seamless-section-head--split {
+  display: grid;
+  grid-template-columns: minmax(0, 0.78fr) minmax(0, 1fr);
+  gap: 40px;
+  align-items: end;
+  max-width: none;
+  text-align: left;
+}
+
+.seamless-section-head h2,
+.seamless-inline-cta h2,
+.seamless-final-cta h2 {
+  margin: 0;
+  color: #071417;
+  font-size: clamp(34px, 4vw, 54px);
+  line-height: 1.04;
+  font-weight: 950;
+  letter-spacing: -0.055em;
+}
+
+.seamless-section-head p:not(.seamless-eyebrow),
+.seamless-inline-cta p,
+.seamless-final-cta p {
+  margin: 14px 0 0;
+  color: #52605a;
+  font-size: 18px;
+  line-height: 1.7;
+  font-weight: 500;
+}
+
+.seamless-price-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+}
+
+.seamless-price-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 342px;
+  padding: 26px;
+  border: 1px solid #dfe7dc;
+  border-radius: 22px;
+  background: #fff;
+  box-shadow: 0 18px 48px rgba(7, 20, 23, 0.07);
+}
+
+.seamless-price-card--featured {
+  border: 2px solid #66c834;
+  box-shadow: 0 26px 70px rgba(66, 144, 50, 0.16);
+}
+
+.seamless-price-card__badge {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 8px 14px;
+  border-radius: 0 0 10px 10px;
+  background: #66c834;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 950;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.seamless-price-card__image {
+  display: block;
+  width: 100%;
+  height: 126px;
+  margin: 18px 0 20px;
+  object-fit: contain;
+}
+
+.seamless-price-card h3 {
+  margin: 0;
+  color: #071417;
+  font-size: 23px;
+  font-weight: 950;
+  letter-spacing: -0.035em;
+}
+
+.seamless-price-card__line {
+  width: 46px;
+  height: 3px;
+  margin: 16px 0 18px;
+  border-radius: 999px;
+  background: #66c834;
+}
+
+.seamless-price-card__price {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 0 0 12px;
+  color: #071417;
+}
+
+.seamless-price-card__price span {
+  color: #4d5954;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.seamless-price-card__price strong {
+  color: #071417;
+  font-size: 48px;
+  line-height: 0.9;
+  font-weight: 950;
+  letter-spacing: -0.08em;
+}
+
+.seamless-price-card p {
+  margin: 0;
+  color: #65716c;
+  font-size: 15px;
+  line-height: 1.55;
+  font-weight: 600;
+}
+
+.seamless-why-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1fr);
+  gap: 68px;
+  align-items: center;
+}
+
+.seamless-photo-card {
+  overflow: hidden;
+  border-radius: 28px;
+  background: #fff;
+  box-shadow: 0 26px 66px rgba(7, 20, 23, 0.13);
+}
+
+.seamless-photo-card img {
+  width: 100%;
+  min-height: 410px;
+  object-fit: cover;
+}
+
+.seamless-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px 34px;
+  margin-top: 36px;
+}
+
+.seamless-feature {
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+  padding-bottom: 22px;
+  border-bottom: 1px solid #dfe7dc;
+}
+
+.seamless-feature h3 {
+  margin: 0 0 8px;
+  color: #071417;
+  font-size: 17px;
+  font-weight: 950;
+  letter-spacing: -0.02em;
+}
+
+.seamless-feature p {
+  margin: 0;
+  color: #5b6762;
+  font-size: 15px;
+  line-height: 1.55;
+  font-weight: 500;
+}
+
+.seamless-inline-cta {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr) auto;
+  gap: 26px;
+  align-items: center;
+  margin: 0 auto;
+  padding: 34px;
+  border-radius: 24px;
+  color: #fff;
+  background: linear-gradient(135deg, #071417 0%, #0c171a 64%, #050d10 100%);
+  box-shadow: 0 24px 70px rgba(7, 20, 23, 0.24);
+}
+
+.seamless-inline-cta h2 {
+  color: #fff;
+  font-size: clamp(25px, 2.6vw, 36px);
+}
+
+.seamless-inline-cta p {
+  color: rgba(255, 255, 255, 0.74);
+  font-size: 16px;
+}
+
+.seamless-calculator {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 36px;
+  align-items: stretch;
+}
+
+.seamless-formula-card {
+  padding: 34px;
+  border-radius: 28px;
+  background: #fff;
+  border: 1px solid #dfe7dc;
+  box-shadow: 0 20px 56px rgba(7, 20, 23, 0.07);
+}
+
+.seamless-formula-card h2 {
+  margin: 0 0 18px;
+  color: #071417;
+  font-size: clamp(34px, 4vw, 54px);
+  line-height: 1.04;
+  font-weight: 950;
+  letter-spacing: -0.055em;
+}
+
+.seamless-formula {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 6px 0 28px;
+  padding: 14px 18px;
+  border-radius: 14px;
+  background: #f2f8ef;
+  color: #071417;
+  font-size: clamp(17px, 1.8vw, 22px);
+  font-weight: 950;
+}
+
+.seamless-formula span {
+  color: #66c834;
+}
+
+.seamless-example-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.seamless-example-box {
+  min-height: 110px;
+  padding: 16px;
+  border: 1px solid #dfe7dc;
+  border-radius: 16px;
+  background: #fff;
+  text-align: center;
+}
+
+.seamless-example-box small {
+  display: block;
+  min-height: 34px;
+  color: #67736e;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.3;
+}
+
+.seamless-example-box strong {
+  display: block;
+  margin-top: 12px;
+  color: #071417;
+  font-size: 25px;
+  font-weight: 950;
+  letter-spacing: -0.045em;
+  white-space: nowrap;
+}
+
+.seamless-example-box--green strong {
+  color: #2f9428;
+}
+
+.seamless-note {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin-top: 22px;
+  padding: 15px 16px;
+  border-radius: 14px;
+  background: #f3f6f2;
+  color: #3f4d47;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.seamless-calculator__photo {
+  overflow: hidden;
+  border-radius: 28px;
+  box-shadow: 0 20px 56px rgba(7, 20, 23, 0.12);
+}
+
+.seamless-calculator__photo img {
+  width: 100%;
+  height: 100%;
+  min-height: 430px;
+  object-fit: cover;
+}
+
+.seamless-included {
+  color: #fff;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #071417 0%, #0b181b 68%, #061116 100%);
+  overflow: hidden;
+  box-shadow: 0 26px 72px rgba(7, 20, 23, 0.24);
+}
+
+.seamless-included__inner {
+  display: grid;
+  grid-template-columns: minmax(300px, 0.8fr) minmax(0, 1fr) 300px;
+  gap: 28px;
+  align-items: center;
+  padding: 34px;
+}
+
+.seamless-included h2 {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(30px, 3.2vw, 46px);
+  line-height: 1.06;
+  font-weight: 950;
+  letter-spacing: -0.055em;
+}
+
+.seamless-included-list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.seamless-included-list li {
+  display: grid;
+  gap: 11px;
+  justify-items: center;
+  min-height: 116px;
+  padding: 12px 16px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 13px;
+  line-height: 1.35;
+  font-weight: 700;
+  border-right: 1px solid rgba(102, 200, 52, 0.45);
+}
+
+.seamless-included-list li:last-child {
+  border-right: 0;
+}
+
+.seamless-included-list img {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+}
+
+.seamless-included__photo {
+  align-self: stretch;
+  min-height: 210px;
+  border-radius: 20px;
+  background: url("/assets/img/project-1-after-generated.webp") center / cover no-repeat;
+}
+
+.seamless-factors-layout {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.42fr) minmax(0, 1fr);
+  gap: 46px;
+  align-items: center;
+}
+
+.seamless-factors-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.seamless-factor {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr);
+  gap: 16px;
+  min-height: 126px;
+  padding: 20px;
+  border: 1px solid #dfe7dc;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 16px 42px rgba(7, 20, 23, 0.05);
+}
+
+.seamless-factor__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+}
+
+.seamless-factor h3 {
+  margin: 0 0 6px;
+  color: #071417;
+  font-size: 16px;
+  font-weight: 950;
+  letter-spacing: -0.02em;
+}
+
+.seamless-factor p {
+  margin: 0;
+  color: #62706a;
+  font-size: 13px;
+  line-height: 1.48;
+  font-weight: 500;
+}
+
+.seamless-compare-grid {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.48fr) minmax(0, 1fr) minmax(0, 1fr);
+  gap: 22px;
+  align-items: stretch;
+}
+
+.seamless-compare-title {
+  align-self: center;
+}
+
+.seamless-compare-title h2 {
+  margin: 0;
+  color: #071417;
+  font-size: clamp(32px, 3.8vw, 50px);
+  line-height: 1.05;
+  font-weight: 950;
+  letter-spacing: -0.055em;
+}
+
+.seamless-compare-card {
+  display: grid;
+  grid-template-columns: 170px minmax(0, 1fr);
+  gap: 20px;
+  align-items: center;
+  padding: 24px;
+  border: 1px solid #dfe7dc;
+  border-radius: 22px;
+  background: #fff;
+  box-shadow: 0 18px 50px rgba(7, 20, 23, 0.07);
+}
+
+.seamless-compare-card img {
+  width: 100%;
+  min-height: 110px;
+  object-fit: contain;
+}
+
+.seamless-compare-card h3 {
+  margin: 0 0 14px;
+  color: #071417;
+  font-size: 20px;
+  font-weight: 950;
+  letter-spacing: -0.025em;
+}
+
+.seamless-check-list {
+  display: grid;
+  gap: 9px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.seamless-check-list li {
+  position: relative;
+  padding-left: 24px;
+  color: #52605a;
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+.seamless-check-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #43a431;
+  font-weight: 950;
+}
+
+.seamless-process {
+  color: #fff;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #071417 0%, #0b181b 68%, #061116 100%);
+  box-shadow: 0 26px 72px rgba(7, 20, 23, 0.24);
+}
+
+.seamless-process__inner {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: 34px;
+  align-items: center;
+  padding: 34px;
+}
+
+.seamless-process h2 {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(32px, 3.4vw, 48px);
+  line-height: 1.05;
+  font-weight: 950;
+  letter-spacing: -0.055em;
+}
+
+.seamless-process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+
+.seamless-process-step {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  min-height: 190px;
+  padding: 18px 22px;
+  text-align: center;
+  border-right: 1px dashed rgba(102, 200, 52, 0.5);
+}
+
+.seamless-process-step:last-child {
+  border-right: 0;
+}
+
+.seamless-process__num {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #66c834;
+  color: #071417;
+  font-size: 14px;
+  font-weight: 950;
+}
+
+.seamless-process-step img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  opacity: 0.92;
+}
+
+.seamless-process-step h3 {
+  margin: 0;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 950;
+}
+
+.seamless-process-step p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 13px;
+  line-height: 1.48;
+}
+
+.seamless-areas {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(360px, 1fr);
+  gap: 34px;
+  align-items: center;
+}
+
+.seamless-area-pills {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin: 24px 0 0;
+}
+
+.seamless-area-pills a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 10px 14px;
+  border: 1px solid #dfe7dc;
+  border-radius: 999px;
+  background: #fff;
+  color: #34413b;
+  font-size: 13px;
+  font-weight: 900;
+  box-shadow: 0 12px 30px rgba(7, 20, 23, 0.04);
+}
+
+.seamless-area-pills a::before {
+  content: "";
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+  background: url("/assets/img/icons/premium-line-green/map-pin.svg") center / contain no-repeat;
+}
+
+.seamless-area-pills a:hover,
+.seamless-area-pills a:focus {
+  border-color: #66c834;
+  color: #2f7425;
+  background: #f2f8ef;
+}
+
+.seamless-map-card {
+  overflow: hidden;
+  border: 1px solid #dfe7dc;
+  border-radius: 22px;
+  background: #fff;
+  box-shadow: 0 18px 48px rgba(7, 20, 23, 0.08);
+}
+
+.seamless-map-card img {
+  width: 100%;
+  min-height: 230px;
+  object-fit: cover;
+}
+
+.seamless-faq-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px 18px;
+}
+
+.seamless-faq details {
+  border: 1px solid #dfe7dc;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 14px 34px rgba(7, 20, 23, 0.045);
+}
+
+.seamless-faq summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 18px 20px;
+  color: #071417;
+  font-size: 16px;
+  font-weight: 950;
+  cursor: pointer;
+  list-style: none;
+}
+
+.seamless-faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.seamless-faq summary::after {
+  content: "+";
+  color: #071417;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.seamless-faq details[open] summary::after {
+  content: "−";
+}
+
+.seamless-faq p {
+  margin: 0;
+  padding: 0 20px 20px;
+  color: #5c6a64;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.seamless-final-cta {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  margin: 0 0 92px;
+  border-radius: 30px;
+  color: #fff;
+  background: #071417;
+  box-shadow: 0 26px 72px rgba(7, 20, 23, 0.24);
+}
+
+.seamless-final-cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background: url("/assets/img/cta-gutter-house-20260705.webp") right center / cover no-repeat;
+}
+
+.seamless-final-cta::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(90deg, rgba(4, 13, 16, 0.98) 0%, rgba(4, 13, 16, 0.9) 58%, rgba(4, 13, 16, 0.42) 100%);
+}
+
+.seamless-final-cta__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 40px;
+  align-items: center;
+  padding: 48px;
+}
+
+.seamless-final-cta h2 {
+  max-width: 620px;
+  color: #fff;
+}
+
+.seamless-final-cta p {
+  max-width: 620px;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.seamless-final-cta__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px 28px;
+  margin-top: 26px;
+}
+
+.seamless-final-cta__badges span {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.seamless-final-cta__badges img {
+  width: 20px;
+  height: 20px;
+}
+
+@media (max-width: 1180px) {
+  .seamless-hero__grid,
+  .seamless-calculator,
+  .seamless-why-grid,
+  .seamless-areas,
+  .seamless-section-head--split,
+  .seamless-factors-layout,
+  .seamless-final-cta__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .seamless-hero-card {
+    justify-self: start;
+  }
+
+  .seamless-stats,
+  .seamless-price-grid,
+  .seamless-factors-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .seamless-stat:nth-child(2) {
+    border-right: 0;
+  }
+
+  .seamless-stat:nth-child(1),
+  .seamless-stat:nth-child(2) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+  }
+
+  .seamless-included__inner,
+  .seamless-process__inner,
+  .seamless-compare-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .seamless-included-list,
+  .seamless-process-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .seamless-included-list li:nth-child(2),
+  .seamless-included-list li:nth-child(4),
+  .seamless-process-step:nth-child(2) {
+    border-right: 0;
+  }
+
+  .seamless-included__photo {
+    min-height: 260px;
+  }
+}
+
+@media (max-width: 860px) {
+  .seamless-hero {
+    min-height: 0;
+    padding: 72px 0 92px;
+  }
+
+  .seamless-hero::before {
+    background-position: 63% center;
+  }
+
+  .seamless-hero h1 {
+    font-size: clamp(42px, 12vw, 62px);
+  }
+
+  .seamless-stats,
+  .seamless-price-grid,
+  .seamless-feature-grid,
+  .seamless-example-grid,
+  .seamless-factors-grid,
+  .seamless-faq-grid,
+  .seamless-area-pills {
+    grid-template-columns: 1fr;
+  }
+
+  .seamless-stat,
+  .seamless-stat:nth-child(2) {
+    border-right: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+  }
+
+  .seamless-stat:last-child {
+    border-bottom: 0;
+  }
+
+  .seamless-section {
+    padding: 58px 0;
+  }
+
+  .seamless-inline-cta,
+  .seamless-compare-card {
+    grid-template-columns: 1fr;
+  }
+
+  .seamless-included-list,
+  .seamless-process-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .seamless-included-list li,
+  .seamless-included-list li:nth-child(2),
+  .seamless-included-list li:nth-child(4),
+  .seamless-process-step,
+  .seamless-process-step:nth-child(2) {
+    border-right: 0;
+    border-bottom: 1px solid rgba(102, 200, 52, 0.35);
+  }
+
+  .seamless-included-list li:last-child,
+  .seamless-process-step:last-child {
+    border-bottom: 0;
+  }
+
+  .seamless-final-cta__inner,
+  .seamless-included__inner,
+  .seamless-process__inner,
+  .seamless-formula-card,
+  .seamless-inline-cta {
+    padding: 24px;
+    border-radius: 22px;
+  }
+}
+
+@media (max-width: 560px) {
+  .seamless-hero__badges,
+  .seamless-hero__actions,
+  .seamless-final-cta__actions {
+    display: grid;
+  }
+
+  .seamless-hero-card {
+    padding: 14px;
+    border-radius: 22px;
+  }
+
+  .seamless-hero-card__photo {
+    min-height: 250px;
+    border-radius: 18px;
+  }
+
+  .seamless-stats-wrap {
+    margin-top: -42px;
+  }
+
+  .seamless-stats {
+    padding: 10px;
+    border-radius: 16px;
+  }
+
+  .seamless-stat {
+    padding: 16px;
+  }
+
+  .seamless-price-card,
+  .seamless-factor,
+  .seamless-formula-card {
+    border-radius: 18px;
+    padding: 20px;
+  }
+
+  .seamless-factor {
+    grid-template-columns: 1fr;
+  }
+
+  .seamless-final-cta {
+    margin-bottom: 64px;
+  }
+}
+
+.seamless-section-head-title,
+.seamless-why-grid h2,
+.seamless-areas h2,
+.seamless-factors-layout h2 {
+  margin: 0;
+  color: #071417;
+  font-size: clamp(34px, 4vw, 54px);
+  line-height: 1.04;
+  font-weight: 950;
+  letter-spacing: -0.055em;
+}
+
+.seamless-areas p,
+.seamless-factors-layout p:not(.seamless-eyebrow) {
+  margin: 14px 0 0;
+  color: #52605a;
+  font-size: 18px;
+  line-height: 1.7;
+  font-weight: 500;
+}
+
+/* Final visual pass: tune the service page to the supplied premium reference. */
+.seamless-page {
+  background: #fbfcfb;
+}
+
+.seamless-page .container {
+  width: min(1220px, calc(100% - 104px));
+}
+
+.seamless-hero {
+  min-height: 655px;
+  padding: 112px 0 116px;
+  background: #061116;
+}
+
+.seamless-hero::before {
+  background-image: url("/assets/img/cta-gutter-house-20260705.webp");
+  background-position: center top;
+  transform: none;
+}
+
+.seamless-hero::after {
+  background:
+    linear-gradient(90deg, rgba(5, 13, 16, 0.83) 0%, rgba(5, 13, 16, 0.75) 40%, rgba(5, 13, 16, 0.36) 72%, rgba(5, 13, 16, 0.22) 100%),
+    linear-gradient(180deg, rgba(5, 13, 16, 0.05) 0%, rgba(5, 13, 16, 0.7) 100%);
+}
+
+.seamless-hero__grid {
+  display: block;
+}
+
+.seamless-hero__copy {
+  max-width: 620px;
+}
+
+.seamless-hero h1 {
+  max-width: 610px;
+  margin-bottom: 18px;
+  font-size: clamp(54px, 5.25vw, 78px);
+  letter-spacing: -0.045em;
+}
+
+.seamless-hero__lead {
+  max-width: 540px;
+  font-size: clamp(18px, 1.55vw, 22px);
+  line-height: 1.55;
+}
+
+.seamless-hero-card {
+  display: none;
+}
+
+.seamless-pill {
+  min-height: 38px;
+  padding: 8px 13px;
+  border-radius: 9px;
+  font-size: 14px;
+}
+
+.seamless-hero__actions .btn,
+.seamless-final-cta__actions .btn,
+.seamless-inline-cta .btn {
+  min-height: 54px;
+  border-radius: 7px;
+}
+
+.seamless-stats-wrap {
+  margin-top: -64px;
+}
+
+.seamless-stats {
+  max-width: 980px;
+  padding: 18px 24px;
+  border-color: rgba(255, 255, 255, 0.22);
+  border-radius: 12px;
+  background: linear-gradient(180deg, rgba(23, 35, 38, 0.96) 0%, rgba(8, 19, 22, 0.98) 100%);
+  box-shadow: 0 22px 46px rgba(7, 20, 23, 0.34);
+}
+
+.seamless-stat {
+  padding: 10px 22px;
+}
+
+.seamless-stat__icon,
+.seamless-feature__icon,
+.seamless-factor__icon,
+.seamless-cta-icon {
+  border-radius: 14px;
+  background: rgba(102, 200, 52, 0.08);
+}
+
+.seamless-feature__icon,
+.seamless-factor__icon {
+  background: #fff;
+  border-color: #dfe7dc;
+  box-shadow: 0 10px 24px rgba(7, 20, 23, 0.05);
+}
+
+.seamless-feature__icon img,
+.seamless-factor__icon img {
+  width: 32px;
+  height: 32px;
+}
+
+/* Stats bar icons render bare, like the reference mockups: no chip box. */
+.seamless-stat__icon {
+  width: 48px;
+  height: 48px;
+  border: 0;
+  border-radius: 0;
+  background: none;
+}
+
+.seamless-stat__icon img {
+  width: 44px;
+  height: 44px;
+}
+
+.seamless-stat strong {
+  font-size: 25px;
+  letter-spacing: -0.035em;
+}
+
+.seamless-section {
+  padding: 58px 0;
+}
+
+.seamless-section--tight {
+  padding-top: 42px;
+}
+
+.seamless-section-head {
+  margin-bottom: 34px;
+}
+
+.seamless-section-head p:not(.seamless-eyebrow) {
+  display: none;
+}
+
+.seamless-price-grid {
+  max-width: 1030px;
+  margin: 0 auto;
+  gap: 50px;
+}
+
+.seamless-price-card {
+  min-height: 302px;
+  padding: 20px 22px;
+  border-radius: 12px;
+  box-shadow: 0 14px 34px rgba(7, 20, 23, 0.06);
+  text-align: center;
+}
+
+.seamless-price-card__image {
+  height: 102px;
+  margin: 2px 0 20px;
+}
+
+.seamless-price-card__line {
+  margin-inline: auto;
+}
+
+.seamless-price-card--featured {
+  border-width: 2px;
+}
+
+.seamless-photo-card,
+.seamless-calculator__photo,
+.seamless-map-card,
+.seamless-compare-card,
+.seamless-factor,
+.seamless-formula-card,
+.seamless-faq details {
+  border-radius: 10px;
+}
+
+.seamless-photo-card img {
+  min-height: 360px;
+}
+
+.seamless-why-grid {
+  gap: 60px;
+}
+
+.seamless-feature__icon {
+  width: 58px;
+  height: 58px;
+}
+
+.seamless-inline-cta,
+.seamless-included,
+.seamless-process,
+.seamless-final-cta {
+  border-radius: 14px;
+}
+
+.seamless-inline-cta {
+  padding: 28px 34px;
+}
+
+.seamless-calculator {
+  grid-template-columns: minmax(0, 1fr) 350px;
+  gap: 28px;
+  align-items: stretch;
+}
+
+.seamless-formula-card {
+  padding: 28px;
+}
+
+.seamless-formula {
+  background: transparent;
+  padding: 0;
+}
+
+.seamless-note {
+  justify-content: center;
+  background: #f5f7f4;
+  text-align: center;
+}
+
+.seamless-included__inner,
+.seamless-process__inner {
+  padding: 28px 30px;
+}
+
+.seamless-included__inner {
+  grid-template-columns: minmax(260px, 0.68fr) minmax(560px, 1.45fr) minmax(180px, 230px);
+  gap: 22px;
+}
+
+.seamless-included-list {
+  position: relative;
+  z-index: 2;
+}
+
+.seamless-included-list li {
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.seamless-included__photo {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 230px;
+  justify-self: end;
+  border-radius: 9px;
+}
+
+.seamless-factors-layout {
+  gap: 38px;
+}
+
+.seamless-factor {
+  min-height: 106px;
+  padding: 18px;
+}
+
+.seamless-compare-grid {
+  gap: 18px;
+}
+
+.seamless-process-step {
+  min-height: 158px;
+}
+
+.seamless-areas {
+  align-items: start;
+}
+
+.seamless-final-cta {
+  margin-bottom: 72px;
+}
+
+.seamless-final-cta__inner {
+  grid-template-columns: 1fr;
+  padding: 38px 48px;
+  text-align: center;
+}
+
+.seamless-final-cta__inner > div:first-child {
+  text-align: center;
+}
+
+.seamless-final-cta .seamless-eyebrow {
+  justify-content: center;
+}
+
+.seamless-final-cta h2,
+.seamless-final-cta p {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.seamless-final-cta__badges {
+  justify-content: center;
+}
+
+.seamless-final-cta__actions {
+  justify-content: center;
+}
+
+.seamless-map-card {
+  background: #eef5ef;
+}
+
+.seamless-map-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  aspect-ratio: 1672 / 941;
+  object-fit: contain;
+  object-position: center;
+}
+
+@media (max-width: 1180px) {
+  .seamless-page .container {
+    width: min(100% - 48px, 920px);
+  }
+
+  .seamless-price-grid {
+    gap: 24px;
+  }
+
+  .seamless-calculator {
+    grid-template-columns: 1fr;
+  }
+
+  .seamless-calculator__photo img {
+    max-height: 360px;
+  }
+}
+
+@media (max-width: 860px) {
+  .seamless-page .container {
+    width: min(100% - 32px, 680px);
+  }
+
+  .seamless-hero {
+    min-height: 0;
+    padding: 70px 0 86px;
+  }
+
+  .seamless-hero::before {
+    background-position: 62% top;
+  }
+
+  .seamless-hero::after {
+    background:
+      linear-gradient(90deg, rgba(5, 13, 16, 0.83) 0%, rgba(5, 13, 16, 0.75) 64%, rgba(5, 13, 16, 0.49) 100%),
+      linear-gradient(180deg, rgba(5, 13, 16, 0.07) 0%, rgba(5, 13, 16, 0.73) 100%);
+  }
+
+  .seamless-kicker,
+  .seamless-eyebrow {
+    margin-bottom: 14px;
+    font-size: 11px;
+    letter-spacing: 0.11em;
+  }
+
+  .seamless-hero h1 {
+    max-width: 560px;
+    font-size: clamp(42px, 9.5vw, 58px);
+    line-height: 1.02;
+  }
+
+  .seamless-hero__lead {
+    font-size: 18px;
+  }
+
+  .seamless-hero__badges {
+    margin: 22px 0 28px;
+  }
+
+  .seamless-stats-wrap {
+    margin-top: -44px;
+  }
+
+  .seamless-section-head h2,
+  .seamless-inline-cta h2,
+  .seamless-final-cta h2,
+  .seamless-section-head-title,
+  .seamless-why-grid h2,
+  .seamless-areas h2,
+  .seamless-factors-layout h2 {
+    font-size: clamp(30px, 8vw, 42px);
+    letter-spacing: -0.04em;
+  }
+
+  .seamless-price-card {
+    min-height: 0;
+  }
+
+  .seamless-inline-cta {
+    gap: 18px;
+  }
+}
+
+@media (max-width: 560px) {
+  .seamless-hero {
+    padding-bottom: 76px;
+  }
+
+  .seamless-hero__actions .btn {
+    width: 100%;
+  }
+
+  .seamless-pill {
+    width: 100%;
+  }
+
+  .seamless-stats {
+    padding: 6px 10px;
+  }
+
+  .seamless-stat strong {
+    font-size: 23px;
+  }
+
+  .seamless-final-cta {
+    margin-bottom: 78px;
+  }
+}
+
+/* Reference alignment pass for /services/seamless-gutter-installation/. */
+body:has(.seamless-page) {
+  background: #fbfcfb;
+}
+
+body:has(.seamless-page) .trust-bar {
+  background: #071417;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+body:has(.seamless-page) .trust-bar__inner {
+  justify-content: center;
+  gap: 48px;
+}
+
+body:has(.seamless-page) .trust-bar img {
+  width: 18px;
+  height: 18px;
+  filter: none;
+}
+
+body:has(.seamless-page) .site-header {
+  background: rgba(5, 13, 16, 0.97);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 10px 34px rgba(5, 13, 16, 0.2);
+}
+
+body:has(.seamless-page) .site-header__inner {
+  min-height: 108px;
+}
+
+body:has(.seamless-page) .logo__image--new {
+  width: 244px;
+  max-height: 92px;
+}
+
+body:has(.seamless-page) .header-nav__link,
+body:has(.seamless-page) .header-nav__trigger,
+body:has(.seamless-page) .header-menu-toggle {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+body:has(.seamless-page) .header-menu-toggle {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+body:has(.seamless-page) .header-nav__chevron {
+  filter: brightness(0) invert(1);
+  opacity: 0.88;
+}
+
+body:has(.seamless-page) .header-phone {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+body:has(.seamless-page) .header-phone:hover,
+body:has(.seamless-page) .header-phone:focus {
+  border-color: #66c834;
+  background: rgba(102, 200, 52, 0.12);
+}
+
+.seamless-page .container {
+  width: min(1200px, calc(100% - 96px));
+}
+
+.seamless-hero {
+  min-height: 660px;
+  padding: 112px 0 118px;
+}
+
+.seamless-hero::before {
+  background-position: 58% 43%;
+  background-size: cover;
+}
+
+.seamless-hero::after {
+  background:
+    linear-gradient(90deg, rgba(5, 13, 16, 0.78) 0%, rgba(5, 13, 16, 0.7) 39%, rgba(5, 13, 16, 0.28) 71%, rgba(5, 13, 16, 0.16) 100%),
+    linear-gradient(180deg, rgba(5, 13, 16, 0.02) 0%, rgba(5, 13, 16, 0.62) 100%);
+}
+
+.seamless-hero__copy {
+  max-width: 590px;
+}
+
+.seamless-hero h1 {
+  font-size: clamp(56px, 5vw, 76px);
+  line-height: 1.08;
+}
+
+.seamless-stats-wrap {
+  margin-top: -63px;
+}
+
+.seamless-stats {
+  max-width: 965px;
+  min-height: 104px;
+  padding: 18px 26px;
+}
+
+.seamless-section {
+  padding: 54px 0;
+}
+
+.seamless-section--tight {
+  padding-top: 34px;
+  padding-bottom: 40px;
+}
+
+.seamless-section-head {
+  margin-bottom: 32px;
+}
+
+.seamless-section-head h2 {
+  font-size: clamp(34px, 3.2vw, 44px);
+}
+
+.seamless-price-grid {
+  max-width: 990px;
+  gap: 52px;
+}
+
+.seamless-price-card {
+  min-height: 306px;
+  padding: 20px 22px 22px;
+}
+
+.seamless-price-card__image {
+  height: 104px;
+  margin-bottom: 18px;
+}
+
+.seamless-why-grid {
+  grid-template-columns: minmax(420px, 0.9fr) minmax(0, 1fr);
+  gap: 58px;
+  align-items: center;
+}
+
+.seamless-photo-card img {
+  min-height: 360px;
+  object-position: center 34%;
+}
+
+.seamless-feature {
+  grid-template-columns: 62px minmax(0, 1fr);
+  gap: 18px;
+  padding: 4px 0 24px;
+}
+
+.seamless-feature__icon {
+  width: 62px;
+  height: 62px;
+}
+
+.seamless-inline-cta {
+  max-width: 1150px;
+  grid-template-columns: 76px minmax(0, 1fr) minmax(260px, 315px);
+  padding: 30px 34px;
+  border-radius: 13px;
+}
+
+.seamless-inline-cta h2 {
+  font-size: clamp(25px, 2.4vw, 32px);
+}
+
+.seamless-calculator {
+  grid-template-columns: minmax(0, 1fr) 356px;
+  gap: 28px;
+}
+
+.seamless-formula-card {
+  padding: 28px;
+  border-radius: 12px;
+  box-shadow: 0 16px 42px rgba(7, 20, 23, 0.055);
+}
+
+.seamless-formula-card h2 {
+  font-size: clamp(34px, 3.5vw, 44px);
+}
+
+.seamless-example-grid {
+  gap: 12px;
+}
+
+.seamless-example-box {
+  position: relative;
+  min-height: 112px;
+  padding: 42px 12px 14px;
+  border-radius: 8px;
+}
+
+.seamless-example-box::before {
+  content: "";
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  transform: translateX(-50%);
+  background: var(--seamless-example-icon, url("/assets/img/icons/provided-v2-green/16_on_site_assessment.png")) center / contain no-repeat;
+}
+
+.seamless-example-box:nth-child(1) {
+  --seamless-example-icon: url("/assets/img/icons/premium-line-green/home.svg");
+}
+
+.seamless-example-box:nth-child(2) {
+  --seamless-example-icon: url("/assets/img/icons/premium-line-green/stories.svg");
+}
+
+.seamless-example-box:nth-child(3) {
+  --seamless-example-icon: url("/assets/img/icons/provided-v2-green/09_seamless_gutter_installation.png");
+}
+
+.seamless-example-box:nth-child(4),
+.seamless-example-box:nth-child(5) {
+  padding-top: 22px;
+}
+
+.seamless-example-box:nth-child(4)::before,
+.seamless-example-box:nth-child(5)::before {
+  display: none;
+}
+
+.seamless-note {
+  margin-top: 20px;
+  border-radius: 8px;
+}
+
+.seamless-calculator__photo {
+  position: relative;
+  min-height: 360px;
+  border-radius: 12px;
+}
+
+.seamless-calculator__photo img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  min-height: 0;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 32%;
+}
+
+.seamless-included,
+.seamless-process,
+.seamless-final-cta {
+  border-radius: 13px;
+}
+
+.seamless-included__inner {
+  grid-template-columns: minmax(240px, 0.58fr) minmax(570px, 1.6fr) minmax(180px, 230px);
+  gap: 24px;
+  min-height: 226px;
+  padding: 28px 30px;
+}
+
+.seamless-included h2 {
+  font-size: clamp(30px, 3vw, 38px);
+}
+
+.seamless-included-list li {
+  min-height: 114px;
+  padding: 8px 14px;
+  font-size: 13px;
+}
+
+.seamless-included-list img {
+  width: 38px;
+  height: 38px;
+}
+
+.seamless-included__photo {
+  min-height: 162px;
+  max-width: 230px;
+  background-position: center 34%;
+}
+
+.seamless-factors-layout {
+  grid-template-columns: minmax(230px, 0.42fr) minmax(0, 1fr);
+  gap: 42px;
+}
+
+.seamless-factors-grid {
+  gap: 14px;
+}
+
+.seamless-factor {
+  min-height: 112px;
+  grid-template-columns: 54px minmax(0, 1fr);
+  padding: 18px;
+  border-radius: 8px;
+}
+
+.seamless-factor__icon {
+  width: 46px;
+  height: 46px;
+}
+
+.seamless-compare-grid {
+  grid-template-columns: minmax(210px, 0.45fr) repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  align-items: stretch;
+}
+
+.seamless-compare-card {
+  min-height: 150px;
+  padding: 18px 20px;
+  border-radius: 8px;
+}
+
+.seamless-compare-card img {
+  width: 170px;
+}
+
+.seamless-process__inner {
+  grid-template-columns: 240px minmax(0, 1fr);
+  gap: 28px;
+  min-height: 176px;
+  padding: 28px 30px;
+}
+
+.seamless-process h2 {
+  font-size: clamp(30px, 3vw, 38px);
+}
+
+.seamless-process-step {
+  min-height: 138px;
+  padding: 12px 20px;
+}
+
+.seamless-process-step img {
+  width: 40px;
+  height: 40px;
+}
+
+.seamless-areas {
+  grid-template-columns: minmax(0, 0.95fr) minmax(390px, 1.08fr);
+  gap: 46px;
+  align-items: center;
+}
+
+.seamless-area-pills {
+  gap: 12px 14px;
+}
+
+.seamless-area-pills a {
+  min-height: 36px;
+  border-radius: 999px;
+  font-size: 12px;
+}
+
+.seamless-map-card {
+  border-radius: 10px;
+}
+
+.seamless-map-card img {
+  aspect-ratio: 1672 / 941;
+  object-fit: contain;
+  object-position: center;
+}
+
+.seamless-faq {
+  padding-top: 26px;
+}
+
+.seamless-faq .seamless-section-head {
+  margin-bottom: 22px;
+}
+
+.seamless-faq details {
+  border-radius: 8px;
+}
+
+.seamless-faq summary {
+  min-height: 54px;
+  padding: 14px 18px;
+  font-size: 14px;
+}
+
+.seamless-final-cta {
+  max-width: 1160px;
+  margin: 0 auto 72px;
+}
+
+.seamless-final-cta::before {
+  background-position: right center;
+  background-size: 49% auto;
+  opacity: 0.95;
+}
+
+.seamless-final-cta::after {
+  background:
+    linear-gradient(90deg, rgba(4, 13, 16, 0.99) 0%, rgba(4, 13, 16, 0.96) 47%, rgba(4, 13, 16, 0.62) 72%, rgba(4, 13, 16, 0.22) 100%);
+}
+
+.seamless-final-cta__inner {
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 310px);
+  gap: 42px;
+  min-height: 198px;
+  padding: 34px 46px;
+  text-align: left;
+}
+
+.seamless-final-cta__inner > div:first-child {
+  text-align: left;
+}
+
+.seamless-final-cta .seamless-eyebrow {
+  justify-content: flex-start;
+}
+
+.seamless-final-cta h2,
+.seamless-final-cta p {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.seamless-final-cta h2 {
+  max-width: 470px;
+  font-size: clamp(30px, 3.2vw, 42px);
+}
+
+.seamless-final-cta p {
+  max-width: 540px;
+}
+
+.seamless-final-cta__badges {
+  justify-content: flex-start;
+  gap: 14px 26px;
+  margin-top: 22px;
+}
+
+.seamless-final-cta__actions {
+  display: grid;
+  justify-content: stretch;
+  gap: 14px;
+}
+
+.seamless-final-cta__actions .btn {
+  width: 100%;
+}
+
+.seamless-install-page .seamless-feature {
+  grid-template-columns: 81px minmax(0, 1fr);
+}
+
+.seamless-install-page .seamless-feature__icon {
+  width: 81px;
+  height: 81px;
+  border-radius: 18px;
+}
+
+.seamless-install-page .seamless-feature__icon img {
+  width: 42px;
+  height: 42px;
+}
+
+.seamless-install-page .seamless-inline-cta {
+  grid-template-columns: 99px minmax(0, 1fr) minmax(260px, 315px);
+}
+
+.seamless-install-page .seamless-cta-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 18px;
+}
+
+.seamless-install-page .seamless-cta-icon img {
+  width: 36px;
+  height: 36px;
+}
+
+.seamless-install-page .seamless-example-box {
+  min-height: 122px;
+  padding-top: 52px;
+}
+
+.seamless-install-page .seamless-example-box::before {
+  width: 31px;
+  height: 31px;
+}
+
+.seamless-install-page .seamless-example-box:nth-child(4),
+.seamless-install-page .seamless-example-box:nth-child(5) {
+  padding-top: 22px;
+}
+
+.seamless-install-page .seamless-note .seamless-check-dot {
+  width: 23px;
+  height: 23px;
+  font-size: 14px;
+}
+
+.seamless-install-page .seamless-included-list li {
+  min-height: 126px;
+}
+
+.seamless-install-page .seamless-included-list img {
+  width: 49px;
+  height: 49px;
+}
+
+.seamless-install-page .seamless-factor {
+  grid-template-columns: 70px minmax(0, 1fr);
+  min-height: 126px;
+}
+
+.seamless-install-page .seamless-factor__icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 18px;
+}
+
+.seamless-install-page .seamless-factor__icon img {
+  width: 42px;
+  height: 42px;
+}
+
+.seamless-install-page .seamless-process__inner {
+  min-height: 214px;
+}
+
+.seamless-install-page .seamless-process-step {
+  min-height: 162px;
+}
+
+.seamless-install-page .seamless-process__num {
+  width: 44px;
+  height: 44px;
+  font-size: 18px;
+}
+
+.seamless-install-page .seamless-process-step img {
+  width: 52px;
+  height: 52px;
+}
+
+.seamless-install-page .seamless-final-cta::before {
+  background-size: cover;
+  transform: scale(1.1);
+  transform-origin: right center;
+}
+
+@media (max-width: 1180px) {
+  body:has(.seamless-page) .trust-bar__inner {
+    gap: 22px;
+  }
+
+  body:has(.seamless-page) .site-header__inner {
+    min-height: 92px;
+  }
+
+  .seamless-page .container {
+    width: min(100% - 48px, 980px);
+  }
+
+  .seamless-why-grid,
+  .seamless-calculator,
+  .seamless-factors-layout,
+  .seamless-compare-grid,
+  .seamless-process__inner,
+  .seamless-areas {
+    grid-template-columns: 1fr;
+  }
+
+  .seamless-included__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .seamless-included__photo {
+    display: none;
+  }
+
+  .seamless-final-cta__inner {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 860px) {
+  body:has(.seamless-page) .site-header {
+    background: #061116;
+  }
+
+  body:has(.seamless-page) .header-nav {
+    background: #061116;
+  }
+
+  .seamless-page .container {
+    width: min(100% - 32px, 680px);
+  }
+
+  .seamless-hero {
+    padding-top: 70px;
+  }
+
+  .seamless-hero::before {
+    background-position: 66% top;
+  }
+
+  .seamless-price-grid,
+  .seamless-example-grid,
+  .seamless-factors-grid,
+  .seamless-faq-grid,
+  .seamless-area-pills {
+    grid-template-columns: 1fr;
+  }
+
+  .seamless-inline-cta {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .seamless-inline-cta .btn {
+    width: 100%;
+  }
+
+  .seamless-final-cta__inner,
+  .seamless-final-cta__inner > div:first-child {
+    text-align: center;
+  }
+
+  .seamless-final-cta::before {
+    background-size: cover;
+    opacity: 0.28;
+  }
+
+  .seamless-final-cta::after {
+    background: rgba(4, 13, 16, 0.86);
+  }
+
+  .seamless-final-cta .seamless-eyebrow,
+  .seamless-final-cta__badges,
+  .seamless-final-cta__actions {
+    justify-content: center;
+  }
+
+  .seamless-final-cta h2,
+  .seamless-final-cta p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 560px) {
+  body:has(.seamless-page) .trust-bar__inner {
+    justify-content: flex-start;
+  }
+
+  body:has(.seamless-page) .logo__image--new {
+    width: 190px;
+  }
+
+  .seamless-hero h1 {
+    font-size: clamp(40px, 12vw, 54px);
+  }
+
+  .seamless-stats {
+    min-height: 0;
+  }
+
+  .seamless-final-cta__inner,
+  .seamless-included__inner,
+  .seamless-process__inner,
+  .seamless-formula-card,
+  .seamless-inline-cta {
+    padding: 24px;
+  }
+}
+
+@media (min-width: 901px) {
+  .seamless-page .container {
+    width: min(1200px, calc(100% - 64px));
+  }
+
+  .seamless-stats {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    max-width: 965px;
+  }
+
+  .seamless-stat,
+  .seamless-stat:nth-child(2) {
+    border-right: 1px solid rgba(255, 255, 255, 0.16);
+    border-bottom: 0;
+  }
+
+  .seamless-stat:last-child {
+    border-right: 0;
+  }
+
+  .seamless-price-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    max-width: 990px;
+  }
+
+  .seamless-why-grid {
+    grid-template-columns: minmax(420px, 0.9fr) minmax(0, 1fr);
+  }
+
+  .seamless-calculator {
+    grid-template-columns: minmax(0, 1fr) 356px;
+  }
+
+  .seamless-calculator__photo img {
+    max-height: none;
+  }
+
+  .seamless-included__inner {
+    grid-template-columns: 260px minmax(500px, 1fr) 220px;
+  }
+
+  .seamless-included-list {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .seamless-included-list li,
+  .seamless-included-list li:nth-child(2),
+  .seamless-included-list li:nth-child(4) {
+    border-right: 1px solid rgba(102, 200, 52, 0.45);
+    border-bottom: 0;
+  }
+
+  .seamless-included-list li:last-child {
+    border-right: 0;
+  }
+
+  .seamless-included__photo {
+    display: block;
+  }
+
+  .seamless-factors-layout {
+    grid-template-columns: minmax(230px, 0.42fr) minmax(0, 1fr);
+  }
+
+  .seamless-factors-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .seamless-compare-grid {
+    grid-template-columns: minmax(210px, 0.45fr) repeat(2, minmax(0, 1fr));
+  }
+
+  .seamless-process__inner {
+    grid-template-columns: 240px minmax(0, 1fr);
+  }
+
+  .seamless-process-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .seamless-process-step,
+  .seamless-process-step:nth-child(2) {
+    border-right: 1px dashed rgba(102, 200, 52, 0.5);
+    border-bottom: 0;
+  }
+
+  .seamless-process-step:last-child {
+    border-right: 0;
+  }
+
+  .seamless-areas {
+    grid-template-columns: minmax(0, 0.95fr) minmax(390px, 1.08fr);
+  }
+
+  .seamless-area-pills {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .seamless-faq-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .seamless-final-cta__inner {
+    grid-template-columns: minmax(0, 1fr) minmax(240px, 310px);
+    text-align: left;
+  }
+}
+
+/* Gutter Guards premium service page. */
+.gutter-guards-page .seamless-hero::before {
+  background-image: url("/assets/img/service-2-generated.webp");
+  background-position: 67% center;
+}
+
+.gutter-guards-page .seamless-hero {
+  min-height: 0;
+  padding: 80px 0 104px;
+}
+
+.gutter-guards-page .seamless-hero::after {
+  background:
+    linear-gradient(90deg, rgba(5, 13, 16, 0.84) 0%, rgba(5, 13, 16, 0.76) 38%, rgba(5, 13, 16, 0.3) 70%, rgba(5, 13, 16, 0.18) 100%),
+    linear-gradient(180deg, rgba(5, 13, 16, 0.02) 0%, rgba(5, 13, 16, 0.56) 100%);
+}
+
+.gutter-guards-page .seamless-hero h1 {
+  max-width: 820px;
+  font-size: clamp(46px, 3.9vw, 58px);
+}
+
+.gutter-guards-page .seamless-hero h1 span {
+  display: block;
+}
+
+.gutter-guards-page .seamless-hero__copy {
+  max-width: 820px;
+}
+
+.gutter-guards-page .seamless-hero__lead {
+  max-width: 580px;
+}
+
+.gutter-guards-page .seamless-price-card {
+  min-height: 286px;
+  padding-top: 18px;
+}
+
+.gutter-guards-page .seamless-price-card__image {
+  height: 88px;
+  margin: 0 0 18px;
+  border-radius: 8px;
+  background: #f4f7f2;
+  object-fit: cover;
+  object-position: center;
+}
+
+.gutter-guards-page .seamless-price-card__price {
+  justify-content: center;
+}
+
+.gutter-guards-price-note {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin: 20px 0 0;
+  color: #5b6762;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.gutter-guards-page .seamless-photo-card img {
+  object-position: center;
+}
+
+.gutter-guards-page .seamless-calculator__photo img {
+  object-position: center;
+}
+
+.gutter-guards-page .seamless-included__inner {
+  grid-template-columns: minmax(330px, 0.9fr) minmax(0, 1.8fr);
+}
+
+.gutter-guards-page .seamless-included h2 {
+  max-width: 520px;
+  font-size: clamp(28px, 2.7vw, 36px);
+}
+
+.gutter-guards-page .seamless-included-list {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.gutter-guards-page .seamless-included-list li,
+.gutter-guards-page .seamless-included-list li:nth-child(2),
+.gutter-guards-page .seamless-included-list li:nth-child(4) {
+  min-height: 118px;
+  border-right: 1px solid rgba(102, 200, 52, 0.45);
+  border-bottom: 0;
+}
+
+.gutter-guards-page .seamless-included-list li:last-child {
+  border-right: 0;
+}
+
+.gutter-guards-page .seamless-process__inner {
+  grid-template-columns: 270px minmax(0, 1fr);
+}
+
+.gutter-guards-page .seamless-process-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.gutter-guards-page .seamless-process-step h3 {
+  min-height: 38px;
+}
+
+.gutter-guards-page .seamless-feature {
+  grid-template-columns: 81px minmax(0, 1fr);
+}
+
+.gutter-guards-page .seamless-feature__icon {
+  width: 81px;
+  height: 81px;
+  border-radius: 18px;
+}
+
+.gutter-guards-page .seamless-feature__icon img {
+  width: 42px;
+  height: 42px;
+}
+
+.gutter-guards-page .seamless-example-box {
+  min-height: 122px;
+  padding-top: 52px;
+}
+
+.gutter-guards-page .seamless-example-box::before {
+  width: 31px;
+  height: 31px;
+}
+
+.gutter-guards-page .seamless-example-box:nth-child(4),
+.gutter-guards-page .seamless-example-box:nth-child(5) {
+  padding-top: 22px;
+}
+
+.gutter-guards-page .seamless-note .seamless-check-dot {
+  width: 23px;
+  height: 23px;
+  font-size: 14px;
+}
+
+.gutter-guards-page .seamless-included-list li,
+.gutter-guards-page .seamless-included-list li:nth-child(2),
+.gutter-guards-page .seamless-included-list li:nth-child(4) {
+  min-height: 132px;
+}
+
+.gutter-guards-page .seamless-included-list img {
+  width: 49px;
+  height: 49px;
+}
+
+.gutter-guards-page .seamless-factor {
+  grid-template-columns: 70px minmax(0, 1fr);
+  min-height: 126px;
+}
+
+.gutter-guards-page .seamless-factor__icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 18px;
+}
+
+.gutter-guards-page .seamless-factor__icon img {
+  width: 42px;
+  height: 42px;
+}
+
+.gutter-guards-page .seamless-process__inner {
+  min-height: 214px;
+}
+
+.gutter-guards-page .seamless-process-step {
+  min-height: 162px;
+}
+
+.gutter-guards-page .seamless-process__num {
+  width: 44px;
+  height: 44px;
+  font-size: 18px;
+}
+
+.gutter-guards-page .seamless-process-step img {
+  width: 52px;
+  height: 52px;
+}
+
+.gutter-guards-local-faq {
+  padding-top: 36px;
+}
+
+.gutter-guards-local-faq__grid {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.85fr) minmax(360px, 1fr);
+  gap: 28px;
+  align-items: center;
+}
+
+.gutter-guards-local-faq h2,
+.gutter-guards-faq-card h2 {
+  margin: 0 0 18px;
+  color: #071417;
+  font-size: clamp(28px, 2.4vw, 34px);
+  line-height: 1.05;
+  font-weight: 950;
+}
+
+.gutter-guards-local-faq .seamless-area-pills {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 18px;
+}
+
+.gutter-guards-local-faq .seamless-map-card {
+  align-self: center;
+}
+
+.gutter-guards-faq-card {
+  grid-column: 1 / -1;
+  margin-top: 12px;
+}
+
+.gutter-guards-faq-card .seamless-faq-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px 16px;
+}
+
+.gutter-guards-faq-card .seamless-faq-grid details {
+  border-radius: 7px;
+  border: 1px solid #dfe7dc;
+  background: #fff;
+  box-shadow: 0 12px 30px rgba(7, 20, 23, 0.04);
+}
+
+.gutter-guards-faq-card .seamless-faq-grid summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  min-height: 42px;
+  padding: 10px 14px;
+  color: #071417;
+  font-size: 13px;
+  font-weight: 900;
+  cursor: pointer;
+  list-style: none;
+}
+
+.gutter-guards-faq-card .seamless-faq-grid summary::-webkit-details-marker {
+  display: none;
+}
+
+.gutter-guards-faq-card .seamless-faq-grid summary::after {
+  content: "+";
+  color: #071417;
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.gutter-guards-faq-card .seamless-faq-grid details[open] summary::after {
+  content: "-";
+}
+
+.gutter-guards-faq-card .seamless-faq-grid p {
+  margin: 0;
+  padding: 0 14px 14px;
+  color: #5c6a64;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.gutter-guards-page .seamless-final-cta::before {
+  background-image: url("/assets/img/service-2-generated.webp");
+  background-size: 52% auto;
+  background-position: right center;
+}
+
+.gutter-guards-page .seamless-final-cta h2 {
+  max-width: 650px;
+}
+
+@media (max-width: 1180px) {
+  .gutter-guards-page .seamless-included__inner,
+  .gutter-guards-page .seamless-process__inner,
+  .gutter-guards-local-faq__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gutter-guards-page .seamless-included-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 860px) {
+  .gutter-guards-page .seamless-hero::before {
+    background-position: 72% center;
+  }
+
+  .gutter-guards-page .seamless-hero {
+    padding: 70px 0 86px;
+  }
+
+  .gutter-guards-page .seamless-included-list,
+  .gutter-guards-local-faq .seamless-area-pills {
+    grid-template-columns: 1fr;
+  }
+
+  .gutter-guards-page .seamless-included-list li,
+  .gutter-guards-page .seamless-included-list li:nth-child(2),
+  .gutter-guards-page .seamless-included-list li:nth-child(4) {
+    border-right: 0;
+    border-bottom: 1px solid rgba(102, 200, 52, 0.35);
+  }
+
+  .gutter-guards-page .seamless-included-list li:last-child {
+    border-bottom: 0;
+  }
+}
+
+/* Gutter Replacement premium service page. */
+.gutter-replacement-page .seamless-hero::before {
+  background-image: url("/assets/img/cta-gutter-house-20260705.webp");
+  background-position: 67% center;
+}
+
+.gutter-replacement-page .seamless-hero {
+  min-height: 0;
+  padding: 76px 0 104px;
+}
+
+.gutter-replacement-page .seamless-hero::after {
+  background:
+    linear-gradient(90deg, rgba(5, 13, 16, 0.84) 0%, rgba(5, 13, 16, 0.76) 38%, rgba(5, 13, 16, 0.3) 70%, rgba(5, 13, 16, 0.18) 100%),
+    linear-gradient(180deg, rgba(5, 13, 16, 0.02) 0%, rgba(5, 13, 16, 0.6) 100%);
+}
+
+.gutter-replacement-page .seamless-hero__copy {
+  max-width: 780px;
+}
+
+.gutter-replacement-page .seamless-hero h1 {
+  max-width: 780px;
+  font-size: clamp(46px, 3.9vw, 58px);
+}
+
+.gutter-replacement-page .seamless-hero h1 span {
+  display: block;
+}
+
+.gutter-replacement-page .seamless-hero__lead {
+  max-width: 570px;
+}
+
+.gutter-replacement-page .seamless-price-card {
+  min-height: 302px;
+}
+
+.gutter-replacement-page .seamless-price-card__image {
+  height: 92px;
+  margin: 0 0 18px;
+}
+
+.gutter-replacement-page .seamless-price-card__price {
+  justify-content: center;
+}
+
+.gutter-replacement-page .seamless-photo-card img {
+  object-position: center;
+}
+
+.gutter-replacement-page .seamless-included__inner {
+  grid-template-columns: 260px minmax(0, 1fr);
+}
+
+.gutter-replacement-page .seamless-included h2 {
+  max-width: 330px;
+  font-size: clamp(27px, 2.5vw, 34px);
+}
+
+.gutter-replacement-page .seamless-included-list {
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
+.gutter-replacement-page .seamless-included-list li,
+.gutter-replacement-page .seamless-included-list li:nth-child(2),
+.gutter-replacement-page .seamless-included-list li:nth-child(4) {
+  min-height: 114px;
+  padding-inline: 9px;
+  font-size: 12px;
+  border-right: 1px solid rgba(102, 200, 52, 0.45);
+  border-bottom: 0;
+}
+
+.gutter-replacement-page .seamless-included-list li:last-child {
+  border-right: 0;
+}
+
+.gutter-replacement-page .seamless-process__inner {
+  grid-template-columns: 250px minmax(0, 1fr);
+}
+
+.gutter-replacement-page .seamless-process-grid {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.gutter-replacement-page .seamless-process-step {
+  min-height: 132px;
+  padding: 10px 14px;
+}
+
+.gutter-replacement-page .seamless-process-step h3 {
+  min-height: 21px;
+  font-size: 14px;
+}
+
+.gutter-replacement-page .seamless-process-step p {
+  font-size: 12px;
+}
+
+.gutter-replacement-page .seamless-feature {
+  grid-template-columns: 81px minmax(0, 1fr);
+}
+
+.gutter-replacement-page .seamless-feature__icon {
+  width: 81px;
+  height: 81px;
+  border-radius: 18px;
+}
+
+.gutter-replacement-page .seamless-feature__icon img {
+  width: 42px;
+  height: 42px;
+}
+
+.gutter-replacement-page .seamless-example-box {
+  min-height: 122px;
+  padding-top: 52px;
+}
+
+.gutter-replacement-page .seamless-example-box::before {
+  width: 31px;
+  height: 31px;
+}
+
+.gutter-replacement-page .seamless-example-box:nth-child(4),
+.gutter-replacement-page .seamless-example-box:nth-child(5) {
+  padding-top: 22px;
+}
+
+.gutter-replacement-page .seamless-note .seamless-check-dot {
+  width: 23px;
+  height: 23px;
+  font-size: 14px;
+}
+
+.gutter-replacement-page .seamless-included-list li,
+.gutter-replacement-page .seamless-included-list li:nth-child(2),
+.gutter-replacement-page .seamless-included-list li:nth-child(4) {
+  min-height: 132px;
+}
+
+.gutter-replacement-page .seamless-included-list img {
+  width: 49px;
+  height: 49px;
+}
+
+.gutter-replacement-page .seamless-factor {
+  grid-template-columns: 70px minmax(0, 1fr);
+  min-height: 126px;
+}
+
+.gutter-replacement-page .seamless-factor__icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 18px;
+}
+
+.gutter-replacement-page .seamless-factor__icon img {
+  width: 42px;
+  height: 42px;
+}
+
+.gutter-replacement-page .seamless-process__inner {
+  min-height: 214px;
+}
+
+.gutter-replacement-page .seamless-process-step {
+  min-height: 162px;
+}
+
+.gutter-replacement-page .seamless-process__num {
+  width: 44px;
+  height: 44px;
+  font-size: 18px;
+}
+
+.gutter-replacement-page .seamless-process-step img {
+  width: 52px;
+  height: 52px;
+}
+
+.gutter-replacement-local-faq {
+  padding-top: 36px;
+}
+
+.gutter-replacement-local-faq .gutter-guards-local-faq__grid {
+  grid-template-columns: minmax(280px, 0.85fr) minmax(280px, 0.85fr) minmax(360px, 1fr);
+}
+
+.gutter-replacement-page .seamless-final-cta::before {
+  background-image: url("/assets/img/cta-gutter-house-20260705.webp");
+  background-size: cover;
+  background-position: right center;
+  transform: scale(1.1);
+  transform-origin: right center;
+}
+
+.gutter-replacement-page .seamless-final-cta h2 {
+  max-width: 680px;
+}
+
+@media (max-width: 1180px) {
+  .gutter-replacement-page .seamless-included__inner,
+  .gutter-replacement-page .seamless-process__inner,
+  .gutter-replacement-local-faq .gutter-guards-local-faq__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gutter-replacement-page .seamless-included-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .gutter-replacement-page .seamless-process-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 860px) {
+  .gutter-replacement-page .seamless-hero::before {
+    background-position: 72% center;
+  }
+
+  .gutter-replacement-page .seamless-hero {
+    padding: 70px 0 86px;
+  }
+
+  .gutter-replacement-page .seamless-included-list,
+  .gutter-replacement-page .seamless-process-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gutter-replacement-page .seamless-included-list li,
+  .gutter-replacement-page .seamless-included-list li:nth-child(2),
+  .gutter-replacement-page .seamless-included-list li:nth-child(4),
+  .gutter-replacement-page .seamless-process-step,
+  .gutter-replacement-page .seamless-process-step:nth-child(2) {
+    border-right: 0;
+    border-bottom: 1px solid rgba(102, 200, 52, 0.35);
+  }
+
+  .gutter-replacement-page .seamless-included-list li:last-child,
+  .gutter-replacement-page .seamless-process-step:last-child {
+    border-bottom: 0;
+  }
+}
+
+/* Soffit & Fascia premium service page. */
+.soffit-page .seamless-hero::before {
+  background-image: url("/assets/img/service-4-generated.webp");
+  background-position: center 44%;
+  background-size: cover;
+  transform: none;
+}
+
+.soffit-page .seamless-hero {
+  min-height: 0;
+  padding: 76px 0 104px;
+}
+
+.soffit-page .seamless-hero::after {
+  background:
+    linear-gradient(90deg, rgba(5, 13, 16, 0.86) 0%, rgba(5, 13, 16, 0.78) 38%, rgba(5, 13, 16, 0.32) 70%, rgba(5, 13, 16, 0.2) 100%),
+    linear-gradient(180deg, rgba(5, 13, 16, 0.04) 0%, rgba(5, 13, 16, 0.6) 100%);
+}
+
+.soffit-page .seamless-hero__copy {
+  max-width: 800px;
+}
+
+.soffit-page .seamless-hero h1 {
+  max-width: 800px;
+  font-size: clamp(46px, 3.9vw, 58px);
+}
+
+.soffit-page .seamless-hero h1 span {
+  display: block;
+}
+
+.soffit-page .seamless-hero__lead {
+  max-width: 600px;
+}
+
+.soffit-page .seamless-price-card {
+  min-height: 286px;
+  padding-top: 18px;
+}
+
+.soffit-page .seamless-price-card__image {
+  height: 108px;
+  margin: 0 0 18px;
+  border-radius: 8px;
+  background: #f4f7f2;
+  object-fit: cover;
+  object-position: center;
+}
+
+.soffit-page .seamless-price-card__price {
+  justify-content: center;
+}
+
+.soffit-page .seamless-photo-card img,
+.soffit-page .seamless-calculator__photo img {
+  object-position: center;
+}
+
+.soffit-page .seamless-example-grid {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.soffit-page .seamless-example-box {
+  padding-inline: 10px;
+}
+
+.soffit-page .seamless-example-box strong {
+  font-size: 21px;
+}
+
+.soffit-page .seamless-example-box:nth-child(3) {
+  --seamless-example-icon: url("/assets/img/icons/provided-v2-green/09_seamless_gutter_installation.png");
+}
+
+.soffit-page .seamless-example-box:nth-child(5) {
+  --seamless-example-icon: url("/assets/img/icons/provided-v2-green/12_soffits_fascia.png");
+  padding-top: 42px;
+}
+
+.soffit-page .seamless-example-box:nth-child(5)::before {
+  display: block;
+}
+
+.soffit-page .seamless-example-box:nth-child(6) {
+  padding-top: 22px;
+}
+
+.soffit-page .seamless-example-box:nth-child(6)::before {
+  display: none;
+}
+
+.soffit-page .seamless-feature {
+  grid-template-columns: 81px minmax(0, 1fr);
+}
+
+.soffit-page .seamless-feature__icon {
+  width: 81px;
+  height: 81px;
+  border-radius: 18px;
+}
+
+.soffit-page .seamless-feature__icon img {
+  width: 42px;
+  height: 42px;
+}
+
+.soffit-page .seamless-example-box {
+  min-height: 122px;
+  padding-top: 52px;
+}
+
+.soffit-page .seamless-example-box::before {
+  width: 31px;
+  height: 31px;
+}
+
+.soffit-page .seamless-example-box:nth-child(4),
+.soffit-page .seamless-example-box:nth-child(6) {
+  padding-top: 22px;
+}
+
+.soffit-page .seamless-example-box:nth-child(5) {
+  padding-top: 52px;
+}
+
+.soffit-page .seamless-note .seamless-check-dot {
+  width: 23px;
+  height: 23px;
+  font-size: 14px;
+}
+
+.soffit-page .seamless-included__inner {
+  grid-template-columns: minmax(220px, 0.6fr) minmax(0, 1.9fr) minmax(150px, 190px);
+  gap: 20px;
+}
+
+.soffit-page .seamless-included h2 {
+  max-width: 340px;
+  font-size: clamp(26px, 2.4vw, 33px);
+}
+
+.soffit-page .seamless-included-list {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.soffit-page .seamless-included-list li,
+.soffit-page .seamless-included-list li:nth-child(2),
+.soffit-page .seamless-included-list li:nth-child(4) {
+  min-height: 132px;
+  padding-inline: 8px;
+  font-size: 12px;
+  border-right: 1px solid rgba(102, 200, 52, 0.45);
+  border-bottom: 0;
+}
+
+.soffit-page .seamless-included-list img {
+  width: 49px;
+  height: 49px;
+}
+
+.soffit-page .seamless-included-list li:last-child {
+  border-right: 0;
+}
+
+.soffit-page .seamless-included__photo {
+  background-image: url("/assets/img/project-4-after-downspout-wide.webp");
+  background-position: center;
+  min-height: 150px;
+  max-width: 190px;
+}
+
+.soffit-page .seamless-process__inner {
+  grid-template-columns: 250px minmax(0, 1fr);
+}
+
+.soffit-page .seamless-process-grid {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.soffit-page .seamless-process-step {
+  min-height: 132px;
+  padding: 10px 14px;
+}
+
+.soffit-page .seamless-process-step h3 {
+  min-height: 21px;
+  font-size: 14px;
+}
+
+.soffit-page .seamless-process-step p {
+  font-size: 12px;
+}
+
+.soffit-page .seamless-factor {
+  grid-template-columns: 70px minmax(0, 1fr);
+  min-height: 126px;
+}
+
+.soffit-page .seamless-factor__icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 18px;
+}
+
+.soffit-page .seamless-factor__icon img {
+  width: 42px;
+  height: 42px;
+}
+
+.soffit-page .seamless-process__inner {
+  min-height: 214px;
+}
+
+.soffit-page .seamless-process-step {
+  min-height: 162px;
+}
+
+.soffit-page .seamless-process__num {
+  width: 44px;
+  height: 44px;
+  font-size: 18px;
+}
+
+.soffit-page .seamless-process-step img {
+  width: 52px;
+  height: 52px;
+}
+
+.soffit-page .seamless-final-cta::before {
+  background-image: url("/assets/img/cta-gutter-house-20260705.webp");
+  background-size: cover;
+  background-position: right center;
+  transform: scale(1.1);
+  transform-origin: right center;
+}
+
+.soffit-page .seamless-final-cta h2 {
+  max-width: 640px;
+}
+
+@media (max-width: 1180px) {
+  .soffit-page .seamless-included__inner,
+  .soffit-page .seamless-process__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .soffit-page .seamless-included-list,
+  .soffit-page .seamless-process-grid,
+  .soffit-page .seamless-example-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .soffit-page .seamless-included__photo {
+    display: none;
+  }
+}
+
+@media (max-width: 860px) {
+  .soffit-page .seamless-hero {
+    padding: 70px 0 86px;
+  }
+
+  .soffit-page .seamless-hero::before {
+    background-position: center 48%;
+  }
+
+  .soffit-page .seamless-included-list,
+  .soffit-page .seamless-process-grid,
+  .soffit-page .seamless-example-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .soffit-page .seamless-included-list li,
+  .soffit-page .seamless-included-list li:nth-child(2),
+  .soffit-page .seamless-included-list li:nth-child(4),
+  .soffit-page .seamless-process-step,
+  .soffit-page .seamless-process-step:nth-child(2) {
+    border-right: 0;
+    border-bottom: 1px solid rgba(102, 200, 52, 0.35);
+  }
+
+  .soffit-page .seamless-included-list li:last-child,
+  .soffit-page .seamless-process-step:last-child {
+    border-bottom: 0;
+  }
+}
+
+/* Downspout Installation premium service page. */
+.downspout-page .seamless-hero::before {
+  background-image: url("/assets/img/service-6-generated.webp");
+  background-position: 70% center;
+}
+
+.downspout-page .seamless-hero {
+  min-height: 0;
+  padding: 76px 0 104px;
+}
+
+.downspout-page .seamless-hero::after {
+  background:
+    linear-gradient(90deg, rgba(5, 13, 16, 0.86) 0%, rgba(5, 13, 16, 0.78) 38%, rgba(5, 13, 16, 0.32) 70%, rgba(5, 13, 16, 0.2) 100%),
+    linear-gradient(180deg, rgba(5, 13, 16, 0.04) 0%, rgba(5, 13, 16, 0.6) 100%);
+}
+
+.downspout-page .seamless-hero__copy {
+  max-width: 820px;
+}
+
+.downspout-page .seamless-hero h1 {
+  max-width: 820px;
+  font-size: clamp(46px, 3.9vw, 58px);
+}
+
+.downspout-page .seamless-hero h1 span {
+  display: block;
+}
+
+.downspout-page .seamless-hero__lead {
+  max-width: 600px;
+}
+
+.downspout-page .seamless-price-card {
+  min-height: 286px;
+  padding-top: 18px;
+}
+
+.downspout-page .seamless-price-card__image {
+  height: 108px;
+  margin: 0 0 18px;
+  border-radius: 8px;
+  background: #f4f7f2;
+  object-fit: cover;
+  object-position: center;
+}
+
+.downspout-page .seamless-price-card__price {
+  justify-content: center;
+}
+
+.downspout-page .seamless-price-card h3 {
+  min-height: 56px;
+}
+
+.downspout-page .seamless-photo-card img {
+  object-position: center;
+}
+
+.downspout-page .seamless-feature {
+  grid-template-columns: 81px minmax(0, 1fr);
+  padding-bottom: 18px;
+}
+
+.downspout-page .seamless-feature__icon {
+  width: 81px;
+  height: 81px;
+  border-radius: 18px;
+}
+
+.downspout-page .seamless-feature__icon img {
+  width: 42px;
+  height: 42px;
+}
+
+.downspout-page .seamless-example-box:nth-child(2) {
+  --seamless-example-icon: url("/assets/img/icons/provided-v2-green/14_downspout_installation.png");
+}
+
+.downspout-page .seamless-example-box:nth-child(3) {
+  --seamless-example-icon: url("/assets/img/icons/provided-v2-green/16_on_site_assessment.png");
+}
+
+.downspout-page .seamless-example-box {
+  min-height: 122px;
+  padding-top: 52px;
+}
+
+.downspout-page .seamless-example-box::before {
+  width: 31px;
+  height: 31px;
+}
+
+.downspout-page .seamless-example-box:nth-child(4),
+.downspout-page .seamless-example-box:nth-child(5) {
+  padding-top: 22px;
+}
+
+.downspout-page .seamless-note .seamless-check-dot {
+  width: 23px;
+  height: 23px;
+  font-size: 14px;
+}
+
+.downspout-page .seamless-calculator__photo img {
+  object-position: center 62%;
+}
+
+.downspout-page .seamless-included__inner {
+  grid-template-columns: minmax(330px, 0.9fr) minmax(0, 1.8fr);
+}
+
+.downspout-page .seamless-included h2 {
+  max-width: 520px;
+  font-size: clamp(28px, 2.7vw, 36px);
+}
+
+.downspout-page .seamless-included-list {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.downspout-page .seamless-included-list li,
+.downspout-page .seamless-included-list li:nth-child(2),
+.downspout-page .seamless-included-list li:nth-child(4) {
+  min-height: 118px;
+  padding-inline: 8px;
+  font-size: 12px;
+  border-right: 1px solid rgba(102, 200, 52, 0.45);
+  border-bottom: 0;
+}
+
+.downspout-page .seamless-included-list img {
+  width: 49px;
+  height: 49px;
+}
+
+.downspout-page .seamless-included-list li:last-child {
+  border-right: 0;
+}
+
+.downspout-page .seamless-factor {
+  grid-template-columns: 70px minmax(0, 1fr);
+  min-height: 126px;
+}
+
+.downspout-page .seamless-factor__icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 18px;
+}
+
+.downspout-page .seamless-factor__icon img {
+  width: 42px;
+  height: 42px;
+}
+
+.downspout-page .seamless-process__inner {
+  grid-template-columns: 250px minmax(0, 1fr);
+  min-height: 214px;
+}
+
+.downspout-page .seamless-process-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.downspout-page .seamless-process-step {
+  min-height: 162px;
+  padding: 12px 14px;
+}
+
+.downspout-page .seamless-process__num {
+  width: 44px;
+  height: 44px;
+  font-size: 18px;
+}
+
+.downspout-page .seamless-process-step img {
+  width: 52px;
+  height: 52px;
+}
+
+.downspout-page .seamless-process-step h3 {
+  min-height: 38px;
+  font-size: 14px;
+}
+
+.downspout-page .seamless-process-step p {
+  font-size: 12px;
+}
+
+.downspout-page .seamless-final-cta::before {
+  background-image: url("/assets/img/service-6-generated.webp");
+  background-size: 52% auto;
+  background-position: right center;
+}
+
+.downspout-page .seamless-final-cta h2 {
+  max-width: 560px;
+}
+
+@media (max-width: 1180px) {
+  .downspout-page .seamless-included__inner,
+  .downspout-page .seamless-process__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .downspout-page .seamless-included-list,
+  .downspout-page .seamless-process-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 860px) {
+  .downspout-page .seamless-hero {
+    padding: 70px 0 86px;
+  }
+
+  .downspout-page .seamless-hero::before {
+    background-position: 74% center;
+  }
+
+  .downspout-page .seamless-included-list,
+  .downspout-page .seamless-process-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .downspout-page .seamless-included-list li,
+  .downspout-page .seamless-included-list li:nth-child(2),
+  .downspout-page .seamless-included-list li:nth-child(4),
+  .downspout-page .seamless-process-step,
+  .downspout-page .seamless-process-step:nth-child(2) {
+    border-right: 0;
+    border-bottom: 1px solid rgba(102, 200, 52, 0.35);
+  }
+
+  .downspout-page .seamless-included-list li:last-child,
+  .downspout-page .seamless-process-step:last-child {
+    border-bottom: 0;
+  }
+}
+
+/* Differentiate the three guard price photos that share one source image. */
+.gutter-guards-page .seamless-price-grid .seamless-price-card:nth-child(1) .seamless-price-card__image {
+  object-position: center 22%;
+}
+
+.gutter-guards-page .seamless-price-grid .seamless-price-card:nth-child(3) .seamless-price-card__image {
+  object-position: center 78%;
+}
