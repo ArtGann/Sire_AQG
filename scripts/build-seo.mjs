@@ -6,7 +6,7 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const dataFile = path.join(root, "data", "service-areas.json");
 const sourceUrl = "https://apgutterguards.com/areas-we-serve";
 const siteUrl = "https://www.allqualitygutters.com";
-const updated = "2026-07-02";
+const updated = "2026-07-07";
 const targetStates = new Set(["PA", "NJ"]);
 const stateOrder = { PA: 0, NJ: 1 };
 const stateNames = { PA: "Pennsylvania", NJ: "New Jersey" };
@@ -601,19 +601,39 @@ async function importAreas() {
 /* ------------------------------------------------------------------ */
 
 function organizationSchema() {
+  const offerCatalog = {
+    "@type": "OfferCatalog",
+    name: "Residential gutter services",
+    itemListElement: services.map((service) => ({
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        "@id": `${siteUrl}/services/${service.slug}/#service`,
+        name: service.name,
+        url: `${siteUrl}/services/${service.slug}/`,
+      },
+    })),
+  };
+
   return {
     "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
     "@id": `${siteUrl}/#business`,
     name: "All Quality Gutters LLC",
+    legalName: "All Quality Gutters LLC",
     url: `${siteUrl}/`,
-    logo: `${siteUrl}/assets/img/logo-site.webp`,
+    logo: `${siteUrl}/assets/img/logo-site-20260705.webp`,
     image: `${siteUrl}/assets/img/hero-bg-source-match.webp`,
     telephone: "+1-844-588-0075",
     email: "aqgllc2@gmail.com",
     priceRange: "$$",
+    description: "Seamless gutter installation, gutter guards, gutter replacement, soffit and fascia, and downspout installation for Pennsylvania and New Jersey homeowners.",
     address: { "@type": "PostalAddress", streetAddress: "7025 Bristol Pike, Unit 1", addressLocality: "Levittown", addressRegion: "PA", postalCode: "19057", addressCountry: "US" },
     openingHoursSpecification: [{ "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], opens: "07:00", closes: "18:00" }],
-    areaServed: ["Pennsylvania", "New Jersey"],
+    openingHours: "Mo-Sa 07:00-18:00",
+    areaServed: [{ "@type": "State", name: "Pennsylvania" }, { "@type": "State", name: "New Jersey" }],
+    contactPoint: [{ "@type": "ContactPoint", telephone: "+1-844-588-0075", contactType: "customer service", areaServed: ["PA", "NJ"], availableLanguage: ["en"] }],
+    knowsAbout: ["Seamless gutter installation", "Gutter guards", "Gutter replacement", "Soffit and fascia", "Downspout installation", "Gutter installation cost", "Roof runoff drainage"],
+    hasOfferCatalog: offerCatalog,
   };
 }
 
