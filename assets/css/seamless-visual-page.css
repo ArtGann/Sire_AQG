@@ -780,6 +780,23 @@
   letter-spacing: -0.025em;
 }
 
+.seamless-install-page .seamless-compare-card {
+  grid-template-columns: 1fr;
+  align-items: start;
+  gap: 16px;
+  min-height: 0;
+}
+
+.seamless-install-page .seamless-compare-card img {
+  width: 100%;
+  height: 154px;
+  min-height: 154px;
+  border-radius: 6px;
+  background: #f8faf8;
+  object-fit: cover;
+  object-position: center;
+}
+
 .seamless-check-list {
   display: grid;
   gap: 9px;
@@ -2779,36 +2796,52 @@ body:has(.seamless-page) .header-phone:focus {
 
 /* Gutter Replacement premium service page. */
 .gutter-replacement-page .seamless-hero::before {
-  background-image: url("/assets/img/cta-gutter-house-20260705.webp");
-  background-position: 67% center;
+  background-image: url("/assets/img/gutter-replacement-hero-background.png");
+  background-position: 70% center;
+  background-size: cover;
 }
 
 .gutter-replacement-page .seamless-hero {
   min-height: 0;
-  padding: 76px 0 104px;
+  padding: 46px 0 78px;
 }
 
 .gutter-replacement-page .seamless-hero::after {
   background:
-    linear-gradient(90deg, rgba(5, 13, 16, 0.84) 0%, rgba(5, 13, 16, 0.76) 38%, rgba(5, 13, 16, 0.3) 70%, rgba(5, 13, 16, 0.18) 100%),
-    linear-gradient(180deg, rgba(5, 13, 16, 0.02) 0%, rgba(5, 13, 16, 0.6) 100%);
+    linear-gradient(90deg, rgba(5, 12, 14, 0.98) 0%, rgba(5, 12, 14, 0.88) 34%, rgba(5, 12, 14, 0.34) 62%, rgba(5, 12, 14, 0.06) 100%),
+    linear-gradient(180deg, rgba(5, 12, 14, 0.14) 0%, rgba(5, 12, 14, 0.56) 100%);
 }
 
 .gutter-replacement-page .seamless-hero__copy {
-  max-width: 780px;
+  max-width: 760px;
 }
 
 .gutter-replacement-page .seamless-hero h1 {
-  max-width: 780px;
-  font-size: clamp(46px, 3.9vw, 58px);
+  max-width: 760px;
+  font-size: clamp(44px, 4vw, 54px);
+  font-weight: 850 !important;
+  line-height: 1.08;
 }
 
 .gutter-replacement-page .seamless-hero h1 span {
   display: block;
+  color: #66c834;
+  font-size: clamp(38px, 3.4vw, 44px);
+  font-weight: 850 !important;
+  line-height: 1.08;
 }
 
 .gutter-replacement-page .seamless-hero__lead {
-  max-width: 570px;
+  max-width: 600px;
+  font-weight: 700 !important;
+}
+
+.gutter-replacement-page .seamless-kicker {
+  font-weight: 850 !important;
+}
+
+.gutter-replacement-page .seamless-hero__badges {
+  max-width: 600px;
 }
 
 .gutter-replacement-page .seamless-price-card {
@@ -3004,6 +3037,15 @@ body:has(.seamless-page) .header-phone:focus {
     padding: 70px 0 86px;
   }
 
+  .gutter-replacement-page .seamless-hero h1 {
+    max-width: 100%;
+    font-size: clamp(38px, 10vw, 46px);
+  }
+
+  .gutter-replacement-page .seamless-hero h1 span {
+    font-size: clamp(32px, 8.5vw, 40px);
+  }
+
   .gutter-replacement-page .seamless-included-list,
   .gutter-replacement-page .seamless-process-grid {
     grid-template-columns: 1fr;
@@ -3027,37 +3069,52 @@ body:has(.seamless-page) .header-phone:focus {
 /* Soffit & Fascia premium service page. */
 .soffit-page .seamless-hero::before {
   background-image: url("/assets/img/service-4-generated.webp");
-  background-position: center 44%;
+  background-position: 68% 44%;
   background-size: cover;
   transform: none;
 }
 
 .soffit-page .seamless-hero {
   min-height: 0;
-  padding: 76px 0 104px;
+  padding: 46px 0 78px;
 }
 
 .soffit-page .seamless-hero::after {
   background:
-    linear-gradient(90deg, rgba(5, 13, 16, 0.86) 0%, rgba(5, 13, 16, 0.78) 38%, rgba(5, 13, 16, 0.32) 70%, rgba(5, 13, 16, 0.2) 100%),
-    linear-gradient(180deg, rgba(5, 13, 16, 0.04) 0%, rgba(5, 13, 16, 0.6) 100%);
+    linear-gradient(90deg, rgba(5, 12, 14, 0.98) 0%, rgba(5, 12, 14, 0.88) 34%, rgba(5, 12, 14, 0.34) 62%, rgba(5, 12, 14, 0.06) 100%),
+    linear-gradient(180deg, rgba(5, 12, 14, 0.14) 0%, rgba(5, 12, 14, 0.56) 100%);
 }
 
 .soffit-page .seamless-hero__copy {
-  max-width: 800px;
+  max-width: 760px;
 }
 
 .soffit-page .seamless-hero h1 {
-  max-width: 800px;
-  font-size: clamp(46px, 3.9vw, 58px);
+  max-width: 760px;
+  font-size: clamp(44px, 4vw, 54px);
+  font-weight: 850 !important;
+  line-height: 1.08;
 }
 
 .soffit-page .seamless-hero h1 span {
   display: block;
+  color: #66c834;
+  font-size: clamp(38px, 3.4vw, 44px);
+  font-weight: 850 !important;
+  line-height: 1.08;
 }
 
 .soffit-page .seamless-hero__lead {
   max-width: 600px;
+  font-weight: 700 !important;
+}
+
+.soffit-page .seamless-kicker {
+  font-weight: 850 !important;
+}
+
+.soffit-page .seamless-hero__badges {
+  max-width: 560px;
 }
 
 .soffit-page .seamless-price-card {
@@ -3289,7 +3346,16 @@ body:has(.seamless-page) .header-phone:focus {
   }
 
   .soffit-page .seamless-hero::before {
-    background-position: center 48%;
+    background-position: 72% center;
+  }
+
+  .soffit-page .seamless-hero h1 {
+    max-width: 100%;
+    font-size: clamp(38px, 10vw, 46px);
+  }
+
+  .soffit-page .seamless-hero h1 span {
+    font-size: clamp(32px, 8.5vw, 40px);
   }
 
   .soffit-page .seamless-included-list,
@@ -3315,8 +3381,8 @@ body:has(.seamless-page) .header-phone:focus {
 
 /* Downspout Installation premium service page. */
 .downspout-page .seamless-hero::before {
-  background-image: url("/assets/img/service-6-generated.webp");
-  background-position: 70% center;
+  background-image: url("/assets/img/downspout-hero-background.png");
+  background-position: 58% center;
 }
 
 .downspout-page .seamless-hero {
@@ -3326,8 +3392,8 @@ body:has(.seamless-page) .header-phone:focus {
 
 .downspout-page .seamless-hero::after {
   background:
-    linear-gradient(90deg, rgba(5, 13, 16, 0.86) 0%, rgba(5, 13, 16, 0.78) 38%, rgba(5, 13, 16, 0.32) 70%, rgba(5, 13, 16, 0.2) 100%),
-    linear-gradient(180deg, rgba(5, 13, 16, 0.04) 0%, rgba(5, 13, 16, 0.6) 100%);
+    linear-gradient(90deg, rgba(5, 12, 14, 0.98) 0%, rgba(5, 12, 14, 0.88) 32%, rgba(5, 12, 14, 0.32) 58%, rgba(5, 12, 14, 0) 100%),
+    linear-gradient(180deg, rgba(5, 12, 14, 0.14) 0%, rgba(5, 12, 14, 0.54) 100%);
 }
 
 .downspout-page .seamless-hero__copy {
@@ -3532,7 +3598,7 @@ body:has(.seamless-page) .header-phone:focus {
   }
 
   .downspout-page .seamless-hero::before {
-    background-position: 74% center;
+    background-position: 68% center;
   }
 
   .downspout-page .seamless-included-list,
