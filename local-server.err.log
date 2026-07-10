@@ -1,0 +1,111 @@
+127.0.0.1 - - [10/Jul/2026 15:42:14] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [10/Jul/2026 15:43:04] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [10/Jul/2026 15:44:05] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [10/Jul/2026 15:44:06] "GET /assets/js/main.js?v=20260704-required-gate HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 15:44:06] "GET /assets/js/estimate-modal.js?v=20260704-required-gate HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 15:44:06] code 404, message File not found
+127.0.0.1 - - [10/Jul/2026 15:44:06] "GET /__review-notes HTTP/1.1" 404 -
+127.0.0.1 - - [10/Jul/2026 15:44:43] "GET /assets/img/service-area-map-pa-nj.webp?v=20260702 HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 15:45:23] "GET /services/seamless-gutter-installation/ HTTP/1.1" 200 -
+127.0.0.1 - - [10/Jul/2026 15:45:23] "GET /assets/js/main.js?v=20260703-modal-base HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 15:45:58] "GET /services/gutter-guards/ HTTP/1.1" 200 -
+127.0.0.1 - - [10/Jul/2026 15:48:21] "GET /services/gutter-replacement/ HTTP/1.1" 200 -
+127.0.0.1 - - [10/Jul/2026 15:48:43] "GET /services/soffit-fascia/ HTTP/1.1" 200 -
+127.0.0.1 - - [10/Jul/2026 15:50:17] "GET /services/downspout-installation/ HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 15:50:55] "GET /services/gutter-miters-downspout-connectors/ HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 15:50:55] "GET /assets/css/seamless-visual-page.css?v=20260710-accessory-page HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 15:50:55] "GET /assets/img/miters-connectors-hero.png HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 15:50:55] "GET /assets/img/gutter-miters-card.png HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 15:50:55] "GET /assets/img/downspout-connectors-card.png HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 15:50:55] code 404, message File not found
+127.0.0.1 - - [10/Jul/2026 15:50:55] "GET /__review-notes HTTP/1.1" 404 -
+127.0.0.1 - - [10/Jul/2026 15:51:31] code 404, message File not found
+127.0.0.1 - - [10/Jul/2026 15:51:31] "GET /__review-notes HTTP/1.1" 404 -
+127.0.0.1 - - [10/Jul/2026 15:51:34] "GET / HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 15:51:34] code 404, message File not found
+127.0.0.1 - - [10/Jul/2026 15:51:34] "GET /__review-notes HTTP/1.1" 404 -
+127.0.0.1 - - [10/Jul/2026 15:53:29] "GET / HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 15:53:29] code 404, message File not found
+127.0.0.1 - - [10/Jul/2026 15:53:29] "GET /__review-notes HTTP/1.1" 404 -
+127.0.0.1 - - [10/Jul/2026 15:55:33] "GET /assets/css/review-adjustments.css?v=20260705-unified-logo HTTP/1.1" 200 -
+127.0.0.1 - - [10/Jul/2026 15:57:03] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [10/Jul/2026 15:57:03] "GET /assets/css/review-adjustments.css?v=20260710-services-grid HTTP/1.1" 200 -
+127.0.0.1 - - [10/Jul/2026 15:57:03] code 404, message File not found
+127.0.0.1 - - [10/Jul/2026 15:57:03] "GET /__review-notes HTTP/1.1" 404 -
+127.0.0.1 - - [10/Jul/2026 16:05:46] code 404, message File not found
+127.0.0.1 - - [10/Jul/2026 16:05:46] "GET /__review-notes HTTP/1.1" 404 -
+127.0.0.1 - - [10/Jul/2026 16:18:32] "GET /services/gutter-miters-downspout-connectors/ HTTP/1.1" 200 -
+127.0.0.1 - - [10/Jul/2026 16:18:32] "GET /assets/css/seamless-visual-page.css?v=20260710-accessory-reference HTTP/1.1" 200 -
+127.0.0.1 - - [10/Jul/2026 16:18:32] "GET /assets/js/main.js?v=20260704-required-gate HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 16:18:32] "GET /assets/js/estimate-modal.js?v=20260704-required-gate HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 16:18:32] "GET /assets/img/miters-connectors-hero.png HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 16:18:32] "GET /assets/img/gutter-miters-card.png HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 16:18:32] "GET /assets/img/downspout-connectors-card.png HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 16:18:32] code 404, message File not found
+127.0.0.1 - - [10/Jul/2026 16:18:32] "GET /__review-notes HTTP/1.1" 404 -
+127.0.0.1 - - [10/Jul/2026 16:25:24] "GET /services/gutter-miters-downspout-connectors/ HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 16:25:24] "GET /assets/css/seamless-visual-page.css?v=20260710-accessory-reference HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 16:25:24] code 404, message File not found
+127.0.0.1 - - [10/Jul/2026 16:25:24] "GET /__review-notes HTTP/1.1" 404 -
+127.0.0.1 - - [10/Jul/2026 16:25:33] "GET /services/seamless-gutter-installation/ HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 16:25:33] "GET /assets/js/main.js?v=20260703-modal-base HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 16:25:43] code 404, message File not found
+127.0.0.1 - - [10/Jul/2026 16:25:43] "GET /__review-notes HTTP/1.1" 404 -
+127.0.0.1 - - [10/Jul/2026 16:26:06] "GET /services/downspout-installation/ HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 16:33:24] "GET /services/downspout-installation/ HTTP/1.1" 200 -
+127.0.0.1 - - [10/Jul/2026 16:33:24] "GET /assets/css/seamless-visual-page.css?v=20260710-downspout-reference HTTP/1.1" 200 -
+127.0.0.1 - - [10/Jul/2026 16:35:14] "GET /services/downspout-installation/ HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 16:35:14] "GET /assets/css/seamless-visual-page.css?v=20260710-downspout-reference HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 16:35:33] "GET /services/downspout-installation/ HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 16:43:33] "GET /services/downspout-installation/ HTTP/1.1" 200 -
+127.0.0.1 - - [10/Jul/2026 16:43:33] "GET /assets/css/seamless-visual-page.css?v=20260710-downspout-content-blocks HTTP/1.1" 200 -
+127.0.0.1 - - [10/Jul/2026 16:43:33] "GET /assets/img/downspout-hero-background.png HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 16:48:42] "GET /services/downspout-installation/ HTTP/1.1" 200 -
+127.0.0.1 - - [10/Jul/2026 16:48:42] "GET /assets/css/seamless-visual-page.css?v=20260710-downspout-process HTTP/1.1" 200 -
+127.0.0.1 - - [10/Jul/2026 16:48:42] "GET /assets/img/standard-downspout-installation.png HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 16:48:42] "GET /assets/img/decorative-specialty-downspouts.png HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 16:48:42] "GET /assets/img/why-homeowners-choose-downspout-installation.png HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 16:48:42] "GET /assets/img/how-pricing-works-downspout.png HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 16:53:05] "GET /services/downspout-installation/ HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 16:53:05] "GET /assets/css/seamless-visual-page.css?v=20260710-downspout-process HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 16:53:05] "GET /assets/js/estimate-modal.js?v=20260704-required-gate HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 17:01:12] "GET /services/downspout-installation/ HTTP/1.1" 200 -
+127.0.0.1 - - [10/Jul/2026 17:01:12] "GET /assets/js/main.js?v=20260703-modal-base HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 17:01:12] "GET /assets/css/seamless-visual-page.css?v=20260710-downspout-icons HTTP/1.1" 200 -
+127.0.0.1 - - [10/Jul/2026 17:14:00] "GET /services/soffit-fascia/ HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 17:14:00] "GET /assets/css/seamless-visual-page.css?v=20260708-soffit-hero-reference-3 HTTP/1.1" 200 -
+127.0.0.1 - - [10/Jul/2026 17:14:00] "GET /assets/img/soffit-panel-replacement.png HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 17:14:00] "GET /assets/img/fascia-board-replacement.png HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 17:14:00] "GET /assets/img/full-soffit-fascia-system.png HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 17:14:35] "GET /services/gutter-replacement/ HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 17:14:35] "GET /assets/css/seamless-visual-page.css?v=20260708-replacement-hero-reference HTTP/1.1" 200 -
+127.0.0.1 - - [10/Jul/2026 17:14:35] "GET /assets/img/gutter-replacement-hero-background.png HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 17:14:35] "GET /assets/img/aluminum-k-style-gutter-replacement.png HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 17:14:35] "GET /assets/img/copper-gutter-replacement.png HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 17:14:35] "GET /assets/img/why-homeowners-replace-gutters.png HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 17:14:41] "GET /services/gutter-guards/ HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 17:14:41] "GET /assets/css/seamless-visual-page.css?v=20260707-guard-icon-scale HTTP/1.1" 200 -
+127.0.0.1 - - [10/Jul/2026 17:14:41] "GET /assets/img/gutter-guards-pricing-works.png HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 17:14:50] "GET /services/seamless-gutter-installation/ HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 17:14:50] "GET /assets/css/seamless-visual-page.css?v=20260708-seamless-compare-photos HTTP/1.1" 200 -
+127.0.0.1 - - [10/Jul/2026 17:14:57] "GET /services/downspout-installation/ HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 17:14:57] "GET /assets/css/seamless-visual-page.css?v=20260710-downspout-icons HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 17:15:04] "GET /services/downspout-installation/ HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 17:16:22] "GET /assets/css/seamless-visual-page.css?v=20260708-soffit-hero-reference-3 HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 17:18:47] "GET /services/soffit-fascia/ HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 17:18:47] "GET /assets/css/seamless-visual-page.css?v=20260708-soffit-hero-reference-3 HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 17:19:05] "GET /assets/css/seamless-visual-page.css?v=20260708-seamless-compare-photos HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 17:19:09] "GET /services/gutter-miters-downspout-connectors/ HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 17:19:09] "GET /assets/css/seamless-visual-page.css?v=20260710-accessory-reference HTTP/1.1" 200 -
+127.0.0.1 - - [10/Jul/2026 17:19:09] "GET /assets/js/main.js?v=20260704-required-gate HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 17:19:09] "GET /assets/img/miters-connectors-hero.png HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 17:19:09] code 404, message File not found
+127.0.0.1 - - [10/Jul/2026 17:19:09] "GET /__review-notes HTTP/1.1" 404 -
+127.0.0.1 - - [10/Jul/2026 17:19:09] "GET /assets/img/gutter-miters-card.png HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 17:19:09] "GET /assets/img/downspout-connectors-card.png HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 17:19:10] "GET /services/downspout-installation/ HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 17:19:10] "GET /assets/css/seamless-visual-page.css?v=20260710-downspout-icons HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 17:19:13] "GET /services/downspout-installation/ HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 17:19:14] "GET /services/downspout-installation/ HTTP/1.1" 304 -
+127.0.0.1 - - [10/Jul/2026 17:24:34] "GET /services/downspout-installation/ HTTP/1.1" 200 -
+127.0.0.1 - - [10/Jul/2026 17:24:34] "GET /assets/css/seamless-visual-page.css?v=20260710-downspout-icons HTTP/1.1" 304 -
