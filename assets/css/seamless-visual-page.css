@@ -4468,6 +4468,157 @@ body:has(.seamless-page) .header-phone:focus {
   object-position: center 78%;
 }
 
+/* Seamless Gutter Installation calculator and comparison refinements. */
+.seamless-install-page .seamless-example-box::before {
+  display: none !important;
+}
+
+.seamless-install-page .seamless-example-box,
+.seamless-install-page .seamless-example-box:nth-child(4),
+.seamless-install-page .seamless-example-box:nth-child(5) {
+  padding: 16px 10px;
+}
+
+.seamless-install-page .seamless-compare-card {
+  gap: 14px;
+  padding: 15px 17px;
+}
+
+.seamless-install-page .seamless-compare-card img {
+  height: 131px;
+  min-height: 131px;
+}
+
+.seamless-install-page .seamless-compare-card h3 {
+  margin-bottom: 12px;
+  font-size: 17px;
+}
+
+.seamless-install-page .seamless-check-list {
+  gap: 7px;
+}
+
+.seamless-install-page .seamless-check-list li {
+  font-size: 12px;
+}
+
+/* Gutter Guards pricing example without decorative icons. */
+.gutter-guards-page .seamless-example-box::before {
+  display: none !important;
+}
+
+.gutter-guards-page .seamless-example-box,
+.gutter-guards-page .seamless-example-box:nth-child(4),
+.gutter-guards-page .seamless-example-box:nth-child(5) {
+  padding: 16px 10px;
+}
+
+/* Gutter Replacement browser review refinements. */
+.gutter-replacement-page .seamless-hero h1,
+.gutter-replacement-page .seamless-hero h1 span,
+.gutter-replacement-page .seamless-hero__lead {
+  font-weight: 400 !important;
+}
+
+.gutter-replacement-why .seamless-photo-card {
+  height: 800px;
+}
+
+.gutter-replacement-why .seamless-photo-card img {
+  height: 100%;
+  min-height: 0;
+  object-fit: cover;
+}
+
+.gutter-replacement-page .seamless-feature__icon img {
+  width: 50.4px;
+  height: 50.4px;
+}
+
+.gutter-replacement-page .seamless-example-box::before {
+  display: none !important;
+}
+
+.gutter-replacement-page .seamless-example-box,
+.gutter-replacement-page .seamless-example-box:nth-child(4),
+.gutter-replacement-page .seamless-example-box:nth-child(5) {
+  padding: 16px 10px;
+}
+
+.gutter-replacement-page .seamless-included-list img {
+  width: 58.8px;
+  height: 58.8px;
+}
+
+.gutter-replacement-page .seamless-factor {
+  grid-template-columns: 1fr;
+  grid-template-rows: 60px auto;
+  justify-items: center;
+  align-items: start;
+  gap: 10px;
+  min-height: 160px;
+  text-align: center;
+}
+
+.gutter-replacement-page .seamless-factor__icon {
+  width: 60px;
+  height: 60px;
+}
+
+.gutter-replacement-page .seamless-factor__icon img {
+  width: 50.4px;
+  height: 50.4px;
+}
+
+@media (max-width: 860px) {
+  .gutter-replacement-why .seamless-photo-card {
+    height: 420px;
+  }
+}
+
+/* Soffit & Fascia browser review refinements. */
+.soffit-page .seamless-hero h1,
+.soffit-page .seamless-hero h1 span,
+.soffit-page .seamless-hero__lead {
+  font-weight: 400 !important;
+}
+
+.soffit-page .seamless-feature__icon img {
+  width: 50.4px;
+  height: 50.4px;
+}
+
+.soffit-page .seamless-example-box::before {
+  display: none !important;
+}
+
+.soffit-page .seamless-example-box,
+.soffit-page .seamless-example-box:nth-child(4),
+.soffit-page .seamless-example-box:nth-child(5),
+.soffit-page .seamless-example-box:nth-child(6) {
+  padding: 16px 10px;
+}
+
+.soffit-page .seamless-factor {
+  grid-template-columns: 1fr;
+  grid-template-rows: 60px auto;
+  justify-items: center;
+  align-items: start;
+  gap: 10px;
+  min-height: 160px;
+  text-align: center;
+}
+
+.soffit-page .seamless-factor__icon {
+  width: 60px;
+  height: 60px;
+}
+
+.soffit-page .seamless-factor__icon img {
+  width: 50.4px;
+  height: 50.4px;
+}
+
 /* Compact downspout service sections matched to the installation reference. */
 .downspout-page .seamless-why-grid {
   width: min(1420px, calc(100% - 64px));
@@ -4862,4 +5013,734 @@ body:has(.seamless-page) .header-phone:focus {
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
+}
+
+/* Browser review: increase the requested service icons by 20%. */
+.downspout-page .seamless-final-cta__badges img {
+  width: 24px;
+  height: 24px;
+}
+
+.downspout-page .seamless-feature__icon img {
+  width: 38.4px;
+  height: 38.4px;
+}
+
+.downspout-page .seamless-included-list li,
+.downspout-page .seamless-included-list li:nth-child(2),
+.downspout-page .seamless-included-list li:nth-child(4) {
+  grid-template-columns: 46px minmax(0, 1fr);
+}
+
+.downspout-page .seamless-included-list img {
+  width: 45.6px;
+  height: 45.6px;
+}
+
+.downspout-page .seamless-factor {
+  grid-template-columns: 56px minmax(0, 1fr);
+}
+
+.downspout-page .seamless-factor__icon {
+  width: 50px;
+  height: 50px;
+}
+
+.downspout-page .seamless-factor__icon img {
+  width: 48px;
+  height: 48px;
+}
+
+.downspout-page .seamless-process-step {
+  grid-template-columns: 48px minmax(0, 1fr);
+}
+
+.downspout-page .seamless-process__num {
+  left: 44px;
+}
+
+.downspout-page .seamless-process-step img {
+  width: 48px;
+  height: 48px;
+}
+
+.downspout-page .seamless-example-box::before {
+  display: none;
+}
+
+/* Compact Gutter Miters & Downspout Connectors content blocks. */
+.accessory-page .seamless-why-grid {
+  width: min(1420px, calc(100% - 64px));
+  grid-template-columns: minmax(460px, 0.95fr) minmax(0, 1.05fr);
+  gap: 52px;
+}
+
+.accessory-page .seamless-why-grid .seamless-photo-card {
+  height: 420px;
+  border-radius: 12px;
+  box-shadow: 0 18px 42px rgba(7, 20, 23, 0.1);
+}
+
+.accessory-page .seamless-why-grid .seamless-photo-card img {
+  height: 100%;
+  min-height: 0;
+}
+
+.accessory-page .seamless-why-grid h2 {
+  margin-bottom: 24px;
+  font-size: clamp(34px, 3vw, 48px);
+}
+
+.accessory-page .seamless-feature-grid {
+  gap: 20px 36px;
+}
+
+.accessory-page .seamless-feature {
+  grid-template-columns: 60px minmax(0, 1fr);
+  gap: 12px;
+}
+
+.accessory-page .seamless-feature__icon {
+  width: 58px;
+  height: 58px;
+}
+
+.accessory-page .seamless-feature__icon img {
+  width: 32px;
+  height: 32px;
+}
+
+.accessory-page .seamless-feature h3 {
+  margin-bottom: 4px;
+  font-size: 15px;
+}
+
+.accessory-page .seamless-feature p {
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.accessory-page .accessory-calculator {
+  grid-template-columns: minmax(0, 1.8fr) minmax(300px, 0.72fr);
+  gap: 52px;
+  align-items: end;
+  width: min(1420px, calc(100% - 64px));
+}
+
+.accessory-page .accessory-calculator .seamless-formula-card {
+  padding: 0;
+}
+
+.accessory-page .accessory-calculator h2 {
+  margin-bottom: 14px;
+  font-size: clamp(28px, 2.6vw, 40px);
+}
+
+.accessory-page .accessory-calculator .seamless-example-grid {
+  gap: 10px;
+}
+
+.accessory-page .accessory-calculator .seamless-example-box {
+  min-height: 96px;
+  padding: 14px 10px;
+  border-radius: 8px;
+  box-shadow: none;
+}
+
+.accessory-page .accessory-calculator .seamless-example-box small {
+  min-height: 30px;
+  font-size: 11px;
+}
+
+.accessory-page .accessory-calculator .seamless-example-box strong {
+  margin-top: 8px;
+  font-size: 22px;
+}
+
+.accessory-page .accessory-calculator .seamless-calculator__photo {
+  height: 270px;
+  border-radius: 10px;
+}
+
+.accessory-page .accessory-calculator .seamless-calculator__photo img {
+  min-height: 0;
+  max-height: none;
+}
+
+.accessory-page .seamless-included {
+  width: min(1420px, calc(100% - 64px));
+  border-radius: 12px;
+  box-shadow: 0 16px 36px rgba(7, 20, 23, 0.16);
+}
+
+.accessory-page .seamless-included__inner {
+  display: block;
+  min-height: 0;
+  padding: 20px 24px 16px;
+}
+
+.accessory-page .seamless-included h2 {
+  margin-bottom: 16px;
+  font-size: clamp(24px, 2.2vw, 34px);
+}
+
+.accessory-page .seamless-included-list li,
+.accessory-page .seamless-included-list li:nth-child(2),
+.accessory-page .seamless-included-list li:nth-child(4) {
+  grid-template-columns: 38px minmax(0, 1fr);
+  gap: 8px;
+  min-height: 56px;
+  padding: 0 12px;
+  font-size: 12px;
+  line-height: 1.25;
+  text-align: left;
+}
+
+.accessory-page .seamless-included-list img {
+  width: 38px;
+  height: 38px;
+}
+
+.accessory-page .seamless-factors-layout {
+  grid-template-columns: 250px minmax(0, 1fr);
+  gap: 24px;
+  width: min(1420px, calc(100% - 64px));
+}
+
+.accessory-page .seamless-factors-layout .seamless-section-head {
+  align-self: center;
+}
+
+.accessory-page .seamless-factors-layout h2 {
+  max-width: 240px;
+  font-size: clamp(32px, 2.6vw, 44px);
+}
+
+.accessory-page .seamless-factors-layout .seamless-eyebrow {
+  display: none;
+}
+
+.accessory-page .seamless-factors-grid {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.accessory-page .seamless-factor {
+  grid-template-columns: 46px minmax(0, 1fr);
+  gap: 10px;
+  min-height: 112px;
+  padding: 14px;
+  border-radius: 8px;
+  box-shadow: none;
+}
+
+.accessory-page .seamless-factor__icon {
+  width: 42px;
+  height: 42px;
+}
+
+.accessory-page .seamless-factor__icon img {
+  width: 40px;
+  height: 40px;
+}
+
+.accessory-page .seamless-factor h3 {
+  margin-bottom: 4px;
+  font-size: 13px;
+}
+
+.accessory-page .seamless-factor p {
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+.accessory-page .seamless-process {
+  width: min(1420px, calc(100% - 64px));
+  border-radius: 12px;
+  box-shadow: 0 16px 36px rgba(7, 20, 23, 0.16);
+}
+
+.accessory-page .seamless-process__inner {
+  grid-template-columns: 250px minmax(0, 1fr);
+  gap: 18px;
+  min-height: 0;
+  padding: 20px 24px;
+}
+
+.accessory-page .seamless-process h2 {
+  font-size: clamp(24px, 2.2vw, 34px);
+}
+
+.accessory-page .seamless-process-grid {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  align-items: center;
+}
+
+.accessory-page .seamless-process-step {
+  grid-template-columns: 40px minmax(0, 1fr);
+  grid-template-areas:
+    "icon title"
+    "icon text";
+  justify-items: stretch;
+  gap: 4px 8px;
+  min-height: 66px;
+  padding: 0 10px;
+  text-align: left;
+}
+
+.accessory-page .seamless-process__num {
+  left: 34px;
+  top: -10px;
+  width: 20px;
+  height: 20px;
+  font-size: 10px;
+}
+
+.accessory-page .seamless-process-step img {
+  grid-area: icon;
+  width: 40px;
+  height: 40px;
+}
+
+.accessory-page .seamless-process-step h3 {
+  grid-area: title;
+  min-height: 0;
+  font-size: 13px;
+}
+
+.accessory-page .seamless-process-step p {
+  grid-area: text;
+  font-size: 11px;
+  line-height: 1.28;
+}
+
+@media (max-width: 1180px) {
+  .accessory-page .seamless-why-grid,
+  .accessory-page .accessory-calculator,
+  .accessory-page .seamless-included,
+  .accessory-page .seamless-factors-layout,
+  .accessory-page .seamless-process {
+    width: min(100% - 48px, 920px);
+  }
+
+  .accessory-page .seamless-why-grid,
+  .accessory-page .accessory-calculator,
+  .accessory-page .seamless-factors-layout,
+  .accessory-page .seamless-process__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .accessory-page .seamless-factors-grid,
+  .accessory-page .seamless-process-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 860px) {
+  .accessory-page .seamless-why-grid,
+  .accessory-page .accessory-calculator,
+  .accessory-page .seamless-included,
+  .accessory-page .seamless-factors-layout,
+  .accessory-page .seamless-process {
+    width: min(100% - 32px, 680px);
+  }
+
+  .accessory-page .seamless-why-grid .seamless-photo-card {
+    height: 260px;
+  }
+
+  .accessory-page .seamless-feature-grid,
+  .accessory-page .seamless-factors-grid,
+  .accessory-page .seamless-process-grid,
+  .accessory-page .accessory-calculator .seamless-example-grid,
+  .accessory-page .seamless-included-list {
+    grid-template-columns: 1fr;
+  }
+
+  .accessory-page .seamless-included-list li,
+  .accessory-page .seamless-included-list li:nth-child(2),
+  .accessory-page .seamless-included-list li:nth-child(4),
+  .accessory-page .seamless-process-step,
+  .accessory-page .seamless-process-step:nth-child(2) {
+    padding: 12px 0;
+    border-right: 0;
+    border-bottom: 1px solid rgba(102, 200, 52, 0.35);
+  }
+}
+
+/* Shared compact content template for the Services & Prices detail pages. */
+.seamless-install-page,
+.gutter-guards-page,
+.gutter-replacement-page,
+.soffit-page,
+.accessory-page {
+  --service-template-example-columns: 5;
+  --service-template-included-columns: 6;
+  --service-template-factor-columns: 6;
+  --service-template-process-columns: 6;
+}
+
+.seamless-install-page {
+  --service-template-included-columns: 5;
+  --service-template-process-columns: 4;
+}
+
+.gutter-guards-page {
+  --service-template-process-columns: 4;
+}
+
+.gutter-replacement-page {
+  --service-template-included-columns: 7;
+}
+
+.soffit-page {
+  --service-template-example-columns: 6;
+}
+
+:is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-why-grid {
+  width: min(1420px, calc(100% - 64px));
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr);
+  gap: 52px;
+  align-items: center;
+}
+
+:is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-why-grid .seamless-photo-card {
+  height: 420px;
+  border-radius: 12px;
+  box-shadow: 0 18px 40px rgba(7, 20, 23, 0.14);
+}
+
+:is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-why-grid .seamless-photo-card img {
+  height: 100%;
+}
+
+:is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-why-grid h2 {
+  max-width: 620px;
+  margin-bottom: 22px;
+  font-size: clamp(34px, 3vw, 48px);
+  line-height: 1.08;
+}
+
+:is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-feature-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px 34px;
+}
+
+:is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-feature {
+  grid-template-columns: 58px minmax(0, 1fr);
+  gap: 12px;
+  min-height: 58px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+:is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-feature__icon {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+}
+
+:is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-feature__icon img {
+  width: 38px;
+  height: 38px;
+}
+
+:is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-feature h3 {
+  margin: 0 0 4px;
+  font-size: 15px;
+  line-height: 1.2;
+}
+
+:is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-feature p {
+  font-size: 12px;
+  line-height: 1.38;
+}
+
+:is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-calculator {
+  width: min(1420px, calc(100% - 64px));
+  grid-template-columns: minmax(0, 1.72fr) minmax(270px, 0.68fr);
+  gap: 52px;
+  align-items: end;
+}
+
+:is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-formula-card {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+:is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-formula-card h2 {
+  margin-bottom: 8px;
+  font-size: clamp(30px, 2.6vw, 42px);
+}
+
+:is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-formula-card > p {
+  margin-bottom: 14px;
+  font-size: 15px;
+}
+
+:is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-example-grid {
+  grid-template-columns: repeat(var(--service-template-example-columns), minmax(0, 1fr));
+  gap: 10px;
+}
+
+:is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-example-box {
+  min-height: 94px;
+  padding: 14px 10px;
+  border-radius: 8px;
+}
+
+:is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-example-box::before {
+  display: none !important;
+}
+
+:is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-example-box small {
+  font-size: 11px;
+  line-height: 1.25;
+}
+
+:is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-example-box strong {
+  margin-top: 8px;
+  font-size: 19px;
+}
+
+:is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-calculator__note {
+  margin-top: 12px;
+  padding: 10px 12px;
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+:is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-calculator__photo {
+  height: 270px;
+  border-radius: 12px;
+  box-shadow: 0 18px 40px rgba(7, 20, 23, 0.13);
+}
+
+:is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-calculator__photo img {
+  height: 100%;
+}
+
+:is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-included,
+:is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-process,
+:is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-factors-layout {
+  width: min(1420px, calc(100% - 64px));
+}
+
+:is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-included__inner {
+  min-height: 0;
+  padding: 20px 24px 18px;
+  border-radius: 12px;
+}
+
+:is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-included h2 {
+  margin: 0 0 14px;
+  font-size: clamp(23px, 2.1vw, 31px);
+  line-height: 1.12;
+}
+
+:is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-included-list {
+  grid-template-columns: repeat(var(--service-template-included-columns), minmax(0, 1fr));
+  gap: 0;
+}
+
+:is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-included-list li {
+  grid-template-columns: 42px minmax(0, 1fr);
+  gap: 9px;
+  min-height: 52px;
+  padding: 0 14px;
+  font-size: 12px;
+  line-height: 1.28;
+  text-align: left;
+}
+
+:is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-included-list img {
+  width: 42px;
+  height: 42px;
+}
+
+:is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-included__photo {
+  display: none;
+}
+
+:is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-factors-layout {
+  grid-template-columns: 250px minmax(0, 1fr);
+  gap: 26px;
+  align-items: center;
+}
+
+:is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-factors-layout .seamless-section-head {
+  align-self: center;
+}
+
+:is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-factors-layout .seamless-eyebrow {
+  display: none;
+}
+
+:is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-factors-layout h2 {
+  max-width: 250px;
+  font-size: clamp(30px, 2.65vw, 42px);
+  line-height: 1.06;
+}
+
+:is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-factors-grid {
+  grid-template-columns: repeat(var(--service-template-factor-columns), minmax(0, 1fr));
+  gap: 10px;
+}
+
+:is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-factor {
+  grid-template-columns: 46px minmax(0, 1fr);
+  gap: 10px;
+  min-height: 112px;
+  padding: 14px;
+  border-radius: 8px;
+  box-shadow: none;
+}
+
+:is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-factor__icon {
+  width: 46px;
+  height: 46px;
+}
+
+:is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-factor__icon img {
+  width: 42px;
+  height: 42px;
+}
+
+:is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-factor h3 {
+  margin-bottom: 4px;
+  font-size: 13px;
+  line-height: 1.2;
+}
+
+:is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-factor p {
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+:is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-process {
+  border-radius: 12px;
+  box-shadow: 0 16px 36px rgba(7, 20, 23, 0.16);
+}
+
+:is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-process__inner {
+  grid-template-columns: 250px minmax(0, 1fr);
+  gap: 18px;
+  min-height: 0;
+  padding: 20px 24px;
+}
+
+:is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-process h2 {
+  font-size: clamp(24px, 2.2vw, 34px);
+  line-height: 1.1;
+}
+
+:is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-process-grid {
+  grid-template-columns: repeat(var(--service-template-process-columns), minmax(0, 1fr));
+  align-items: center;
+}
+
+:is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-process-step {
+  grid-template-columns: 40px minmax(0, 1fr);
+  grid-template-areas: "icon title" "icon text";
+  justify-items: stretch;
+  gap: 4px 8px;
+  min-height: 66px;
+  padding: 0 10px;
+  text-align: left;
+}
+
+:is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-process__num {
+  left: 34px;
+  top: -10px;
+  width: 20px;
+  height: 20px;
+  font-size: 10px;
+}
+
+:is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-process-step img {
+  grid-area: icon;
+  width: 40px;
+  height: 40px;
+}
+
+:is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-process-step h3 {
+  grid-area: title;
+  min-height: 0;
+  font-size: 13px;
+  line-height: 1.15;
+}
+
+:is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-process-step p {
+  grid-area: text;
+  font-size: 11px;
+  line-height: 1.28;
+}
+
+@media (max-width: 1180px) {
+  :is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-why-grid,
+  :is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-calculator,
+  :is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-included,
+  :is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-factors-layout,
+  :is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-process {
+    width: min(920px, calc(100% - 48px));
+  }
+
+  :is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-why-grid,
+  :is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-calculator,
+  :is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-factors-layout,
+  :is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-process__inner {
+    grid-template-columns: 1fr;
+  }
+
+  :is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-feature-grid,
+  :is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-factors-grid,
+  :is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-process-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  :is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-included-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    row-gap: 12px;
+  }
+
+  :is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-calculator__photo {
+    max-width: 430px;
+    width: 100%;
+    justify-self: center;
+  }
+}
+
+@media (max-width: 860px) {
+  :is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-why-grid,
+  :is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-calculator,
+  :is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-included,
+  :is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-factors-layout,
+  :is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-process {
+    width: min(680px, calc(100% - 32px));
+  }
+
+  :is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-why-grid .seamless-photo-card {
+    height: 280px;
+  }
+
+  :is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-feature-grid,
+  :is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-factors-grid,
+  :is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-process-grid,
+  :is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-example-grid,
+  :is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-included-list {
+    grid-template-columns: 1fr;
+  }
+
+  :is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-included-list li,
+  :is(.seamless-install-page, .gutter-guards-page, .gutter-replacement-page, .soffit-page, .accessory-page) .seamless-process-step {
+    padding: 12px 0;
+    border-right: 0;
+    border-bottom: 1px solid rgba(102, 200, 52, 0.35);
+  }
 }
