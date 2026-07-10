@@ -3414,7 +3414,7 @@ body:has(.seamless-page) .header-phone:focus {
 }
 
 .downspout-page .seamless-price-card {
-  min-height: 286px;
+  min-height: 304px;
   padding-top: 18px;
 }
 
@@ -3432,7 +3432,9 @@ body:has(.seamless-page) .header-phone:focus {
 }
 
 .downspout-page .seamless-price-card h3 {
-  min-height: 56px;
+  min-height: 48px;
+  font-size: clamp(20px, 1.55vw, 25px);
+  line-height: 1.12;
 }
 
 .downspout-page .seamless-photo-card img {
@@ -3721,7 +3723,7 @@ body:has(.seamless-page) .header-phone:focus {
   min-height: 0;
   margin: 0 0 16px;
   color: #03070a;
-  font-size: clamp(22px, 1.9vw, 29px);
+  font-size: clamp(20px, 1.55vw, 25px);
   font-weight: 950;
   line-height: 1.08;
   text-align: center;
@@ -3775,7 +3777,7 @@ body:has(.seamless-page) .header-phone:focus {
 .accessory-page .seamless-price-card__rates p {
   margin: 0;
   color: #222;
-  font-size: clamp(17px, 1.35vw, 21px);
+  font-size: clamp(16px, 1.18vw, 19px);
   font-weight: 750;
   line-height: 1.34;
 }
@@ -4464,4 +4466,400 @@ body:has(.seamless-page) .header-phone:focus {
 
 .gutter-guards-page .seamless-price-grid .seamless-price-card:nth-child(3) .seamless-price-card__image {
   object-position: center 78%;
+}
+
+/* Compact downspout service sections matched to the installation reference. */
+.downspout-page .seamless-why-grid {
+  width: min(1420px, calc(100% - 64px));
+  grid-template-columns: minmax(460px, 0.95fr) minmax(0, 1.05fr);
+  gap: 52px;
+}
+
+.downspout-page .seamless-photo-card {
+  height: 420px;
+  border-radius: 12px;
+  box-shadow: 0 18px 42px rgba(7, 20, 23, 0.1);
+}
+
+.downspout-page .seamless-photo-card img {
+  height: 100%;
+  min-height: 0;
+}
+
+.downspout-page .seamless-section-head-title {
+  margin-bottom: 24px;
+  font-size: clamp(34px, 3vw, 48px);
+  line-height: 1.06;
+}
+
+.downspout-page .seamless-feature-grid {
+  gap: 20px 36px;
+  margin-top: 0;
+}
+
+.downspout-page .seamless-feature {
+  grid-template-columns: 60px minmax(0, 1fr);
+  gap: 12px;
+  padding: 0;
+  border: 0;
+}
+
+.downspout-page .seamless-feature__icon {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: #f5f7f3;
+  box-shadow: none;
+}
+
+.downspout-page .seamless-feature__icon img {
+  width: 32px;
+  height: 32px;
+}
+
+.downspout-page .seamless-feature h3 {
+  margin-bottom: 4px;
+  font-size: 15px;
+  line-height: 1.16;
+}
+
+.downspout-page .seamless-feature p {
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.downspout-page .seamless-calculator {
+  grid-template-columns: minmax(0, 1.8fr) minmax(300px, 0.72fr);
+  gap: 52px;
+  align-items: end;
+  width: min(1420px, calc(100% - 64px));
+}
+
+.downspout-page .seamless-formula-card {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.downspout-page .seamless-formula-card h2 {
+  margin-bottom: 8px;
+  font-size: clamp(34px, 3.1vw, 46px);
+}
+
+.downspout-page .seamless-formula {
+  margin: 0 0 16px;
+  color: #172021;
+  font-size: 16px;
+  font-weight: 750;
+}
+
+.downspout-page .seamless-example-grid {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.downspout-page .seamless-example-box {
+  min-height: 96px;
+  padding: 16px 10px;
+  border-radius: 8px;
+  box-shadow: none;
+}
+
+.downspout-page .seamless-example-box small {
+  min-height: 30px;
+  font-size: 11px;
+}
+
+.downspout-page .seamless-example-box strong {
+  margin-top: 8px;
+  font-size: 22px;
+}
+
+.downspout-page .seamless-note {
+  margin-top: 12px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+}
+
+.downspout-page .seamless-calculator__photo {
+  height: 270px;
+  border-radius: 10px;
+  box-shadow: 0 16px 36px rgba(7, 20, 23, 0.1);
+}
+
+.downspout-page .seamless-calculator__photo img {
+  min-height: 0;
+}
+
+.downspout-page .seamless-included {
+  width: min(1420px, calc(100% - 64px));
+  border-radius: 12px;
+  box-shadow: 0 16px 36px rgba(7, 20, 23, 0.16);
+}
+
+.downspout-page .seamless-included__inner {
+  display: block;
+  min-height: 0;
+  padding: 20px 24px 16px;
+}
+
+.downspout-page .seamless-included h2 {
+  max-width: none;
+  margin-bottom: 16px;
+  font-size: clamp(24px, 2.2vw, 34px);
+}
+
+.downspout-page .seamless-included-list li,
+.downspout-page .seamless-included-list li:nth-child(2),
+.downspout-page .seamless-included-list li:nth-child(4) {
+  grid-template-columns: 38px minmax(0, 1fr);
+  gap: 8px;
+  min-height: 56px;
+  padding: 0 12px;
+  font-size: 12px;
+  line-height: 1.25;
+  text-align: left;
+}
+
+.downspout-page .seamless-included-list img {
+  width: 38px;
+  height: 38px;
+}
+
+.downspout-page .seamless-factors-layout {
+  grid-template-columns: 250px minmax(0, 1fr);
+  gap: 24px;
+  width: min(1420px, calc(100% - 64px));
+}
+
+.downspout-page .seamless-factors-layout .seamless-section-head {
+  align-self: center;
+}
+
+.downspout-page .seamless-factors-layout h2 {
+  max-width: 240px;
+  font-size: clamp(32px, 2.6vw, 44px);
+  line-height: 1.05;
+}
+
+.downspout-page .seamless-factors-layout .seamless-eyebrow,
+.downspout-page .seamless-factors-layout .seamless-section-head > p:last-child {
+  display: none;
+}
+
+.downspout-page .seamless-factors-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.downspout-page .seamless-factor {
+  grid-template-columns: 46px minmax(0, 1fr);
+  gap: 10px;
+  min-height: 112px;
+  padding: 14px;
+  border-radius: 8px;
+  box-shadow: none;
+}
+
+.downspout-page .seamless-factor__icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 0;
+}
+
+.downspout-page .seamless-factor__icon img {
+  width: 40px;
+  height: 40px;
+}
+
+.downspout-page .seamless-factor h3 {
+  margin-bottom: 4px;
+  font-size: 13px;
+  line-height: 1.15;
+}
+
+.downspout-page .seamless-factor p {
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+@media (max-width: 1180px) {
+  .downspout-page .seamless-why-grid,
+  .downspout-page .seamless-calculator,
+  .downspout-page .seamless-included,
+  .downspout-page .seamless-factors-layout {
+    width: min(100% - 48px, 920px);
+  }
+
+  .downspout-page .seamless-why-grid,
+  .downspout-page .seamless-calculator,
+  .downspout-page .seamless-factors-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .downspout-page .seamless-factors-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 860px) {
+  .downspout-page .seamless-why-grid,
+  .downspout-page .seamless-calculator,
+  .downspout-page .seamless-included,
+  .downspout-page .seamless-factors-layout {
+    width: min(100% - 32px, 680px);
+  }
+
+  .downspout-page .seamless-photo-card {
+    height: 260px;
+  }
+
+  .downspout-page .seamless-feature-grid,
+  .downspout-page .seamless-factors-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .downspout-page .seamless-example-grid,
+  .downspout-page .seamless-included-list {
+    grid-template-columns: 1fr;
+  }
+
+  .downspout-page .seamless-included-list li,
+  .downspout-page .seamless-included-list li:nth-child(2),
+  .downspout-page .seamless-included-list li:nth-child(4) {
+    padding: 12px 0;
+    border-right: 0;
+    border-bottom: 1px solid rgba(102, 200, 52, 0.35);
+  }
+}
+
+.downspout-page .seamless-process {
+  width: min(1420px, calc(100% - 64px));
+  border-radius: 12px;
+  box-shadow: 0 16px 36px rgba(7, 20, 23, 0.16);
+}
+
+.downspout-page .seamless-process__inner {
+  grid-template-columns: 250px minmax(0, 1fr);
+  gap: 18px;
+  min-height: 0;
+  padding: 20px 24px;
+}
+
+.downspout-page .seamless-process h2 {
+  font-size: clamp(24px, 2.2vw, 34px);
+  line-height: 1.05;
+}
+
+.downspout-page .seamless-process-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  align-items: center;
+}
+
+.downspout-page .seamless-process-step {
+  grid-template-columns: 40px minmax(0, 1fr);
+  grid-template-areas:
+    "icon title"
+    "icon text";
+  justify-items: stretch;
+  gap: 4px 8px;
+  min-height: 66px;
+  padding: 0 12px;
+  text-align: left;
+}
+
+.downspout-page .seamless-process__num {
+  left: 36px;
+  top: -10px;
+  width: 20px;
+  height: 20px;
+  font-size: 10px;
+}
+
+.downspout-page .seamless-process-step img {
+  grid-area: icon;
+  width: 40px;
+  height: 40px;
+}
+
+.downspout-page .seamless-process-step h3 {
+  grid-area: title;
+  min-height: 0;
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.12;
+}
+
+.downspout-page .seamless-process-step p {
+  grid-area: text;
+  font-size: 11px;
+  line-height: 1.28;
+}
+
+@media (max-width: 1180px) {
+  .downspout-page .seamless-process {
+    width: min(100% - 48px, 920px);
+  }
+
+  .downspout-page .seamless-process__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .downspout-page .seamless-process-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px 0;
+  }
+}
+
+@media (max-width: 860px) {
+  .downspout-page .seamless-process {
+    width: min(100% - 32px, 680px);
+  }
+
+  .downspout-page .seamless-process-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .downspout-page .seamless-process-step,
+  .downspout-page .seamless-process-step:nth-child(2) {
+    padding: 12px 0;
+  }
+}
+
+/* Normalize the downspout service icons across all compact content blocks. */
+.downspout-page .seamless-feature__icon,
+.downspout-page .seamless-factor__icon,
+.downspout-page .seamless-included-list img,
+.downspout-page .seamless-process-step img {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.downspout-page .seamless-feature__icon,
+.downspout-page .seamless-factor__icon {
+  border: 0;
+}
+
+.downspout-page .seamless-feature__icon img,
+.downspout-page .seamless-factor__icon img,
+.downspout-page .seamless-included-list img,
+.downspout-page .seamless-process-step img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center;
+  filter: none;
+}
+
+.downspout-page .seamless-example-box::before {
+  display: block;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
