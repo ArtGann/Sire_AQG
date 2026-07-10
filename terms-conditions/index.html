@@ -45,6 +45,7 @@
               <a href="/services/gutter-replacement/">Gutter Replacement</a>
               <a href="/services/soffit-fascia/">Soffit &amp; Fascia</a>
               <a href="/services/downspout-installation/">Downspout Installation</a>
+              <a href="/services/gutter-miters-downspout-connectors/">Gutter Miters &amp; Connectors</a>
             </div>
           </div>
 
@@ -390,6 +391,7 @@
           <a href="/services/gutter-replacement/">Gutter Replacement</a>
           <a href="/services/soffit-fascia/">Soffit &amp; Fascia</a>
           <a href="/services/downspout-installation/">Downspout Installation</a>
+              <a href="/services/gutter-miters-downspout-connectors/">Gutter Miters &amp; Connectors</a>
         </nav>
 
         <div class="footer-col footer-contact">
@@ -463,6 +465,7 @@
                   <option>Gutter Replacement</option>
                   <option>Soffit &amp; Fascia</option>
                   <option>Downspout Installation</option>
+                  <option>Gutter Miters &amp; Connectors</option>
                 </select>
               </div>
               <div class="field" data-icon="stories">
@@ -495,21 +498,36 @@
                 <select id="estimate-gutter-guards" name="gutter_guards" data-custom-select>
                   <option value="">Gutter Guards</option>
                   <option value="None">No gutter guards</option>
-                  <option value="Standard Gutter Guards">Standard — $15/LF</option>
-                  <option value="Premium Gutter Guards">Premium — $20/LF</option>
+                  <option value="Basic Gutter Guards">Basic — $15/LF</option>
+                  <option value="Micro-Mesh Gutter Guards">Micro-Mesh Lifetime Warranty — $20/LF</option>
                 </select>
               </div>
               <div class="field" data-icon="stories">
                 <label for="estimate-downspouts">Downspout Locations</label>
                 <input id="estimate-downspouts" name="downspout_count" type="number" inputmode="numeric" min="0" max="20" step="1" placeholder="Downspout Locations" />
               </div>
-              <div class="field estimate-modal__field--wide" data-icon="service">
-                <label for="estimate-fascia-soffit">Fascia &amp; Soffit</label>
-                <select id="estimate-fascia-soffit" name="fascia_soffit" data-custom-select>
-                  <option value="">Fascia &amp; Soffit</option>
-                  <option value="No">No</option>
-                  <option value="Yes">Yes — estimate at $45/LF</option>
-                  <option value="Need inspection">Need inspection</option>
+              <div class="field" data-icon="stories">
+                <label for="estimate-gutter-miters">Gutter Miters</label>
+                <input id="estimate-gutter-miters" name="gutter_miter_count" type="number" inputmode="numeric" min="0" max="100" step="1" placeholder="Gutter Miters" />
+              </div>
+              <div class="field" data-icon="stories">
+                <label for="estimate-downspout-connectors">Downspout Connectors</label>
+                <input id="estimate-downspout-connectors" name="downspout_connector_count" type="number" inputmode="numeric" min="0" max="100" step="1" placeholder="Downspout Connectors" />
+              </div>
+              <div class="field" data-icon="service">
+                <label for="estimate-fascia-option">Fascia</label>
+                <select id="estimate-fascia-option" name="fascia_option" data-custom-select>
+                  <option value="">Fascia</option>
+                  <option value="No">No fascia</option>
+                  <option value="Yes">Add Fascia — $25/LF</option>
+                </select>
+              </div>
+              <div class="field" data-icon="service">
+                <label for="estimate-soffit-panel-option">Soffit Panel</label>
+                <select id="estimate-soffit-panel-option" name="soffit_panel_option" data-custom-select>
+                  <option value="">Soffit Panel</option>
+                  <option value="No">No soffit panel</option>
+                  <option value="Yes">Add Soffit Panel — $20/LF</option>
                 </select>
               </div>
               <div class="estimate-price-preview estimate-modal__field--wide" data-estimate-preview>

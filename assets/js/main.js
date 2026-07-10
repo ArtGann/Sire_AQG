@@ -229,8 +229,28 @@ const GUTTER_PRICE_PER_LF = {
 };
 
 const GUARD_PRICE_PER_LF = {
-  "Standard Gutter Guards": 15,
-  "Premium Gutter Guards": 20
+  "Basic Gutter Guards": 15,
+  "Micro-Mesh Gutter Guards": 20
+};
+
+const FASCIA_PRICE_PER_LF = 25;
+const SOFFIT_PANEL_PRICE_PER_LF = 20;
+const DOWNSPOUT_STANDARD_HEIGHT_LF = 10;
+const ELBOWS_PER_DOWNSPOUT = 3;
+
+const ACCESSORY_PRICE_BY_GUTTER_TYPE = {
+  '5" Aluminum K-Style': {
+    downspoutPerLf: 15,
+    elbowEach: 15,
+    gutterMiterEach: 15,
+    downspoutConnectorEach: 15
+  },
+  '6" Aluminum K-Style': {
+    downspoutPerLf: 18,
+    elbowEach: 18,
+    gutterMiterEach: 18,
+    downspoutConnectorEach: 18
+  }
 };
 
 const formatEstimateMoney = (value) =>
@@ -238,6 +258,12 @@ const formatEstimateMoney = (value) =>
 
 const roundToNearestTen = (value) => Math.max(0, Math.round(value / 10) * 10);
 const roundToNearestHundred = (value) => Math.max(0, Math.round(value / 100) * 100);
+const getPositiveNumber = (value) => Math.max(0, Number(value || 0));
+
+const getFasciaSoffitSummary = (fasciaOption, soffitPanelOption) => {
+  if (!fasciaOption && !soffitPanelOption) return "";
+  return `Fascia: ${fasciaOption || "No"}; Soffit Panel: ${soffitPanelOption || "No"}`;
+};
 
 const getEstimateCalculation = (form) => {
   const data = new FormData(form);
@@ -246,13 +272,18 @@ const getEstimateCalculation = (form) => {
   const gutterType = String(data.get("gutter_type") || "").trim();
   const gutterGuards = String(data.get("gutter_guards") || "").trim();
   const wholeHouse = String(data.get("whole_house_gutters") || "").trim();
-  const fasciaSoffit = String(data.get("fascia_soffit") || "").trim();
-  const downspoutCount = Math.max(0, Number(data.get("downspout_count") || 0));
+  const legacyFasciaSoffit = String(data.get("fascia_soffit") || "").trim();
+  const fasciaOption = String(data.get("fascia_option") || "").trim() || (legacyFasciaSoffit === "Yes" ? "Yes" : "");
+  const soffitPanelOption = String(data.get("soffit_panel_option") || "").trim() || (legacyFasciaSoffit === "Yes" ? "Yes" : "");
+  const downspoutCount = getPositiveNumber(data.get("downspout_count"));
+  const gutterMiterCount = getPositiveNumber(data.get("gutter_miter_count"));
+  const downspoutConnectorCount = getPositiveNumber(data.get("downspout_connector_count"));
 
   const footprint = squareFeet > 0 ? squareFeet / stories : 0;
   const estimatedLinearFeet = footprint > 0 ? roundToNearestTen(4 * Math.sqrt(footprint)) : 0;
   const lineItems = [];
   let total = 0;
+  const accessoryRates = ACCESSORY_PRICE_BY_GUTTER_TYPE[gutterType] || ACCESSORY_PRICE_BY_GUTTER_TYPE['5" Aluminum K-Style'];
 
   const gutterRate = GUTTER_PRICE_PER_LF[gutterType] || 0;
   if (estimatedLinearFeet && gutterRate) {
@@ -269,17 +300,35 @@ const getEstimateCalculation = (form) => {
   }
 
   if (downspoutCount > 0) {
-    const downspoutAmount = downspoutCount * 10 * 15;
-    const elbowAmount = downspoutCount * 3 * 15;
+    const downspoutAmount = downspoutCount * DOWNSPOUT_STANDARD_HEIGHT_LF * accessoryRates.downspoutPerLf;
+    const elbowAmount = downspoutCount * ELBOWS_PER_DOWNSPOUT * accessoryRates.elbowEach;
     total += downspoutAmount + elbowAmount;
-    lineItems.push(`Downspouts: ${downspoutCount} × 10 LF × $15/LF = ${formatEstimateMoney(downspoutAmount)}`);
-    lineItems.push(`Elbows: ${downspoutCount} × 3 × $15 = ${formatEstimateMoney(elbowAmount)}`);
+    lineItems.push(`Downspouts: ${downspoutCount} × ${DOWNSPOUT_STANDARD_HEIGHT_LF} LF × $${accessoryRates.downspoutPerLf}/LF = ${formatEstimateMoney(downspoutAmount)}`);
+    lineItems.push(`Elbows: ${downspoutCount} × ${ELBOWS_PER_DOWNSPOUT} × $${accessoryRates.elbowEach} = ${formatEstimateMoney(elbowAmount)}`);
   }
 
-  if (estimatedLinearFeet && fasciaSoffit === "Yes") {
-    const amount = estimatedLinearFeet * 45;
+  if (gutterMiterCount > 0) {
+    const amount = gutterMiterCount * accessoryRates.gutterMiterEach;
     total += amount;
-    lineItems.push(`Fascia & soffit: ${estimatedLinearFeet} LF × $45/LF = ${formatEstimateMoney(amount)}`);
+    lineItems.push(`Gutter Miters: ${gutterMiterCount} × $${accessoryRates.gutterMiterEach} = ${formatEstimateMoney(amount)}`);
+  }
+
+  if (downspoutConnectorCount > 0) {
+    const amount = downspoutConnectorCount * accessoryRates.downspoutConnectorEach;
+    total += amount;
+    lineItems.push(`Downspout Connectors: ${downspoutConnectorCount} × $${accessoryRates.downspoutConnectorEach} = ${formatEstimateMoney(amount)}`);
+  }
+
+  if (estimatedLinearFeet && fasciaOption === "Yes") {
+    const amount = estimatedLinearFeet * FASCIA_PRICE_PER_LF;
+    total += amount;
+    lineItems.push(`Fascia: ${estimatedLinearFeet} LF × $${FASCIA_PRICE_PER_LF}/LF = ${formatEstimateMoney(amount)}`);
+  }
+
+  if (estimatedLinearFeet && soffitPanelOption === "Yes") {
+    const amount = estimatedLinearFeet * SOFFIT_PANEL_PRICE_PER_LF;
+    total += amount;
+    lineItems.push(`Soffit Panel: ${estimatedLinearFeet} LF × $${SOFFIT_PANEL_PRICE_PER_LF}/LF = ${formatEstimateMoney(amount)}`);
   }
 
   const low = total ? roundToNearestHundred(total * 0.95) : 0;
@@ -293,7 +342,11 @@ const getEstimateCalculation = (form) => {
     gutterType,
     gutterGuards,
     downspoutCount: downspoutCount || "",
-    fasciaSoffit,
+    gutterMiterCount: gutterMiterCount || "",
+    downspoutConnectorCount: downspoutConnectorCount || "",
+    fasciaOption,
+    soffitPanelOption,
+    fasciaSoffit: getFasciaSoffitSummary(fasciaOption, soffitPanelOption) || legacyFasciaSoffit,
     estimatedLinearFeet: estimatedLinearFeet || "",
     estimatedPriceLow: low || "",
     estimatedPriceHigh: high || "",
@@ -320,7 +373,7 @@ const initEstimatePricingPreview = (form) => {
     }
 
     if (!estimate.estimatedPriceRange) {
-      preview.innerHTML = `<strong>Preliminary estimate</strong><p>Estimated gutter length: ${estimate.estimatedLinearFeet} LF.</p><span>Select gutter type, gutter guards, downspouts or fascia/soffit options to calculate a rough price range.</span>`;
+      preview.innerHTML = `<strong>Preliminary estimate</strong><p>Estimated gutter length: ${estimate.estimatedLinearFeet} LF.</p><span>Select gutter type, gutter guards, downspouts, accessories, fascia or soffit panel options to calculate a rough price range.</span>`;
       return;
     }
 
@@ -354,7 +407,11 @@ ${estimate.summary}` : "";
     gutter_type: String(data.get("gutter_type") || "").trim(),
     gutter_guards: String(data.get("gutter_guards") || "").trim(),
     downspout_count: String(data.get("downspout_count") || "").trim(),
-    fascia_soffit: String(data.get("fascia_soffit") || "").trim(),
+    gutter_miter_count: String(data.get("gutter_miter_count") || "").trim(),
+    downspout_connector_count: String(data.get("downspout_connector_count") || "").trim(),
+    fascia_option: String(data.get("fascia_option") || "").trim(),
+    soffit_panel_option: String(data.get("soffit_panel_option") || "").trim(),
+    fascia_soffit: estimate.fasciaSoffit || String(data.get("fascia_soffit") || "").trim(),
     estimated_linear_feet: String(estimate.estimatedLinearFeet || ""),
     estimated_price_low: String(estimate.estimatedPriceLow || ""),
     estimated_price_high: String(estimate.estimatedPriceHigh || ""),
