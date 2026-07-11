@@ -1,0 +1,11 @@
+{
+  "name": "all-quality-gutters",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "seo": "node scripts/validate-seo.mjs",
+    "sync:modal": "node scripts/sync-estimate-modal.mjs",
+    "sync:assets": "node scripts/sync-asset-versions.mjs"
+  }
+}

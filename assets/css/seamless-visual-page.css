@@ -2475,8 +2475,8 @@ body:has(.seamless-page) .header-phone:focus {
 
 /* Gutter Guards premium service page. */
 .gutter-guards-page .seamless-hero::before {
-  background-image: url("/assets/img/service-2-generated.webp");
-  background-position: 67% center;
+  background-image: url("/assets/img/gutter-guards-hero.png");
+  background-position: right center;
 }
 
 .gutter-guards-page .seamless-hero {
@@ -5742,5 +5742,29 @@ body:has(.seamless-page) .header-phone:focus {
     padding: 12px 0;
     border-right: 0;
     border-bottom: 1px solid rgba(102, 200, 52, 0.35);
+  }
+}
+
+/* Keep the seamless gutter comparison heading readable alongside its cards. */
+.seamless-install-page .seamless-compare-grid {
+  grid-template-columns: minmax(300px, 0.62fr) repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.seamless-install-page .seamless-compare-title h2 {
+  font-size: clamp(30px, 2.55vw, 40px);
+  line-height: 1.12;
+  letter-spacing: 0;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+.seamless-install-page .seamless-compare-title h2 span {
+  display: block;
+}
+
+@media (max-width: 1180px) {
+  .seamless-install-page .seamless-compare-grid {
+    grid-template-columns: 1fr;
   }
 }

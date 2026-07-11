@@ -223,141 +223,18 @@ const getSelectedServices = (form) => {
 };
 
 
-const GUTTER_PRICE_PER_LF = {
-  '5" Aluminum K-Style': 15,
-  '6" Aluminum K-Style': 18
-};
-
-const GUARD_PRICE_PER_LF = {
-  "Basic Gutter Guards": 15,
-  "Micro-Mesh Gutter Guards": 20
-};
-
-const FASCIA_PRICE_PER_LF = 20;
-const SOFFIT_PANEL_PRICE_PER_LF = 25;
-const DOWNSPOUT_STANDARD_HEIGHT_LF = 10;
-const ELBOWS_PER_DOWNSPOUT = 3;
-
-const ACCESSORY_PRICE_BY_GUTTER_TYPE = {
-  '5" Aluminum K-Style': {
-    downspoutPerLf: 15,
-    elbowEach: 15,
-    gutterMiterEach: 15,
-    downspoutConnectorEach: 15
-  },
-  '6" Aluminum K-Style': {
-    downspoutPerLf: 18,
-    elbowEach: 18,
-    gutterMiterEach: 18,
-    downspoutConnectorEach: 18
-  }
-};
-
-const formatEstimateMoney = (value) =>
-  `$${Math.max(0, Math.round(value)).toLocaleString("en-US")}`;
-
-const roundToNearestTen = (value) => Math.max(0, Math.round(value / 10) * 10);
-const roundToNearestHundred = (value) => Math.max(0, Math.round(value / 100) * 100);
-const getPositiveNumber = (value) => Math.max(0, Number(value || 0));
-
-const getFasciaSoffitSummary = (fasciaOption, soffitPanelOption) => {
-  if (!fasciaOption && !soffitPanelOption) return "";
-  return `Fascia: ${fasciaOption || "No"}; Soffit Panel: ${soffitPanelOption || "No"}`;
-};
+const estimateCore = window.AQGEstimateCore;
 
 const getEstimateCalculation = (form) => {
   const data = new FormData(form);
-  const squareFeet = Number(data.get("square_feet") || 0);
-  const stories = Math.max(1, Number(data.get("stories") || 1));
-  const gutterType = String(data.get("gutter_type") || "").trim();
-  const gutterGuards = String(data.get("gutter_guards") || "").trim();
-  const wholeHouse = String(data.get("whole_house_gutters") || "").trim();
-  const legacyFasciaSoffit = String(data.get("fascia_soffit") || "").trim();
-  const fasciaOption = String(data.get("fascia_option") || "").trim() || (legacyFasciaSoffit === "Yes" ? "Yes" : "");
-  const soffitPanelOption = String(data.get("soffit_panel_option") || "").trim() || (legacyFasciaSoffit === "Yes" ? "Yes" : "");
-  const downspoutCount = getPositiveNumber(data.get("downspout_count"));
-  const gutterMiterCount = getPositiveNumber(data.get("gutter_miter_count"));
-  const downspoutConnectorCount = getPositiveNumber(data.get("downspout_connector_count"));
-
-  const footprint = squareFeet > 0 ? squareFeet / stories : 0;
-  const estimatedLinearFeet = footprint > 0 ? roundToNearestTen(4 * Math.sqrt(footprint)) : 0;
-  const lineItems = [];
-  let total = 0;
-  const accessoryRates = ACCESSORY_PRICE_BY_GUTTER_TYPE[gutterType] || ACCESSORY_PRICE_BY_GUTTER_TYPE['5" Aluminum K-Style'];
-
-  const gutterRate = GUTTER_PRICE_PER_LF[gutterType] || 0;
-  if (estimatedLinearFeet && gutterRate) {
-    const amount = estimatedLinearFeet * gutterRate;
-    total += amount;
-    lineItems.push(`${gutterType}: ${estimatedLinearFeet} LF × $${gutterRate}/LF = ${formatEstimateMoney(amount)}`);
-  }
-
-  const guardRate = GUARD_PRICE_PER_LF[gutterGuards] || 0;
-  if (estimatedLinearFeet && guardRate) {
-    const amount = estimatedLinearFeet * guardRate;
-    total += amount;
-    lineItems.push(`${gutterGuards}: ${estimatedLinearFeet} LF × $${guardRate}/LF = ${formatEstimateMoney(amount)}`);
-  }
-
-  if (downspoutCount > 0) {
-    const downspoutAmount = downspoutCount * DOWNSPOUT_STANDARD_HEIGHT_LF * accessoryRates.downspoutPerLf;
-    const elbowAmount = downspoutCount * ELBOWS_PER_DOWNSPOUT * accessoryRates.elbowEach;
-    total += downspoutAmount + elbowAmount;
-    lineItems.push(`Downspouts: ${downspoutCount} × ${DOWNSPOUT_STANDARD_HEIGHT_LF} LF × $${accessoryRates.downspoutPerLf}/LF = ${formatEstimateMoney(downspoutAmount)}`);
-    lineItems.push(`Elbows: ${downspoutCount} × ${ELBOWS_PER_DOWNSPOUT} × $${accessoryRates.elbowEach} = ${formatEstimateMoney(elbowAmount)}`);
-  }
-
-  if (gutterMiterCount > 0) {
-    const amount = gutterMiterCount * accessoryRates.gutterMiterEach;
-    total += amount;
-    lineItems.push(`Gutter Miters: ${gutterMiterCount} × $${accessoryRates.gutterMiterEach} = ${formatEstimateMoney(amount)}`);
-  }
-
-  if (downspoutConnectorCount > 0) {
-    const amount = downspoutConnectorCount * accessoryRates.downspoutConnectorEach;
-    total += amount;
-    lineItems.push(`Downspout Connectors: ${downspoutConnectorCount} × $${accessoryRates.downspoutConnectorEach} = ${formatEstimateMoney(amount)}`);
-  }
-
-  if (estimatedLinearFeet && fasciaOption === "Yes") {
-    const amount = estimatedLinearFeet * FASCIA_PRICE_PER_LF;
-    total += amount;
-    lineItems.push(`Fascia: ${estimatedLinearFeet} LF × $${FASCIA_PRICE_PER_LF}/LF = ${formatEstimateMoney(amount)}`);
-  }
-
-  if (estimatedLinearFeet && soffitPanelOption === "Yes") {
-    const amount = estimatedLinearFeet * SOFFIT_PANEL_PRICE_PER_LF;
-    total += amount;
-    lineItems.push(`Soffit Panel: ${estimatedLinearFeet} LF × $${SOFFIT_PANEL_PRICE_PER_LF}/LF = ${formatEstimateMoney(amount)}`);
-  }
-
-  const low = total ? roundToNearestHundred(total * 0.95) : 0;
-  const high = total ? roundToNearestHundred(total * 1.05) : 0;
-  const priceRange = total ? `${formatEstimateMoney(low)} – ${formatEstimateMoney(high)}` : "";
-
-  return {
-    squareFeet: squareFeet || "",
-    stories: stories || "",
-    wholeHouse,
-    gutterType,
-    gutterGuards,
-    downspoutCount: downspoutCount || "",
-    gutterMiterCount: gutterMiterCount || "",
-    downspoutConnectorCount: downspoutConnectorCount || "",
-    fasciaOption,
-    soffitPanelOption,
-    fasciaSoffit: getFasciaSoffitSummary(fasciaOption, soffitPanelOption) || legacyFasciaSoffit,
-    estimatedLinearFeet: estimatedLinearFeet || "",
-    estimatedPriceLow: low || "",
-    estimatedPriceHigh: high || "",
-    estimatedPriceRange: priceRange,
-    lineItems,
-    summary: [
-      estimatedLinearFeet ? `Estimated gutter length: ${estimatedLinearFeet} LF` : "",
-      priceRange ? `Estimated project range: ${priceRange}` : "",
-      wholeHouse ? `Whole-house gutters: ${wholeHouse}` : "",
-      ...lineItems
-    ].filter(Boolean).join("\n")
+  const values = {};
+  data.forEach((value, key) => {
+    if (!(value instanceof File)) values[key] = value;
+  });
+  values.service_needed = getSelectedServices(form);
+  return estimateCore?.calculate(values) || {
+    errors: ["The estimate calculator is unavailable."], lineItems: [], baseTotal: 0,
+    range: "", estimateDetails: "", requiresManualReview: true
   };
 };
 
@@ -367,17 +244,20 @@ const initEstimatePricingPreview = (form) => {
 
   const render = () => {
     const estimate = getEstimateCalculation(form);
-    if (!estimate.estimatedLinearFeet) {
-      preview.innerHTML = `<strong>Preliminary estimate</strong><span>Add square footage, stories and project options to see a rough project range.</span>`;
+    if (estimate.errors.length) {
+      preview.innerHTML = `<strong>Preliminary Project Estimate</strong><span>${estimate.errors[0]}</span>`;
       return;
     }
 
-    if (!estimate.estimatedPriceRange) {
-      preview.innerHTML = `<strong>Preliminary estimate</strong><p>Estimated gutter length: ${estimate.estimatedLinearFeet} LF.</p><span>Select gutter type, gutter guards, downspouts, accessories, fascia or soffit panel options to calculate a rough price range.</span>`;
+    if (!estimate.range) {
+      const message = estimate.requiresManualReview
+        ? "Some selected work needs an on-site measurement and manual review."
+        : "Add the applicable project quantities to see a preliminary price range.";
+      preview.innerHTML = `<strong>Preliminary Project Estimate</strong><span>${message}</span>`;
       return;
     }
 
-    preview.innerHTML = `<strong>Preliminary estimate</strong><p class="estimate-price-preview__total">${estimate.estimatedPriceRange}</p><p>Estimated gutter length: ${estimate.estimatedLinearFeet} LF.</p><ul>${estimate.lineItems.map((item) => `<li>${item}</li>`).join("")}</ul><p class="estimate-price-preview__note">Final price may vary after on-site inspection.</p>`;
+    preview.innerHTML = `<strong>Preliminary Project Estimate</strong><p class="estimate-price-preview__total">${estimate.range}</p><ul>${estimate.lineItems.map((item) => `<li>${item.label}: ${item.quantityLabel || `${item.quantity} ${item.unit}`} × $${item.rate}${item.unit === "LF" ? "/LF" : ""} = ${estimateCore.money(item.subtotal)}${item.quantitySource === "estimated" ? " (Estimated from home size)" : " (Provided by customer)"}</li>`).join("")}</ul><p class="estimate-price-preview__note">This is a preliminary estimate based on the information provided. Final pricing requires an on-site inspection and measurement.</p>`;
   };
 
   form.addEventListener("input", render);
@@ -389,38 +269,28 @@ document.querySelectorAll(".estimate-modal__form").forEach(initEstimatePricingPr
 
 const buildLeadPayload = (form) => {
   const data = new FormData(form);
-
-  const estimate = getEstimateCalculation(form);
-  const userComments = String(data.get("message") || "").trim();
-  const estimateDetails = estimate.summary ? `Preliminary Website Estimate:
-${estimate.summary}` : "";
-
+  const value = (name) => String(data.get(name) || "").trim();
   return {
     full_name: String(data.get("name") || "").trim(),
     phone: String(data.get("phone") || "").trim(),
     email: String(data.get("email") || "").trim(),
     zip_code: String(data.get("zip") || "").trim(),
     service_needed: getSelectedServices(form),
-    home_stories: String(data.get("stories") || "").trim(),
-    square_feet: String(data.get("square_feet") || "").trim(),
-    whole_house_gutters: String(data.get("whole_house_gutters") || "").trim(),
-    gutter_type: String(data.get("gutter_type") || "").trim(),
-    gutter_guards: String(data.get("gutter_guards") || "").trim(),
-    downspout_count: String(data.get("downspout_count") || "").trim(),
-    gutter_miter_count: String(data.get("gutter_miter_count") || "").trim(),
-    downspout_connector_count: String(data.get("downspout_connector_count") || "").trim(),
-    fascia_option: String(data.get("fascia_option") || "").trim(),
-    soffit_panel_option: String(data.get("soffit_panel_option") || "").trim(),
-    fascia_soffit: estimate.fasciaSoffit || String(data.get("fascia_soffit") || "").trim(),
-    estimated_linear_feet: String(estimate.estimatedLinearFeet || ""),
-    estimated_price_low: String(estimate.estimatedPriceLow || ""),
-    estimated_price_high: String(estimate.estimatedPriceHigh || ""),
-    estimated_price_range: estimate.estimatedPriceRange || "",
-    estimate_details: estimateDetails,
-    property_address: String(data.get("address") || "").trim(),
-    preferred_date: String(data.get("preferred_date") || "").trim(),
-    comments: [userComments, estimateDetails].filter(Boolean).join("\n\n"),
-    uploaded_photos: "",
+    calculator_requested: value("calculator_requested") === "true",
+    home_stories: value("stories"), square_feet: value("square_feet"),
+    gutter_mode: value("gutter_mode"), gutter_type: value("gutter_type"), gutter_size: value("gutter_type"),
+    gutter_lf_source: value("gutter_lf_source"), gutter_lf: value("gutter_lf"),
+    gutter_guards: value("gutter_guards"), guard_mode: value("guard_mode"), guard_lf: value("guard_lf"),
+    fascia_mode: value("fascia_mode"), fascia_lf: value("fascia_lf"),
+    soffit_mode: value("soffit_mode"), soffit_lf: value("soffit_lf"),
+    downspout_mode: value("downspout_mode"), downspout_count: value("downspout_count"), downspout_length_per_unit: value("downspout_length_per_unit"),
+    elbow_count: value("elbow_count"), elbow_manual_override: String(data.get("elbow_manual_override") === "true"),
+    gutter_miter_count: value("gutter_miter_count"), downspout_connector_count: value("downspout_connector_count"),
+    connector_manual_override: String(data.get("connector_manual_override") === "true"), accessory_mode: value("accessory_mode"),
+    property_address: value("address"), preferred_date: value("preferred_date"), comments: value("message"),
+    website: value("website"), idempotency_key: value("idempotency_key"), turnstile_token: value("turnstile_token"),
+    referrer: document.referrer, utm_source: new URLSearchParams(window.location.search).get("utm_source") || "", utm_medium: new URLSearchParams(window.location.search).get("utm_medium") || "", utm_campaign: new URLSearchParams(window.location.search).get("utm_campaign") || "", utm_content: new URLSearchParams(window.location.search).get("utm_content") || "", utm_term: new URLSearchParams(window.location.search).get("utm_term") || "", gclid: new URLSearchParams(window.location.search).get("gclid") || "", fbclid: new URLSearchParams(window.location.search).get("fbclid") || "",
+    uploaded_photos: [],
     sms_consent: data.get("sms_consent") === "true",
     landing_page_url: window.location.href,
     page_form_source: "Website Estimate Form"
@@ -533,7 +403,7 @@ const showCustomSelectError = (control) => {
 
 document.querySelectorAll("select[data-custom-select]").forEach((select) => {
   const isMulti = select.multiple;
-  const maxSelections = Number(select.dataset.max || 5);
+  const maxSelections = Number(select.dataset.max || select.options.length);
   const placeholderOption = Array.from(select.options).find((option) => !option.value);
   if (placeholderOption) select.dataset.placeholder = placeholderOption.textContent || "Service Needed";
 

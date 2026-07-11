@@ -1,24 +1,16 @@
 # Services & Prices / Estimate Calculator Notes
 
-Implemented pricing assumptions:
+The shared `assets/js/estimate-core.js` module is the only calculation source for the browser, Cloudflare Pages Functions, and tests.
 
-- 5" Aluminum K-Style gutters: from $15 per LF
-- 6" Aluminum K-Style gutters: from $18 per LF
-- Standard gutter guards: from $15 per LF
-- Premium gutter guards: from $20 per LF
-- Standard downspout: from $15 per LF
-- Standard downspout height used in quick estimate: 10 LF
-- Elbows: from $15 each
-- Minimum elbows per downspout used in quick estimate: 3
-- Fascia & soffit: from $45 per LF
+- 5-inch gutters, downspouts, elbows, miters, and connectors: $15.
+- 6-inch gutters, downspouts, elbows, miters, and connectors: $18.
+- Basic guards: $15/LF; Micro-Mesh guards: $20/LF.
+- Fascia: $20/LF; Soffit panel: $25/LF.
 
-Website estimate formula:
+The calculator is optional. A lead submitted without requesting it has `estimate_status: not_requested` and no price. When it is requested, every selected service has its own quantity: gutters, guards, fascia, and soffit use separate LF; downspouts use count × length per unit; elbows, connectors, and miters use counts.
 
-1. Footprint SF = total square feet / home stories
-2. Estimated LF = 4 × sqrt(footprint SF), rounded to nearest 10 LF
-3. Selected add-ons are added to the price range
-4. Displayed price range is roughly ±5%, rounded to nearest $100
+Whole-house gutters can use `4 × sqrt(square feet / stories)` only when stories and square feet are supplied. Downspout length defaults to `stories × 10 LF` per downspout. Elbows default to three per downspout and connectors to one per downspout. A customer-provided quantity always takes precedence.
 
-Important: website estimate is only a rough preliminary range. Final price should be confirmed after on-site inspection.
+An `I'm not sure` choice creates a manual-review lead instead of a false $0 estimate. A calculated estimate uses a ±15% range with $5, $25, or $100 rounding. The customer-facing thank-you amount is `Math.round(base total × 1.03)` and does not change rates, line items, or base total.
 
-Copper round-style gutters are intentionally not added as a fixed-price public offer yet because they require custom measuring, soldering, material pricing and crew readiness.
+Final pricing always requires an on-site inspection and accurate measurements.

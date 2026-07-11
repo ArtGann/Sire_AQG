@@ -67,37 +67,21 @@
 
   const fallbackBuildLeadPayload = (targetForm) => {
     const data = new FormData(targetForm);
-    const estimate = typeof getEstimateCalculation === "function" ? getEstimateCalculation(targetForm) : { summary: "", estimatedLinearFeet: "", estimatedPriceLow: "", estimatedPriceHigh: "", estimatedPriceRange: "" };
-    const userComments = String(data.get("message") || "").trim();
-    const estimateDetails = estimate.summary ? `Preliminary Website Estimate:
-${estimate.summary}` : "";
-
+    const value = (name) => String(data.get(name) || "").trim();
     return {
       full_name: String(data.get("name") || "").trim(),
       phone: String(data.get("phone") || "").trim(),
       email: String(data.get("email") || "").trim(),
       zip_code: String(data.get("zip") || "").trim(),
       service_needed: getServices(targetForm),
-      home_stories: String(data.get("stories") || "").trim(),
-      square_feet: String(data.get("square_feet") || "").trim(),
-      whole_house_gutters: String(data.get("whole_house_gutters") || "").trim(),
-      gutter_type: String(data.get("gutter_type") || "").trim(),
-      gutter_guards: String(data.get("gutter_guards") || "").trim(),
-      downspout_count: String(data.get("downspout_count") || "").trim(),
-      gutter_miter_count: String(data.get("gutter_miter_count") || "").trim(),
-      downspout_connector_count: String(data.get("downspout_connector_count") || "").trim(),
-      fascia_option: String(data.get("fascia_option") || "").trim(),
-      soffit_panel_option: String(data.get("soffit_panel_option") || "").trim(),
-      fascia_soffit: estimate.fasciaSoffit || `Fascia: ${String(data.get("fascia_option") || "No").trim() || "No"}; Soffit Panel: ${String(data.get("soffit_panel_option") || "No").trim() || "No"}`,
-      estimated_linear_feet: String(estimate.estimatedLinearFeet || ""),
-      estimated_price_low: String(estimate.estimatedPriceLow || ""),
-      estimated_price_high: String(estimate.estimatedPriceHigh || ""),
-      estimated_price_range: estimate.estimatedPriceRange || "",
-      estimate_details: estimateDetails,
-      property_address: String(data.get("address") || "").trim(),
-      preferred_date: String(data.get("preferred_date") || "").trim(),
-      comments: [userComments, estimateDetails].filter(Boolean).join("\n\n"),
-      uploaded_photos: "",
+      home_stories: value("stories"), square_feet: value("square_feet"), whole_house_gutters: value("whole_house_gutters"),
+      gutter_type: value("gutter_type"), gutter_lf_mode: value("gutter_lf_mode"), gutter_lf: value("gutter_lf"),
+      gutter_guards: value("gutter_guards"), guard_lf_mode: value("guard_lf_mode"), guard_lf: value("guard_lf"),
+      fascia_mode: value("fascia_mode"), fascia_lf: value("fascia_lf"), soffit_mode: value("soffit_mode"), soffit_lf: value("soffit_lf"),
+      downspout_count: value("downspout_count"), downspout_length_per_unit: value("downspout_length_per_unit"), elbow_count: value("elbow_count"),
+      gutter_miter_count: value("gutter_miter_count"), downspout_connector_count: value("downspout_connector_count"),
+      property_address: value("address"), preferred_date: value("preferred_date"), comments: value("message"),
+      idempotency_key: value("idempotency_key"), turnstile_token: value("turnstile_token"), website: value("website"), uploaded_photos: [],
       sms_consent: data.get("sms_consent") === "true",
       landing_page_url: window.location.href,
       page_form_source: "Website Estimate Form"
@@ -302,8 +286,9 @@ ${estimate.summary}` : "";
       }
 
       const parsedDate = parseUSDate(dateInput.value);
-      dateInput.setCustomValidity(parsedDate ? "" : "Please enter the date as MM/DD/YYYY.");
-      return Boolean(parsedDate);
+      const valid = parsedDate && window.AQGEstimateCore?.validDate(dateInput.value);
+      dateInput.setCustomValidity(valid ? "" : "Please choose a future Monday through Saturday appointment date.");
+      return Boolean(valid);
     };
 
     const isSameDay = (firstDate, secondDate) =>
@@ -371,6 +356,8 @@ ${estimate.summary}` : "";
         dayButton.dataset.dateValue = formatUSDate(date);
         dayButton.textContent = String(day);
 
+        const available = window.AQGEstimateCore?.validDate(formatUSDate(date));
+        dayButton.disabled = !available;
         if (isSameDay(date, today)) dayButton.classList.add("is-today");
         if (isSameDay(date, selectedEstimateDate)) dayButton.classList.add("is-selected");
 
@@ -450,7 +437,7 @@ ${estimate.summary}` : "";
     const previewArea = form.querySelector(".photo-previews");
     const uploadError = form.querySelector(".photo-upload__error");
 
-    if (!(photoInput instanceof HTMLInputElement) || !dropZone || !previewArea || !uploadError) return;
+    if (!(photoInput instanceof HTMLInputElement) || !dropZone || !previewArea || !uploadError) return null;
 
     let selectedPhotos = [];
 
@@ -471,19 +458,12 @@ ${estimate.summary}` : "";
         const preview = document.createElement("div");
         preview.className = "photo-preview";
 
-        if (/\.(heic|heif)$/i.test(file.name)) {
-          const fileName = document.createElement("span");
-          fileName.className = "photo-preview__file";
-          fileName.textContent = "HEIC";
-          preview.append(fileName);
-        } else {
-          const image = document.createElement("img");
-          const objectUrl = URL.createObjectURL(file);
-          preview.dataset.objectUrl = objectUrl;
-          image.src = objectUrl;
-          image.alt = "";
-          preview.append(image);
-        }
+        const image = document.createElement("img");
+        const objectUrl = URL.createObjectURL(file);
+        preview.dataset.objectUrl = objectUrl;
+        image.src = objectUrl;
+        image.alt = "";
+        preview.append(image);
 
         const removeButton = document.createElement("button");
         removeButton.type = "button";
@@ -502,11 +482,11 @@ ${estimate.summary}` : "";
     const addPhotos = (files) => {
       uploadError.textContent = "";
       const incoming = Array.from(files || []);
-      const allowedExtensions = /\.(jpe?g|png|webp|heic|heif)$/i;
+      const allowedExtensions = /\.(jpe?g|png|webp)$/i;
 
       for (const file of incoming) {
         if (!allowedExtensions.test(file.name)) {
-          uploadError.textContent = "Please select JPG, PNG, WEBP, or HEIC images.";
+          uploadError.textContent = "Please select JPG, PNG, or WEBP images.";
           continue;
         }
 
@@ -552,14 +532,154 @@ ${estimate.summary}` : "";
     });
 
     dropZone.addEventListener("drop", (event) => addPhotos(event.dataTransfer?.files));
+
+    const uploadAll = async (submission = {}) => {
+      const error = window.AQGEstimateCore?.validatePhotoMeta(selectedPhotos) || "";
+      if (error) throw new Error(error);
+      const urls = [];
+      for (const file of selectedPhotos) {
+        const body = new FormData();
+        body.append("photo", file);
+        body.append("idempotency_key", submission.idempotency_key || "");
+        body.append("turnstile_token", submission.turnstile_token || "");
+        const response = await fetch("/api/upload-photo", { method: "POST", body });
+        const result = await response.json().catch(() => ({}));
+        if (!response.ok || !result.url) throw new Error(result.message || `Couldn't upload ${file.name}. Please try again.`);
+        urls.push(result.url);
+      }
+      return urls;
+    };
+    const reset = () => {
+      selectedPhotos = [];
+      syncPhotoInput();
+      renderPhotoPreviews();
+      uploadError.textContent = "";
+    };
+    return { uploadAll, reset };
   };
 
+  const initFormSections = () => {
+    const fields = form.querySelector(".estimate-modal__fields");
+    const photos = form.querySelector(".photo-upload");
+    const consent = form.querySelector(".sms-consent");
+    if (!fields || !photos || !consent || form.querySelector(".estimate-request-section")) return null;
+    const getField = (name) => form.elements.namedItem(name)?.closest(".field");
+    const main = document.createElement("section");
+    main.className = "estimate-request-section";
+    main.innerHTML = '<h3>Request Your Free Estimate</h3><p>Tell us about your project and we\'ll contact you to confirm the details.</p><p class="estimate-required-note">Fields marked with <span aria-hidden="true">*</span> are required.</p>';
+    const mainGrid = document.createElement("div");
+    mainGrid.className = "estimate-modal__fields estimate-request-section__fields";
+    ["name", "phone", "email", "zip", "service", "address", "preferred_date", "message"].map(getField).filter(Boolean).forEach((field) => mainGrid.append(field));
+    main.append(mainGrid, photos);
+
+    const toggle = document.createElement("button");
+    toggle.type = "button";
+    toggle.className = "estimate-calculator-toggle";
+    toggle.textContent = "Calculate My Preliminary Estimate";
+    toggle.setAttribute("aria-expanded", "false");
+    toggle.setAttribute("aria-controls", "estimate-calculator-section");
+    const hint = document.createElement("p");
+    hint.className = "estimate-calculator-hint";
+    hint.textContent = "Optional - answer a few additional questions to see an approximate project cost after submitting your request.";
+    const calculator = document.createElement("section");
+    calculator.id = "estimate-calculator-section";
+    calculator.className = "estimate-calculator-section";
+    calculator.hidden = true;
+    calculator.innerHTML = '<h3 tabindex="-1">Preliminary Cost Calculator</h3><p>This calculator provides an approximate starting estimate only. Final pricing requires an on-site inspection and accurate measurements.</p>';
+    const calculatorGrid = document.createElement("div");
+    calculatorGrid.className = "estimate-modal__fields estimate-calculator-section__fields";
+    Array.from(fields.children).forEach((field) => calculatorGrid.append(field));
+    calculator.append(calculatorGrid);
+    consent.before(main, toggle, hint, calculator);
+
+    const calculatorFlag = form.elements.namedItem("calculator_requested");
+    const syncCalculator = (opened, focus = false) => {
+      calculator.hidden = !opened;
+      toggle.setAttribute("aria-expanded", String(opened));
+      toggle.textContent = opened ? "Hide Preliminary Estimate Calculator" : "Calculate My Preliminary Estimate";
+      if (calculatorFlag instanceof HTMLInputElement) calculatorFlag.value = opened ? "true" : calculatorFlag.value;
+      calculator.querySelectorAll("input, select, textarea").forEach((control) => { control.disabled = !opened || control.closest(".field")?.classList.contains("is-service-hidden"); });
+      if (opened) syncServiceFields();
+      if (opened && focus) calculator.querySelector("h3")?.focus();
+      form.dispatchEvent(new Event("change", { bubbles: true }));
+    };
+    toggle.addEventListener("click", () => syncCalculator(calculator.hidden, true));
+    return { calculator, syncCalculator };
+  };
+
+  const initTurnstile = async () => {
+    const mount = form.querySelector("#estimate-turnstile");
+    const tokenField = form.elements.namedItem("turnstile_token");
+    if (!mount || !(tokenField instanceof HTMLInputElement)) return;
+    try {
+      const config = await fetch("/api/form-config").then((response) => response.ok ? response.json() : null);
+      if (!config?.turnstileSiteKey) return;
+      await new Promise((resolve, reject) => {
+        const script = document.createElement("script");
+        script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
+        script.async = true;
+        script.onload = resolve;
+        script.onerror = reject;
+        document.head.append(script);
+      });
+      window.turnstile?.render(mount, { sitekey: config.turnstileSiteKey, callback: (token) => { tokenField.value = token; }, "expired-callback": () => { tokenField.value = ""; } });
+    } catch {
+      mount.textContent = "Security verification is unavailable. Please try again shortly.";
+    }
+  };
+
+  const sections = initFormSections();
+  const requiredNames = ["name", "phone", "email", "zip", "service", "address"];
+  requiredNames.forEach((name) => {
+    const control = form.elements.namedItem(name);
+    const label = control?.closest(".field")?.querySelector("label");
+    if (control instanceof HTMLElement) control.setAttribute("aria-required", "true");
+    if (label && !label.querySelector(".required-marker")) label.insertAdjacentHTML("beforeend", ' <span class="required-marker" aria-hidden="true">*</span><span class="sr-only"> required</span>');
+  });
   const setDateValidity = initDatePicker();
-  initPhotoUpload();
+  const photoUpload = initPhotoUpload();
+  initTurnstile();
   bindEstimateTriggers();
 
-  // The submit button stays disabled until every required field is filled and
-  // the SMS-consent checkbox is checked.
+  const syncServiceFields = () => {
+    const selected = new Set(
+      Array.from(form.querySelectorAll("select[name='service'] option:checked")).map((option) => option.value)
+    );
+    const show = (key, visible) => form.querySelectorAll(`[data-estimate-service="${key}"]`).forEach((field) => {
+      field.classList.toggle("is-service-hidden", !visible);
+      field.querySelectorAll("input, select, textarea").forEach((control) => { control.disabled = !visible || Boolean(sections?.calculator.hidden); });
+    });
+    const gutters = selected.has("Seamless Gutter Installation") || selected.has("Gutter Replacement");
+    const guards = selected.has("Gutter Guards");
+    const soffit = selected.has("Soffit & Fascia");
+    const downspouts = selected.has("Downspout Installation");
+    const accessories = selected.has("Gutter Miters & Connectors");
+    show("gutters", gutters);
+    show("guards", guards);
+    show("soffit", soffit);
+    show("downspouts", downspouts);
+    show("accessories", accessories);
+    form.querySelectorAll("[name='gutter_type']").forEach((field) => field.closest(".field")?.classList.toggle("is-service-hidden", !(gutters || downspouts || accessories)));
+    form.querySelectorAll("[name='gutter_mode'], [name='gutter_lf_source'], [name='gutter_lf'], [name='square_feet']").forEach((field) => field.closest(".field")?.classList.toggle("is-service-hidden", !gutters));
+    form.querySelectorAll("[name='stories']").forEach((field) => field.closest(".field")?.classList.toggle("is-service-hidden", !(gutters || downspouts)));
+    form.querySelectorAll("[name='downspout_count'], [name='downspout_length_per_unit'], [name='elbow_count']").forEach((field) => field.closest(".field")?.classList.toggle("is-service-hidden", !downspouts));
+    form.querySelectorAll("[name='gutter_miter_count'], [name='downspout_connector_count']").forEach((field) => field.closest(".field")?.classList.toggle("is-service-hidden", !(downspouts || accessories)));
+    form.querySelectorAll("[name='gutter_type'], [name='gutter_mode'], [name='gutter_lf_source'], [name='gutter_lf'], [name='square_feet'], [name='stories'], [name='downspout_count'], [name='downspout_length_per_unit'], [name='elbow_count'], [name='gutter_miter_count'], [name='downspout_connector_count']").forEach((field) => { field.disabled = field.closest(".field")?.classList.contains("is-service-hidden") || Boolean(sections?.calculator.hidden); });
+  };
+  const syncAccessoryDefaults = () => {
+    const downspouts = Number(form.elements.downspout_count?.value || 0);
+    const elbows = form.elements.elbow_count;
+    const connectors = form.elements.downspout_connector_count;
+    if (elbows instanceof HTMLInputElement && form.elements.elbow_manual_override?.value !== "true") elbows.value = downspouts ? String(downspouts * 3) : "";
+    if (connectors instanceof HTMLInputElement && form.elements.connector_manual_override?.value !== "true") connectors.value = downspouts ? String(downspouts) : "";
+  };
+  form.elements.downspout_count?.addEventListener("input", syncAccessoryDefaults);
+  form.elements.elbow_count?.addEventListener("input", () => { form.elements.elbow_manual_override.value = "true"; });
+  form.elements.downspout_connector_count?.addEventListener("input", () => { form.elements.connector_manual_override.value = "true"; });
+  form.elements.service?.addEventListener("change", syncServiceFields);
+  syncServiceFields();
+
+  // The submit button stays disabled until required contact and project fields are valid.
   const submitButton = form.querySelector("button[type='submit']");
   const requiredHint = form.querySelector(".estimate-modal__hint");
 
@@ -569,9 +689,7 @@ ${estimate.summary}` : "";
     // focus jump on every keystroke.
     const controls = Array.from(form.querySelectorAll("input, select, textarea"));
     const allValid = controls.every((control) => !control.willValidate || control.validity.valid);
-    const consent = form.elements.namedItem("sms_consent");
-    const consentGiven = !(consent instanceof HTMLInputElement) || consent.checked;
-    return allValid && consentGiven;
+    return allValid;
   };
 
   const updateSubmitState = () => {
@@ -602,11 +720,21 @@ ${estimate.summary}` : "";
     if (!validateFormControls(controls)) return;
 
     const payload = buildPayload(form);
+    payload.idempotency_key = payload.idempotency_key || crypto.randomUUID();
+    const idempotencyField = form.elements.namedItem("idempotency_key");
+    if (idempotencyField instanceof HTMLInputElement) idempotencyField.value = payload.idempotency_key;
 
     try {
       setLoading(submitButton, true);
+      payload.uploaded_photos = photoUpload ? await photoUpload.uploadAll(payload) : [];
       sessionStorage.setItem("aqgLead", JSON.stringify(payload));
-      await postPayload(payload);
+      const serverResult = await postPayload(payload);
+      sessionStorage.setItem("aqg_submission_result", JSON.stringify({
+        estimateStatus: serverResult.estimate_status || "not_requested",
+        customerDisplayEstimate: Number(serverResult.customer_display_estimate || 0),
+        estimateRequiresManualReview: serverResult.estimate_requires_manual_review === true
+      }));
+      photoUpload?.reset();
       await redirectToThankYou(form);
     } catch (error) {
       showStatus(
