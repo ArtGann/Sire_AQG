@@ -564,6 +564,7 @@
     const consent = form.querySelector(".sms-consent");
     if (!fields || !photos || !consent || form.querySelector(".estimate-request-section")) return null;
     const getField = (name) => form.elements.namedItem(name)?.closest(".field");
+    const calculatorHomeFields = ["stories", "square_feet"].map(getField).filter(Boolean);
     const main = document.createElement("section");
     main.className = "estimate-request-section";
     main.innerHTML = '<h3>Request Your Free Estimate</h3><p>Tell us about your project and we\'ll contact you to confirm the details.</p><p class="estimate-required-note">Fields marked with <span aria-hidden="true">*</span> are required.</p>';
@@ -585,10 +586,21 @@
     calculator.id = "estimate-calculator-section";
     calculator.className = "estimate-calculator-section";
     calculator.hidden = true;
-    calculator.innerHTML = '<h3 tabindex="-1">Preliminary Cost Calculator</h3><p>This calculator provides an approximate starting estimate only. Final pricing requires an on-site inspection and accurate measurements.</p>';
+    calculator.innerHTML = '<header class="estimate-calculator-section__header"><span>Optional planning tool</span><h3 tabindex="-1">Preliminary Cost Calculator</h3><p>This calculator provides an approximate starting estimate only. Final pricing requires an on-site inspection and accurate measurements.</p></header>';
     const calculatorGrid = document.createElement("div");
-    calculatorGrid.className = "estimate-modal__fields estimate-calculator-section__fields";
-    Array.from(fields.children).forEach((field) => calculatorGrid.append(field));
+    calculatorGrid.className = "estimate-calculator-section__fields";
+    fields.remove();
+    calculatorGrid.innerHTML = `
+      <div class="estimate-calculator-top-row">
+        <section class="estimate-home-details"><h4>Home Details</h4><div class="estimate-home-details__fields"></div></section>
+        <fieldset class="estimate-choice-group estimate-choice-group--wide"><legend>Gutter Size</legend><div class="estimate-choice-cards"><label><input type="radio" name="gutter_size" value="5" /> <span>5-Inch</span></label><label><input type="radio" name="gutter_size" value="6" /> <span>6-Inch</span></label></div></fieldset>
+      </div>
+      <fieldset class="estimate-choice-group estimate-choice-group--wide"><legend>Services Included</legend><div class="estimate-service-cards"><label data-service-icon="gutter"><input type="checkbox" name="include_gutters" value="true" /><span class="estimate-service-card__icon" aria-hidden="true"></span><span>Gutters</span></label><label data-service-icon="guards"><input type="checkbox" name="include_guards" value="true" /><span class="estimate-service-card__icon" aria-hidden="true"></span><span>Gutter Guards</span></label><label data-service-icon="fascia"><input type="checkbox" name="include_fascia" value="true" /><span class="estimate-service-card__icon" aria-hidden="true"></span><span>Fascia</span></label><label data-service-icon="soffit"><input type="checkbox" name="include_soffit" value="true" /><span class="estimate-service-card__icon" aria-hidden="true"></span><span>Soffit</span></label><label data-service-icon="downspout"><input type="checkbox" name="include_downspouts" value="true" /><span class="estimate-service-card__icon" aria-hidden="true"></span><span>Downspouts</span></label><label data-service-icon="connectors"><input type="checkbox" name="include_connectors" value="true" /><span class="estimate-service-card__icon" aria-hidden="true"></span><span>Downspout Connectors</span></label></div></fieldset>
+      <fieldset class="estimate-choice-group estimate-guard-type" hidden><legend>Gutter Guard Type</legend><div class="estimate-choice-cards"><label><input type="radio" name="guard_type" value="basic" /> <span>Basic</span></label><label><input type="radio" name="guard_type" value="micro_mesh" /> <span>Micro-Mesh</span></label></div></fieldset>
+      <div class="estimate-compact-inputs"><div class="field"><label for="estimate-miter-count">Number of Gutter Corners</label><small>Count the inside and outside corners where gutter sections meet.</small><input id="estimate-miter-count" name="miter_count" type="number" min="0" max="200" step="1" placeholder="e.g. 4" /></div><div class="field estimate-downspout-count" hidden><label for="estimate-downspout-count">Number of Downspouts</label><input id="estimate-downspout-count" name="downspout_count" type="number" min="0" max="100" step="1" placeholder="e.g. 4" /></div></div>
+      <p class="estimate-coverage-note">Estimate assumes whole-home coverage for selected linear-foot services. Partial repairs and selected sections require an on-site measurement and may differ from this estimate.</p>
+      <div class="estimate-price-preview" data-estimate-preview><strong>Preliminary Project Estimate</strong><span>Add your home details, gutter size, and selected services to calculate an estimate.</span></div>`;
+    calculatorGrid.querySelector(".estimate-home-details__fields")?.append(...calculatorHomeFields);
     calculator.append(calculatorGrid);
     consent.before(main, toggle, hint, calculator);
 
@@ -629,6 +641,7 @@
   };
 
   const sections = initFormSections();
+  window.AQGInitEstimatePricingPreview?.(form);
   const requiredNames = ["name", "phone", "email", "zip", "service", "address"];
   requiredNames.forEach((name) => {
     const control = form.elements.namedItem(name);
@@ -641,10 +654,25 @@
   initTurnstile();
   bindEstimateTriggers();
 
-  const syncServiceFields = () => {
+  const syncServiceFields = (syncCardsFromService = false) => {
     const selected = new Set(
       Array.from(form.querySelectorAll("select[name='service'] option:checked")).map((option) => option.value)
     );
+    const cards = form.querySelectorAll("[name^='include_']");
+    if (cards.length) {
+      const set = (name, checked) => { const card = form.elements.namedItem(name); if (card instanceof HTMLInputElement) card.checked = checked; };
+      if (syncCardsFromService) {
+        set("include_gutters", selected.has("Seamless Gutter Installation") || selected.has("Gutter Replacement"));
+        set("include_guards", selected.has("Gutter Guards"));
+        set("include_fascia", selected.has("Soffit & Fascia"));
+        set("include_soffit", selected.has("Soffit & Fascia"));
+        set("include_downspouts", selected.has("Downspout Installation"));
+        set("include_connectors", selected.has("Gutter Miters & Downspout Connectors"));
+      }
+      form.querySelector(".estimate-guard-type")?.toggleAttribute("hidden", !(form.elements.include_guards instanceof HTMLInputElement && form.elements.include_guards.checked));
+      form.querySelector(".estimate-downspout-count")?.toggleAttribute("hidden", !((form.elements.include_downspouts instanceof HTMLInputElement && form.elements.include_downspouts.checked) || (form.elements.include_connectors instanceof HTMLInputElement && form.elements.include_connectors.checked)));
+      return;
+    }
     const show = (key, visible) => form.querySelectorAll(`[data-estimate-service="${key}"]`).forEach((field) => {
       field.classList.toggle("is-service-hidden", !visible);
       field.querySelectorAll("input, select, textarea").forEach((control) => { control.disabled = !visible || Boolean(sections?.calculator.hidden); });
@@ -676,8 +704,22 @@
   form.elements.downspout_count?.addEventListener("input", syncAccessoryDefaults);
   form.elements.elbow_count?.addEventListener("input", () => { form.elements.elbow_manual_override.value = "true"; });
   form.elements.downspout_connector_count?.addEventListener("input", () => { form.elements.connector_manual_override.value = "true"; });
-  form.elements.service?.addEventListener("change", syncServiceFields);
-  syncServiceFields();
+  form.elements.service?.addEventListener("change", () => syncServiceFields(true));
+  form.querySelectorAll("[name^='include_']").forEach((card) => card.addEventListener("change", () => {
+    const service = form.elements.service;
+    if (!(service instanceof HTMLSelectElement)) return;
+    const checked = (name) => form.querySelector(`[name="${name}"]`)?.checked === true;
+    const setService = (value, enabled) => { const option = Array.from(service.options).find((item) => item.value === value); if (option) option.selected = enabled; };
+    setService("Seamless Gutter Installation", checked("include_gutters"));
+    setService("Gutter Guards", checked("include_guards"));
+    setService("Soffit & Fascia", checked("include_fascia") || checked("include_soffit"));
+    setService("Downspout Installation", checked("include_downspouts"));
+    setService("Gutter Miters & Downspout Connectors", checked("include_connectors"));
+    // Keep Fascia and Soffit independent: the combined service selection is
+    // updated for submission, but it must not overwrite either checkbox.
+    syncServiceFields(false);
+  }));
+  syncServiceFields(true);
 
   // The submit button stays disabled until required contact and project fields are valid.
   const submitButton = form.querySelector("button[type='submit']");

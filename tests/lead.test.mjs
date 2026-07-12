@@ -14,7 +14,7 @@ test("basic request submits without calculator and has no estimate", async () =>
 
 test("server ignores tampered display estimate and returns its own total", async () => {
   const original = globalThis.fetch; const calls = []; globalThis.fetch = async (url, options) => { calls.push({ url, options }); return new Response("ok", { status: 200 }); };
-  try { const env = { GHL_WEBHOOK_URL: "https://example.test/webhook", LEAD_RATE_LIMIT_KV: new MemoryKv() }; const body = { ...contact, idempotency_key: "lead-test-2", calculator_requested: true, gutter_type: '5" Aluminum K-Style', gutter_mode: "selected_sections", gutter_lf: 50, customer_display_estimate: 1 }; const response = await onRequest({ request: request(body), env }); const result = await response.json(); assert.equal(result.customer_display_estimate, 773); const sent = JSON.parse(calls[0].options.body); assert.equal(sent.estimate_base_total, 750); assert.equal(sent.customer_display_estimate, 773); } finally { globalThis.fetch = original; }
+  try { const env = { GHL_WEBHOOK_URL: "https://example.test/webhook", LEAD_RATE_LIMIT_KV: new MemoryKv() }; const body = { ...contact, idempotency_key: "lead-test-2", calculator_requested: true, gutter_size: "5", home_stories: 1, square_feet: 2000, include_gutters: true, customer_display_estimate: 1 }; const response = await onRequest({ request: request(body), env }); const result = await response.json(); assert.equal(result.customer_display_estimate, 2766); const sent = JSON.parse(calls[0].options.body); assert.equal(sent.estimate_base_total, 2685); assert.equal(sent.customer_display_estimate, 2766); } finally { globalThis.fetch = original; }
 });
 
 test("lead rejects external photo URLs", async () => {

@@ -5,51 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Thank You | All Quality Gutters LLC</title>
     <meta name="robots" content="noindex,nofollow" />
-    <link rel="stylesheet" href="assets/css/styles.css?v=b80285bee428" />
+    <link rel="stylesheet" href="assets/css/styles.css?v=421ded46e407" />
     <style>
-      body {
-        min-height: 100vh;
-        background: #f7faf6;
-      }
-
-      .thanks {
-        width: min(620px, calc(100% - 32px));
-        margin: 72px auto;
-        background: #fff;
-        border-radius: 12px;
-        box-shadow: var(--shadow);
-        padding: 42px;
-        text-align: center;
-      }
-
-      .thanks img {
-        width: 240px;
-        margin: 0 auto 24px;
-      }
-
-      .thanks h1 {
-        color: var(--ink);
-        font-size: 42px;
-        line-height: 1.05;
-        margin-bottom: 14px;
-      }
-
-      .thanks p {
-        color: var(--soft-ink);
-        font-size: 18px;
-        margin-bottom: 24px;
-      }
-
-      .thanks__actions {
-        display: flex;
-        justify-content: center;
-        gap: 12px;
-        flex-wrap: wrap;
-      }
-
-      .thanks__estimate { margin: 28px 0; padding: 24px; border: 1px solid #b9df9f; border-radius: 8px; background: #f4fbef; }
-      .thanks__estimate h2 { font-size: 28px; margin-bottom: 12px; }
-      .thanks__estimate strong { display: block; color: var(--accent-dark); font-size: 40px; margin: 12px 0; }
+      body { min-height: 100vh; background: #f8faf7; }
+      .thanks { overflow: hidden; color: #1b2920; }
+      .thanks-hero { position: relative; min-height: 410px; padding: 58px 24px 44px; overflow: hidden; border-bottom: 1px solid #e1eadf; background: linear-gradient(90deg, #fff 0%, #fff 49%, rgba(247, 251, 246, 0.76) 100%); text-align: center; }
+      .thanks-hero::after { position: absolute; inset: 0 0 0 52%; background: linear-gradient(90deg, rgba(248, 250, 247, 0.96), rgba(248, 250, 247, 0.12)), url("assets/img/cta-gutter-house-20260705.webp") center right / cover no-repeat; content: ""; opacity: 0.62; }
+      .thanks-hero__inner { position: relative; z-index: 1; width: min(780px, 100%); margin: 0 auto; }
+      .thanks-success { display: grid; place-items: center; width: 62px; height: 62px; margin: 0 auto 16px; border: 8px solid #edf7e9; border-radius: 50%; background: #29913b; box-shadow: 0 0 0 1px #d8e9d2; color: #fff; font-size: 34px; line-height: 1; }
+      .thanks-success::before { content: "\2713"; }
+      .thanks h1 { margin: 0; color: #152119; font-size: clamp(38px, 5vw, 56px); font-weight: 700; line-height: 1.05; }
+      .thanks-hero__lead { max-width: 600px; margin: 10px auto 0; color: #26342b; font-size: 20px; font-weight: 600; }
+      .thanks-hero__copy { max-width: 500px; margin: 11px auto 0; color: #637068; font-size: 14px; line-height: 1.55; }
+      .thanks__estimate { width: min(560px, 100%); margin: 22px auto 0; padding: 18px 20px; border: 1px solid #bad8aa; border-radius: 8px; background: rgba(247, 253, 243, 0.94); text-align: left; }
+      .thanks__estimate h2 { margin: 0 0 5px; color: #286d2e; font-size: 16px; }
+      .thanks__estimate p { margin: 0; color: #5d6c61; font-size: 13px; line-height: 1.45; }
+      .thanks__estimate strong { display: block; margin: 7px 0; color: #196827; font-size: 32px; line-height: 1; }
+      .thanks-trust { display: flex; justify-content: center; gap: 8px; margin: 24px auto 0; flex-wrap: wrap; }
+      .thanks-trust span { display: inline-flex; align-items: center; gap: 7px; min-height: 34px; padding: 7px 11px; border: 1px solid #e0e8dd; border-radius: 7px; background: rgba(255, 255, 255, 0.86); color: #435146; font-size: 12px; }
+      .thanks-trust img { width: 16px; height: 16px; object-fit: contain; }
+      .thanks__actions { display: flex; justify-content: center; gap: 12px; margin-top: 22px; flex-wrap: wrap; }
+      .thanks__actions .btn { min-width: 162px; min-height: 48px; border-radius: 7px; }
+      .thanks-content { width: min(1120px, calc(100% - 48px)); margin: 0 auto; padding: 42px 0 54px; }
+      .thanks-info-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.9fr); gap: 18px; }
+      .thanks-panel { padding: 25px; border: 1px solid #e0e8dd; border-radius: 8px; background: #fff; box-shadow: 0 12px 28px rgba(34, 57, 41, 0.07); }
+      .thanks-panel h2 { margin: 0 0 18px; color: #17231c; font-size: 23px; }
+      .thanks-steps { list-style: none; margin: 0; padding: 0; }
+      .thanks-steps li { display: grid; grid-template-columns: 46px 1fr; gap: 13px; align-items: center; padding: 12px 0; border-top: 1px solid #e6ece3; }
+      .thanks-steps li:first-child { padding-top: 0; border-top: 0; }
+      .thanks-step-icon { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 7px; background: #f0f7ed; }
+      .thanks-step-icon img { width: 24px; height: 24px; object-fit: contain; }
+      .thanks-steps strong, .thanks-contact strong { display: block; color: #203025; font-size: 14px; }
+      .thanks-steps span, .thanks-contact span { display: block; margin-top: 3px; color: #6b766e; font-size: 12px; line-height: 1.4; }
+      .thanks-contact { display: grid; gap: 0; }
+      .thanks-contact__item { display: grid; grid-template-columns: 42px 1fr; gap: 12px; align-items: center; padding: 12px 0; border-top: 1px solid #e6ece3; }
+      .thanks-contact__item:first-child { padding-top: 0; border-top: 0; }
+      .thanks-contact__icon { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 7px; background: #f0f7ed; }
+      .thanks-contact__icon img { width: 21px; height: 21px; object-fit: contain; }
+      .thanks-contact a { color: #24742d; text-decoration: none; }
+      .thanks-services { margin-top: 38px; }
+      .thanks-services h2 { margin: 0 0 16px; text-align: center; color: #19261e; font-size: 24px; }
+      .thanks-service-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+      .thanks-service { display: grid; grid-template-columns: 38px 1fr; gap: 11px; align-items: start; min-height: 110px; padding: 17px; border: 1px solid #e0e8dd; border-radius: 8px; background: #fff; color: inherit; text-decoration: none; transition: border-color 0.18s ease, box-shadow 0.18s ease; }
+      .thanks-service:hover { border-color: #78ae60; box-shadow: 0 8px 20px rgba(38, 110, 44, 0.1); }
+      .thanks-service img { width: 38px; height: 38px; object-fit: contain; }
+      .thanks-service strong { display: block; color: #28362b; font-size: 13px; line-height: 1.3; }
+      .thanks-service span { display: block; margin-top: 5px; color: #6b766e; font-size: 11px; line-height: 1.4; }
+      .thanks-coverage { display: grid; grid-template-columns: 1fr auto auto; gap: 22px; align-items: center; margin-top: 16px; padding: 22px 24px; border: 1px solid #d8e5d4; border-radius: 8px; background: linear-gradient(100deg, #fbfdf9, #f1f8ed); }
+      .thanks-coverage h2 { margin: 0; color: #1b2b20; font-size: 22px; line-height: 1.2; }
+      .thanks-coverage h2 span { color: #438c37; }
+      .thanks-coverage .btn { min-width: 160px; border-radius: 7px; }
+      .thanks-coverage__link { color: #317637; font-size: 13px; font-weight: 700; text-decoration: none; white-space: nowrap; }
+      @media (max-width: 900px) { .thanks-info-grid { grid-template-columns: 1fr; } .thanks-service-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .thanks-coverage { grid-template-columns: 1fr auto; } .thanks-coverage__link { grid-column: 2; } }
+      @media (max-width: 600px) { .thanks-hero { min-height: 0; padding: 42px 18px 35px; } .thanks-hero::after { display: none; } .thanks-hero__lead { font-size: 17px; } .thanks-content { width: min(100% - 28px, 1120px); padding: 28px 0 38px; } .thanks-panel { padding: 20px; } .thanks-service-grid { grid-template-columns: 1fr; } .thanks-coverage { grid-template-columns: 1fr; gap: 14px; } .thanks-coverage__link { grid-column: auto; } .thanks-coverage .btn { width: 100%; } }
     </style>
       <link rel="stylesheet" href="/assets/css/review-adjustments.css?v=545aee5221e7" />
     <link rel="stylesheet" href="/assets/css/header-navigation.css?v=0d139236422c" />
@@ -145,13 +153,62 @@
       </div>
     </header>
     <main class="thanks">
-      <img src="assets/img/logo-site-20260705.webp" width="480" height="188" alt="All Quality Gutters LLC" />
-      <h1>Thank You!</h1>
-      <p>Your estimate request has been received. Our team will contact you shortly with honest next steps.</p>
-      <section class="thanks__estimate" data-thank-you-estimate hidden></section>
-      <div class="thanks__actions">
-        <a class="btn btn--primary" href="/">Back to Home</a>
-        <a class="btn btn--outline" href="tel:+18445880075" style="color: var(--accent-dark); border-color: var(--accent)">Call Now</a>
+      <section class="thanks-hero" aria-labelledby="thanks-title">
+        <div class="thanks-hero__inner">
+          <div class="thanks-success" aria-hidden="true"></div>
+          <h1 id="thanks-title">Thank You!</h1>
+          <p class="thanks-hero__lead">Your estimate request has been received.</p>
+          <p class="thanks-hero__copy">Our team will review your details and contact you shortly to confirm the next steps for your project.</p>
+          <section class="thanks__estimate" data-thank-you-estimate hidden></section>
+          <div class="thanks-trust" aria-label="Company credentials">
+            <span><img src="assets/img/icons/license.svg" alt="" /> Licensed &amp; Insured</span>
+            <span><img src="assets/img/icons/map-pin.svg" alt="" /> Serving PA &amp; NJ</span>
+            <span><img src="assets/img/icons/warranty.svg" alt="" /> 50-Year Product Warranty</span>
+          </div>
+          <div class="thanks__actions">
+            <a class="btn btn--primary" href="tel:+18445880075"><img src="assets/img/icons/phone-button.svg" alt="" /> Call Us Now</a>
+            <a class="btn btn--outline" href="/"><img src="assets/img/icons/home.svg" alt="" /> Back to Home</a>
+          </div>
+        </div>
+      </section>
+
+      <div class="thanks-content">
+        <div class="thanks-info-grid">
+          <section class="thanks-panel" aria-labelledby="next-title">
+            <h2 id="next-title">What Happens Next</h2>
+            <ol class="thanks-steps">
+              <li><span class="thanks-step-icon"><img src="assets/img/icons/assessment.svg" alt="" /></span><div><strong>We review your request</strong><span>Our team carefully reviews your project details.</span></div></li>
+              <li><span class="thanks-step-icon"><img src="assets/img/icons/phone.svg" alt="" /></span><div><strong>We contact you to confirm details</strong><span>We review your needs and answer questions.</span></div></li>
+              <li><span class="thanks-step-icon"><img src="assets/img/icons/calendar.svg" alt="" /></span><div><strong>We schedule your estimate</strong><span>Choose a convenient time for your on-site visit.</span></div></li>
+              <li><span class="thanks-step-icon"><img src="assets/img/icons/estimate.svg" alt="" /></span><div><strong>We provide your exact quote</strong><span>You receive a clear, detailed quote with no hidden fees.</span></div></li>
+            </ol>
+          </section>
+          <aside class="thanks-panel" aria-labelledby="help-title">
+            <h2 id="help-title">Need Immediate Help?</h2>
+            <div class="thanks-contact">
+              <a class="thanks-contact__item" href="tel:+18445880075"><span class="thanks-contact__icon"><img src="assets/img/icons/phone.svg" alt="" /></span><span><strong>Call Us</strong><span>+1 844 588 0075</span></span></a>
+              <a class="thanks-contact__item" href="mailto:aqgllc2@gmail.com"><span class="thanks-contact__icon"><img src="assets/img/icons/mail.svg" alt="" /></span><span><strong>Email Us</strong><span>aqgllc2@gmail.com</span></span></a>
+              <div class="thanks-contact__item"><span class="thanks-contact__icon"><img src="assets/img/icons/clock.svg" alt="" /></span><span><strong>Service Hours</strong><span>Mon - Sat: 7:00 AM - 6:00 PM</span></span></div>
+              <div class="thanks-contact__item"><span class="thanks-contact__icon"><img src="assets/img/icons/map-pin.svg" alt="" /></span><span><strong>Visit Us</strong><span>7025 Bristol Pike, Unit 1, Levittown, PA 19057</span></span></div>
+            </div>
+          </aside>
+        </div>
+
+        <section class="thanks-services" aria-labelledby="services-title">
+          <h2 id="services-title">Popular Services</h2>
+          <div class="thanks-service-grid">
+            <a class="thanks-service" href="/services/seamless-gutter-installation/"><img src="assets/img/icons/gutter-install.svg" alt="" /><span><strong>Seamless Gutter Installation</strong><span>Custom-fit seamless gutters built to last.</span></span></a>
+            <a class="thanks-service" href="/services/gutter-guards/"><img src="assets/img/icons/gutter-guard.svg" alt="" /><span><strong>Gutter Guards</strong><span>Keep leaves and debris out of your system.</span></span></a>
+            <a class="thanks-service" href="/services/soffit-fascia/"><img src="assets/img/icons/fascia.svg" alt="" /><span><strong>Soffit &amp; Fascia</strong><span>Protect and enhance your home's exterior.</span></span></a>
+            <a class="thanks-service" href="/services/downspout-installation/"><img src="assets/img/icons/downspout.svg" alt="" /><span><strong>Downspout Installation</strong><span>Direct water safely away from your foundation.</span></span></a>
+          </div>
+        </section>
+
+        <section class="thanks-coverage" aria-label="Service area">
+          <h2>Protecting homes across<br /><span>Pennsylvania &amp; New Jersey</span></h2>
+          <a class="btn btn--primary" href="/services/seamless-gutter-installation/">Explore Services <span aria-hidden="true">&rarr;</span></a>
+          <a class="thanks-coverage__link" href="/">Return to Homepage <span aria-hidden="true">&rarr;</span></a>
+        </section>
       </div>
     </main>
   <footer class="footer" id="site-footer">

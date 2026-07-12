@@ -245,7 +245,7 @@ const initEstimatePricingPreview = (form) => {
   const render = () => {
     const estimate = getEstimateCalculation(form);
     if (estimate.errors.length) {
-      preview.innerHTML = `<strong>Preliminary Project Estimate</strong><span>${estimate.errors[0]}</span>`;
+      preview.innerHTML = `<div class="estimate-price-preview__copy"><span class="estimate-price-preview__eyebrow">Estimated starting range</span><strong>Complete your project details</strong><p>${estimate.errors[0]}</p></div>`;
       return;
     }
 
@@ -253,11 +253,12 @@ const initEstimatePricingPreview = (form) => {
       const message = estimate.requiresManualReview
         ? "Some selected work needs an on-site measurement and manual review."
         : "Add the applicable project quantities to see a preliminary price range.";
-      preview.innerHTML = `<strong>Preliminary Project Estimate</strong><span>${message}</span>`;
+      preview.innerHTML = `<div class="estimate-price-preview__copy"><span class="estimate-price-preview__eyebrow">Estimated starting range</span><strong>Preparing your estimate</strong><p>${message}</p></div>`;
       return;
     }
 
-    preview.innerHTML = `<strong>Preliminary Project Estimate</strong><p class="estimate-price-preview__total">${estimate.range}</p><ul>${estimate.lineItems.map((item) => `<li>${item.label}: ${item.quantityLabel || `${item.quantity} ${item.unit}`} × $${item.rate}${item.unit === "LF" ? "/LF" : ""} = ${estimateCore.money(item.subtotal)}${item.quantitySource === "estimated" ? " (Estimated from home size)" : " (Provided by customer)"}</li>`).join("")}</ul><p class="estimate-price-preview__note">This is a preliminary estimate based on the information provided. Final pricing requires an on-site inspection and measurement.</p>`;
+    const selectedServices = estimate.lineItems.map((item) => item.label).join(", ");
+    preview.innerHTML = `<div class="estimate-price-preview__copy"><span class="estimate-price-preview__eyebrow">Estimated starting range</span><strong class="estimate-price-preview__total">${estimate.range}</strong><p>Based on ${estimate.estimatedGutterLf} LF and: ${selectedServices}.</p><p class="estimate-price-preview__note">Final pricing is confirmed after an on-site inspection.</p><details><summary>View estimate details</summary><ul>${estimate.lineItems.map((item) => `<li>${item.label}: ${item.quantityLabel || `${item.quantity} ${item.unit}`} x ${item.rate}</li>`).join("")}</ul></details></div>`;
   };
 
   form.addEventListener("input", render);
@@ -265,6 +266,7 @@ const initEstimatePricingPreview = (form) => {
   render();
 };
 
+window.AQGInitEstimatePricingPreview = initEstimatePricingPreview;
 document.querySelectorAll(".estimate-modal__form").forEach(initEstimatePricingPreview);
 
 const buildLeadPayload = (form) => {
@@ -278,7 +280,7 @@ const buildLeadPayload = (form) => {
     service_needed: getSelectedServices(form),
     calculator_requested: value("calculator_requested") === "true",
     home_stories: value("stories"), square_feet: value("square_feet"),
-    gutter_mode: value("gutter_mode"), gutter_type: value("gutter_type"), gutter_size: value("gutter_type"),
+    gutter_mode: value("gutter_mode"), gutter_type: value("gutter_size"), gutter_size: value("gutter_size"),
     gutter_lf_source: value("gutter_lf_source"), gutter_lf: value("gutter_lf"),
     gutter_guards: value("gutter_guards"), guard_mode: value("guard_mode"), guard_lf: value("guard_lf"),
     fascia_mode: value("fascia_mode"), fascia_lf: value("fascia_lf"),
@@ -286,7 +288,8 @@ const buildLeadPayload = (form) => {
     downspout_mode: value("downspout_mode"), downspout_count: value("downspout_count"), downspout_length_per_unit: value("downspout_length_per_unit"),
     elbow_count: value("elbow_count"), elbow_manual_override: String(data.get("elbow_manual_override") === "true"),
     gutter_miter_count: value("gutter_miter_count"), downspout_connector_count: value("downspout_connector_count"),
-    connector_manual_override: String(data.get("connector_manual_override") === "true"), accessory_mode: value("accessory_mode"),
+    connector_manual_override: String(data.get("connector_manual_override") === "true"), accessory_mode: value("accessory_mode"), miter_count: value("miter_count"),
+    include_gutters: data.get("include_gutters") === "true", include_guards: data.get("include_guards") === "true", include_fascia: data.get("include_fascia") === "true", include_soffit: data.get("include_soffit") === "true", include_downspouts: data.get("include_downspouts") === "true", include_connectors: data.get("include_connectors") === "true", guard_type: value("guard_type"),
     property_address: value("address"), preferred_date: value("preferred_date"), comments: value("message"),
     website: value("website"), idempotency_key: value("idempotency_key"), turnstile_token: value("turnstile_token"),
     referrer: document.referrer, utm_source: new URLSearchParams(window.location.search).get("utm_source") || "", utm_medium: new URLSearchParams(window.location.search).get("utm_medium") || "", utm_campaign: new URLSearchParams(window.location.search).get("utm_campaign") || "", utm_content: new URLSearchParams(window.location.search).get("utm_content") || "", utm_term: new URLSearchParams(window.location.search).get("utm_term") || "", gclid: new URLSearchParams(window.location.search).get("gclid") || "", fbclid: new URLSearchParams(window.location.search).get("fbclid") || "",

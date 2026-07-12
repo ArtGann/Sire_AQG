@@ -1,2 +1,4 @@
 *.zip
 *.log
+local-leads.json
+scripts/__pycache__/

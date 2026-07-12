@@ -7,6 +7,7 @@ from urllib.parse import urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
 NOTES_FILE = ROOT / "review-notes.json"
+LEADS_FILE = ROOT / "local-leads.json"
 
 
 class ReviewHandler(SimpleHTTPRequestHandler):
@@ -25,7 +26,11 @@ class ReviewHandler(SimpleHTTPRequestHandler):
         super().do_GET()
 
     def do_POST(self):
-        if urlparse(self.path).path != "/__review-notes":
+        path = urlparse(self.path).path
+        if path == "/api/lead":
+            self._handle_local_lead()
+            return
+        if path != "/__review-notes":
             self.send_error(404)
             return
         try:
@@ -55,6 +60,34 @@ class ReviewHandler(SimpleHTTPRequestHandler):
         NOTES_FILE.write_text(json.dumps(notes, ensure_ascii=False, indent=2), encoding="utf-8")
         self._send_json({"ok": True, "note": note})
 
+    def _handle_local_lead(self):
+        """Accept local preview submissions without calling production services."""
+        try:
+            length = int(self.headers.get("Content-Length", "0"))
+            payload = json.loads(self.rfile.read(length).decode("utf-8"))
+        except Exception:
+            self._send_json({"ok": False, "message": "Please send a valid estimate request."}, 400)
+            return
+
+        leads = self._read_local_leads()
+        lead = {
+            "id": f"local-lead-{len(leads) + 1}",
+            "createdAt": self.date_time_string(),
+            "full_name": payload.get("full_name", ""),
+            "email": payload.get("email", ""),
+            "service_needed": payload.get("service_needed", []),
+            "calculator_requested": payload.get("calculator_requested", False),
+        }
+        leads.append(lead)
+        LEADS_FILE.write_text(json.dumps(leads, ensure_ascii=False, indent=2), encoding="utf-8")
+        self._send_json({
+            "ok": True,
+            "local_preview": True,
+            "estimate_status": "local_preview",
+            "customer_display_estimate": 0,
+            "estimate_requires_manual_review": True,
+        })
+
     def _read_notes(self):
         if not NOTES_FILE.exists():
             return []
@@ -63,9 +96,17 @@ class ReviewHandler(SimpleHTTPRequestHandler):
         except json.JSONDecodeError:
             return []
 
-    def _send_json(self, data):
+    def _read_local_leads(self):
+        if not LEADS_FILE.exists():
+            return []
+        try:
+            return json.loads(LEADS_FILE.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            return []
+
+    def _send_json(self, data, status=200):
         body = json.dumps(data, ensure_ascii=False).encode("utf-8")
-        self.send_response(200)
+        self.send_response(status)
         self.send_header("Content-Type", "application/json; charset=utf-8")
         self.send_header("Content-Length", str(len(body)))
         self.end_headers()
