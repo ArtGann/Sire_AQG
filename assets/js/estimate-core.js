@@ -23,7 +23,8 @@
     if (!Object.values(input.included).some(Boolean)) errors.push("Please select at least one service to include in your estimate.");
     if (input.included.guards && !input.guardType) errors.push("Please choose Basic or Micro-Mesh gutter guards.");
     if ((input.included.downspouts || input.included.connectors) && !input.downspoutCount) errors.push("Enter the number of downspouts.");
-    if (input.miterCount > LIMITS.miters) errors.push("Number of gutter corners is outside the allowed range.");
+    if (input.downspoutCount > LIMITS.downspouts[1]) errors.push("Number of downspouts is outside the allowed range.");
+    if (input.miterCount > LIMITS.miters[1]) errors.push("Number of gutter corners is outside the allowed range.");
     if (errors.length) return { input, errors, lineItems: [], baseTotal: 0, low: 0, high: 0, range: "", estimateStatus: "invalid", requiresManualReview: false, customerDisplayEstimate: 0, estimatedGutterLf: 0, estimateDetails: "" };
     const perimeter = Math.round(4 * Math.sqrt(input.squareFeet / input.stories)); const size = input.size; const rate = PRICES.accessories[size]; const items = [];
     if (input.included.gutters) add(items, `gutters_${size}`, `${size}\" Gutters`, perimeter, "LF", PRICES.gutters[size], "estimated_from_home_size");

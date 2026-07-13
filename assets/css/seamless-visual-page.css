@@ -3623,7 +3623,7 @@ body:has(.seamless-page) .header-phone:focus {
   }
 }
 
-/* Gutter Miters & Downspout Connectors service page. */
+/* Gutter Miters & Connectors service page. */
 .accessory-page .seamless-hero::before {
   background-image: url("/assets/img/miters-connectors-hero.png");
   background-position: 62% center;
@@ -5068,7 +5068,7 @@ body:has(.seamless-page) .header-phone:focus {
   display: none;
 }
 
-/* Compact Gutter Miters & Downspout Connectors content blocks. */
+/* Compact Gutter Miters & Connectors content blocks. */
 .accessory-page .seamless-why-grid {
   width: min(1420px, calc(100% - 64px));
   grid-template-columns: minmax(460px, 0.95fr) minmax(0, 1.05fr);
