@@ -121,6 +121,17 @@ const extraIndexableServices = [
   },
 ];
 
+// These service pages use hand-built visual/pricing layouts. They still stay
+// in `services` so catalogs, local pages and the sitemap can reference them,
+// but the generic SEO builder must never overwrite their custom HTML.
+const customVisualServiceSlugs = new Set([
+  "seamless-gutter-installation",
+  "gutter-guards",
+  "gutter-replacement",
+  "soffit-fascia",
+  "downspout-installation",
+]);
+
 /* ------------------------------------------------------------------ */
 /* Homeowner guides (informational content)                            */
 /* ------------------------------------------------------------------ */
@@ -992,7 +1003,10 @@ function sitemapEntry(url) {
 
 async function build(data, excludedHubs) {
   await cleanRegionalPages(data.hubs);
-  for (const [index, service] of services.entries()) await writePage(path.join("services", service.slug, "index.html"), servicePage(service, index, data.hubs));
+  for (const [index, service] of services.entries()) {
+    if (customVisualServiceSlugs.has(service.slug)) continue;
+    await writePage(path.join("services", service.slug, "index.html"), servicePage(service, index, data.hubs));
+  }
   for (const hub of data.hubs) await writePage(path.join("service-areas", hub.slug, "index.html"), areaPage(hub, data.hubs));
   await writePage(path.join("areas-we-serve", "index.html"), directoryPage(data));
   for (const guide of guides) await writePage(path.join("guides", guide.slug, "index.html"), guidePage(guide));
@@ -1003,7 +1017,8 @@ async function build(data, excludedHubs) {
   const urls = ["/", ...services.map((service) => `/services/${service.slug}/`), ...extraIndexableServices.map((service) => `/services/${service.slug}/`), "/areas-we-serve/", ...data.hubs.map((hub) => `/service-areas/${hub.slug}/`), "/guides/", ...guides.map((guide) => `/guides/${guide.slug}/`), "/about/", "/privacy-policy/", "/terms-conditions/", "/disclaimer/"];
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(sitemapEntry).join("\n")}\n</urlset>\n`;
   await fs.writeFile(path.join(root, "sitemap.xml"), sitemap);
-  console.log(`Generated ${services.length} service pages, ${data.hubs.length} regional pages, ${guides.length} guides, the about page and a ${data.hubs.flatMap((hub) => hub.nearby).length}-location directory.`);
+  const generatedServiceCount = services.filter((service) => !customVisualServiceSlugs.has(service.slug)).length;
+  console.log(`Generated ${generatedServiceCount} generic service pages, preserved ${customVisualServiceSlugs.size} custom visual service pages, generated ${data.hubs.length} regional pages, ${guides.length} guides, the about page and a ${data.hubs.flatMap((hub) => hub.nearby).length}-location directory.`);
 }
 
 const sourceData = process.argv.includes("--import") ? await importAreas() : JSON.parse(await fs.readFile(dataFile, "utf8"));
