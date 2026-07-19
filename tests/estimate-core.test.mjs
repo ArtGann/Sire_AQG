@@ -11,4 +11,11 @@ test("two-story downspouts calculate length elbows and optional connectors", () 
 test("connectors require downspouts and guards require type", () => { assert.match(core.calculate({ ...base, include_gutters: false, include_connectors: true }).errors.join(" "), /downspouts/); assert.match(core.calculate({ ...base, include_gutters: false, include_guards: true }).errors.join(" "), /Basic or Micro/); });
 test("calculator rejects counts above the server-supported limits", () => { assert.match(core.calculate({ ...base, miter_count: 201 }).errors.join(" "), /gutter corners/); assert.match(core.calculate({ ...base, include_gutters: false, include_downspouts: true, downspout_count: 101 }).errors.join(" "), /downspouts/); });
 test("customer amount applies three percent only after base calculation", () => { const result = core.calculate(base); assert.equal(result.customerDisplayEstimate, Math.round(result.baseTotal * 1.03)); });
-test("dates, photos, and area checks remain valid", () => { assert.equal(core.validDate("07/12/2026", new Date("2026-07-11T16:00:00Z")), false); assert.match(core.validatePhotoMeta(Array.from({ length: 7 }, () => ({ type: "image/jpeg", size: 1 }))), /up to 6/); assert.equal(core.serviceAreaStatus("19019", ["19019"]), "supported"); });
+test("dates, photos, and area checks remain valid", () => {
+  assert.equal(core.validDate("07/12/2026", new Date("2026-07-11T16:00:00Z")), false);
+  assert.equal(core.validatePhotoMeta(Array.from({ length: 10 }, () => ({ type: "image/jpeg", size: 10 * 1024 * 1024 }))), "");
+  assert.match(core.validatePhotoMeta(Array.from({ length: 11 }, () => ({ type: "image/jpeg", size: 1 }))), /up to 10/);
+  assert.match(core.validatePhotoMeta([{ type: "image/png", size: 10 * 1024 * 1024 + 1 }]), /up to 10MB/);
+  assert.match(core.validatePhotoMeta([{ type: "image/gif", size: 1 }]), /JPG, PNG, or WEBP/);
+  assert.equal(core.serviceAreaStatus("19019", ["19019"]), "supported");
+});

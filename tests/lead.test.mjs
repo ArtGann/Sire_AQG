@@ -4,12 +4,18 @@ import { onRequest } from "../functions/api/lead.js";
 import { hasValidImageMagic } from "../functions/api/upload-photo.js";
 
 class MemoryKv { constructor() { this.store = new Map(); } async get(key) { return this.store.get(key) || null; } async put(key, value) { this.store.set(key, value); } }
+class FailingIdempotencyKv extends MemoryKv {
+  async put(key, value) {
+    if (key.startsWith("lead-idempotency:")) throw new Error("simulated KV write failure");
+    return super.put(key, value);
+  }
+}
 const contact = { full_name: "Test Homeowner", phone: "2155550100", email: "test@example.com", zip_code: "19019", property_address: "1 Main Street", service_needed: ["Gutter Replacement"], idempotency_key: "lead-test-1" };
 const request = (body) => new Request("https://site.test/api/lead", { method: "POST", headers: { "Content-Type": "application/json", "CF-Connecting-IP": "203.0.113.4" }, body: JSON.stringify(body) });
 
 test("basic request submits without calculator and has no estimate", async () => {
   const original = globalThis.fetch; const calls = []; globalThis.fetch = async (url, options) => { calls.push({ url, options }); return new Response("ok", { status: 200 }); };
-  try { const response = await onRequest({ request: request(contact), env: { GHL_WEBHOOK_URL: "https://example.test/webhook", LEAD_RATE_LIMIT_KV: new MemoryKv() } }); const body = await response.json(); assert.equal(body.estimate_status, "not_requested"); const sent = JSON.parse(calls[0].options.body); assert.equal(sent.estimate_base_total, 0); assert.equal(typeof sent.estimate_inputs_json, "string"); assert.deepEqual(JSON.parse(sent.estimate_inputs_json).services, ["Gutter Replacement"]); assert.equal(typeof sent.estimate_line_items_json, "string"); assert.deepEqual(JSON.parse(sent.estimate_line_items_json), []); assert.ok(Number.isFinite(Date.parse(sent.submission_timestamp))); } finally { globalThis.fetch = original; }
+  try { const response = await onRequest({ request: request(contact), env: { GHL_WEBHOOK_URL: "https://example.test/webhook", LEAD_RATE_LIMIT_KV: new MemoryKv() } }); const body = await response.json(); assert.equal(body.estimate_status, "not_requested"); const sent = JSON.parse(calls[0].options.body); assert.equal(sent.phone, "+12155550100"); assert.equal(sent.estimate_base_total, 0); assert.equal(typeof sent.estimate_inputs_json, "string"); assert.deepEqual(JSON.parse(sent.estimate_inputs_json).services, ["Gutter Replacement"]); assert.equal(typeof sent.estimate_line_items_json, "string"); assert.deepEqual(JSON.parse(sent.estimate_line_items_json), []); assert.ok(Number.isFinite(Date.parse(sent.submission_timestamp))); } finally { globalThis.fetch = original; }
 });
 
 test("server ignores tampered display estimate and returns its own total", async () => {
@@ -19,7 +25,41 @@ test("server ignores tampered display estimate and returns its own total", async
 
 test("lead rejects external photo URLs", async () => {
   const original = globalThis.fetch; globalThis.fetch = async () => new Response("ok", { status: 200 });
-  try { const response = await onRequest({ request: request({ ...contact, idempotency_key: "lead-test-3", uploaded_photos: ["https://evil.example/photo.jpg"] }), env: { GHL_WEBHOOK_URL: "https://example.test/webhook", R2_PUBLIC_BASE_URL: "https://images.example/leads", LEAD_RATE_LIMIT_KV: new MemoryKv() } }); assert.equal(response.status, 400); } finally { globalThis.fetch = original; }
+  try { const response = await onRequest({ request: request({ ...contact, idempotency_key: "lead-test-3", uploaded_photos: ["https://evil.example/photo.jpg"] }), env: { GHL_WEBHOOK_URL: "https://example.test/webhook", LEAD_RATE_LIMIT_KV: new MemoryKv() } }); assert.equal(response.status, 400); } finally { globalThis.fetch = original; }
+});
+
+test("lead rejects more than ten photo URLs before delivery", async () => {
+  const original = globalThis.fetch;
+  let calls = 0;
+  globalThis.fetch = async () => { calls += 1; return new Response("ok", { status: 200 }); };
+  try {
+    const uploadedPhotos = Array.from({ length: 11 }, (_, index) => `https://site.test/api/photo/${String(index).padStart(64, "0")}`);
+    const response = await onRequest({
+      request: request({ ...contact, idempotency_key: "lead-test-too-many-photos", uploaded_photos: uploadedPhotos }),
+      env: { GHL_WEBHOOK_URL: "https://example.test/webhook", LEAD_RATE_LIMIT_KV: new MemoryKv() },
+    });
+    assert.equal(response.status, 400);
+    assert.equal((await response.json()).code, "invalid_photos");
+    assert.equal(calls, 0);
+  } finally {
+    globalThis.fetch = original;
+  }
+});
+
+test("lead rejects unknown services and invalid phone numbers", async () => {
+  const original = globalThis.fetch;
+  let calls = 0;
+  globalThis.fetch = async () => { calls += 1; return new Response("ok", { status: 200 }); };
+  try {
+    const env = { GHL_WEBHOOK_URL: "https://example.test/webhook", LEAD_RATE_LIMIT_KV: new MemoryKv() };
+    const unknownService = await onRequest({ request: request({ ...contact, idempotency_key: "lead-test-4", service_needed: ["Roof Replacement"] }), env });
+    assert.equal(unknownService.status, 400);
+    const invalidPhone = await onRequest({ request: request({ ...contact, idempotency_key: "lead-test-5", phone: "123" }), env });
+    assert.equal(invalidPhone.status, 400);
+    assert.equal(calls, 0);
+  } finally {
+    globalThis.fetch = original;
+  }
 });
 
 test("upload magic-byte validation rejects a renamed non-image file", async () => {
@@ -27,4 +67,29 @@ test("upload magic-byte validation rejects a renamed non-image file", async () =
   const png = { type: "image/png", slice: () => new Blob([new Uint8Array([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a])]) };
   assert.equal(await hasValidImageMagic(fakeJpeg), false);
   assert.equal(await hasValidImageMagic(png), true);
+});
+
+test("a successful GHL delivery remains successful when the idempotency receipt cannot be persisted", async () => {
+  const original = globalThis.fetch;
+  let webhookCalls = 0;
+  globalThis.fetch = async () => {
+    webhookCalls += 1;
+    return new Response("ok", { status: 200 });
+  };
+  try {
+    const response = await onRequest({
+      request: request({ ...contact, idempotency_key: "lead-test-kv-failure" }),
+      env: {
+        GHL_WEBHOOK_URL: "https://example.test/webhook",
+        LEAD_RATE_LIMIT_KV: new FailingIdempotencyKv(),
+      },
+    });
+    const body = await response.json();
+    assert.equal(response.status, 200);
+    assert.equal(body.ok, true);
+    assert.equal(body.delivery_state_saved, false);
+    assert.equal(webhookCalls, 1);
+  } finally {
+    globalThis.fetch = original;
+  }
 });

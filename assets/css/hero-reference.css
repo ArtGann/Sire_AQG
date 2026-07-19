@@ -103,7 +103,7 @@
   background:
     linear-gradient(90deg, rgba(255, 255, 255, 0.86) 0%, rgba(255, 255, 255, 0.56) 22%, rgba(255, 255, 255, 0.1) 48%, rgba(255, 255, 255, 0) 72%),
     linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.2)),
-    url("../img/hero-reference-photo.png") 58% center / cover no-repeat;
+    url("../img/hero-reference-photo.webp") 58% center / cover no-repeat;
   filter: saturate(1.04) contrast(0.96) brightness(1.18);
   transform: none;
 }
@@ -288,7 +288,7 @@ h1 span,
     min-height: 0;
     background:
       linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.82)),
-      url("../img/hero-reference-photo.png") center top / cover no-repeat;
+      url("../img/hero-reference-photo.webp") center top / cover no-repeat;
   }
 
   .hero::before {

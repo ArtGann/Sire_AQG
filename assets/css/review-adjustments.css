@@ -376,7 +376,7 @@
       rgba(5, 16, 18, 0.08) 100%
     ),
     linear-gradient(180deg, rgba(2, 10, 12, 0.3), rgba(2, 10, 12, 0.42)),
-    url("../img/hero-reference-photo.png") right center / cover no-repeat;
+    url("../img/hero-reference-photo.webp") right center / cover no-repeat;
 }
 
 .hero h1 {
@@ -402,7 +402,7 @@
   .hero {
     background:
       linear-gradient(180deg, rgba(2, 10, 12, 0.82), rgba(2, 10, 12, 0.72)),
-      url("../img/hero-reference-photo.png") center top / cover no-repeat;
+      url("../img/hero-reference-photo.webp") center top / cover no-repeat;
   }
 }
 

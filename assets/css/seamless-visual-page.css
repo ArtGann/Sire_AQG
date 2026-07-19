@@ -3625,7 +3625,7 @@ body:has(.seamless-page) .header-phone:focus {
 
 /* Gutter Miters & Connectors service page. */
 .accessory-page .seamless-hero::before {
-  background-image: url("/assets/img/miters-connectors-hero.png");
+  background-image: url("/assets/img/miters-connectors-hero.webp");
   background-position: 62% center;
 }
 
@@ -4230,7 +4230,7 @@ body:has(.seamless-page) .header-phone:focus {
 }
 
 .accessory-page .seamless-final-cta::before {
-  background-image: url("/assets/img/miters-connectors-hero.png");
+  background-image: url("/assets/img/miters-connectors-hero.webp");
   background-size: 52% auto;
   background-position: right center;
 }

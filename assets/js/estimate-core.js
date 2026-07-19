@@ -2,7 +2,7 @@
   const SERVICES = Object.freeze({ GUTTERS: "Seamless Gutter Installation", GUARDS: "Gutter Guards", SOFFIT: "Soffit & Fascia", DOWNSPOUTS: "Downspout Installation", ACCESSORIES: "Gutter Miters & Connectors" });
   const PRICES = Object.freeze({ gutters: { "5": 15, "6": 18 }, guards: { basic: 15, micro_mesh: 20 }, fascia: 20, soffit: 25, accessories: { "5": { downspout: 15, elbow: 15, connector: 15, miter: 15 }, "6": { downspout: 18, elbow: 18, connector: 18, miter: 18 } } });
   const LIMITS = Object.freeze({ squareFeet: [200, 30000], stories: [1, 3], downspouts: [0, 100], miters: [0, 200] });
-  const MAX_PHOTOS = 6, MAX_PHOTO_BYTES = 10 * 1024 * 1024, PHOTO_TYPES = new Set(["image/jpeg", "image/png", "image/webp"]);
+  const MAX_PHOTOS = 10, MAX_PHOTO_BYTES = 10 * 1024 * 1024, PHOTO_TYPES = new Set(["image/jpeg", "image/png", "image/webp"]);
   const clean = (value) => typeof value === "string" ? value.trim() : "";
   const num = (value) => Number.isFinite(Number(value)) ? Math.max(0, Math.round(Number(value))) : 0;
   const money = (value) => `$${Math.round(value).toLocaleString("en-US")}`;
@@ -40,6 +40,6 @@
   function newYorkToday(now = new Date()) { const p = new Intl.DateTimeFormat("en-US", { timeZone: "America/New_York", year: "numeric", month: "2-digit", day: "2-digit" }).formatToParts(now); const v = (type) => Number(p.find((x) => x.type === type)?.value || 0); return new Date(v("year"), v("month") - 1, v("day")); }
   function validDate(value, now = new Date()) { if (!value) return true; const m = String(value).match(/^(\d{2})\/(\d{2})\/(\d{4})$/); if (!m) return false; const date = new Date(+m[3], +m[1] - 1, +m[2]); return date > newYorkToday(now) && date.getDay() !== 0; }
   function serviceAreaStatus(zip, supported = []) { if (!/^\d{5}$/.test(zip)) return ""; if (supported.includes(zip)) return "supported"; const value = +zip; return (value >= 7000 && value <= 8999) || (value >= 15000 && value <= 19699) ? "needs_review" : "outside_primary_area"; }
-  function validatePhotoMeta(files = []) { if (files.length > MAX_PHOTOS) return "You can upload up to 6 photos."; return files.some((file) => !PHOTO_TYPES.has(file.type) || file.size > MAX_PHOTO_BYTES) ? "Photos must be JPG, PNG, or WEBP files up to 10MB each." : ""; }
+  function validatePhotoMeta(files = []) { if (files.length > MAX_PHOTOS) return "You can upload up to 10 photos."; return files.some((file) => !PHOTO_TYPES.has(file.type) || file.size > MAX_PHOTO_BYTES) ? "Photos must be JPG, PNG, or WEBP files up to 10MB each." : ""; }
   root.AQGEstimateCore = { SERVICES, PRICES, LIMITS, MAX_PHOTOS, MAX_PHOTO_BYTES, PHOTO_TYPES, normalize, calculate, sizeKey, validDate, newYorkToday, serviceAreaStatus, validatePhotoMeta, money };
 })(globalThis);

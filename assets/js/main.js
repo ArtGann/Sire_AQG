@@ -272,6 +272,23 @@ document.querySelectorAll(".estimate-modal__form").forEach(initEstimatePricingPr
 const buildLeadPayload = (form) => {
   const data = new FormData(form);
   const value = (name) => String(data.get(name) || "").trim();
+  const params = new URLSearchParams(window.location.search);
+  const attribution = window.AQGTracking?.getAttribution?.() || {
+    landing_page_url: `${window.location.origin}${window.location.pathname}`,
+    referrer: document.referrer,
+    utm_source: params.get("utm_source") || "",
+    utm_medium: params.get("utm_medium") || "",
+    utm_campaign: params.get("utm_campaign") || "",
+    utm_content: params.get("utm_content") || "",
+    utm_term: params.get("utm_term") || "",
+    gclid: params.get("gclid") || "",
+    fbclid: params.get("fbclid") || "",
+    gbraid: params.get("gbraid") || "",
+    wbraid: params.get("wbraid") || "",
+    msclkid: params.get("msclkid") || "",
+    page_url: `${window.location.origin}${window.location.pathname}`,
+    page_path: window.location.pathname,
+  };
   return {
     full_name: String(data.get("name") || "").trim(),
     phone: String(data.get("phone") || "").trim(),
@@ -292,11 +309,10 @@ const buildLeadPayload = (form) => {
     miter_count: value("miter_count"),
     downspout_count: value("downspout_count"),
     property_address: value("address"), preferred_date: value("preferred_date"), comments: value("message"),
-    website: value("website"), idempotency_key: value("idempotency_key"), turnstile_token: value("turnstile_token"),
-    referrer: document.referrer, utm_source: new URLSearchParams(window.location.search).get("utm_source") || "", utm_medium: new URLSearchParams(window.location.search).get("utm_medium") || "", utm_campaign: new URLSearchParams(window.location.search).get("utm_campaign") || "", utm_content: new URLSearchParams(window.location.search).get("utm_content") || "", utm_term: new URLSearchParams(window.location.search).get("utm_term") || "", gclid: new URLSearchParams(window.location.search).get("gclid") || "", fbclid: new URLSearchParams(window.location.search).get("fbclid") || "",
+    website: value("website"), idempotency_key: value("idempotency_key"), turnstile_token: value("turnstile_token"), lead_session_token: value("lead_session_token"),
     uploaded_photos: [],
     sms_consent: data.get("sms_consent") === "true",
-    landing_page_url: window.location.href,
+    ...attribution,
     page_form_source: "Website Estimate Form"
   };
 };
@@ -318,7 +334,9 @@ const postLeadPayload = async (payload) => {
   }
 
   if (!response.ok) {
-    throw new Error(result.message || "We couldn't send your estimate request. Please try again.");
+    const error = new Error(result.message || "We couldn't send your estimate request. Please try again.");
+    error.code = result.code || "lead_request_failed";
+    throw error;
   }
 
   return result;
@@ -614,27 +632,6 @@ document.querySelectorAll("form").forEach((form) => {
     control.addEventListener("change", clearWhenValid);
   });
 
-  form.addEventListener("submit", () => {
-    const data = new FormData(form);
-    const lead = {};
-
-    data.forEach((value, key) => {
-      const nextValue =
-        value instanceof File
-          ? { name: value.name, size: value.size, type: value.type }
-          : value;
-
-      if (value instanceof File && !value.name) return;
-
-      if (key in lead) {
-        lead[key] = Array.isArray(lead[key]) ? [...lead[key], nextValue] : [lead[key], nextValue];
-      } else {
-        lead[key] = nextValue;
-      }
-    });
-
-    sessionStorage.setItem("aqgLead", JSON.stringify(lead));
-  });
 });
 
 document.querySelectorAll(".compare-card").forEach((card) => {

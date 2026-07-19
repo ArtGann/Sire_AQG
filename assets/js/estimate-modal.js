@@ -9,6 +9,30 @@
   if (!modal || !dialog || !form) return;
 
   let lastFocusedTrigger = null;
+  let resetTurnstileChallenge = () => {};
+
+  const trackAnalytics = (eventName, properties = {}) => {
+    const analytics = window.AQGAnalytics;
+    if (!analytics) return;
+
+    try {
+      const context = { page_path: window.location.pathname, ...properties };
+      if (typeof analytics.track === "function") analytics.track(eventName, context);
+      else if (typeof analytics === "function") analytics(eventName, context);
+    } catch {
+      // Analytics must never interrupt the estimate flow.
+    }
+  };
+
+  const safeSessionStorage = (operation, key, value = "") => {
+    try {
+      if (operation === "set") sessionStorage.setItem(key, value);
+      else sessionStorage.removeItem(key);
+      return true;
+    } catch {
+      return false;
+    }
+  };
 
   const fallbackClearFormStatus = (targetForm) => {
     targetForm.querySelector(".form-status")?.remove();
@@ -88,7 +112,7 @@
       miter_count: value("miter_count"),
       downspout_count: value("downspout_count"),
       property_address: value("address"), preferred_date: value("preferred_date"), comments: value("message"),
-      idempotency_key: value("idempotency_key"), turnstile_token: value("turnstile_token"), website: value("website"), uploaded_photos: [],
+      idempotency_key: value("idempotency_key"), turnstile_token: value("turnstile_token"), lead_session_token: value("lead_session_token"), website: value("website"), uploaded_photos: [],
       sms_consent: data.get("sms_consent") === "true",
       landing_page_url: window.location.href,
       page_form_source: "Website Estimate Form"
@@ -110,7 +134,9 @@
     }
 
     if (!response.ok) {
-      throw new Error(result.message || "We couldn't send your estimate request. Please try again.");
+      const error = new Error(result.message || "We couldn't send your estimate request. Please try again.");
+      error.code = result.code || "lead_request_failed";
+      throw error;
     }
 
     return result;
@@ -178,7 +204,9 @@
     ).filter((element) => element instanceof HTMLElement && element.offsetParent !== null);
 
   const focusFirstField = () => {
-    const firstField = form.querySelector("input, select, textarea, button");
+    const firstField = form.querySelector(
+      ".custom-select__button, input:not([type='hidden']):not([disabled]), textarea:not([disabled]), button:not([disabled])"
+    );
     if (firstField instanceof HTMLElement) firstField.focus({ preventScroll: true });
   };
 
@@ -187,6 +215,9 @@
     modal.classList.add("is-open");
     modal.setAttribute("aria-hidden", "false");
     document.body.classList.add("modal-open");
+    trackAnalytics("estimate_form_open", {
+      cta_text: trigger instanceof HTMLElement ? normalizeCtaText(trigger.textContent || "") : "direct"
+    });
     window.setTimeout(focusFirstField, 40);
   };
 
@@ -443,16 +474,30 @@
     const dropZone = form.querySelector(".drop-zone");
     const previewArea = form.querySelector(".photo-previews");
     const uploadError = form.querySelector(".photo-upload__error");
-
     if (!(photoInput instanceof HTMLInputElement) || !dropZone || !previewArea || !uploadError) return null;
 
+    const maxPhotos = Number(window.AQGEstimateCore?.MAX_PHOTOS || 10);
+    const maxPhotoBytes = Number(window.AQGEstimateCore?.MAX_PHOTO_BYTES || 10 * 1024 * 1024);
+    const allowedTypes = new Set(["image/jpeg", "image/png", "image/webp"]);
+    const allowedExtensions = /\.(jpe?g|png|webp)$/i;
     let selectedPhotos = [];
+
+    const fingerprint = (file) => [file.name, file.type, file.size, file.lastModified].join(":");
+    const nextSlot = () => {
+      const used = new Set(selectedPhotos.map((entry) => entry.slot));
+      for (let slot = 0; slot < maxPhotos; slot += 1) if (!used.has(slot)) return slot;
+      return -1;
+    };
 
     const syncPhotoInput = () => {
       if (typeof DataTransfer === "undefined") return;
-      const transfer = new DataTransfer();
-      selectedPhotos.forEach((file) => transfer.items.add(file));
-      photoInput.files = transfer.files;
+      try {
+        const transfer = new DataTransfer();
+        selectedPhotos.forEach((entry) => transfer.items.add(entry.file));
+        photoInput.files = transfer.files;
+      } catch {
+        // The internal selection remains authoritative in older browsers.
+      }
     };
 
     const renderPhotoPreviews = () => {
@@ -461,25 +506,32 @@
       });
       previewArea.replaceChildren();
 
-      selectedPhotos.forEach((file, index) => {
+      selectedPhotos.forEach((entry) => {
         const preview = document.createElement("div");
         preview.className = "photo-preview";
-
-        const image = document.createElement("img");
-        const objectUrl = URL.createObjectURL(file);
-        preview.dataset.objectUrl = objectUrl;
-        image.src = objectUrl;
-        image.alt = "";
-        preview.append(image);
+        try {
+          const image = document.createElement("img");
+          const objectUrl = URL.createObjectURL(entry.file);
+          preview.dataset.objectUrl = objectUrl;
+          image.src = objectUrl;
+          image.alt = `Preview of ${entry.file.name}`;
+          preview.append(image);
+        } catch {
+          const fileLabel = document.createElement("span");
+          fileLabel.className = "photo-preview__file";
+          fileLabel.textContent = entry.file.name;
+          preview.append(fileLabel);
+        }
 
         const removeButton = document.createElement("button");
         removeButton.type = "button";
-        removeButton.setAttribute("aria-label", `Remove ${file.name}`);
-        removeButton.textContent = "x";
+        removeButton.setAttribute("aria-label", `Remove ${entry.file.name}`);
+        removeButton.textContent = "×";
         removeButton.addEventListener("click", () => {
-          selectedPhotos.splice(index, 1);
+          selectedPhotos = selectedPhotos.filter((item) => item !== entry);
           syncPhotoInput();
           renderPhotoPreviews();
+          form.dispatchEvent(new Event("change", { bubbles: true }));
         });
         preview.append(removeButton);
         previewArea.append(preview);
@@ -488,81 +540,92 @@
 
     const addPhotos = (files) => {
       uploadError.textContent = "";
-      const incoming = Array.from(files || []);
-      const allowedExtensions = /\.(jpe?g|png|webp)$/i;
-
-      for (const file of incoming) {
-        if (!allowedExtensions.test(file.name)) {
-          uploadError.textContent = "Please select JPG, PNG, or WEBP images.";
+      for (const file of Array.from(files || [])) {
+        if (!allowedTypes.has(file.type) || !allowedExtensions.test(file.name)) {
+          uploadError.textContent = "Please select JPG, PNG, or WEBP images only.";
           continue;
         }
-
-        if (file.size > 10 * 1024 * 1024) {
+        if (file.size > maxPhotoBytes) {
           uploadError.textContent = `${file.name} is larger than 10MB.`;
           continue;
         }
-
-        const duplicate = selectedPhotos.some(
-          (selected) =>
-            selected.name === file.name &&
-            selected.size === file.size &&
-            selected.lastModified === file.lastModified
-        );
-        if (duplicate) continue;
-
-        if (selectedPhotos.length >= 6) {
-          uploadError.textContent = "You can upload up to 6 photos.";
+        if (selectedPhotos.some((entry) => entry.fingerprint === fingerprint(file))) continue;
+        const slot = nextSlot();
+        if (slot < 0) {
+          uploadError.textContent = `You can upload up to ${maxPhotos} photos.`;
           break;
         }
-
-        selectedPhotos.push(file);
+        selectedPhotos.push({ file, fingerprint: fingerprint(file), slot, url: "" });
       }
-
       syncPhotoInput();
       renderPhotoPreviews();
+      form.dispatchEvent(new Event("change", { bubbles: true }));
     };
 
     photoInput.addEventListener("change", () => addPhotos(photoInput.files));
-
     ["dragenter", "dragover"].forEach((eventName) => {
       dropZone.addEventListener(eventName, (event) => {
         event.preventDefault();
         dropZone.classList.add("is-dragover");
       });
     });
-
     ["dragleave", "drop"].forEach((eventName) => {
       dropZone.addEventListener(eventName, (event) => {
         event.preventDefault();
         dropZone.classList.remove("is-dragover");
       });
     });
-
     dropZone.addEventListener("drop", (event) => addPhotos(event.dataTransfer?.files));
 
-    const uploadAll = async (submission = {}) => {
-      const error = window.AQGEstimateCore?.validatePhotoMeta(selectedPhotos) || "";
-      if (error) throw new Error(error);
+    const uploadAll = async ({ idempotency_key: id, lead_session_token: token } = {}) => {
+      const validationError = window.AQGEstimateCore?.validatePhotoMeta(selectedPhotos.map((entry) => entry.file)) || "";
+      if (validationError) throw new Error(validationError);
       const urls = [];
-      for (const file of selectedPhotos) {
-        const body = new FormData();
-        body.append("photo", file);
-        body.append("idempotency_key", submission.idempotency_key || "");
-        body.append("turnstile_token", submission.turnstile_token || "");
-        const response = await fetch("/api/upload-photo", { method: "POST", body });
-        const result = await response.json().catch(() => ({}));
-        if (!response.ok || !result.url) throw new Error(result.message || `Couldn't upload ${file.name}. Please try again.`);
-        urls.push(result.url);
+      for (let index = 0; index < selectedPhotos.length; index += 1) {
+        const entry = selectedPhotos[index];
+        if (!entry.url) {
+          uploadError.textContent = `Uploading photo ${index + 1} of ${selectedPhotos.length}…`;
+          const body = new FormData();
+          body.append("photo", entry.file);
+          body.append("photo_slot", String(entry.slot));
+          body.append("idempotency_key", id || "");
+          body.append("lead_session_token", token || "");
+          const response = await fetch("/api/upload-photo", { method: "POST", body });
+          const result = await response.json().catch(() => ({}));
+          if (!response.ok || !result.url) {
+            const error = new Error(result.message || `Couldn't upload ${entry.file.name}. Please try again.`);
+            error.code = result.code || "photo_upload_failed";
+            throw error;
+          }
+          const returnedUrl = new URL(result.url, window.location.href);
+          const localPreview = ["127.0.0.1", "localhost", "::1"].includes(returnedUrl.hostname);
+          if (returnedUrl.protocol !== "https:" && !localPreview) {
+            const error = new Error("Photo storage returned an insecure URL.");
+            error.code = "insecure_photo_url";
+            throw error;
+          }
+          entry.url = returnedUrl.toString();
+        }
+        urls.push(entry.url);
       }
+      uploadError.textContent = "";
       return urls;
     };
+
+    const clearUploadedUrls = () => selectedPhotos.forEach((entry) => { entry.url = ""; });
     const reset = () => {
       selectedPhotos = [];
       syncPhotoInput();
       renderPhotoPreviews();
       uploadError.textContent = "";
     };
-    return { uploadAll, reset };
+    return {
+      hasPhotos: () => selectedPhotos.length > 0,
+      count: () => selectedPhotos.length,
+      uploadAll,
+      clearUploadedUrls,
+      reset,
+    };
   };
 
   const initFormSections = () => {
@@ -592,7 +655,11 @@
       form.dispatchEvent(new Event("change", { bubbles: true }));
     };
 
-    toggle.addEventListener("click", () => syncCalculator(calculator.hidden, true));
+    toggle.addEventListener("click", () => {
+      const opening = calculator.hidden;
+      syncCalculator(opening, true);
+      if (opening) trackAnalytics("estimate_calculator_open");
+    });
     calculator.addEventListener("change", () => {
       const firstService = calculatorServices[0];
       if (firstService instanceof HTMLInputElement) firstService.setCustomValidity(!calculator.hidden && !calculatorServices.some((control) => control.checked) ? "Select at least one service for the calculator." : "");
@@ -616,7 +683,16 @@
         script.onerror = reject;
         document.head.append(script);
       });
-      window.turnstile?.render(mount, { sitekey: config.turnstileSiteKey, callback: (token) => { tokenField.value = token; }, "expired-callback": () => { tokenField.value = ""; } });
+      const widgetId = window.turnstile?.render(mount, {
+        sitekey: config.turnstileSiteKey,
+        action: config.turnstileAction || "estimate_request",
+        callback: (token) => { tokenField.value = token; },
+        "expired-callback": () => { tokenField.value = ""; }
+      });
+      resetTurnstileChallenge = () => {
+        tokenField.value = "";
+        if (widgetId !== undefined && widgetId !== null) window.turnstile?.reset(widgetId);
+      };
     } catch {
       mount.textContent = "Security verification is unavailable. Please try again shortly.";
     }
@@ -635,6 +711,71 @@
   const photoUpload = initPhotoUpload();
   initTurnstile();
   bindEstimateTriggers();
+
+  const leadSessionField = form.elements.namedItem("lead_session_token");
+  let activeLeadSession = null;
+
+  const setLeadSessionField = (value) => {
+    if (leadSessionField instanceof HTMLInputElement) leadSessionField.value = value;
+  };
+
+  const startLeadSession = async (payload) => {
+    if (activeLeadSession?.id === payload.idempotency_key && activeLeadSession.token) return activeLeadSession;
+    const response = await fetch("/api/lead-session", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        idempotency_key: payload.idempotency_key,
+        turnstile_token: payload.turnstile_token,
+      }),
+    });
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok || !result.lead_session_token) {
+      const error = new Error(result.message || "We couldn't start a secure photo upload. Please try again.");
+      error.code = result.code || "lead_session_failed";
+      throw error;
+    }
+    activeLeadSession = { id: payload.idempotency_key, token: result.lead_session_token };
+    setLeadSessionField(activeLeadSession.token);
+    return activeLeadSession;
+  };
+
+  const discardLeadSession = ({ regenerateId = false } = {}) => {
+    activeLeadSession = null;
+    setLeadSessionField("");
+    photoUpload?.clearUploadedUrls();
+    if (regenerateId) {
+      const idempotencyField = form.elements.namedItem("idempotency_key");
+      if (idempotencyField instanceof HTMLInputElement) idempotencyField.value = crypto.randomUUID();
+    }
+    resetTurnstileChallenge();
+  };
+
+  const serviceByPath = new Map([
+    ["/services/seamless-gutter-installation/", "Seamless Gutter Installation"],
+    ["/services/gutter-guards/", "Gutter Guards"],
+    ["/services/gutter-replacement/", "Gutter Replacement"],
+    ["/services/soffit-fascia/", "Soffit & Fascia"],
+    ["/services/downspout-installation/", "Downspout Installation"],
+    ["/services/gutter-miters-downspout-connectors/", "Gutter Miters & Connectors"]
+  ]);
+
+  const preselectServiceFromPath = () => {
+    const select = form.elements.namedItem("service");
+    if (!(select instanceof HTMLSelectElement)) return;
+    if (Array.from(select.selectedOptions).some((option) => option.value)) return;
+
+    const normalizedPath = `${window.location.pathname.replace(/\/+$/, "")}/`;
+    const service = serviceByPath.get(normalizedPath);
+    if (!service) return;
+
+    const option = Array.from(select.options).find((item) => item.value === service);
+    if (!option) return;
+    option.selected = true;
+    select.dispatchEvent(new Event("change", { bubbles: true }));
+  };
+
+  preselectServiceFromPath();
 
   let calculatorCardsSeeded = false;
   const syncServiceFields = () => {
@@ -691,6 +832,18 @@
 
   form.addEventListener("input", updateSubmitState);
   form.addEventListener("change", updateSubmitState);
+
+  let formStarted = false;
+  const trackFormStart = (event) => {
+    if (formStarted || !event.isTrusted) return;
+    const control = event.target;
+    if (!(control instanceof HTMLInputElement || control instanceof HTMLSelectElement || control instanceof HTMLTextAreaElement)) return;
+    if (control.type === "hidden") return;
+    formStarted = true;
+    trackAnalytics("estimate_form_start");
+  };
+  form.addEventListener("input", trackFormStart);
+  form.addEventListener("change", trackFormStart);
   updateSubmitState();
 
   // Links on the generated SEO pages point to /#estimate, so opening the
@@ -702,11 +855,21 @@
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
+    // main.js keeps a legacy form snapshot for static previews. The live lead
+    // flow does not need that PII in browser storage.
+    safeSessionStorage("remove", "aqgLead");
     clearStatus(form);
     setDateValidity();
 
     const controls = Array.from(form.querySelectorAll("input, select, textarea"));
-    if (!validateFormControls(controls)) return;
+    if (!validateFormControls(controls)) {
+      const invalidControl = controls.find((control) => !control.checkValidity());
+      trackAnalytics("estimate_error", {
+        error_type: "validation",
+        field_name: String(invalidControl?.name || "unknown").slice(0, 80)
+      });
+      return;
+    }
 
     const payload = buildPayload(form);
     payload.idempotency_key = payload.idempotency_key || crypto.randomUUID();
@@ -715,17 +878,66 @@
 
     try {
       setLoading(submitButton, true);
-      payload.uploaded_photos = photoUpload ? await photoUpload.uploadAll(payload) : [];
-      sessionStorage.setItem("aqgLead", JSON.stringify(payload));
+      trackAnalytics("estimate_submit", {
+        service_count: Array.isArray(payload.service_needed) ? payload.service_needed.length : 0,
+        calculator_requested: payload.calculator_requested === true,
+        photo_count: photoUpload?.count() || 0,
+      });
+
+      if (photoUpload?.hasPhotos() || activeLeadSession) {
+        const session = await startLeadSession(payload);
+        payload.lead_session_token = session.token;
+        payload.uploaded_photos = await photoUpload.uploadAll({
+          idempotency_key: payload.idempotency_key,
+          lead_session_token: session.token,
+        });
+      } else {
+        payload.lead_session_token = "";
+        payload.uploaded_photos = [];
+      }
+
       const serverResult = await postPayload(payload);
-      sessionStorage.setItem("aqg_submission_result", JSON.stringify({
+      const conversionEnvelope = {
+        confirmed: true,
+        eventId: serverResult.event_id || payload.idempotency_key,
+        currency: serverResult.currency || "USD",
         estimateStatus: serverResult.estimate_status || "not_requested",
         customerDisplayEstimate: Number(serverResult.customer_display_estimate || 0),
-        estimateRequiresManualReview: serverResult.estimate_requires_manual_review === true
-      }));
+        estimateRequiresManualReview: serverResult.estimate_requires_manual_review === true,
+        serviceNeeded: Array.isArray(payload.service_needed) ? payload.service_needed.slice(0, 6) : []
+      };
+      const conversionStored = safeSessionStorage("set", "aqg_submission_result", JSON.stringify(conversionEnvelope));
+      if (!conversionStored) {
+        trackAnalytics("generate_lead", {
+          event_id: conversionEnvelope.eventId,
+          estimated_project_value: conversionEnvelope.customerDisplayEstimate,
+          estimated_project_currency: conversionEnvelope.currency,
+          estimate_status: conversionEnvelope.estimateStatus,
+          service_needed: conversionEnvelope.serviceNeeded,
+          delivery_fallback: "storage_unavailable"
+        });
+      }
+      trackAnalytics("estimate_success", {
+        estimate_status: serverResult.estimate_status || "not_requested"
+      });
       photoUpload?.reset();
+      activeLeadSession = null;
+      setLeadSessionField("");
       await redirectToThankYou(form);
     } catch (error) {
+      const invalidSessionCodes = new Set([
+        "lead_session_expired",
+        "invalid_lead_session",
+        "lead_session_closed",
+        "invalid_photo_session",
+        "photo_slot_used",
+        "lead_session_exists",
+      ]);
+      if (invalidSessionCodes.has(error?.code)) discardLeadSession({ regenerateId: true });
+      else if (!activeLeadSession) resetTurnstileChallenge();
+      trackAnalytics("estimate_error", {
+        message: String(error?.message || "unknown_error").slice(0, 160)
+      });
       showStatus(
         form,
         error?.message || "We couldn't send your estimate request. Please try again or call us.",
