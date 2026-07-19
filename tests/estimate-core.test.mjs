@@ -17,5 +17,24 @@ test("dates, photos, and area checks remain valid", () => {
   assert.match(core.validatePhotoMeta(Array.from({ length: 11 }, () => ({ type: "image/jpeg", size: 1 }))), /up to 10/);
   assert.match(core.validatePhotoMeta([{ type: "image/png", size: 10 * 1024 * 1024 + 1 }]), /up to 10MB/);
   assert.match(core.validatePhotoMeta([{ type: "image/gif", size: 1 }]), /JPG, PNG, or WEBP/);
-  assert.equal(core.serviceAreaStatus("19019", ["19019"]), "supported");
+});
+
+test("confirmed and configured ZIP codes are supported areas", () => {
+  assert.deepEqual(core.CONFIRMED_SUPPORTED_ZIPS, ["19057"]);
+  assert.equal(core.serviceAreaStatus("19057"), "supported_area");
+  assert.equal(core.serviceAreaStatus("19103", ["19103"]), "supported_area");
+  assert.equal(core.serviceAreaStatus("08001", [" 08001 "]), "supported_area");
+  assert.equal(core.serviceAreaStatus("19058", ["1905", "ABCDE"]), "needs_review");
+});
+
+test("service-area review envelopes and outside-area boundaries remain intact", () => {
+  for (const zip of ["07000", "08999", "15000", "19699"]) {
+    assert.equal(core.serviceAreaStatus(zip), "needs_review", zip);
+  }
+  for (const zip of ["06999", "09000", "14999", "19700", "90210"]) {
+    assert.equal(core.serviceAreaStatus(zip), "outside_primary_area", zip);
+  }
+  for (const zip of ["", "1905", "ABCDE", "19057-1234"]) {
+    assert.equal(core.serviceAreaStatus(zip), "", zip);
+  }
 });

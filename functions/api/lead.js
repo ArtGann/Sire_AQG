@@ -129,7 +129,8 @@ export async function onRequest({ request, env = {} } = {}) {
     if (!/^https:\/\//.test(webhook)) return json({ ok: false, code: "missing_webhook_url", message: "Lead delivery is not configured yet. Please call us or try again later." }, 500);
     const input = estimate.input;
     const now = new Date().toISOString();
-    const serviceAreaStatus = core.serviceAreaStatus(lead.zip_code, clean(env.SUPPORTED_ZIPS).split(",").map((zip) => zip.trim()).filter(Boolean));
+    const configuredSupportedZips = clean(env.SUPPORTED_ZIPS).split(",").map((zip) => zip.trim()).filter((zip) => /^\d{5}$/.test(zip));
+    const serviceAreaStatus = core.serviceAreaStatus(lead.zip_code, configuredSupportedZips);
     const attribution = lead.attribution;
     const ghl = {
       full_name: lead.full_name, phone: lead.phone, email: lead.email, zip_code: lead.zip_code, property_address: lead.property_address, service_needed: input.services, preferred_date: lead.preferred_date, comments: lead.comments,

@@ -51,11 +51,13 @@ TURNSTILE_SECRET_KEY=<secret key>
 TURNSTILE_ENFORCE=true
 TURNSTILE_EXPECTED_HOSTNAMES=www.allqualitygutters.com,allqualitygutters.com
 TURNSTILE_EXPECTED_ACTION=estimate_request
-SUPPORTED_ZIPS=19019,19103
+SUPPORTED_ZIPS=19057,19019,19103
 GTM_CONTAINER_ID=GTM-XXXXXXX
 GA4_MEASUREMENT_ID=G-XXXXXXXXXX
 GOOGLE_ADS_ID=AW-123456789
 ```
+
+ZIP `19057` (the Levittown company/base ZIP) is always classified as `supported_area` in code so a missing dashboard value cannot downgrade the home service area. `SUPPORTED_ZIPS` is an additive, comma-separated list of other confirmed five-digit service ZIPs; malformed entries are ignored. Unlisted ZIPs in the New Jersey `07000-08999` or Pennsylvania `15000-19699` review envelopes are sent as `needs_review`, while other valid ZIPs are sent as `outside_primary_area`.
 
 `LEAD_PHOTOS_BUCKET` remains private. `/api/upload-photo` validates and stores one file per request in R2, then returns an opaque same-origin HTTPS URL under `/api/photo/<random-id>`, which serves only JPG, PNG, and WEBP objects written by this application. No R2 access key, R2 secret, public `r2.dev` URL, custom R2 domain, or `R2_PUBLIC_BASE_URL` variable is used. The form accepts at most 10 photos up to 10MB each and sends every returned URL to GHL as both `uploaded_photos` and newline-separated `uploaded_photos_text`.
 

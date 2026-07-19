@@ -18,6 +18,31 @@ test("basic request submits without calculator and has no estimate", async () =>
   try { const response = await onRequest({ request: request(contact), env: { GHL_WEBHOOK_URL: "https://example.test/webhook", LEAD_RATE_LIMIT_KV: new MemoryKv() } }); const body = await response.json(); assert.equal(body.estimate_status, "not_requested"); const sent = JSON.parse(calls[0].options.body); assert.equal(sent.phone, "+12155550100"); assert.equal(sent.estimate_base_total, 0); assert.equal(typeof sent.estimate_inputs_json, "string"); assert.deepEqual(JSON.parse(sent.estimate_inputs_json).services, ["Gutter Replacement"]); assert.equal(typeof sent.estimate_line_items_json, "string"); assert.deepEqual(JSON.parse(sent.estimate_line_items_json), []); assert.ok(Number.isFinite(Date.parse(sent.submission_timestamp))); } finally { globalThis.fetch = original; }
 });
 
+test("server sends authoritative supported, review, and outside-area ZIP statuses", async () => {
+  const original = globalThis.fetch;
+  const calls = [];
+  globalThis.fetch = async (url, options) => { calls.push({ url, options }); return new Response("ok", { status: 200 }); };
+  try {
+    const cases = [
+      { zip: "19057", configured: "", expected: "supported_area" },
+      { zip: "08001", configured: " 19103, 08001, invalid ", expected: "supported_area" },
+      { zip: "19058", configured: "", expected: "needs_review" },
+      { zip: "90210", configured: "", expected: "outside_primary_area" },
+    ];
+    for (const [index, item] of cases.entries()) {
+      const response = await onRequest({
+        request: request({ ...contact, zip_code: item.zip, idempotency_key: `lead-area-${index}`, service_area_status: "supported_area" }),
+        env: { GHL_WEBHOOK_URL: "https://example.test/webhook", LEAD_RATE_LIMIT_KV: new MemoryKv(), SUPPORTED_ZIPS: item.configured },
+      });
+      assert.equal(response.status, 200, item.zip);
+      const sent = JSON.parse(calls[index].options.body);
+      assert.equal(sent.service_area_status, item.expected, item.zip);
+    }
+  } finally {
+    globalThis.fetch = original;
+  }
+});
+
 test("server ignores tampered display estimate and returns its own total", async () => {
   const original = globalThis.fetch; const calls = []; globalThis.fetch = async (url, options) => { calls.push({ url, options }); return new Response("ok", { status: 200 }); };
   try { const env = { GHL_WEBHOOK_URL: "https://example.test/webhook", LEAD_RATE_LIMIT_KV: new MemoryKv() }; const body = { ...contact, idempotency_key: "lead-test-2", calculator_requested: true, gutter_size: "5", home_stories: 1, square_feet: 2000, include_gutters: true, customer_display_estimate: 1 }; const response = await onRequest({ request: request(body), env }); const result = await response.json(); assert.equal(result.customer_display_estimate, 2766); const sent = JSON.parse(calls[0].options.body); assert.equal(sent.estimate_base_total, 2685); assert.equal(sent.customer_display_estimate, 2766); } finally { globalThis.fetch = original; }
@@ -46,7 +71,7 @@ test("lead rejects more than ten photo URLs before delivery", async () => {
   }
 });
 
-test("lead rejects unknown services and invalid phone numbers", async () => {
+test("lead rejects unknown services, invalid phone numbers, and invalid ZIP codes", async () => {
   const original = globalThis.fetch;
   let calls = 0;
   globalThis.fetch = async () => { calls += 1; return new Response("ok", { status: 200 }); };
@@ -56,6 +81,8 @@ test("lead rejects unknown services and invalid phone numbers", async () => {
     assert.equal(unknownService.status, 400);
     const invalidPhone = await onRequest({ request: request({ ...contact, idempotency_key: "lead-test-5", phone: "123" }), env });
     assert.equal(invalidPhone.status, 400);
+    const invalidZip = await onRequest({ request: request({ ...contact, idempotency_key: "lead-test-6", zip_code: "1905" }), env });
+    assert.equal(invalidZip.status, 400);
     assert.equal(calls, 0);
   } finally {
     globalThis.fetch = original;
