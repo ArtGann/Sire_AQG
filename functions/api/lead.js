@@ -8,13 +8,15 @@ const clean = (value) => typeof value === "string" ? value.trim() : "";
 const bounded = (value, max) => clean(value).slice(0, max);
 const validEmail = (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 const campaignFields = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "gclid", "fbclid", "gbraid", "wbraid", "msclkid"];
-const allowedServices = new Set([
-  "Seamless Gutter Installation",
-  "Gutter Guards",
-  "Gutter Replacement",
-  "Soffit & Fascia",
-  "Downspout Installation",
-  "Gutter Miters & Connectors",
+const miterService = Object.freeze({ text: "Gutter Miters & Downspout Connectors", value: "gutter_miters_downspout_connectors", calculator: "Gutter Miters & Connectors" });
+const serviceDefinitions = new Map([
+  ["Seamless Gutter Installation", Object.freeze({ text: "Seamless Gutter Installation", value: "seamless_gutter_installation", calculator: "Seamless Gutter Installation" })],
+  ["Gutter Guards", Object.freeze({ text: "Gutter Guards", value: "gutter_guards", calculator: "Gutter Guards" })],
+  ["Gutter Replacement", Object.freeze({ text: "Gutter Replacement", value: "gutter_replacement", calculator: "Gutter Replacement" })],
+  ["Soffit & Fascia", Object.freeze({ text: "Soffit & Fascia", value: "soffit_fascia", calculator: "Soffit & Fascia" })],
+  ["Downspout Installation", Object.freeze({ text: "Downspout Installation", value: "downspout_installation", calculator: "Downspout Installation" })],
+  ["Gutter Miters & Downspout Connectors", miterService],
+  ["Gutter Miters & Connectors", miterService],
 ]);
 
 function normalizeUsPhone(value) {
@@ -23,9 +25,37 @@ function normalizeUsPhone(value) {
   return national.length === 10 ? `+1${national}` : "";
 }
 
-function normalizeServices(value) {
-  if (!Array.isArray(value)) return [];
-  return [...new Set(value.map((item) => bounded(item, 80)).filter((item) => allowedServices.has(item)))].slice(0, 6);
+function decodeServiceText(value) {
+  return bounded(value, 80).replace(/&amp;/gi, "&").trim();
+}
+
+export function normalizeServiceSelection(value) {
+  const original = Array.isArray(value)
+    ? value.slice(0, 6).map((item) => bounded(item, 80)).filter(Boolean)
+    : typeof value === "string" ? bounded(value, 600) : [];
+  const source = Array.isArray(value) ? value.slice(0, 6) : typeof value === "string" ? [value] : [];
+  const tokens = source.flatMap((item) => typeof item === "string" ? item.split(",") : []).map(decodeServiceText).filter(Boolean);
+  const values = [];
+  const calculatorServices = [];
+  const text = [];
+  const seenValues = new Set();
+  const seenText = new Set();
+
+  for (const token of tokens) {
+    const definition = serviceDefinitions.get(token);
+    const textKey = definition ? `known:${definition.value}` : `unknown:${token}`;
+    if (!seenText.has(textKey)) {
+      seenText.add(textKey);
+      text.push(definition?.text || token);
+    }
+    if (definition && !seenValues.has(definition.value)) {
+      seenValues.add(definition.value);
+      values.push(definition.value);
+      calculatorServices.push(definition.calculator);
+    }
+  }
+
+  return { original, calculatorServices, values, valuesCsv: values.join(","), text: text.join(", ") };
 }
 
 function normalizePhotoUrls(value) {
@@ -77,13 +107,14 @@ function normalizeAttribution(payload) {
 function normalize(payload, request) {
   const attribution = normalizeAttribution(payload);
   if (!attribution.referrer) attribution.referrer = safeUrl(request.headers.get("Referer") || "");
-  const services = normalizeServices(payload.service_needed);
+  const serviceSelection = normalizeServiceSelection(payload.service_needed);
   const uploadedPhotos = normalizePhotoUrls(payload.uploaded_photos);
   return {
-    raw: { ...payload, stories: payload.stories || payload.home_stories, service_needed: services },
+    raw: { ...payload, stories: payload.stories || payload.home_stories, service_needed: serviceSelection.calculatorServices },
     full_name: bounded(payload.full_name, 120), phone: normalizeUsPhone(payload.phone), email: bounded(payload.email, 254), zip_code: bounded(payload.zip_code, 5), property_address: bounded(payload.property_address, 300), preferred_date: bounded(payload.preferred_date, 10), comments: bounded(payload.comments, 3000),
     calculator_requested: payload.calculator_requested === true, idempotency_key: bounded(payload.idempotency_key, 160), website: bounded(payload.website, 200), turnstile_token: bounded(payload.turnstile_token, 2048), lead_session_token: bounded(payload.lead_session_token, 256),
     uploaded_photos: uploadedPhotos, sms_consent: payload.sms_consent === true,
+    service_needed: serviceSelection.original, service_needed_values: serviceSelection.values, service_needed_values_csv: serviceSelection.valuesCsv, service_needed_text: serviceSelection.text,
     attribution, request_ip: bounded(request.headers.get("CF-Connecting-IP") || "", 64), user_agent: bounded(request.headers.get("User-Agent") || "", 500)
   };
 }
@@ -100,7 +131,7 @@ export async function onRequest({ request, env = {} } = {}) {
     if (lead.website) return json({ ok: true, estimate_status: "not_requested", customer_display_estimate: 0 });
     if (lead.uploaded_photos === null) return json({ ok: false, code: "invalid_photos", message: "Please attach no more than 10 valid project photos." }, 400);
     if (!(await consumeKvCounter(env.LEAD_RATE_LIMIT_KV, `lead-rate:${lead.request_ip}`, 5, 600))) return json({ ok: false, code: "rate_limited", message: "Please wait a few minutes before trying again." }, 429);
-    if (lead.full_name.length < 2 || !lead.phone || !validEmail(lead.email) || !/^\d{5}$/.test(lead.zip_code) || !lead.property_address || !lead.raw.service_needed.length) return json({ ok: false, code: "invalid_contact", message: "Please complete all required request fields with a valid 10-digit phone number and 5-digit ZIP code." }, 400);
+    if (lead.full_name.length < 2 || !lead.phone || !validEmail(lead.email) || !/^\d{5}$/.test(lead.zip_code) || !lead.property_address || !lead.service_needed_values.length) return json({ ok: false, code: "invalid_contact", message: "Please complete all required request fields with a valid 10-digit phone number, 5-digit ZIP code, and supported service selection." }, 400);
     if (lead.preferred_date && !core.validDate(lead.preferred_date)) return json({ ok: false, code: "invalid_date", message: "Please choose a future Monday through Saturday appointment date." }, 400);
     if (!lead.idempotency_key || lead.idempotency_key.length > 160) return json({ ok: false, code: "invalid_idempotency_key", message: "Please refresh the form and try again." }, 400);
     const idempotencyKey = `lead-idempotency:${lead.idempotency_key}`;
@@ -133,7 +164,7 @@ export async function onRequest({ request, env = {} } = {}) {
     const serviceAreaStatus = core.serviceAreaStatus(lead.zip_code, configuredSupportedZips);
     const attribution = lead.attribution;
     const ghl = {
-      full_name: lead.full_name, phone: lead.phone, email: lead.email, zip_code: lead.zip_code, property_address: lead.property_address, service_needed: input.services, preferred_date: lead.preferred_date, comments: lead.comments,
+      full_name: lead.full_name, phone: lead.phone, email: lead.email, zip_code: lead.zip_code, property_address: lead.property_address, service_needed: lead.service_needed, service_needed_values: lead.service_needed_values, service_needed_values_csv: lead.service_needed_values_csv, service_needed_text: lead.service_needed_text, preferred_date: lead.preferred_date, comments: lead.comments,
       calculator_requested: lead.calculator_requested, estimate_status: estimate.estimateStatus, estimate_version: "3", estimate_base_total: estimate.baseTotal, estimate_low: estimate.low, estimate_high: estimate.high, estimated_price_low: estimate.low, estimated_price_high: estimate.high, estimated_price_range: estimate.range, customer_display_estimate: estimate.customerDisplayEstimate, estimate_requires_manual_review: estimate.requiresManualReview, estimate_details: estimate.estimateDetails,
       gutter_size: input.size, gutter_type: input.size ? `${input.size}\" Aluminum K-Style` : "", gutter_mode: "whole_home_estimate", gutter_lf: estimate.estimatedGutterLf || 0, gutter_linear_feet: estimate.estimatedGutterLf || 0, gutter_lf_source: input.included.gutters ? "estimated_from_home_size" : "",
       guard_type: input.guardType, gutter_guards: input.guardType, guard_mode: input.included.guards ? "whole_home_estimate" : "", guard_lf: input.included.guards ? estimate.estimatedGutterLf : 0, gutter_guard_linear_feet: input.included.guards ? estimate.estimatedGutterLf : 0, guard_lf_source: input.included.guards ? "based_on_gutter_system_length" : "",

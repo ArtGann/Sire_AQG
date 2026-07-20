@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { onRequest } from "../functions/api/lead.js";
+import { normalizeServiceSelection, onRequest } from "../functions/api/lead.js";
 import { hasValidImageMagic } from "../functions/api/upload-photo.js";
 
 class MemoryKv { constructor() { this.store = new Map(); } async get(key) { return this.store.get(key) || null; } async put(key, value) { this.store.set(key, value); } }
@@ -13,9 +13,120 @@ class FailingIdempotencyKv extends MemoryKv {
 const contact = { full_name: "Test Homeowner", phone: "2155550100", email: "test@example.com", zip_code: "19019", property_address: "1 Main Street", service_needed: ["Gutter Replacement"], idempotency_key: "lead-test-1" };
 const request = (body) => new Request("https://site.test/api/lead", { method: "POST", headers: { "Content-Type": "application/json", "CF-Connecting-IP": "203.0.113.4" }, body: JSON.stringify(body) });
 
+test("one service maps to its exact GHL dropdown value", () => {
+  const result = normalizeServiceSelection(["Gutter Replacement"]);
+  assert.deepEqual(result.original, ["Gutter Replacement"]);
+  assert.deepEqual(result.values, ["gutter_replacement"]);
+  assert.equal(result.valuesCsv, "gutter_replacement");
+  assert.equal(result.text, "Gutter Replacement");
+});
+
+test("comma-separated services preserve order and normalize human text", () => {
+  const original = "Seamless Gutter Installation,  Soffit & Fascia";
+  const result = normalizeServiceSelection(original);
+  assert.equal(result.original, original);
+  assert.deepEqual(result.values, ["seamless_gutter_installation", "soffit_fascia"]);
+  assert.equal(result.valuesCsv, "seamless_gutter_installation,soffit_fascia");
+  assert.equal(result.text, "Seamless Gutter Installation, Soffit & Fascia");
+});
+
+test("HTML entities are decoded before service mapping", () => {
+  const result = normalizeServiceSelection(["  Soffit &amp; Fascia  "]);
+  assert.deepEqual(result.original, ["Soffit &amp; Fascia"]);
+  assert.deepEqual(result.values, ["soffit_fascia"]);
+  assert.equal(result.text, "Soffit & Fascia");
+});
+
+test("normalized services are deduplicated after trimming and decoding", () => {
+  const result = normalizeServiceSelection([" Gutter Guards ", "Gutter Guards", "Soffit &amp; Fascia", "Soffit & Fascia"]);
+  assert.deepEqual(result.values, ["gutter_guards", "soffit_fascia"]);
+  assert.equal(result.valuesCsv, "gutter_guards,soffit_fascia");
+  assert.equal(result.text, "Gutter Guards, Soffit & Fascia");
+});
+
+test("unknown services stay in human context but never enter dropdown values", () => {
+  const original = ["Roof Repair", "Gutter Guards", " Roof Repair "];
+  const result = normalizeServiceSelection(original);
+  assert.deepEqual(result.original, ["Roof Repair", "Gutter Guards", "Roof Repair"]);
+  assert.deepEqual(result.values, ["gutter_guards"]);
+  assert.equal(result.valuesCsv, "gutter_guards");
+  assert.equal(result.text, "Roof Repair, Gutter Guards");
+});
+
+test("empty service inputs normalize to empty fields", () => {
+  for (const value of ["", "   ", []]) {
+    const result = normalizeServiceSelection(value);
+    assert.deepEqual(result.values, []);
+    assert.equal(result.valuesCsv, "");
+    assert.equal(result.text, "");
+  }
+});
+
+test("both miter labels map to the canonical GHL option without breaking the calculator label", () => {
+  const result = normalizeServiceSelection(["Gutter Miters & Connectors", "Gutter Miters & Downspout Connectors"]);
+  assert.deepEqual(result.values, ["gutter_miters_downspout_connectors"]);
+  assert.equal(result.text, "Gutter Miters & Downspout Connectors");
+  assert.deepEqual(result.calculatorServices, ["Gutter Miters & Connectors"]);
+});
+
 test("basic request submits without calculator and has no estimate", async () => {
   const original = globalThis.fetch; const calls = []; globalThis.fetch = async (url, options) => { calls.push({ url, options }); return new Response("ok", { status: 200 }); };
   try { const response = await onRequest({ request: request(contact), env: { GHL_WEBHOOK_URL: "https://example.test/webhook", LEAD_RATE_LIMIT_KV: new MemoryKv() } }); const body = await response.json(); assert.equal(body.estimate_status, "not_requested"); const sent = JSON.parse(calls[0].options.body); assert.equal(sent.phone, "+12155550100"); assert.equal(sent.estimate_base_total, 0); assert.equal(typeof sent.estimate_inputs_json, "string"); assert.deepEqual(JSON.parse(sent.estimate_inputs_json).services, ["Gutter Replacement"]); assert.equal(typeof sent.estimate_line_items_json, "string"); assert.deepEqual(JSON.parse(sent.estimate_line_items_json), []); assert.ok(Number.isFinite(Date.parse(sent.submission_timestamp))); } finally { globalThis.fetch = original; }
+});
+
+test("webhook receives legacy and normalized service fields from a comma-separated selection", async () => {
+  const originalFetch = globalThis.fetch;
+  const calls = [];
+  globalThis.fetch = async (url, options) => { calls.push({ url, options }); return new Response("ok", { status: 200 }); };
+  try {
+    const serviceNeeded = "Seamless Gutter Installation, Soffit &amp; Fascia";
+    const response = await onRequest({
+      request: request({
+        ...contact,
+        zip_code: "19057",
+        idempotency_key: "lead-service-normalization",
+        service_needed: serviceNeeded,
+        service_needed_values: ["spoofed"],
+        service_needed_values_csv: "spoofed",
+        service_needed_text: "Spoofed",
+      }),
+      env: { GHL_WEBHOOK_URL: "https://example.test/webhook", LEAD_RATE_LIMIT_KV: new MemoryKv() },
+    });
+    assert.equal(response.status, 200);
+    assert.equal(calls.length, 1);
+    const sent = JSON.parse(calls[0].options.body);
+    assert.equal(sent.service_needed, serviceNeeded);
+    assert.deepEqual(sent.service_needed_values, ["seamless_gutter_installation", "soffit_fascia"]);
+    assert.equal(sent.service_needed_values_csv, "seamless_gutter_installation,soffit_fascia");
+    assert.equal(sent.service_needed_text, "Seamless Gutter Installation, Soffit & Fascia");
+    assert.equal(sent.service_area_status, "supported_area");
+    assert.equal(sent.estimate_status, "not_requested");
+    assert.deepEqual(sent.uploaded_photos, []);
+    assert.equal(sent.uploaded_photos_text, "");
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+});
+
+test("webhook preserves mixed known and unknown legacy services", async () => {
+  const originalFetch = globalThis.fetch;
+  const calls = [];
+  globalThis.fetch = async (url, options) => { calls.push({ url, options }); return new Response("ok", { status: 200 }); };
+  try {
+    const serviceNeeded = ["Roof Repair", "Gutter Guards", "Soffit &amp; Fascia"];
+    const response = await onRequest({
+      request: request({ ...contact, idempotency_key: "lead-service-unknown", service_needed: serviceNeeded }),
+      env: { GHL_WEBHOOK_URL: "https://example.test/webhook", LEAD_RATE_LIMIT_KV: new MemoryKv() },
+    });
+    assert.equal(response.status, 200);
+    const sent = JSON.parse(calls[0].options.body);
+    assert.deepEqual(sent.service_needed, serviceNeeded);
+    assert.deepEqual(sent.service_needed_values, ["gutter_guards", "soffit_fascia"]);
+    assert.equal(sent.service_needed_values_csv, "gutter_guards,soffit_fascia");
+    assert.equal(sent.service_needed_text, "Roof Repair, Gutter Guards, Soffit & Fascia");
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
 });
 
 test("server sends authoritative supported, review, and outside-area ZIP statuses", async () => {
@@ -71,7 +182,7 @@ test("lead rejects more than ten photo URLs before delivery", async () => {
   }
 });
 
-test("lead rejects unknown services, invalid phone numbers, and invalid ZIP codes", async () => {
+test("lead rejects unknown-only, empty services, invalid phone numbers, and invalid ZIP codes", async () => {
   const original = globalThis.fetch;
   let calls = 0;
   globalThis.fetch = async () => { calls += 1; return new Response("ok", { status: 200 }); };
@@ -79,6 +190,10 @@ test("lead rejects unknown services, invalid phone numbers, and invalid ZIP code
     const env = { GHL_WEBHOOK_URL: "https://example.test/webhook", LEAD_RATE_LIMIT_KV: new MemoryKv() };
     const unknownService = await onRequest({ request: request({ ...contact, idempotency_key: "lead-test-4", service_needed: ["Roof Replacement"] }), env });
     assert.equal(unknownService.status, 400);
+    const emptyService = await onRequest({ request: request({ ...contact, idempotency_key: "lead-test-empty-service", service_needed: "   " }), env });
+    assert.equal(emptyService.status, 400);
+    const emptyServiceArray = await onRequest({ request: request({ ...contact, idempotency_key: "lead-test-empty-service-array", service_needed: [] }), env });
+    assert.equal(emptyServiceArray.status, 400);
     const invalidPhone = await onRequest({ request: request({ ...contact, idempotency_key: "lead-test-5", phone: "123" }), env });
     assert.equal(invalidPhone.status, 400);
     const invalidZip = await onRequest({ request: request({ ...contact, idempotency_key: "lead-test-6", zip_code: "1905" }), env });
