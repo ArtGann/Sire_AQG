@@ -74,6 +74,28 @@ test("basic request submits without calculator and has no estimate", async () =>
   try { const response = await onRequest({ request: request(contact), env: { GHL_WEBHOOK_URL: "https://example.test/webhook", LEAD_RATE_LIMIT_KV: new MemoryKv() } }); const body = await response.json(); assert.equal(body.estimate_status, "not_requested"); const sent = JSON.parse(calls[0].options.body); assert.equal(sent.phone, "+12155550100"); assert.equal(sent.estimate_base_total, 0); assert.equal(typeof sent.estimate_inputs_json, "string"); assert.deepEqual(JSON.parse(sent.estimate_inputs_json).services, ["Gutter Replacement"]); assert.equal(typeof sent.estimate_line_items_json, "string"); assert.deepEqual(JSON.parse(sent.estimate_line_items_json), []); assert.ok(Number.isFinite(Date.parse(sent.submission_timestamp))); } finally { globalThis.fetch = original; }
 });
 
+test("lead delivery keeps SMS consent optional and preserves both webhook states", async () => {
+  const original = globalThis.fetch;
+  const calls = [];
+  globalThis.fetch = async (_url, options) => { calls.push(JSON.parse(options.body)); return new Response("ok", { status: 200 }); };
+  try {
+    const env = { GHL_WEBHOOK_URL: "https://example.test/webhook", LEAD_RATE_LIMIT_KV: new MemoryKv() };
+    const withoutConsent = await onRequest({ request: request({ ...contact, idempotency_key: "lead-sms-unchecked", sms_consent: false }), env });
+    const withConsent = await onRequest({ request: request({ ...contact, idempotency_key: "lead-sms-checked", sms_consent: true }), env });
+    assert.equal(withoutConsent.status, 200);
+    assert.equal(withConsent.status, 200);
+    assert.equal(calls.length, 2);
+    assert.equal(calls[0].sms_consent, false);
+    assert.equal(calls[0].sms_consent_timestamp, "");
+    assert.equal(calls[0].sms_consent_text_version, "");
+    assert.equal(calls[1].sms_consent, true);
+    assert.ok(Number.isFinite(Date.parse(calls[1].sms_consent_timestamp)));
+    assert.equal(calls[1].sms_consent_text_version, "2026-07-11");
+  } finally {
+    globalThis.fetch = original;
+  }
+});
+
 test("webhook receives legacy and normalized service fields from a comma-separated selection", async () => {
   const originalFetch = globalThis.fetch;
   const calls = [];

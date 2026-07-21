@@ -957,7 +957,7 @@ select:focus,
 
 .sms-consent {
   display: grid;
-  grid-template-columns: 18px 1fr;
+  grid-template-columns: 18px minmax(0, 1fr);
   gap: 9px;
   align-items: start;
   margin-top: 10px;
@@ -4927,9 +4927,9 @@ h1 span,
 .estimate-modal__actions { margin-top: 22px; padding-top: 18px; border-top: 1px solid #e4ebe0; }
 .estimate-modal__actions .btn { min-height: 54px; border-radius: 7px; box-shadow: 0 10px 22px rgba(61, 145, 46, 0.18); }
 .sms-consent { align-items: start; margin-top: 18px; padding: 12px 0; color: #667166; font-size: 12px; }
-.sms-consent__copy { display: grid; gap: 3px; }
+.sms-consent__copy { display: grid; min-width: 0; gap: 3px; }
 .sms-consent__copy strong { color: #33483a; font-size: 13px; }
-.sms-consent__copy > span { color: #68746b; line-height: 1.45; }
+.sms-consent__copy > span { color: #68746b; line-height: 1.45; overflow-wrap: anywhere; }
 
 @media (max-width: 720px) {
   .estimate-modal__overlay { padding: 10px; }

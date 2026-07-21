@@ -6,6 +6,8 @@ import { fileURLToPath } from "node:url";
 
 const root = fileURLToPath(new URL("..", import.meta.url));
 const read = (file) => readFile(join(root, file), "utf8");
+const smsDisclosure = "I consent to receive non-marketing text messages from All Quality Gutters LLC about my estimate request, appointment scheduling, service updates, and customer care. Message frequency may vary. Message &amp; data rates may apply. Text HELP for assistance, reply STOP to opt out. Consent is not a condition of purchase.";
+const oldSmsDisclosure = ["Check this box if you want", "service-related texts about your estimate or appointment."].join(" ");
 
 async function htmlFiles(directory) {
   const entries = await readdir(directory, { withFileTypes: true });
@@ -68,6 +70,28 @@ test("optional photo uploads use the verified lead-session flow", async () => {
     assert.match(page, /id="estimate-photos"/, file);
     assert.match(page, /name="lead_session_token"/, file);
   }
+});
+
+test("the shared SMS disclosure is exact, optional, and separate from legal acceptance", async () => {
+  const pages = await htmlFiles(root);
+  let sharedModalCount = 0;
+
+  for (const file of pages) {
+    const html = await readFile(file, "utf8");
+    assert.doesNotMatch(html, new RegExp(oldSmsDisclosure), file);
+    if (!html.includes("<!-- Shared estimate modal -->")) continue;
+
+    sharedModalCount += 1;
+    const consent = html.match(/<label class="sms-consent">([\s\S]*?)<\/label>/)?.[0] || "";
+    assert.ok(consent, file);
+    assert.match(consent, new RegExp(smsDisclosure), file);
+    assert.doesNotMatch(consent, /&amp;amp;/, file);
+    assert.match(consent, /<input type="checkbox" name="sms_consent" value="true"\s*\/>/, file);
+    assert.doesNotMatch(consent, /\b(?:required|checked)\b/, file);
+    assert.ok(html.indexOf('<p class="form-legal-note">', html.indexOf(consent)) > html.indexOf(consent) + consent.length, file);
+  }
+
+  assert.ok(sharedModalCount > 1);
 });
 
 test("only the simplified calculator controls are present across synchronized pages", async () => {
